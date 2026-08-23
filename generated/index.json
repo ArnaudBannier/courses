@@ -2,7 +2,7 @@
   "mode": "multi-course",
   "courses": [
     {
-      "courseSlug": "_course",
+      "courseSlug": "03_algebra",
       "title": "Algèbre et géométrie",
       "description": "Diagonalisation, transformation géométriques.",
       "authors": [
@@ -87,7 +87,7 @@
       ]
     },
     {
-      "courseSlug": "_course",
+      "courseSlug": "01_pass",
       "title": "PASS Maths",
       "description": "Remise à niveau en mathématiques",
       "authors": [
