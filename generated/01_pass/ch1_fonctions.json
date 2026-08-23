@@ -57,7 +57,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<img src=\"/generated/assets/project/assets/01_pass/ch1_valeur_absolue_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch1_valeur_absolue_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch1_valeur_absolue_d.svg\" alt=\"Valeur absolue\" style=\"min-width: 60%;\" loading=\"lazy\" />"
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch1_valeur_absolue_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch1_valeur_absolue_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch1_valeur_absolue_d.svg\" alt=\"Valeur absolue\" style=\"min-width: 60%;\" loading=\"lazy\" />"
         }
       ]
     },

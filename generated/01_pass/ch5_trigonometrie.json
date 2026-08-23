@@ -35,7 +35,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<img src=\"/generated/assets/project/assets/01_pass/ch5_sin_cos_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch5_sin_cos_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch5_sin_cos_d.svg\" alt=\"Sinus, cosinus et tangente\" style=\"min-width: 50%;\" loading=\"lazy\" />"
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch5_sin_cos_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch5_sin_cos_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch5_sin_cos_d.svg\" alt=\"Sinus, cosinus et tangente\" style=\"min-width: 50%;\" loading=\"lazy\" />"
         }
       ]
     },
@@ -58,7 +58,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<img src=\"/generated/assets/project/assets/01_pass/ch5_angles_remarquables_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch5_angles_remarquables_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch5_angles_remarquables_d.svg\" alt=\"Angles remarquables\" style=\"min-width: 80%;\" loading=\"lazy\" />"
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch5_angles_remarquables_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch5_angles_remarquables_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch5_angles_remarquables_d.svg\" alt=\"Angles remarquables\" style=\"min-width: 80%;\" loading=\"lazy\" />"
         }
       ]
     },
@@ -136,7 +136,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<img src=\"/generated/assets/project/assets/01_pass/ch5_graphe_sin_cos_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch5_graphe_sin_cos_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch5_graphe_sin_cos_d.svg\" alt=\"Sinus et cosinus\" style=\"min-width: 100%;\" loading=\"lazy\" />"
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch5_graphe_sin_cos_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch5_graphe_sin_cos_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch5_graphe_sin_cos_d.svg\" alt=\"Sinus et cosinus\" style=\"min-width: 100%;\" loading=\"lazy\" />"
         }
       ]
     },
@@ -281,7 +281,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<img src=\"/generated/assets/project/assets/01_pass/ch5_prop_sin_cos_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch5_prop_sin_cos_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch5_prop_sin_cos_d.svg\" alt=\"Formules trigonométriques\" style=\"min-width: 50%;\" loading=\"lazy\" />"
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch5_prop_sin_cos_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch5_prop_sin_cos_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch5_prop_sin_cos_d.svg\" alt=\"Formules trigonométriques\" style=\"min-width: 50%;\" loading=\"lazy\" />"
         }
       ]
     },

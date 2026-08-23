@@ -58,7 +58,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<img src=\"/generated/assets/project/assets/01_pass/ch3_derivee_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch3_derivee_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch3_derivee_d.svg\" alt=\"Pente\" style=\"min-width: 70%;\" loading=\"lazy\" />"
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch3_derivee_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch3_derivee_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch3_derivee_d.svg\" alt=\"Pente\" style=\"min-width: 70%;\" loading=\"lazy\" />"
         }
       ]
     },
@@ -1444,7 +1444,7 @@
                   "content": [
                     {
                       "kind": "html",
-                      "html": "<img src=\"/generated/assets/project/assets/01_pass/ch3_graphe_exercice_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch3_graphe_exercice_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch3_graphe_exercice_d.svg\" alt=\"Graphe\" style=\"min-width: 60%;\" loading=\"lazy\" />"
+                      "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch3_graphe_exercice_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch3_graphe_exercice_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch3_graphe_exercice_d.svg\" alt=\"Graphe\" style=\"min-width: 60%;\" loading=\"lazy\" />"
                     }
                   ]
                 }

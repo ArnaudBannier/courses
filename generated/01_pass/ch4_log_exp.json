@@ -292,7 +292,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<img src=\"/generated/assets/project/assets/01_pass/ch4_log_exp_nat_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch4_log_exp_nat_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch4_log_exp_nat_d.svg\" alt=\"Logarithme et exponentielle\" style=\"min-width: 90%;\" loading=\"lazy\" />"
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch4_log_exp_nat_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch4_log_exp_nat_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch4_log_exp_nat_d.svg\" alt=\"Logarithme et exponentielle\" style=\"min-width: 90%;\" loading=\"lazy\" />"
         }
       ]
     },
@@ -457,7 +457,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<img src=\"/generated/assets/project/assets/01_pass/ch4_log_exp_base_2_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch4_log_exp_base_2_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch4_log_exp_base_2_d.svg\" alt=\"Logarithme et exponentielle en base 2\" style=\"min-width: 90%;\" loading=\"lazy\" />"
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch4_log_exp_base_2_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch4_log_exp_base_2_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch4_log_exp_base_2_d.svg\" alt=\"Logarithme et exponentielle en base 2\" style=\"min-width: 90%;\" loading=\"lazy\" />"
         }
       ]
     },

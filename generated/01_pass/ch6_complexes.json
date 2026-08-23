@@ -35,7 +35,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<img src=\"/generated/assets/project/assets/01_pass/ch6_forme_alg_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch6_forme_alg_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch6_forme_alg_d.svg\" alt=\"Forme algébrique\" style=\"min-width: 60%;\" loading=\"lazy\" />"
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch6_forme_alg_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch6_forme_alg_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch6_forme_alg_d.svg\" alt=\"Forme algébrique\" style=\"min-width: 60%;\" loading=\"lazy\" />"
         }
       ]
     },
@@ -289,7 +289,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<img src=\"/generated/assets/project/assets/01_pass/ch6_forme_trigo_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch6_forme_trigo_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch6_forme_trigo_d.svg\" alt=\"Forme trigonométrique\" style=\"min-width: 80%;\" loading=\"lazy\" />"
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch6_forme_trigo_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch6_forme_trigo_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch6_forme_trigo_d.svg\" alt=\"Forme trigonométrique\" style=\"min-width: 80%;\" loading=\"lazy\" />"
         }
       ]
     },

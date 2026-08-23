@@ -136,7 +136,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<img src=\"/generated/assets/project/assets/01_pass/ch1_pascal_l.svg\" data-theme-image=\"true\" data-light-src=\"/generated/assets/project/assets/01_pass/ch1_pascal_l.svg\" data-dark-src=\"/generated/assets/project/assets/01_pass/ch1_pascal_d.svg\" alt=\"Valeur absolue\" style=\"min-width: 70%;\" loading=\"lazy\" />"
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_pass/ch1_pascal_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_pass/ch1_pascal_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_pass/ch1_pascal_d.svg\" alt=\"Valeur absolue\" style=\"min-width: 70%;\" loading=\"lazy\" />"
         }
       ]
     },
