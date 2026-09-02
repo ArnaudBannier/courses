@@ -1,137 +1,6 @@
 {
   "pagesById": {
-    "pr02-coordonnees": {
-      "outputPath": "03_algebra/ch1_coordonnees.json",
-      "blocks": {
-        "exo-chgt-base-01": {
-          "num": "1",
-          "label": "Exercise 1",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-chgt-base-02": {
-          "num": "2",
-          "label": "Exercise 2",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-construction-c": {
-          "num": "3",
-          "label": "Exercise 3",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-coord-01": {
-          "num": "4",
-          "label": "Exercise 4",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-coord-02": {
-          "num": "5",
-          "label": "Exercise 5",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-coord-03": {
-          "num": "6",
-          "label": "Exercise 6",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-coord-04": {
-          "num": "7",
-          "label": "Exercise 7",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-imker-01": {
-          "num": "8",
-          "label": "Exercise 8",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-imker-02": {
-          "num": "9",
-          "label": "Exercise 9",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-matrice-app-lin-01": {
-          "num": "10",
-          "label": "Exercise 10",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-matrice-app-lin-02": {
-          "num": "11",
-          "label": "Exercise 11",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-matrice-app-lin-03": {
-          "num": "12",
-          "label": "Exercise 12",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-matrice-app-lin-04": {
-          "num": "13",
-          "label": "Exercise 13",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-passage-01": {
-          "num": "14",
-          "label": "Exercise 14",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-passage-02": {
-          "num": "15",
-          "label": "Exercise 15",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-proprietes-01": {
-          "num": "16",
-          "label": "Exercise 16",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-proprietes-02": {
-          "num": "17",
-          "label": "Exercise 17",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-proprietes-03": {
-          "num": "18",
-          "label": "Exercise 18",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-synthese-01": {
-          "num": "19",
-          "label": "Exercise 19",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-synthese-02": {
-          "num": "20",
-          "label": "Exercise 20",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exo-synthese-03": {
-          "num": "21",
-          "label": "Exercise 21",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        }
-      }
-    },
-    "pass-ch1-ensembles": {
+    "pass-ensembles": {
       "outputPath": "01_pass/ch1_ensembles.json",
       "blocks": {
         "exercice-ensemble-1": {
@@ -157,6 +26,76 @@
     "pass-ch1-operations": {
       "outputPath": "01_pass/ch1_calcul.json",
       "blocks": {
+        "exercice-operations-3": {
+          "num": "2",
+          "label": "Exercise 2",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-operations-4": {
+          "num": "3",
+          "label": "Exercise 3",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "ReglePuis": {
+          "num": "4",
+          "label": "Proposition 4",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "exercice-puissances-1": {
+          "num": "4",
+          "label": "Exercise 4",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-puissances-2": {
+          "num": "7",
+          "label": "Exercise 7",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-inegalites-1": {
+          "num": "9",
+          "label": "Exercise 9",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        }
+      }
+    },
+    "pass-systemes": {
+      "outputPath": "01_pass/ch1_systemes.json",
+      "blocks": {
+        "definition-systeme-lineaire": {
+          "num": "1",
+          "label": "Definition 1",
+          "blockType": "definition",
+          "kind": "Definition"
+        },
+        "exemple-systeme": {
+          "num": "1",
+          "label": "Example 1",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "exemple-systeme-reduction": {
+          "num": "2",
+          "label": "Example 2",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "exp:Gauss": {
+          "num": "5",
+          "label": "Example 5",
+          "blockType": "example",
+          "kind": "Example"
+        }
+      }
+    },
+    "pass-complements-1": {
+      "outputPath": "01_pass/ch1_complements.json",
+      "blocks": {
         "exercice-operations-1": {
           "num": "1",
           "label": "Exercise 1",
@@ -169,64 +108,22 @@
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-operations-3": {
+        "exercice-puissances-3": {
           "num": "3",
           "label": "Exercise 3",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-operations-4": {
-          "num": "4",
-          "label": "Exercise 4",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "ReglePuis": {
-          "num": "4",
-          "label": "Proposition 4",
-          "blockType": "proposition",
-          "kind": "Proposition"
-        },
-        "exercice-puissances-1": {
-          "num": "5",
-          "label": "Exercise 5",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-puissances-2": {
-          "num": "6",
-          "label": "Exercise 6",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-puissances-3": {
-          "num": "7",
-          "label": "Exercise 7",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-inegalites-1": {
-          "num": "8",
-          "label": "Exercise 8",
           "blockType": "exercise",
           "kind": "Exercise"
         }
       }
     },
-    "pass-ch1-fonctions": {
-      "outputPath": "01_pass/ch1_fonctions.json",
+    "pass-polynomes": {
+      "outputPath": "01_pass/ch2_polynomes.json",
       "blocks": {
         "proposition-fact-poly": {
           "num": "1",
           "label": "Proposition 1",
           "blockType": "proposition",
           "kind": "Proposition"
-        },
-        "exercice-polynomes-1": {
-          "num": "5",
-          "label": "Exercise 5",
-          "blockType": "exercise",
-          "kind": "Exercise"
         },
         "exercice-polynomes-2": {
           "num": "6",
@@ -239,36 +136,33 @@
           "label": "Exercise 7",
           "blockType": "exercise",
           "kind": "Exercise"
-        },
+        }
+      }
+    },
+    "pass-valeur-absolue": {
+      "outputPath": "01_pass/ch2_valeur_absolue.json",
+      "blocks": {
         "proposition-val-abs": {
-          "num": "3",
-          "label": "Proposition 3",
+          "num": "1",
+          "label": "Proposition 1",
           "blockType": "proposition",
           "kind": "Proposition"
         },
-        "exercice-val-abs-1": {
-          "num": "9",
-          "label": "Exercise 9",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
         "exercice-val-abs-2": {
-          "num": "10",
-          "label": "Exercise 10",
+          "num": "1",
+          "label": "Exercise 1",
           "blockType": "exercise",
           "kind": "Exercise"
         }
       }
     },
-    "pass-ch1-factorielle": {
-      "outputPath": "01_pass/ch1_factorielle.json",
+    "pass-sommmes": {
+      "outputPath": "01_pass/ch2_sommes.json",
+      "blocks": {}
+    },
+    "pass-factorielle": {
+      "outputPath": "01_pass/ch2_factorielle.json",
       "blocks": {
-        "theoreme-binome": {
-          "num": "1",
-          "label": "Theorem 1",
-          "blockType": "theorem",
-          "kind": "Theorem"
-        },
         "exercice-factorielle-1": {
           "num": "1",
           "label": "Exercise 1",
@@ -276,18 +170,47 @@
           "kind": "Exercise"
         },
         "exercice-factorielle-2": {
-          "num": "2",
-          "label": "Exercise 2",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-factorielle-3": {
           "num": "3",
           "label": "Exercise 3",
           "blockType": "exercise",
           "kind": "Exercise"
         },
         "exercice-factorielle-4": {
+          "num": "5",
+          "label": "Exercise 5",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "theoreme-binome": {
+          "num": "1",
+          "label": "Theorem 1",
+          "blockType": "theorem",
+          "kind": "Theorem"
+        }
+      }
+    },
+    "pass-complements-2": {
+      "outputPath": "01_pass/ch2_complements.json",
+      "blocks": {
+        "exercice-polynomes-1": {
+          "num": "1",
+          "label": "Exercise 1",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-val-abs-1": {
+          "num": "2",
+          "label": "Exercise 2",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-factorielle-1": {
+          "num": "3",
+          "label": "Exercise 3",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-factorielle-3": {
           "num": "4",
           "label": "Exercise 4",
           "blockType": "exercise",
@@ -301,20 +224,115 @@
         }
       }
     },
-    "pass-ch1-sommme": {
-      "outputPath": "01_pass/ch1_sommes.json",
-      "blocks": {}
-    },
-    "plu1198m-ch02-suites-reelles": {
-      "outputPath": "01_pass/ch2_suites.json",
+    "pass-suite-reelles": {
+      "outputPath": "01_pass/ch3_suites.json",
       "blocks": {
         "exercice-monotonie-01": {
+          "num": "4",
+          "label": "Exercise 4",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-monotonie-02": {
+          "num": "5",
+          "label": "Exercise 5",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "proposition-general-ari": {
+          "num": "1",
+          "label": "Proposition 1",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "proposition-somme-ari": {
+          "num": "2",
+          "label": "Proposition 2",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "proposition-general-geo": {
+          "num": "3",
+          "label": "Proposition 3",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "proposition-somme-geo": {
+          "num": "4",
+          "label": "Proposition 4",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        }
+      }
+    },
+    "pass-fonctions-derivables": {
+      "outputPath": "01_pass/ch3_fonctions_derivables.json",
+      "blocks": {
+        "exercice-derivees-simples-02": {
+          "num": "2",
+          "label": "Exercise 2",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-composition-04": {
+          "num": "3",
+          "label": "Exercise 3",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-application-01": {
+          "num": "5",
+          "label": "Exercise 5",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        }
+      }
+    },
+    "pass-log-exp": {
+      "outputPath": "01_pass/ch3_log_exp.json",
+      "blocks": {
+        "exo-simplifications-01": {
           "num": "1",
           "label": "Exercise 1",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-monotonie-02": {
+        "exo-simplifications-02": {
+          "num": "2",
+          "label": "Exercise 2",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exo-demo-01": {
+          "num": "3",
+          "label": "Exercise 3",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exo-demo-02": {
+          "num": "4",
+          "label": "Exercise 4",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exo-domaine-01": {
+          "num": "5",
+          "label": "Exercise 5",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        }
+      }
+    },
+    "pass-complements-3": {
+      "outputPath": "01_pass/ch3_complements.json",
+      "blocks": {
+        "exercice-complement-01": {
+          "num": "1",
+          "label": "Exercise 1",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-complement-02": {
           "num": "2",
           "label": "Exercise 2",
           "blockType": "exercise",
@@ -344,137 +362,143 @@
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-complement-01": {
+        "exercice-derivees-simples-01": {
           "num": "7",
           "label": "Exercise 7",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-complement-02": {
-          "num": "8",
-          "label": "Exercise 8",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        }
-      }
-    },
-    "plu1198m-ch03-fonctions-derivables": {
-      "outputPath": "01_pass/ch3_fonctions_derivables.json",
-      "blocks": {
-        "exercice-derivees-simples-01": {
-          "num": "1",
-          "label": "Exercise 1",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-derivees-simples-02": {
-          "num": "2",
-          "label": "Exercise 2",
           "blockType": "exercise",
           "kind": "Exercise"
         },
         "exercice-composition-01": {
-          "num": "3",
-          "label": "Exercise 3",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-composition-02": {
-          "num": "4",
-          "label": "Exercise 4",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-composition-03": {
-          "num": "5",
-          "label": "Exercise 5",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-composition-04": {
-          "num": "6",
-          "label": "Exercise 6",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-composition-05": {
-          "num": "7",
-          "label": "Exercise 7",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-composition-06": {
           "num": "8",
           "label": "Exercise 8",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-application-01": {
+        "exercice-composition-02": {
           "num": "9",
           "label": "Exercise 9",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-application-02": {
+        "exercice-composition-03": {
           "num": "10",
           "label": "Exercise 10",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-application-03": {
+        "exercice-composition-05": {
           "num": "11",
           "label": "Exercise 11",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-composition-06": {
+          "num": "12",
+          "label": "Exercise 12",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-application-02": {
+          "num": "13",
+          "label": "Exercise 13",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-application-03": {
+          "num": "14",
+          "label": "Exercise 14",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exo-etude-01": {
+          "num": "15",
+          "label": "Exercise 15",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exo-etude-02": {
+          "num": "16",
+          "label": "Exercise 16",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exo-etude-03": {
+          "num": "17",
+          "label": "Exercise 17",
           "blockType": "exercise",
           "kind": "Exercise"
         }
       }
     },
-    "plu1198m-ch04-logarithmes-exponentielles": {
-      "outputPath": "01_pass/ch4_log_exp.json",
+    "pass-trigonometrie": {
+      "outputPath": "01_pass/ch4_trigonometrie.json",
       "blocks": {
-        "exo-demo-01": {
+        "fonctions-trigo-02": {
           "num": "1",
           "label": "Exercise 1",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exo-demo-02": {
+        "proposition-eq-trigo": {
+          "num": "2",
+          "label": "Proposition 2",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "fonctions-trigo-04": {
           "num": "2",
           "label": "Exercise 2",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exo-domaine-01": {
-          "num": "3",
-          "label": "Exercise 3",
+        "proposition-symetries-trigo": {
+          "num": "4",
+          "label": "Proposition 4",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        }
+      }
+    },
+    "pass-nombres-complexes": {
+      "outputPath": "01_pass/ch4_complexes.json",
+      "blocks": {
+        "forme-algebrique-01": {
+          "num": "1",
+          "label": "Exercise 1",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exo-etude-01": {
+        "forme-algebrique-02": {
+          "num": "2",
+          "label": "Exercise 2",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-modules-01": {
           "num": "4",
           "label": "Exercise 4",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exo-etude-02": {
+        "exercice-forme-trigo-01": {
           "num": "5",
           "label": "Exercise 5",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exo-etude-03": {
-          "num": "6",
-          "label": "Exercise 6",
-          "blockType": "exercise",
-          "kind": "Exercise"
+        "FormeTrigo": {
+          "num": "3",
+          "label": "Proposition 3",
+          "blockType": "proposition",
+          "kind": "Proposition"
         },
-        "exo-simplifications-01": {
+        "exercice-forme-expo-01": {
           "num": "7",
           "label": "Exercise 7",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exo-simplifications-02": {
+        "exercice-forme-expo-02": {
           "num": "8",
           "label": "Exercise 8",
           "blockType": "exercise",
@@ -482,8 +506,8 @@
         }
       }
     },
-    "plu1198m-ch05-trigonometrie": {
-      "outputPath": "01_pass/ch5_trigonometrie.json",
+    "pass-complements-4": {
+      "outputPath": "01_pass/ch4_complements.json",
       "blocks": {
         "fonctions-trigo-01": {
           "num": "1",
@@ -491,128 +515,81 @@
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "fonctions-trigo-02": {
+        "fonctions-trigo-03": {
           "num": "2",
           "label": "Exercise 2",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "fonctions-trigo-03": {
-          "num": "3",
-          "label": "Exercise 3",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "fonctions-trigo-04": {
-          "num": "4",
-          "label": "Exercise 4",
           "blockType": "exercise",
           "kind": "Exercise"
         },
         "fonctions-trigo-05": {
-          "num": "5",
-          "label": "Exercise 5",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-formules-trigo-01": {
-          "num": "6",
-          "label": "Exercise 6",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-formules-trigo-02": {
-          "num": "7",
-          "label": "Exercise 7",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "exercice-formules-trigo-03": {
-          "num": "8",
-          "label": "Exercise 8",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        }
-      }
-    },
-    "plu1198m-ch06-nombres-complexes": {
-      "outputPath": "01_pass/ch6_complexes.json",
-      "blocks": {
-        "FormeTrigo": {
-          "num": "3",
-          "label": "Proposition 3",
-          "blockType": "proposition",
-          "kind": "Proposition"
-        },
-        "conjugue-01": {
-          "num": "1",
-          "label": "Exercise 1",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "forme-algebrique-01": {
-          "num": "2",
-          "label": "Exercise 2",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
-        "forme-algebrique-02": {
           "num": "3",
           "label": "Exercise 3",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-forme-expo-01": {
+        "exercice-formules-trigo-01": {
           "num": "4",
           "label": "Exercise 4",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-forme-expo-02": {
+        "exercice-formules-trigo-02": {
           "num": "5",
           "label": "Exercise 5",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-forme-expo-03": {
+        "exercice-formules-trigo-03": {
           "num": "6",
           "label": "Exercise 6",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-forme-trigo-01": {
+        "forme-algebrique-01": {
           "num": "7",
           "label": "Exercise 7",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-forme-trigo-02": {
+        "forme-algebrique-02": {
           "num": "8",
           "label": "Exercise 8",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-forme-trigo-03": {
+        "conjugue-01": {
           "num": "9",
           "label": "Exercise 9",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-linearisation-01": {
+        "exercice-modules-02": {
           "num": "10",
           "label": "Exercise 10",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-modules-01": {
+        "exercice-forme-trigo-02": {
           "num": "11",
           "label": "Exercise 11",
           "blockType": "exercise",
           "kind": "Exercise"
         },
-        "exercice-modules-02": {
+        "exercice-forme-trigo-03": {
           "num": "12",
           "label": "Exercise 12",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-forme-expo-03": {
+          "num": "13",
+          "label": "Exercise 13",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-linearisation-01": {
+          "num": "14",
+          "label": "Exercise 14",
           "blockType": "exercise",
           "kind": "Exercise"
         }

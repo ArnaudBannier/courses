@@ -31,17 +31,6 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
-        },
-        {
-          "sourcePath": "03_algebra/ch1_coordonnees.md",
-          "outputPath": "03_algebra/ch1_coordonnees.json",
-          "title": "Systèmes de coordonnées",
-          "navTitle": "Systèmes de coordonnées",
-          "navHidden": false,
-          "authors": [
-            "Arnaud Bannier",
-            "Nicolas Bodin"
-          ]
         }
       ],
       "navigation": [
@@ -65,17 +54,6 @@
               "outputPath": "03_algebra/ch1_applications_lineaires.json",
               "title": "Applications linéaires",
               "navTitle": "Applications linéaires",
-              "navHidden": false,
-              "authors": [
-                "Arnaud Bannier",
-                "Nicolas Bodin"
-              ]
-            },
-            {
-              "sourcePath": "03_algebra/ch1_coordonnees.md",
-              "outputPath": "03_algebra/ch1_coordonnees.json",
-              "title": "Systèmes de coordonnées",
-              "navTitle": "Systèmes de coordonnées",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",
@@ -118,10 +96,10 @@
           ]
         },
         {
-          "sourcePath": "01_pass/ch1_fonctions.md",
-          "outputPath": "01_pass/ch1_fonctions.json",
-          "title": "Fonctions",
-          "navTitle": "Fonctions et polynômes",
+          "sourcePath": "01_pass/ch1_systemes.md",
+          "outputPath": "01_pass/ch1_systemes.json",
+          "title": "Systèmes d'équations",
+          "navTitle": "Systèmes d'équations",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -129,10 +107,10 @@
           ]
         },
         {
-          "sourcePath": "01_pass/ch1_factorielle.md",
-          "outputPath": "01_pass/ch1_factorielle.json",
-          "title": "Factorielle",
-          "navTitle": "Factorielle",
+          "sourcePath": "01_pass/ch1_complements.md",
+          "outputPath": "01_pass/ch1_complements.json",
+          "title": "Compléments",
+          "navTitle": "Compléments",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -140,8 +118,30 @@
           ]
         },
         {
-          "sourcePath": "01_pass/ch1_sommes.md",
-          "outputPath": "01_pass/ch1_sommes.json",
+          "sourcePath": "01_pass/ch2_polynomes.md",
+          "outputPath": "01_pass/ch2_polynomes.json",
+          "title": "Polynômes",
+          "navTitle": "Polynômes",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_pass/ch2_valeur_absolue.md",
+          "outputPath": "01_pass/ch2_valeur_absolue.json",
+          "title": "Valeur absolue",
+          "navTitle": "Valeur absolue",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_pass/ch2_sommes.md",
+          "outputPath": "01_pass/ch2_sommes.json",
           "title": "Sommes et produits",
           "navTitle": "Sommes et produits",
           "navHidden": false,
@@ -151,11 +151,32 @@
           ]
         },
         {
-          "sourcePath": "01_pass/ch2_suites.md",
-          "outputPath": "01_pass/ch2_suites.json",
+          "sourcePath": "01_pass/ch2_factorielle.md",
+          "outputPath": "01_pass/ch2_factorielle.json",
+          "title": "Factorielle",
+          "navTitle": "Factorielle",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_pass/ch2_complements.md",
+          "outputPath": "01_pass/ch2_complements.json",
+          "title": "Compléments",
+          "navTitle": "Compléments",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_pass/ch3_suites.md",
+          "outputPath": "01_pass/ch3_suites.json",
           "title": "Suites réelles",
-          "navTitle": "2. Suites réelles",
-          "navOrder": 2,
+          "navTitle": "Suites réelles",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -166,8 +187,7 @@
           "sourcePath": "01_pass/ch3_fonctions_derivables.md",
           "outputPath": "01_pass/ch3_fonctions_derivables.json",
           "title": "Fonctions dérivables",
-          "navTitle": "3. Fonctions dérivables",
-          "navOrder": 3,
+          "navTitle": "Fonctions dérivables",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -175,11 +195,10 @@
           ]
         },
         {
-          "sourcePath": "01_pass/ch4_log_exp.md",
-          "outputPath": "01_pass/ch4_log_exp.json",
+          "sourcePath": "01_pass/ch3_log_exp.md",
+          "outputPath": "01_pass/ch3_log_exp.json",
           "title": "Logarithmes et exponentielles",
-          "navTitle": "4. Logarithmes et exponentielles",
-          "navOrder": 4,
+          "navTitle": "Logarithmes et exponentielles",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -187,11 +206,21 @@
           ]
         },
         {
-          "sourcePath": "01_pass/ch5_trigonometrie.md",
-          "outputPath": "01_pass/ch5_trigonometrie.json",
+          "sourcePath": "01_pass/ch3_complements.md",
+          "outputPath": "01_pass/ch3_complements.json",
+          "title": "Compléments",
+          "navTitle": "Compléments",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_pass/ch4_trigonometrie.md",
+          "outputPath": "01_pass/ch4_trigonometrie.json",
           "title": "Trigonométrie",
-          "navTitle": "5. Trigonométrie",
-          "navOrder": 5,
+          "navTitle": "Trigonométrie",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -199,11 +228,21 @@
           ]
         },
         {
-          "sourcePath": "01_pass/ch6_complexes.md",
-          "outputPath": "01_pass/ch6_complexes.json",
+          "sourcePath": "01_pass/ch4_complexes.md",
+          "outputPath": "01_pass/ch4_complexes.json",
           "title": "Nombres complexes",
-          "navTitle": "6. Nombres complexes",
-          "navOrder": 6,
+          "navTitle": "Nombres complexes",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_pass/ch4_complements.md",
+          "outputPath": "01_pass/ch4_complements.json",
+          "title": "Compléments",
+          "navTitle": "Compléments",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -214,7 +253,7 @@
       "navigation": [
         {
           "kind": "section",
-          "title": "1. Calculs",
+          "title": "1. Introduction",
           "chapters": [
             {
               "sourcePath": "01_pass/ch1_ensembles.md",
@@ -239,10 +278,10 @@
               ]
             },
             {
-              "sourcePath": "01_pass/ch1_fonctions.md",
-              "outputPath": "01_pass/ch1_fonctions.json",
-              "title": "Fonctions",
-              "navTitle": "Fonctions et polynômes",
+              "sourcePath": "01_pass/ch1_systemes.md",
+              "outputPath": "01_pass/ch1_systemes.json",
+              "title": "Systèmes d'équations",
+              "navTitle": "Systèmes d'équations",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",
@@ -250,21 +289,10 @@
               ]
             },
             {
-              "sourcePath": "01_pass/ch1_factorielle.md",
-              "outputPath": "01_pass/ch1_factorielle.json",
-              "title": "Factorielle",
-              "navTitle": "Factorielle",
-              "navHidden": false,
-              "authors": [
-                "Arnaud Bannier",
-                "Nicolas Bodin"
-              ]
-            },
-            {
-              "sourcePath": "01_pass/ch1_sommes.md",
-              "outputPath": "01_pass/ch1_sommes.json",
-              "title": "Sommes et produits",
-              "navTitle": "Sommes et produits",
+              "sourcePath": "01_pass/ch1_complements.md",
+              "outputPath": "01_pass/ch1_complements.json",
+              "title": "Compléments",
+              "navTitle": "Compléments",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",
@@ -274,79 +302,154 @@
           ]
         },
         {
-          "kind": "chapter",
-          "chapter": {
-            "sourcePath": "01_pass/ch2_suites.md",
-            "outputPath": "01_pass/ch2_suites.json",
-            "title": "Suites réelles",
-            "navTitle": "2. Suites réelles",
-            "navOrder": 2,
-            "navHidden": false,
-            "authors": [
-              "Arnaud Bannier",
-              "Nicolas Bodin"
-            ]
-          }
+          "kind": "section",
+          "title": "2. Outils classiques",
+          "chapters": [
+            {
+              "sourcePath": "01_pass/ch2_polynomes.md",
+              "outputPath": "01_pass/ch2_polynomes.json",
+              "title": "Polynômes",
+              "navTitle": "Polynômes",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_pass/ch2_valeur_absolue.md",
+              "outputPath": "01_pass/ch2_valeur_absolue.json",
+              "title": "Valeur absolue",
+              "navTitle": "Valeur absolue",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_pass/ch2_sommes.md",
+              "outputPath": "01_pass/ch2_sommes.json",
+              "title": "Sommes et produits",
+              "navTitle": "Sommes et produits",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_pass/ch2_factorielle.md",
+              "outputPath": "01_pass/ch2_factorielle.json",
+              "title": "Factorielle",
+              "navTitle": "Factorielle",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_pass/ch2_complements.md",
+              "outputPath": "01_pass/ch2_complements.json",
+              "title": "Compléments",
+              "navTitle": "Compléments",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
         },
         {
-          "kind": "chapter",
-          "chapter": {
-            "sourcePath": "01_pass/ch3_fonctions_derivables.md",
-            "outputPath": "01_pass/ch3_fonctions_derivables.json",
-            "title": "Fonctions dérivables",
-            "navTitle": "3. Fonctions dérivables",
-            "navOrder": 3,
-            "navHidden": false,
-            "authors": [
-              "Arnaud Bannier",
-              "Nicolas Bodin"
-            ]
-          }
+          "kind": "section",
+          "title": "3. Suites et fonctions",
+          "chapters": [
+            {
+              "sourcePath": "01_pass/ch3_suites.md",
+              "outputPath": "01_pass/ch3_suites.json",
+              "title": "Suites réelles",
+              "navTitle": "Suites réelles",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_pass/ch3_fonctions_derivables.md",
+              "outputPath": "01_pass/ch3_fonctions_derivables.json",
+              "title": "Fonctions dérivables",
+              "navTitle": "Fonctions dérivables",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_pass/ch3_log_exp.md",
+              "outputPath": "01_pass/ch3_log_exp.json",
+              "title": "Logarithmes et exponentielles",
+              "navTitle": "Logarithmes et exponentielles",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_pass/ch3_complements.md",
+              "outputPath": "01_pass/ch3_complements.json",
+              "title": "Compléments",
+              "navTitle": "Compléments",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
         },
         {
-          "kind": "chapter",
-          "chapter": {
-            "sourcePath": "01_pass/ch4_log_exp.md",
-            "outputPath": "01_pass/ch4_log_exp.json",
-            "title": "Logarithmes et exponentielles",
-            "navTitle": "4. Logarithmes et exponentielles",
-            "navOrder": 4,
-            "navHidden": false,
-            "authors": [
-              "Arnaud Bannier",
-              "Nicolas Bodin"
-            ]
-          }
-        },
-        {
-          "kind": "chapter",
-          "chapter": {
-            "sourcePath": "01_pass/ch5_trigonometrie.md",
-            "outputPath": "01_pass/ch5_trigonometrie.json",
-            "title": "Trigonométrie",
-            "navTitle": "5. Trigonométrie",
-            "navOrder": 5,
-            "navHidden": false,
-            "authors": [
-              "Arnaud Bannier",
-              "Nicolas Bodin"
-            ]
-          }
-        },
-        {
-          "kind": "chapter",
-          "chapter": {
-            "sourcePath": "01_pass/ch6_complexes.md",
-            "outputPath": "01_pass/ch6_complexes.json",
-            "title": "Nombres complexes",
-            "navTitle": "6. Nombres complexes",
-            "navOrder": 6,
-            "navHidden": false,
-            "authors": [
-              "Arnaud Bannier",
-              "Nicolas Bodin"
-            ]
-          }
+          "kind": "section",
+          "title": "4. Trigonométrie et nombres complexes",
+          "chapters": [
+            {
+              "sourcePath": "01_pass/ch4_trigonometrie.md",
+              "outputPath": "01_pass/ch4_trigonometrie.json",
+              "title": "Trigonométrie",
+              "navTitle": "Trigonométrie",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_pass/ch4_complexes.md",
+              "outputPath": "01_pass/ch4_complexes.json",
+              "title": "Nombres complexes",
+              "navTitle": "Nombres complexes",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_pass/ch4_complements.md",
+              "outputPath": "01_pass/ch4_complements.json",
+              "title": "Compléments",
+              "navTitle": "Compléments",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
         }
       ]
     }
