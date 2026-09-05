@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "generatedAt": "2026-09-05T08:26:19.049Z",
+  "generatedAt": "2026-09-05T09:27:45.122Z",
   "sourceHashes": {
     "D:/Cours/Web/markdown/content/courses.yaml": "595091cef7a1ec5f17423379dbb46b1e508466849398eac6dc601d0a4b5c8345",
     "D:/Cours/Web/markdown/content/01_algebra/ch1_logique.md": "3ede78a7f48677873e3a203d1c5c27641fe23be47fd12789d665d327c6edccce",
@@ -28,7 +28,14 @@
     "D:/Cours/Web/markdown/content/01_pass/ch4_complements.md": "585b8b7d9b64450e7b554f1feddc7d160f0e9f3c23f92915bbc1aeb995fbdd6f",
     "D:/Cours/Web/markdown/content/01_pass/ch4_complexes.md": "fecaee9a1a2781a0c1b2f181ff2a117ab881415c185b8c0f20beba7f080ce5b9",
     "D:/Cours/Web/markdown/content/01_pass/ch4_trigonometrie.md": "37c1d9dcf2330d502d5ce4047011a5903fee229de6859e4ff69692cbae14b14b",
-    "D:/Cours/Web/markdown/content/01_pass/_course.yaml": "5878c7b1b0cf1a177f13d05793bdf9d92e34e57f8a5e67ecdf2090e584fb44b1",
+    "D:/Cours/Web/markdown/content/01_pass/_course.yaml": "e3074ca53e0956525ad9eb2ef578fb39bd76df5196bbe9cdbf071d636f150937",
+    "D:/Cours/Web/markdown/content/01_programming/ch1_bases.md": "c7c1b6d6fb03c16fcc9aa827d253a3d61b553a55e6c4d06b32d96232a1feabc3",
+    "D:/Cours/Web/markdown/content/01_programming/ch2_instructions.md": "5e117b8dcf11a127752a4f9ce72cda9ea3f176b7faa651cf1cb590e054212bd5",
+    "D:/Cours/Web/markdown/content/01_programming/ch3_fonctions.md": "7c325538959f2e964fcdca92338ba0f2fb82cd8387cc04d8fb8dacf296684ff2",
+    "D:/Cours/Web/markdown/content/01_programming/ch4_pointeurs.md": "8f719d7b8afd1678fc5b5c0f8537d19757c3f883e3309544fe3fdaca6a2cd213",
+    "D:/Cours/Web/markdown/content/01_programming/ch5_tableaux.md": "ad5b728d39302c09e49b4d6b0a95e9811603759481c1139f5ab1a977183efb44",
+    "D:/Cours/Web/markdown/content/01_programming/ch6_tableaux_theorie.md": "df6b38ad0b44b1894f4225c88213d9ca06bf2f32bcf48fae051e84e6dba833b6",
+    "D:/Cours/Web/markdown/content/01_programming/_course.yaml": "d87eea1f9b0367c902eb95fb5ea0dfd76381a70be3d415ff48f1865ca5c08258",
     "D:/Cours/Web/markdown/content/02_algebra/ch1_gauss.md": "bc7a273821f8ae47400d7e1a20e79712454e7e9c340cb7467e1b925e4059ca5c",
     "D:/Cours/Web/markdown/content/02_algebra/ch2_matrices.md": "10e33ae19ff514b55276743a2387336667de31e43ff2b342243accbb79be5848",
     "D:/Cours/Web/markdown/content/02_algebra/ch3_calculs_vectoriels.md": "6d23aac345735f34706d4870272d7dc3f361515959ccede46a0082d31182b14c",
@@ -37,13 +44,6 @@
     "D:/Cours/Web/markdown/content/02_algebra/ch6_espaces_vectoriels.md": "83e8eb69af9508b1891de2180476eb6a8eadbda55bcf56bf3bd3df7a8338470f",
     "D:/Cours/Web/markdown/content/02_algebra/ch7_coordonnees.md": "7d54bb48e713610f01aeab77e3acc7b3e07ba3f8764c0b3af85bbf72cc8f7843",
     "D:/Cours/Web/markdown/content/02_algebra/_course.yaml": "e289f7e805aa99d34a1c0974600bc51d87261e08bed16435bc50e35f1e61a60c",
-    "D:/Cours/Web/markdown/content/01_programming/ch1_bases.md": "c7c1b6d6fb03c16fcc9aa827d253a3d61b553a55e6c4d06b32d96232a1feabc3",
-    "D:/Cours/Web/markdown/content/01_programming/ch2_instructions.md": "5e117b8dcf11a127752a4f9ce72cda9ea3f176b7faa651cf1cb590e054212bd5",
-    "D:/Cours/Web/markdown/content/01_programming/ch3_fonctions.md": "7c325538959f2e964fcdca92338ba0f2fb82cd8387cc04d8fb8dacf296684ff2",
-    "D:/Cours/Web/markdown/content/01_programming/ch4_pointeurs.md": "8f719d7b8afd1678fc5b5c0f8537d19757c3f883e3309544fe3fdaca6a2cd213",
-    "D:/Cours/Web/markdown/content/01_programming/ch5_tableaux.md": "ad5b728d39302c09e49b4d6b0a95e9811603759481c1139f5ab1a977183efb44",
-    "D:/Cours/Web/markdown/content/01_programming/ch6_tableaux_theorie.md": "df6b38ad0b44b1894f4225c88213d9ca06bf2f32bcf48fae051e84e6dba833b6",
-    "D:/Cours/Web/markdown/content/01_programming/_course.yaml": "d87eea1f9b0367c902eb95fb5ea0dfd76381a70be3d415ff48f1865ca5c08258",
     "D:/Cours/Web/markdown/content/04_algebra/ch1_relations.md": "4b760598929100c5906f2db313b8c81d388fd9dc36c80bd052cad6ffb04a28e1",
     "D:/Cours/Web/markdown/content/04_algebra/ch2_groupes.md": "5b025b453efa965bc0b413745b4d7b6fc41ef1f01ba101b13876ac0e0261e55a",
     "D:/Cours/Web/markdown/content/04_algebra/ch3_sous_groupes.md": "efda9bede26fd58b87a8bddcf33da240adc4bfc401518ee61e4b4346fb8ff41d",
@@ -62,6 +62,16 @@
     "D:/Cours/Web/markdown/content/03_programming/ch6_abr.md": "8d51eac3a50de623b54570f9e564332825c1fcb726a681a47c5277170e9f4a50",
     "D:/Cours/Web/markdown/content/03_programming/ch7_dictionnaires.md": "436d2340678382121683e5913e518ff04388a6a31d7bea5f7f0da1f9cb8f0312",
     "D:/Cours/Web/markdown/content/03_programming/_course.yaml": "5ddf91485402d1b72ad516f26db6a94bff05feef54d08f0bcf83a57e18204426",
+    "D:/Cours/Web/markdown/content/test/algorithm.md": "e75efb610e3d033782bc99a30e128e9c0bf5857d85a32fdc07e5d677f59152b3",
+    "D:/Cours/Web/markdown/content/test/block.md": "07a18ad36426a93b42420f754af1e0e9383add44e1033f11b443af79a7c7324e",
+    "D:/Cours/Web/markdown/content/test/block_and_layout.md": "62f18bd80c38de5abdc0ac36e307db11ea1f5e8ac5fd488b94ca43a1035319bc",
+    "D:/Cours/Web/markdown/content/test/ch01.md": "1274b37dfce2efe70196f49c8da645b257ff27a593549a330716d8542898bc96",
+    "D:/Cours/Web/markdown/content/test/layout.md": "bc8a99ff0011043ccf09b877d2dbdfff57095cc20f6069a75068990cf40ef7f9",
+    "D:/Cours/Web/markdown/content/test/nested_blocks.md": "470eb23661248d5a374b7218444019686dcd6e3e36a8e1021ebda4589753767a",
+    "D:/Cours/Web/markdown/content/test/overflow.md": "e4c984768704bf1028ce72a76553ed6884db4e007b340b58ca771f00ca96f63a",
+    "D:/Cours/Web/markdown/content/test/todo_bannier.md": "ef1b900fd0eb546a4cf20594d44eb8f75b04d677bcedb6da47b0d75ccfb9be62",
+    "D:/Cours/Web/markdown/content/test/todo_bodin.md": "5c6f793f4e87c0b80c55acbc018cf9c09af680804cdb3ea1a871acc6d7ca17a9",
+    "D:/Cours/Web/markdown/content/test/_course.yaml": "740a3bcfdeae2d339b184969dae289bc98824799a46712f9fe9de587e1ba7324",
     "D:/Cours/Web/markdown/content/03_algebra/ch1_applications_lineaires.md": "c3504945d7b217076dafe6cafa867199080251768bc172855a7d7fa99926beb2",
     "D:/Cours/Web/markdown/content/03_algebra/ch1_complements.md": "518a59af6936c6d62cfc19679c0f212d99b79c510a2104b72c1fe7dc83019fc9",
     "D:/Cours/Web/markdown/content/03_algebra/ch1_coordonnees.md": "b81d7eaa25f1f375dfcd79070d859030eeb42a936c69e794db21c8fa7bacbcd5",
@@ -75,17 +85,26 @@
     "D:/Cours/Web/markdown/content/03_algebra/ch6_espace_projectif.md": "5db0ec9d6e844d12ab72f2c39e2df895e905594c4f414b4f937506934e9333a1",
     "D:/Cours/Web/markdown/content/03_algebra/ch6_pipeline_3d.md": "ea4e569999751db35cdbb22d84c1572039c8f06e14c127bc5506d4c6b9efcc06",
     "D:/Cours/Web/markdown/content/03_algebra/ch6_rendu_graphique.md": "5e317f58c524603e023ee7f26980b25ff56d5d3a0160f9c04dbc45c513d08790",
-    "D:/Cours/Web/markdown/content/03_algebra/_course.yaml": "7d35a27f469d0b63bcd4513e478c86d79015575bc31f5c9fa10f8ba4bf05219a",
-    "D:/Cours/Web/markdown/content/test/algorithm.md": "e75efb610e3d033782bc99a30e128e9c0bf5857d85a32fdc07e5d677f59152b3",
-    "D:/Cours/Web/markdown/content/test/block.md": "07a18ad36426a93b42420f754af1e0e9383add44e1033f11b443af79a7c7324e",
-    "D:/Cours/Web/markdown/content/test/block_and_layout.md": "62f18bd80c38de5abdc0ac36e307db11ea1f5e8ac5fd488b94ca43a1035319bc",
-    "D:/Cours/Web/markdown/content/test/ch01.md": "1274b37dfce2efe70196f49c8da645b257ff27a593549a330716d8542898bc96",
-    "D:/Cours/Web/markdown/content/test/layout.md": "bc8a99ff0011043ccf09b877d2dbdfff57095cc20f6069a75068990cf40ef7f9",
-    "D:/Cours/Web/markdown/content/test/nested_blocks.md": "470eb23661248d5a374b7218444019686dcd6e3e36a8e1021ebda4589753767a",
-    "D:/Cours/Web/markdown/content/test/overflow.md": "e4c984768704bf1028ce72a76553ed6884db4e007b340b58ca771f00ca96f63a",
-    "D:/Cours/Web/markdown/content/test/todo_bannier.md": "ef1b900fd0eb546a4cf20594d44eb8f75b04d677bcedb6da47b0d75ccfb9be62",
-    "D:/Cours/Web/markdown/content/test/todo_bodin.md": "5c6f793f4e87c0b80c55acbc018cf9c09af680804cdb3ea1a871acc6d7ca17a9",
-    "D:/Cours/Web/markdown/content/test/_course.yaml": "740a3bcfdeae2d339b184969dae289bc98824799a46712f9fe9de587e1ba7324",
+    "D:/Cours/Web/markdown/content/03_algebra/_course.yaml": "f857ff3c06a76b5a705c485b3ec5b25d778f185fcde27a7e79c9a1c63a3c140f",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/absurde_1.md": "9095385fe1359de024dec86ed49354e81f68ab25732a0d8d327830c266e3d90e",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/connecteurs.md": "a594df389e505aad7cea374707a3c5557953951e1d0c121be1696c7f1f6ee1c1",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/contraposition_1.md": "d6d714bc585aebb09c8c8f29748f8abf01a7f6f97b0e60e63c4afbed2f501102",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/disjonction_1.md": "d91eed47802dbca5182dabf0d050a8344feb49b5c031c74122223b2a75534d72",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/disjonction_2.md": "9bece27c7c309ee3ee753c16694ddb7dca860498e85ef4360b1305680a50deb4",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/negation_1.md": "5660640fd82e407053967d65faca51f9df4c1686edf462b77bf1617a940a7e01",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/negation_2.md": "021a487099267800c0abe6ed2c2b0340f44b6742ae70d83f863512e95fac273c",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/preuve_directe_1.md": "eda12b900a91c698addd9d56326aabafa12f7d0b9e20a78eb52926e46dc5ee98",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/preuve_directe_2.md": "bcd5e2409d0ffb324051f6c2cd4684d6a506db92cfa5ba88b8d06bc2a5c8a753",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/quantificateurs_1.md": "6a8362d730d6b3899f1773bc33115b0d7d424b7d55e17e19796439aa0e708eca",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/quantificateurs_2.md": "77385bbdf2759db85ac84d36f843b087fa44c7e7d5a8da68a946288e91cb9ff8",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_1.md": "259cc77feb27a2d3a91df1159fd7851d98d8e0d89fe334a29c6897e82478084d",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_2.md": "2313179a9eb3fc96eca2a41cb4526d363a1e3fea7d9b8f83365f4b149ca9f687",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_3.md": "7d8e88b716b2bde56ead53d011409a5a452e60a3e7bd05560bf8449aa562fcbc",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_4.md": "c488bb20300a519024947631f733371e044eb8fa437751220dbbcfc6e83ceef1",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_5.md": "08369926804657fef9097ebb96e5780ba96a43b0930c67715d7479306efe32aa",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_6.md": "92230405e7e297f6974141fb7215f97c426727b867b0242b3dddd466b9cc272c",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/table_1.md": "2f998c6fd73632aa624c6268826b4717890964fbfe2395c91a46b5b6786702f4",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/table_2.md": "c65cb1437c5e6bc4f7e9db67f7225218148f9af8ebbb2fea81690aa1fe8ec852",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_2/appartenance_1.md": "10965ec10ea2f473ca88be86b8ea9c019328a656e5557697e57e7fc32e0214d8",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_2/appartenance_2.md": "95048f1cdd95daf12d17f5387756779af51a71479f39762aecdb2483991a83d5",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_2/appartenance_3.md": "7873a6ac761f888a50d144d86a5f5cbe10434dd32c3872c58a833f181df0f5d4",
@@ -108,25 +127,6 @@
     "D:/Cours/Web/markdown/content/01_algebra/exercises_2/venn_1.md": "7ad2f62563b7a706f655cb4748657bdcb932b67f637267430084be44fcef186a",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_2/venn_2.md": "426bcd65038574cbb8641134fa9a822cbc9eb670a9a31e727e5ea186b0079e62",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_2/venn_3.md": "c11553ba14452f929d812bf62fb14282616155853f10e997ae027a70d34020b9",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/absurde_1.md": "9095385fe1359de024dec86ed49354e81f68ab25732a0d8d327830c266e3d90e",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/connecteurs.md": "a594df389e505aad7cea374707a3c5557953951e1d0c121be1696c7f1f6ee1c1",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/contraposition_1.md": "d6d714bc585aebb09c8c8f29748f8abf01a7f6f97b0e60e63c4afbed2f501102",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/disjonction_1.md": "d91eed47802dbca5182dabf0d050a8344feb49b5c031c74122223b2a75534d72",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/disjonction_2.md": "9bece27c7c309ee3ee753c16694ddb7dca860498e85ef4360b1305680a50deb4",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/negation_1.md": "5660640fd82e407053967d65faca51f9df4c1686edf462b77bf1617a940a7e01",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/negation_2.md": "021a487099267800c0abe6ed2c2b0340f44b6742ae70d83f863512e95fac273c",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/preuve_directe_1.md": "eda12b900a91c698addd9d56326aabafa12f7d0b9e20a78eb52926e46dc5ee98",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/preuve_directe_2.md": "bcd5e2409d0ffb324051f6c2cd4684d6a506db92cfa5ba88b8d06bc2a5c8a753",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/quantificateurs_1.md": "6a8362d730d6b3899f1773bc33115b0d7d424b7d55e17e19796439aa0e708eca",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/quantificateurs_2.md": "77385bbdf2759db85ac84d36f843b087fa44c7e7d5a8da68a946288e91cb9ff8",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_1.md": "259cc77feb27a2d3a91df1159fd7851d98d8e0d89fe334a29c6897e82478084d",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_2.md": "2313179a9eb3fc96eca2a41cb4526d363a1e3fea7d9b8f83365f4b149ca9f687",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_3.md": "7d8e88b716b2bde56ead53d011409a5a452e60a3e7bd05560bf8449aa562fcbc",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_4.md": "c488bb20300a519024947631f733371e044eb8fa437751220dbbcfc6e83ceef1",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_5.md": "08369926804657fef9097ebb96e5780ba96a43b0930c67715d7479306efe32aa",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/recurrence_6.md": "92230405e7e297f6974141fb7215f97c426727b867b0242b3dddd466b9cc272c",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/table_1.md": "2f998c6fd73632aa624c6268826b4717890964fbfe2395c91a46b5b6786702f4",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_1/table_2.md": "c65cb1437c5e6bc4f7e9db67f7225218148f9af8ebbb2fea81690aa1fe8ec852",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_3/analyse_demonstrations_moodle.md": "8048158e5bfa2b18bc6be37108aa23e5d997cc842047ea140c07609d20b76c29",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_3/antecedents.md": "467eaacfafbff630eaed4cd4c8f524bc7478790de58698b6f0ff74752128fd42",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_3/ca_commute_preuve.md": "156709579fa727769cfde5eff98528fea5d733056909ce88296dcedc365e2196",
@@ -161,12 +161,6 @@
     "D:/Cours/Web/markdown/content/01_algebra/exercises_4/polynomes_13.md": "f2abfd6602912172d96f8a25d7b5f2a5e8235de93f243b9c0d3adb6894c0754a",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_4/polynomes_14.md": "9b619d2e9ec6a4739c6cf9b83955ca15e38cea4f52464f479ec62b3274a7b53a",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_4/polynomes_15.md": "4e77407d08e9db206b5c34b97fe8e6d8a3fe1043002b74a2f014f760b102471f",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/criteres_de_divisibilite.md": "651478b12d69d6ce78c88d69249c1bd0bed8897c82601b1cc7421284dff3944c",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/criteres_de_divisibilite_graphiques.md": "5527b1bcc60e673b14c7797ce7fbf98c7ae1d20ed575737e52bdf3a877cab62a",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/manipulation_des_congruences.md": "9098c029c21781ec429dcbc314e2fbaf2eb8a7eccc43a868a3d9e22ef0a57c02",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/on_finit_les_restes.md": "db09f8e9544cf7184032e65216c9ebd70ceafa8ae4b4afb5ad2d7b65f2fb3c25",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/simpson_horror_show_vi.md": "209955bd753bb40f6fdfb4f985bca6ec7db84d060c2d92c149d0d82bd5098874",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/tous_les_cas.md": "e72c47c680251a55627de789938a2610b116fbd41ecd614d99dddcdd9349f15b",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/conversion.md": "6fb49c30698d51720ba76d4e7ff2c77df1c9bd259e2904ff9d06994793ce711d",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/des_plus_et_des_moins.md": "cce08d58067a72b93c9a399dd8ef07835268abaa5a11d3e0f764c83b710ea74f",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/de_l_ordre.md": "7022d31d7daf84707344386b4c13c11c483cdb0e922977695604e65e81793acf",
@@ -174,6 +168,12 @@
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/multiples_a_tout_va.md": "d8e8f033d3d14b1c7bb061b9df3e151a16f78719d3b8c5c2f85c00f2d21da5a8",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/retour_au_primaire.md": "8dcb4830af94c73190e1e757e4b046ca68e665492e6dbe1367a5804331e55967",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/sommes_de_multiples.md": "0d0e05e85490eebe11ae477c099fbe97078539ab217f9d686db7cee2a2c11827",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/criteres_de_divisibilite.md": "651478b12d69d6ce78c88d69249c1bd0bed8897c82601b1cc7421284dff3944c",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/criteres_de_divisibilite_graphiques.md": "5527b1bcc60e673b14c7797ce7fbf98c7ae1d20ed575737e52bdf3a877cab62a",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/manipulation_des_congruences.md": "9098c029c21781ec429dcbc314e2fbaf2eb8a7eccc43a868a3d9e22ef0a57c02",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/on_finit_les_restes.md": "db09f8e9544cf7184032e65216c9ebd70ceafa8ae4b4afb5ad2d7b65f2fb3c25",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/simpson_horror_show_vi.md": "209955bd753bb40f6fdfb4f985bca6ec7db84d060c2d92c149d0d82bd5098874",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/tous_les_cas.md": "e72c47c680251a55627de789938a2610b116fbd41ecd614d99dddcdd9349f15b",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/ensembles_1.md": "1ec68d09a0dee3692a967f84734dbc73cfef68afc40bdbf8c78bffd07fe1db1b",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/ensembles_2.md": "ac73d855e23d4021108cc486f88468c16bcd329802fa95ca529ebec148daf4cd",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/ensembles_3.md": "85b6687220487ccb6402392abe0458437e6bc21ab566bf534a151a85a6c77f02",
@@ -295,6 +295,7 @@
     "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_insert.md": "4e7730ebbd92cca1ca736bbefef37f2077860638be03bb1ac7c6f0cdad78b6a6",
     "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_pop.md": "9aa3e37ab1ef7c2211defdc226d9528d9051e336cdea2099f038b574bb0ca90e",
     "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_print.md": "37813fb13c59bd863b081bb50016438db760cc172607bff83cbc6dc68338fe4f",
+    "D:/Cours/Web/markdown/content/test/assets/potoo.jpg": "99fa6fc6b8675ab8e3550dce44cd06eb94827547b9c817fa1ad72be7976d5a41",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/bases_1.md": "08a4f9699792a0a4820073c517c58e8ed743e2497965a5bc9881504ae111bcf9",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/definition_appli_lin_1.md": "7d4f61a91237bbb9ff5c968ded544d1ef6171b81b472cbb64df35d10386c71b2",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/espace_engendre.md": "7d7bafe6611957f37dc8916c5b4bb0ef9e16f20f29672f084e8a482cf963fc6e",
@@ -341,6 +342,19 @@
     "D:/Cours/Web/markdown/content/03_algebra/exercises_3/somme_directe_1.md": "84465ea3d8d3ea111d60bced889253dece1cf931b8cf97295467132afd306c19",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_3/valeurs_propres_1.md": "4925d093647b4a053ba340fd41d79f865bffc60586cf59e715af08dcc0f40154",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_3/valeurs_propres_3.md": "0ed1a9f9d38e5edada86ccd69a856eb39045bf965ae01ccec88b047d901ef4a2",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/affinite_1.md": "39387a9ab3193dba11f3b0e9022f50648a84b14be4dd11223b3d211a42c0fdea",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/homothetie_1.md": "545cde45b8103cc596a935563607e28d54b9a46c12d588ef4fcf28ceb836cecb",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_1.md": "99bbfe4cf430eee2f1843f7c4e768424bea0a5861cd63afb3c8e4ecd7c8a137c",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_2.md": "16d85837add56d20405dbfd4421c5f32c7a35a0a8a21403fc5570c6bacbe8b57",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_3.md": "f38b75569be351df92e44bafe6a282862241debe00a23d44354733d5d554c668",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_4.md": "b5f57b6554834bb8bcc1d457a25c0b472f92fb560268ccbb5895316884f3d5bd",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/symetrie_1.md": "3e71a614aa9b48ae05f8731a7b21d7fea7191b57b5fc6cef209220972f246d0b",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/symetrie_2.md": "713f097e7f9e3a596edf8c79a7c1b1128ea50e1dfa71359878605445f1d9f66d",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_1.md": "e4a51d895701e05b5b75890314ab1bececdf04d29247d62bffba690ced439c87",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_2.md": "3fca100d60f67aa6aa28744b849dc7a5e4f9e145ee05de9754093c15981ec576",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_3.md": "b7ea0fa08eead3fc8ad70c270b643921444e97c6d1b763fed31353f8d7097574",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_4.md": "006704795b9e6862eab58349c0619493c30bf3a1734e0601d7d77181037e50d6",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_5.md": "2c6970d26af1e4fc95610fbdc88848f6cf5d41b5e0dac05eb9a9178f38fbc54d",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/endo_ortho_1.md": "51ab9af45e4a157662cbed90917942fd382aeace29854e6094b6d30e24d6fed5",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/endo_ortho_2.md": "3af2c21175f146560a97381d56110e41ae2324d29ca790f75c565b3e77b2fec3",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/endo_ortho_3.md": "78393e7bb26d958a468a8a70e1300e5b90d475099302f44f94e65a742026b4c7",
@@ -367,24 +381,10 @@
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/produit_scalaire_1.md": "06c53819422bddf340caa86bf1940e08766f014bce3ae65d33c011465b431eed",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/produit_scalaire_2.md": "15337140666ed6354cc656d6f2ed0a9ffefb0066891959161f730a222839bc2a",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/produit_scalaire_3.md": "a0b73cb2c5a18036c02d786e4f8222c607231fb9aaaf4e0fbe6833789f986b27",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/affinite_1.md": "39387a9ab3193dba11f3b0e9022f50648a84b14be4dd11223b3d211a42c0fdea",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/homothetie_1.md": "545cde45b8103cc596a935563607e28d54b9a46c12d588ef4fcf28ceb836cecb",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_1.md": "99bbfe4cf430eee2f1843f7c4e768424bea0a5861cd63afb3c8e4ecd7c8a137c",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_2.md": "16d85837add56d20405dbfd4421c5f32c7a35a0a8a21403fc5570c6bacbe8b57",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_3.md": "f38b75569be351df92e44bafe6a282862241debe00a23d44354733d5d554c668",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_4.md": "b5f57b6554834bb8bcc1d457a25c0b472f92fb560268ccbb5895316884f3d5bd",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/symetrie_1.md": "3e71a614aa9b48ae05f8731a7b21d7fea7191b57b5fc6cef209220972f246d0b",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/symetrie_2.md": "713f097e7f9e3a596edf8c79a7c1b1128ea50e1dfa71359878605445f1d9f66d",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_1.md": "e4a51d895701e05b5b75890314ab1bececdf04d29247d62bffba690ced439c87",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_2.md": "3fca100d60f67aa6aa28744b849dc7a5e4f9e145ee05de9754093c15981ec576",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_3.md": "b7ea0fa08eead3fc8ad70c270b643921444e97c6d1b763fed31353f8d7097574",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_4.md": "006704795b9e6862eab58349c0619493c30bf3a1734e0601d7d77181037e50d6",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_5.md": "2c6970d26af1e4fc95610fbdc88848f6cf5d41b5e0dac05eb9a9178f38fbc54d",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_6/compatibilite_automorphismes.md": "d33a0a839e076bf00dd15062293cc58bc879c55ddc6976402e5b295259223207",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_6/relation_colinearite.md": "5a6bd6b3a31db5f0a995f7ded607b1207c7bdf7c8e600b1aea0e8671e42ece5e",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_6/scene_2d_1.md": "2d00f0e93d0db6877896a3e814b0f03121be9ff607599d84158d48548a1ddd62",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_6/scene_2d_2.md": "fa650de2f43386f48061fe6d407212294bdd3a992ee42fe90acad7fab441f600",
-    "D:/Cours/Web/markdown/content/test/assets/potoo.jpg": "99fa6fc6b8675ab8e3550dce44cd06eb94827547b9c817fa1ad72be7976d5a41",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_2x2.md": "6cb5b05b72eda59bb8aaa756e2aba4a0795d192c71bdd227b0bdd81113c0c0e1",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_2x3_infini.md": "86551fdf1e3a15c30ee6292dac46bd2f507f2a41cb6aa0041a5b1116a5fa768a",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_2x4_infini.md": "dbe3bdf6eb705a6eae9b2056ef26bc80b323c4312d3c03135862d5eaad808a2a",
@@ -498,13 +498,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -540,13 +540,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -897,13 +897,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -939,13 +939,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -981,13 +981,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1023,13 +1023,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1065,13 +1065,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1107,13 +1107,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1149,13 +1149,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1191,13 +1191,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1233,13 +1233,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1275,13 +1275,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1317,13 +1317,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1359,13 +1359,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1401,13 +1401,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1443,13 +1443,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1485,13 +1485,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1527,13 +1527,13 @@
                 "style": "rule"
               },
               "exercise": {
-                "style": "draw"
+                "style": "rule"
               },
               "definition": {
                 "style": "fill"
               },
               "method": {
-                "style": "fill"
+                "style": "draw"
               },
               "proposition": {
                 "style": "fill"
@@ -1615,13 +1615,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -1657,13 +1657,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -1909,13 +1909,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -1951,13 +1951,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -1993,13 +1993,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2035,13 +2035,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2077,13 +2077,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2119,13 +2119,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2161,13 +2161,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2203,13 +2203,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2245,13 +2245,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2287,13 +2287,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2329,13 +2329,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2371,13 +2371,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2413,13 +2413,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2455,13 +2455,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2497,13 +2497,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
@@ -2539,13 +2539,13 @@
             "style": "rule"
           },
           "exercise": {
-            "style": "draw"
+            "style": "rule"
           },
           "definition": {
             "style": "fill"
           },
           "method": {
-            "style": "fill"
+            "style": "draw"
           },
           "proposition": {
             "style": "fill"
