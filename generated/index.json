@@ -65,6 +65,150 @@
       ]
     },
     {
+      "courseSlug": "03_programming",
+      "title": "Algorithmique avancée",
+      "description": "Introduction aux types de donnée abstraits",
+      "authors": [
+        "Arnaud Bannier",
+        "Nicolas Bodin"
+      ],
+      "chapters": [
+        {
+          "sourcePath": "03_programming/ch1_revisions.md",
+          "outputPath": "03_programming/ch1_revisions.json",
+          "title": "Cours",
+          "navTitle": "Cours",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "03_programming/ch1_tp.md",
+          "outputPath": "03_programming/ch1_tp.json",
+          "title": "Application",
+          "navTitle": "Application",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "03_programming/ch2_types_abstraits.md",
+          "outputPath": "03_programming/ch2_types_abstraits.json",
+          "title": "Cours",
+          "navTitle": "Cours",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin",
+            "Matthieu Le Berre"
+          ]
+        },
+        {
+          "sourcePath": "03_programming/ch2_tp.md",
+          "outputPath": "03_programming/ch2_tp.json",
+          "title": "Application",
+          "navTitle": "Application",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "03_programming/ch3_listes.md",
+          "outputPath": "03_programming/ch3_listes.json",
+          "title": "Introduction aux listes chaînées",
+          "navTitle": "3. Introduction aux listes chaînées",
+          "navOrder": 3,
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin",
+            "Matthieu Le Berre"
+          ]
+        }
+      ],
+      "navigation": [
+        {
+          "kind": "section",
+          "title": "1. Révisions",
+          "chapters": [
+            {
+              "sourcePath": "03_programming/ch1_revisions.md",
+              "outputPath": "03_programming/ch1_revisions.json",
+              "title": "Cours",
+              "navTitle": "Cours",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "03_programming/ch1_tp.md",
+              "outputPath": "03_programming/ch1_tp.json",
+              "title": "Application",
+              "navTitle": "Application",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "title": "2. Types abstraits",
+          "chapters": [
+            {
+              "sourcePath": "03_programming/ch2_types_abstraits.md",
+              "outputPath": "03_programming/ch2_types_abstraits.json",
+              "title": "Cours",
+              "navTitle": "Cours",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin",
+                "Matthieu Le Berre"
+              ]
+            },
+            {
+              "sourcePath": "03_programming/ch2_tp.md",
+              "outputPath": "03_programming/ch2_tp.json",
+              "title": "Application",
+              "navTitle": "Application",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "chapter",
+          "chapter": {
+            "sourcePath": "03_programming/ch3_listes.md",
+            "outputPath": "03_programming/ch3_listes.json",
+            "title": "Introduction aux listes chaînées",
+            "navTitle": "3. Introduction aux listes chaînées",
+            "navOrder": 3,
+            "navHidden": false,
+            "authors": [
+              "Arnaud Bannier",
+              "Nicolas Bodin",
+              "Matthieu Le Berre"
+            ]
+          }
+        }
+      ]
+    },
+    {
       "courseSlug": "01_pass",
       "title": "PASS Maths",
       "description": "Remise à niveau en mathématiques",

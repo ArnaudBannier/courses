@@ -1,0 +1,477 @@
+{
+  "sourcePath": "03_programming/ch1_revisions.md",
+  "title": "Cours",
+  "navTitle": "Cours",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Avant de découvrir le programme de ce module, commençons par une session révision des principales notions de C.\nVous allez (re)découvrir dans ce chapitre les pointeurs, l'allocation dynamique, les structures et la récursivité.\nCes quatre notions sont primordiales pour la compréhension du reste du cours.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "remark",
+      "titleHtml": "Avertissement",
+      "displayLabel": "Remark 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Ce premier chapitre n'est en aucun cas un cours complet d'introduction au langage C.\nIl résume quatre notions que nous estimons essentielles pour le début du cours d'algorithmique avancée.\nEnfin, il n'aborde pas la partie théorique.\nIl vous sera certainement nécessaire de compléter les notions ci-dessous avec le cours de l'année passée.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Pointeurs",
+      "slug": "pointeurs"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Non, vous n'en avez pas fini avec les pointeurs !\nIl s'agit même d'un nouveau départ puisque la suite de ce module vous permettra d'approfondir leurs usages.\nRappelons dans un premier temps les deux principales définitions liées aux pointeurs.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Pointeur",
+      "displayLabel": "Definition 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Un <em>pointeur</em> est une variable qui contient une adresse.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Rappelons également les différents symboles utilisés pour manipuler des pointeurs :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "l'étoile <code>*</code> peut avoir deux utilités :"
+            },
+            {
+              "kind": "unordered-list",
+              "content": [
+                {
+                  "kind": "list-item",
+                  "content": [
+                    {
+                      "kind": "html",
+                      "html": "lors d'une déclaration, elle permet de définir un pointeur sur un type donné (ex : <code>int *p;</code>) ;"
+                    }
+                  ]
+                },
+                {
+                  "kind": "list-item",
+                  "content": [
+                    {
+                      "kind": "html",
+                      "html": "lors d'un <em>déréférencement</em>, elle permet d'aller récupérer la valeur située à l'adresse donnée par le pointeur (ex : <code>*p = 3;</code>) ;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "html",
+              "html": ""
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "l'esperluette <code>&#x26;</code> permet de récupérer l'adresse à laquelle la variable est stockée en mémoire (ex : <code>p = &#x26;b;</code>)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les pointeurs trouvent une partie de leur utilité dans les appels de fonctions.\nLorsque la variable à passer en argument possède une taille trop grande (comme une structure avec de nombreux champs), lorsque l'on veut donner un tableau ou une variable modifiable à la fonction, on utilise l'adresse de la variable au lieu de sa valeur.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Passage par valeur ou adresse",
+      "displayLabel": "Definition 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Dans le contexte d'un appel de fonction, on dit qu'un paramètre est passé par :</p>"
+        },
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<em>valeur</em> lorsque seule la valeur du paramètre est passée à la fonction ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<em>adresse</em> lorsque l'adresse de la variable passée en paramètre est envoyée à la fonction."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "displayLabel": "Example 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>On souhaite réaliser une fonction permettant d'ajouter 1 à une variable.\nComparons les deux fonctions suivantes.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">// Passage par Valeur</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">incrementValue</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> a<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\ta <span class=\"token operator\">=</span> a <span class=\"token operator\">+</span> <span class=\"token number\">1</span> <span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">// Passage par Adresse</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">incrementAddress</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> <span class=\"token operator\">*</span>a<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token operator\">*</span>a <span class=\"token operator\">=</span> <span class=\"token operator\">*</span>a <span class=\"token operator\">+</span> <span class=\"token number\">1</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre><p>Considérons la déclaration de la variable <code>bibi</code> de type entier : <code>int bibi = 3;</code>.\nLa variable <code>a</code> de la fonction <code>incrementValue()</code> étant locale à la fonction, elle est créée lors de l'appel et détruite à la sortie.\nAussi, l'incrément n'est effectif qu'à l'intérieur de la fonction et un appel à <code>incrementValue(bibi);</code> n'aura aucun effet.\nLa seule possibilité pour incrémenter la valeur de <code>bibi</code> consiste à utiliser son adresse au travers de la seconde fonction.\nUn appel à <code>incrementAddress(&#x26;bibi);</code> augmentera la valeur de la variable <code>bibi</code> à 4.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Allocation dynamique",
+      "slug": "allocation-dynamique"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Tout programme qui s'exécute sur une machine réserve un emplacement mémoire de taille fixe appelé la <em>pile</em>.\nEn général, le programme ne dispose que de quelques méga-octets pour son exécution.\nL'allocation et la libération mémoire des variables locales y sont automatiques, en particulier lors des déclarations de variables ou des appels de fonctions.</p>\n<p>Certains programmes demandent plus de mémoire : il est alors possible de réserver de l'espace supplémentaire dans le <em>tas</em> via une fonction d'allocation dynamique.\nC'est au développeur de gérer correctement cette mémoire.\nIl doit la libérer dès que la zone n'a plus besoin d'exister et doit s'assurer de rester dans les limites de la zone allouée.\nPour cela, on utilise les fonctions suivantes.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span><span class=\"token operator\">*</span> <span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token class-name\">size_t</span> nmemb<span class=\"token punctuation\">,</span> <span class=\"token class-name\">size_t</span> size<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span> <span class=\"token comment\">// Allocation + Mise a 0</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span><span class=\"token operator\">*</span> <span class=\"token function\">malloc</span><span class=\"token punctuation\">(</span><span class=\"token class-name\">size_t</span> size<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>               <span class=\"token comment\">// Allocation seule</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span><span class=\"token operator\">*</span> <span class=\"token function\">realloc</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">void</span><span class=\"token operator\">*</span> ptr<span class=\"token punctuation\">,</span> <span class=\"token class-name\">size_t</span> size<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>   <span class=\"token comment\">// Re-allocation</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">free</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">void</span><span class=\"token operator\">*</span> ptr<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>                    <span class=\"token comment\">// Libération</span>\n</span><span class=\"code-line\"><span class=\"token class-name\">size_t</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>type OU variable<span class=\"token punctuation\">)</span>          <span class=\"token comment\">// Taille</span>\n</span></code></pre>\n<p>Les trois premières fonctions permettent d'allouer un espace mémoire et retournent un pointeur sur le premier octet de la zone ainsi réservée.\nLa fonction <code>free()</code> permet de libérer une zone mémoire allouée dynamiquement.\nEnfin, l'opérateur <code>sizeof</code> est un outil pour réserver la bonne taille de données.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "displayLabel": "Example 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Les deux lignes ci-dessous permettent d'allouer un tableau de 10 éléments de type entier.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> stackArray<span class=\"token punctuation\">[</span><span class=\"token number\">10</span><span class=\"token punctuation\">]</span> <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span><span class=\"token number\">3</span><span class=\"token punctuation\">,</span><span class=\"token number\">3</span><span class=\"token punctuation\">,</span><span class=\"token number\">7</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span><span class=\"token operator\">*</span> heapArray <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span><span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">10</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Le tableau <code>stackArray</code> est alloué sur la pile : sa libération sera automatique.\nLe tableau <code>heapArray</code> est alloué sur le tas et tous ses éléments sont mis à zéro.\nSa libération se fera lorsque le tableau ne sera plus utilisé, à l'aide de l'instruction <code>free(heapArray);</code>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Rappelons qu'il est préférable que la taille donnée en paramètre de l'allocation statique soit une constante.\nNous déconseillons l'usage suivant.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> len <span class=\"token operator\">=</span> <span class=\"token number\">10</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">.</span> <span class=\"token punctuation\">.</span> <span class=\"token punctuation\">.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> staticArray<span class=\"token punctuation\">[</span>len<span class=\"token punctuation\">]</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Aussi, si la taille du tableau est impossible à déterminer à l'avance (comme par exemple dans le cas de traitement de fichiers), l'allocation dynamique est quasi obligatoire.\nLe même conseil s'applique pour l'allocation de tableaux de dimensions supérieures.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "displayLabel": "Example 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour allouer dynamiquement un tableau à deux dimensions, 7 lignes et 3 colonnes, on utilise l'extrait de code suivant.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span><span class=\"token operator\">*</span><span class=\"token operator\">*</span> matrix <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span><span class=\"token operator\">*</span><span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">7</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span><span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">for</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> i <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span> i <span class=\"token operator\">&#x3C;</span> <span class=\"token number\">3</span><span class=\"token punctuation\">;</span> i<span class=\"token operator\">++</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    matrix<span class=\"token punctuation\">[</span>i<span class=\"token punctuation\">]</span> <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span><span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">3</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre><p>L'usage d'un double pointeur est obligatoire.\nLes données de la matrice sont regroupées dans 7 tableaux de 3 colonnes, chacun étant alloué dynamiquement à l'aide de la boucle.\nLes 7 pointeurs obtenus lors de ces allocations sont stockés dans un tableau, lui-même alloué dynamiquement.\nLa matrice est donc représentée sous la forme d'un double pointeur (<code>int**</code>), pointant sur un tableau de 7 pointeurs (<code>int*</code>), chacun pointant sur un tableau de 3 entiers.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Structures",
+      "slug": "structures"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Structure",
+      "displayLabel": "Definition 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Une <em>structure</em> est un regroupement de plusieurs variables sous un seul nouveau type de données.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>L'utilisation de types structurés passe par deux étapes indissociables :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "la définition du nouveau type de données (généralement dans un fichier <code>.h</code>) ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "la déclaration d'une nouvelle variable et son utilisation dans le fichier source."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>La définition du nouveau type ne réserve pas d'emplacement mémoire.\nCela permet de prévenir le compilateur qu'il est susceptible de trouver plus loin dans le code une variable possédant ce nouveau type.\nLa réservation de l'emplacement mémoire est faite lors de la déclaration d'une nouvelle variable de type structuré ou par le biais d'une allocation dynamique.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "displayLabel": "Example 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Supposons que l'on veuille caractériser un ibijau (et oui, ça recommence...) à l'aide de son envergure en centimètres et d'une lettre notant son aptitude à broyer des cailloux (de A, broyage équivalent à un marteau piqueur, à F, broyage équivalent à l'érosion naturelle).\nLa définition du nouveau type est réalisée dans un fichier <code>.h</code> de la façon suivante.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">PotooType</span> PotooType<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">struct</span> <span class=\"token class-name\">PotooType</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">float</span> wingspan<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">char</span> grade<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre><p>Le compilateur est maintenant au courant qu'il est possible de rencontrer une nouvelle variable ou un pointeur de type <code>PotooType</code>.\nPensez évidemment à inclure le fichier header contenant la définition de cette structure dans l'ensemble des fichiers sources faisant appel à cette définition.\nUtilisez l'instruction suivante pour déclarer une nouvelle variable nommée <code>bibi</code>.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">PotooType bibi<span class=\"token punctuation\">;</span>\n</span></code></pre>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Une fois la définition puis l'allocation mémoire réalisées, il est possible de manipuler une variable de type structurée à l'aide des opérateurs <code>.</code> (point) et <code>-></code> (flèche).\nEn effet, le but d'une structure est de contenir des variables de différents types sous un même nom.\nL'accès à ces <em>champs</em> se fait différemment selon que l'on dispose d'une variable ou d'un pointeur :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "on utilise le point pour accéder à un champ d'une variable ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "on utilise la flèche pour accéder à un champ d'un pointeur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "displayLabel": "Example 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Reprenons l'exemple précédent pour déclarer une nouvelle variable et un pointeur de type <code>PotooType</code>.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">PotooType bibi<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">PotooType<span class=\"token operator\">*</span> array <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>PotooType<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">3</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>PotooType<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">bibi<span class=\"token punctuation\">.</span>wingspan <span class=\"token operator\">=</span> <span class=\"token number\">308.f</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">array<span class=\"token operator\">-></span>grade <span class=\"token operator\">=</span> <span class=\"token char\">'F'</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">array<span class=\"token punctuation\">[</span><span class=\"token number\">2</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">.</span>wingspan <span class=\"token operator\">=</span> <span class=\"token number\">12.f</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Comme indiqué précédemment, l'usage du point ou de la flèche dépend du type de la variable.\nNotons l'usage particulier (et pas nécessairement recommandé) de la variable <code>array</code>.\nDéclarée et initialisée comme un pointeur sur un tableau de 3 variables de type <code>PotooType</code>, on peut toutefois accéder à sa première case via l'opérateur <code>-></code>.\nEn effet, la fonction <code>calloc</code> renvoie l'adresse de la première case du tableau : on est donc en présence d'un pointeur référant à une variable de type <code>PotooType</code>.\nLa dernière ligne de l'exemple montre qu'une case du tableau <code>array</code> est bien de type <code>PotooType</code> ; l'accès à ses champs est effectué à l'aide de l'opérateur point.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Récursivité",
+      "slug": "récursivité"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Fonction récursive",
+      "displayLabel": "Definition 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Une fonction <em>récursive</em> est une fonction qui s'appelle elle-même.\nElle contient au minimum une condition d'arrêt et un appel récursif.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Lorsqu'elle est exécutée, la fonction exécute les instructions constituant son corps puis s'appelle elle-même.\nCet appel est ajouté sur la pile d'exécution comme un appel traditionnel.\nLes appels successifs s'empilent jusqu'à ce que la condition d'arrêt soit vraie.\nLa pile est alors vidée, chaque appel retournant son résultat intermédiaire à l'appel précédent.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "displayLabel": "Example 6",
+      "number": "6",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Observez ce que vous suggère Google lorsque vous saisissez la recherche « récursivité ».</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Certains types de problèmes sont bien plus simples à implémenter de façon récursive par rapport à leur version itérative.\nC'est en particulier le cas des suites numériques définies par récurrence : le calcul du <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span>-ième terme nécessite de trouver le terme général de la suite si on ne possède pas d'ordinateur.\nDans le cas contraire, il suffit d'implémenter la fonction récursive associée à la suite.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "displayLabel": "Example 7",
+      "number": "7",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Considérons la suite réelle <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><msub><mi>u</mi><mi>n</mi></msub><msub><mo stretchy=\"false\">)</mo><mrow><mi>n</mi><mo>∈</mo><mi mathvariant=\"double-struck\">N</mi></mrow></msub></mrow><annotation encoding=\"application/x-tex\">(u_n)_{n \\in \\mathbb{N}}</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\"><span class=\"mord mathnormal\">u</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.1514em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mathnormal mtight\">n</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mclose\"><span class=\"mclose\">)</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3322em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\"><span class=\"mord mathnormal mtight\">n</span><span class=\"mrel mtight\">∈</span><span class=\"mord mathbb mtight\">N</span></span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.1774em;\"><span></span></span></span></span></span></span></span></span></span> définie par <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">u_0 = 1</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.5806em;vertical-align:-0.15em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">u</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">0</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">1</span></span></span></span> et, pour tout entier <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span> positif, par</p><span class=\"katex-display\"><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>u</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mo fence=\"true\">(</mo><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo fence=\"true\">)</mo></mrow><msub><mi>u</mi><mi>n</mi></msub><mtext> </mtext><mi mathvariant=\"normal\">.</mi></mrow><annotation encoding=\"application/x-tex\">u_{n+1} = \\left( 1 + \\frac{1}{n+1} \\right) u_n \\,.</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6389em;vertical-align:-0.2083em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">u</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\"><span class=\"mord mathnormal mtight\">n</span><span class=\"mbin mtight\">+</span><span class=\"mord mtight\">1</span></span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.2083em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:2.4em;vertical-align:-0.95em;\"></span><span class=\"minner\"><span class=\"mopen delimcenter\" style=\"top:0em;\"><span class=\"delimsizing size3\">(</span></span><span class=\"mord\">1</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mord\"><span class=\"mopen nulldelimiter\"></span><span class=\"mfrac\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:1.3214em;\"><span style=\"top:-2.314em;\"><span class=\"pstrut\" style=\"height:3em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">n</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mord\">1</span></span></span><span style=\"top:-3.23em;\"><span class=\"pstrut\" style=\"height:3em;\"></span><span class=\"frac-line\" style=\"border-bottom-width:0.04em;\"></span></span><span style=\"top:-3.677em;\"><span class=\"pstrut\" style=\"height:3em;\"></span><span class=\"mord\"><span class=\"mord\">1</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.7693em;\"><span></span></span></span></span></span><span class=\"mclose nulldelimiter\"></span></span><span class=\"mclose delimcenter\" style=\"top:0em;\"><span class=\"delimsizing size3\">)</span></span></span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">u</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.1514em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mathnormal mtight\">n</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">.</span></span></span></span></span><p>L'implémentation récursive de la suite suit simplement sa définition.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">float</span> <span class=\"token function\">sequence</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> n<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>n <span class=\"token operator\">==</span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t\t<span class=\"token keyword\">return</span> <span class=\"token number\">1</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">return</span> <span class=\"token punctuation\">(</span><span class=\"token number\">1.f</span> <span class=\"token operator\">+</span> <span class=\"token number\">1.f</span> <span class=\"token operator\">/</span> n<span class=\"token punctuation\">)</span> <span class=\"token operator\">*</span> <span class=\"token function\">sequence</span><span class=\"token punctuation\">(</span>n <span class=\"token operator\">-</span> <span class=\"token number\">1</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+        }
+      ]
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Pointeurs",
+      "id": "pointeurs"
+    },
+    {
+      "depth": 1,
+      "text": "Allocation dynamique",
+      "id": "allocation-dynamique"
+    },
+    {
+      "depth": 1,
+      "text": "Structures",
+      "id": "structures"
+    },
+    {
+      "depth": 1,
+      "text": "Récursivité",
+      "id": "récursivité"
+    }
+  ],
+  "figureModules": []
+}

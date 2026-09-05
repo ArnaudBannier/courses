@@ -1,8 +1,8 @@
 {
   "version": 4,
-  "generatedAt": "2026-09-04T15:03:05.711Z",
+  "generatedAt": "2026-09-05T08:26:19.049Z",
   "sourceHashes": {
-    "D:/Cours/Web/markdown/content/courses.yaml": "05507a0895bf6a36fed4e892f8040eda118641e4066f36dd0d8ee955369d3871",
+    "D:/Cours/Web/markdown/content/courses.yaml": "595091cef7a1ec5f17423379dbb46b1e508466849398eac6dc601d0a4b5c8345",
     "D:/Cours/Web/markdown/content/01_algebra/ch1_logique.md": "3ede78a7f48677873e3a203d1c5c27641fe23be47fd12789d665d327c6edccce",
     "D:/Cours/Web/markdown/content/01_algebra/ch1_raisonnements.md": "abd7bb015278e6237b5cac3469934ad1dc214516c706eae637d6132d6f38eefe",
     "D:/Cours/Web/markdown/content/01_algebra/ch2_ensembles.md": "c2e2cbad059c5c501d00fc9a06f23df136e0bea297426c8da62819db42c55f72",
@@ -44,10 +44,28 @@
     "D:/Cours/Web/markdown/content/01_programming/ch5_tableaux.md": "ad5b728d39302c09e49b4d6b0a95e9811603759481c1139f5ab1a977183efb44",
     "D:/Cours/Web/markdown/content/01_programming/ch6_tableaux_theorie.md": "df6b38ad0b44b1894f4225c88213d9ca06bf2f32bcf48fae051e84e6dba833b6",
     "D:/Cours/Web/markdown/content/01_programming/_course.yaml": "d87eea1f9b0367c902eb95fb5ea0dfd76381a70be3d415ff48f1865ca5c08258",
-    "D:/Cours/Web/markdown/content/03_algebra/ch1_applications_lineaires.md": "7efde7bda9544701a177d356581aad47b22bf97cad1d1cf19fd396c0c88475e3",
+    "D:/Cours/Web/markdown/content/04_algebra/ch1_relations.md": "4b760598929100c5906f2db313b8c81d388fd9dc36c80bd052cad6ffb04a28e1",
+    "D:/Cours/Web/markdown/content/04_algebra/ch2_groupes.md": "5b025b453efa965bc0b413745b4d7b6fc41ef1f01ba101b13876ac0e0261e55a",
+    "D:/Cours/Web/markdown/content/04_algebra/ch3_sous_groupes.md": "efda9bede26fd58b87a8bddcf33da240adc4bfc401518ee61e4b4346fb8ff41d",
+    "D:/Cours/Web/markdown/content/04_algebra/ch4_constructions.md": "30771e8dbc658cd430a34449f436741939a041140ade3e39835a2e240553db2e",
+    "D:/Cours/Web/markdown/content/04_algebra/ch5_groupe_symetrique.md": "d49da02f8289654af971417ed7792c4794359c94dba8d8918e39f81e83b4dfc6",
+    "D:/Cours/Web/markdown/content/04_algebra/ch6_anneaux.md": "4ff988d8cbe49fee36cf7721fad933b00dc888a77554bb4946433a1c58ca84ea",
+    "D:/Cours/Web/markdown/content/04_algebra/ch7_corps_finis.md": "275d93b1760ae8e6df9715bc1fb35f892cdf9f0258505df34f6efdcdc75dd9f0",
+    "D:/Cours/Web/markdown/content/04_algebra/_course.yaml": "d08899ba34d602e30369b64ad1bbcdcf1cb2c2444494e8d875d7efb1957dd3ea",
+    "D:/Cours/Web/markdown/content/03_programming/ch1_revisions.md": "b13f9bc155dd0a04c7b8990577e6e7944a6336ae7f422597aa4170063e441be4",
+    "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md": "b32182cc3dd1c3cf668adcfb1f14c0dfcfe60e86bcf80edaebc8004c1a58af0e",
+    "D:/Cours/Web/markdown/content/03_programming/ch2_tp.md": "c5695274c6bac61bcdb04ddd30976ced27ddef6761dbbca32cefe4aaedd29e0e",
+    "D:/Cours/Web/markdown/content/03_programming/ch2_types_abstraits.md": "4ef2f248b9f47f2c1d72edb8496bcd48059dd5a32fd797f630f6c3daaf2682ad",
+    "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md": "44812cdb81ae17505c3d5f9e3d1228d6e1c36767c8c506d170f90fdccd09ab9c",
+    "D:/Cours/Web/markdown/content/03_programming/ch4_listes_avancees.md": "e2a76c28239ceea30812b7009f56170f26af1f665853da74053e8fbc83ed3275",
+    "D:/Cours/Web/markdown/content/03_programming/ch5_arbres.md": "64f53d69836d97a9a88a3ebd724f187aed5347cad817fcb22e3bbdf005890bb8",
+    "D:/Cours/Web/markdown/content/03_programming/ch6_abr.md": "8d51eac3a50de623b54570f9e564332825c1fcb726a681a47c5277170e9f4a50",
+    "D:/Cours/Web/markdown/content/03_programming/ch7_dictionnaires.md": "436d2340678382121683e5913e518ff04388a6a31d7bea5f7f0da1f9cb8f0312",
+    "D:/Cours/Web/markdown/content/03_programming/_course.yaml": "5ddf91485402d1b72ad516f26db6a94bff05feef54d08f0bcf83a57e18204426",
+    "D:/Cours/Web/markdown/content/03_algebra/ch1_applications_lineaires.md": "c3504945d7b217076dafe6cafa867199080251768bc172855a7d7fa99926beb2",
     "D:/Cours/Web/markdown/content/03_algebra/ch1_complements.md": "518a59af6936c6d62cfc19679c0f212d99b79c510a2104b72c1fe7dc83019fc9",
     "D:/Cours/Web/markdown/content/03_algebra/ch1_coordonnees.md": "b81d7eaa25f1f375dfcd79070d859030eeb42a936c69e794db21c8fa7bacbcd5",
-    "D:/Cours/Web/markdown/content/03_algebra/ch1_espaces_vectoriels.md": "3a63953ec6070ec78bdad431335d8bd7bfd1bfbf421d99bbcdf37375d437bcce",
+    "D:/Cours/Web/markdown/content/03_algebra/ch1_espaces_vectoriels.md": "d68797c4d0c8d530ba8309e6b3bb1a87fc4a5f88400a1cad26b7942d99ddb9c3",
     "D:/Cours/Web/markdown/content/03_algebra/ch2_determinants.md": "7c94a28d4f3508abb651f824f586353b1171c71ce9ca1214d760c12012c6f223",
     "D:/Cours/Web/markdown/content/03_algebra/ch2_polynomes.md": "861cc43a35115cff68767fe69e6b91c8ffcf4947d7c4be74f0ed5e5c421f1032",
     "D:/Cours/Web/markdown/content/03_algebra/ch3_reduction_pratique.md": "a7795e5d26cfde44f0ab12c29cc04bcde2d477a501b23eb2dea778f3be8d64c1",
@@ -58,24 +76,6 @@
     "D:/Cours/Web/markdown/content/03_algebra/ch6_pipeline_3d.md": "ea4e569999751db35cdbb22d84c1572039c8f06e14c127bc5506d4c6b9efcc06",
     "D:/Cours/Web/markdown/content/03_algebra/ch6_rendu_graphique.md": "5e317f58c524603e023ee7f26980b25ff56d5d3a0160f9c04dbc45c513d08790",
     "D:/Cours/Web/markdown/content/03_algebra/_course.yaml": "7d35a27f469d0b63bcd4513e478c86d79015575bc31f5c9fa10f8ba4bf05219a",
-    "D:/Cours/Web/markdown/content/04_algebra/ch1_relations.md": "4b760598929100c5906f2db313b8c81d388fd9dc36c80bd052cad6ffb04a28e1",
-    "D:/Cours/Web/markdown/content/04_algebra/ch2_groupes.md": "5b025b453efa965bc0b413745b4d7b6fc41ef1f01ba101b13876ac0e0261e55a",
-    "D:/Cours/Web/markdown/content/04_algebra/ch3_sous_groupes.md": "efda9bede26fd58b87a8bddcf33da240adc4bfc401518ee61e4b4346fb8ff41d",
-    "D:/Cours/Web/markdown/content/04_algebra/ch4_constructions.md": "30771e8dbc658cd430a34449f436741939a041140ade3e39835a2e240553db2e",
-    "D:/Cours/Web/markdown/content/04_algebra/ch5_groupe_symetrique.md": "d49da02f8289654af971417ed7792c4794359c94dba8d8918e39f81e83b4dfc6",
-    "D:/Cours/Web/markdown/content/04_algebra/ch6_anneaux.md": "4ff988d8cbe49fee36cf7721fad933b00dc888a77554bb4946433a1c58ca84ea",
-    "D:/Cours/Web/markdown/content/04_algebra/ch7_corps_finis.md": "275d93b1760ae8e6df9715bc1fb35f892cdf9f0258505df34f6efdcdc75dd9f0",
-    "D:/Cours/Web/markdown/content/04_algebra/_course.yaml": "d08899ba34d602e30369b64ad1bbcdcf1cb2c2444494e8d875d7efb1957dd3ea",
-    "D:/Cours/Web/markdown/content/03_programming/ch1_revisions.md": "5daf89ce7df2b9a8c9629d04e36c127e93c84813dac5c31df42e0bdad652b1e8",
-    "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md": "954a6e743e3f58e1c63d265bb355687285ae526d063c88c27aa72b64dfd02e4c",
-    "D:/Cours/Web/markdown/content/03_programming/ch2_tp.md": "f0bb702e568727fdaccbf5f6f83fe567136a7fa10332222eeab2be3f1ecbf93d",
-    "D:/Cours/Web/markdown/content/03_programming/ch2_types_abstraits.md": "c1a0a4482ca9fe733070e87498cadb45f23fa4d1c323aa5a3b20dfb8a8282a46",
-    "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md": "58c61e4aeaf5af12bc8041cae99c0e5c3fa2bd54fc041e47d38a722340ecf3aa",
-    "D:/Cours/Web/markdown/content/03_programming/ch4_listes_avancees.md": "e9513a823e87627a2f123f5dfc169bfb8de33a48bc92ad972f7781eacff4a6e4",
-    "D:/Cours/Web/markdown/content/03_programming/ch5_arbres.md": "15b11183aa6e87a8ba8dc8987de574f99b1adfe984261e36c80d5e248943e38d",
-    "D:/Cours/Web/markdown/content/03_programming/ch6_abr.md": "bef8219058b1f3a842d759f011247aa43c554adf05cc6df76c818f14d31b4938",
-    "D:/Cours/Web/markdown/content/03_programming/ch7_dictionnaires.md": "7ce6fadb388c15bbe276c1c215da3b8fd224275a9bb76ec8a4f487316cda60f6",
-    "D:/Cours/Web/markdown/content/03_programming/_course.yaml": "d6bb0d80830c3afe5e08ca37693c7154b64a254900bd73bdce4843234e2584d8",
     "D:/Cours/Web/markdown/content/test/algorithm.md": "e75efb610e3d033782bc99a30e128e9c0bf5857d85a32fdc07e5d677f59152b3",
     "D:/Cours/Web/markdown/content/test/block.md": "07a18ad36426a93b42420f754af1e0e9383add44e1033f11b443af79a7c7324e",
     "D:/Cours/Web/markdown/content/test/block_and_layout.md": "62f18bd80c38de5abdc0ac36e307db11ea1f5e8ac5fd488b94ca43a1035319bc",
@@ -161,6 +161,12 @@
     "D:/Cours/Web/markdown/content/01_algebra/exercises_4/polynomes_13.md": "f2abfd6602912172d96f8a25d7b5f2a5e8235de93f243b9c0d3adb6894c0754a",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_4/polynomes_14.md": "9b619d2e9ec6a4739c6cf9b83955ca15e38cea4f52464f479ec62b3274a7b53a",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_4/polynomes_15.md": "4e77407d08e9db206b5c34b97fe8e6d8a3fe1043002b74a2f014f760b102471f",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/criteres_de_divisibilite.md": "651478b12d69d6ce78c88d69249c1bd0bed8897c82601b1cc7421284dff3944c",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/criteres_de_divisibilite_graphiques.md": "5527b1bcc60e673b14c7797ce7fbf98c7ae1d20ed575737e52bdf3a877cab62a",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/manipulation_des_congruences.md": "9098c029c21781ec429dcbc314e2fbaf2eb8a7eccc43a868a3d9e22ef0a57c02",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/on_finit_les_restes.md": "db09f8e9544cf7184032e65216c9ebd70ceafa8ae4b4afb5ad2d7b65f2fb3c25",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/simpson_horror_show_vi.md": "209955bd753bb40f6fdfb4f985bca6ec7db84d060c2d92c149d0d82bd5098874",
+    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/tous_les_cas.md": "e72c47c680251a55627de789938a2610b116fbd41ecd614d99dddcdd9349f15b",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/conversion.md": "6fb49c30698d51720ba76d4e7ff2c77df1c9bd259e2904ff9d06994793ce711d",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/des_plus_et_des_moins.md": "cce08d58067a72b93c9a399dd8ef07835268abaa5a11d3e0f764c83b710ea74f",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/de_l_ordre.md": "7022d31d7daf84707344386b4c13c11c483cdb0e922977695604e65e81793acf",
@@ -168,20 +174,14 @@
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/multiples_a_tout_va.md": "d8e8f033d3d14b1c7bb061b9df3e151a16f78719d3b8c5c2f85c00f2d21da5a8",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/retour_au_primaire.md": "8dcb4830af94c73190e1e757e4b046ca68e665492e6dbe1367a5804331e55967",
     "D:/Cours/Web/markdown/content/01_algebra/exercises_5/sommes_de_multiples.md": "0d0e05e85490eebe11ae477c099fbe97078539ab217f9d686db7cee2a2c11827",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/criteres_de_divisibilite.md": "651478b12d69d6ce78c88d69249c1bd0bed8897c82601b1cc7421284dff3944c",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/criteres_de_divisibilite_graphiques.md": "5527b1bcc60e673b14c7797ce7fbf98c7ae1d20ed575737e52bdf3a877cab62a",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/manipulation_des_congruences.md": "9098c029c21781ec429dcbc314e2fbaf2eb8a7eccc43a868a3d9e22ef0a57c02",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/on_finit_les_restes.md": "db09f8e9544cf7184032e65216c9ebd70ceafa8ae4b4afb5ad2d7b65f2fb3c25",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/simpson_horror_show_vi.md": "209955bd753bb40f6fdfb4f985bca6ec7db84d060c2d92c149d0d82bd5098874",
-    "D:/Cours/Web/markdown/content/01_algebra/exercises_6/tous_les_cas.md": "e72c47c680251a55627de789938a2610b116fbd41ecd614d99dddcdd9349f15b",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/ensembles_1.md": "1ec68d09a0dee3692a967f84734dbc73cfef68afc40bdbf8c78bffd07fe1db1b",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/ensembles_2.md": "ac73d855e23d4021108cc486f88468c16bcd329802fa95ca529ebec148daf4cd",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/ensembles_3.md": "85b6687220487ccb6402392abe0458437e6bc21ab566bf534a151a85a6c77f02",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/inegalites_1.md": "47361d7e85aeb806207328f98736cfa00a2f4b9dedb20258dc1d1e21c0fdc904",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/moodle_fraction_de_fraction.md": "92b39915e5ede9d0502cf06d7323bb90b7e9b474d201be535db4dd3f07e1e237",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_1/moodle_fraction_puissance_1.md": "3674321217476536e75ff67d5b278fcce6b862c862a72d82ee2001f4e5303e6c",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_1/moodle_fraction_puissance_1.md": "c9b9ece31ce665d79065e1339f153cfce4a2e0cceeb45e296317ccc7f62b841f",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/moodle_fraction_puissance_2.md": "d6f5e0c9726ef52b403399c5595e57f58c8fda9d5d5f5d5b5be051baf423b8cd",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_1/moodle_racines.md": "37c8919d8152deb6bb5c91ed9994241b65d01d9cebf57e25a9aefa42c0f19a3a",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_1/moodle_racines.md": "efbf201c14a3f71e2e8d726585b5cf79cbe7d5ef44dc9f1daf0d42958e46a6ad",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/operations_1.md": "71f72bcf6ca0f48c93a04e0a00758e838dc9d55f76480eb4dc2c21186511629e",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/operations_2.md": "befbdf7e64137c74d6897eb551286acd72bb13f97fd74b8b01d5810afe2dde61",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/operations_3.md": "ad2f15d58d9828ab107851b6ce9f5f301309f9cc71d3fce6e8aaad9374345b7a",
@@ -205,10 +205,10 @@
     "D:/Cours/Web/markdown/content/01_pass/exercises_2/moodle_fraction_factorielles.md": "014ada44ef19a8f29c48737a1e0604719b712f7d986f8e2323a577d455dafefe",
     "D:/Cours/Web/markdown/content/01_pass/exercises_2/moodle_nombre_zeros.md": "60d951aeac060b0b0b71e203300b7d76bed889bc62e3431ba262a99370198623",
     "D:/Cours/Web/markdown/content/01_pass/exercises_2/moodle_somme_simple.md": "5b68e102ea62101f786c5cac776f52eaa3174fc87d57624956b05e3c1bcd265d",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_2/moodle_somme_tele_1.md": "9ca603c27eed8d9a2aaa0716f9f8a295b23c8b987435a90c926c93df28492789",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_2/moodle_somme_tele_2.md": "7fbbbd077757770c1d4f84a8f873bb59738c93e9eeb92916a23e8cfefa73785c",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_2/moodle_somme_tele_3.md": "f4b5bb2ea11913676900802ab656d6596f86027c2e66efe1c54e500f61dca69c",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_2/moodle_val_abs.md": "587093220e390f7ee2f4739c79cb633082335416d2389bc76dd1960bcd99db1f",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_2/moodle_somme_tele_1.md": "79a9f8452b2e8fbfb77a5fa1fe1f78333cbb573451fec9159c7181b7fedac0a4",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_2/moodle_somme_tele_2.md": "b97a4759a715ce71afb0a05100b6b846f154808643cbac890c983666761d60fa",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_2/moodle_somme_tele_3.md": "54325f6dad610bdefcf3d3b402c5b7c878f5b3478f35632782599d4564f2fb16",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_2/moodle_val_abs.md": "8c63db30368a5040111ed9b0d058181161e8dc4349c511d9086452613bcfeb23",
     "D:/Cours/Web/markdown/content/01_pass/exercises_2/polynomes_1.md": "52e89a653b4856eafb36806e51d608cebfa9e15e8b2fd1d32ccb029c60ab24bf",
     "D:/Cours/Web/markdown/content/01_pass/exercises_2/polynomes_2.md": "d2e3984f970f51284bc4f6949f6367260d7836c3adadaabcf020f6c0f6b483f1",
     "D:/Cours/Web/markdown/content/01_pass/exercises_2/polynomes_3.md": "887b22f0ffceaa8fbd27201c06f2f656316ebf00f079c3efa9d452cadcfac56c",
@@ -238,18 +238,18 @@
     "D:/Cours/Web/markdown/content/01_pass/exercises_3/etude_3.md": "c64a4592613e6d4d129b44077c769dba4b84847b42c0f056a7276e3528dcb44b",
     "D:/Cours/Web/markdown/content/01_pass/exercises_3/monotonie_1.md": "fdbd01e3cb8fc52d6ed1f26a4e3b9dc4b96af68e1a7dd2232f53a246e41c4e87",
     "D:/Cours/Web/markdown/content/01_pass/exercises_3/monotonie_2.md": "0f0345cacd85edbaab962cf7f36e99ec3b070c679dd3e6c5923ffd7a51f36821",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_derivee_compo.md": "ef174749b03696ab617edbfcb9ffa52ba36bbfdfb3644ab0f803b9bd403e8585",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_derivee_compo.md": "99540615316f4718bdc7e9a2ba50f09cb7febd6960273390a97d4518b49aa331",
     "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_derivee_prod.md": "109afdcfa06af3dfeb7aa594f327961eaac06fc6135081ed9f01d5031334d8e7",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_etude_fct.md": "60ce16f47f4385b10f4ee5a5c7ba2cf0d63ee95f6ec9784c001996a5eeaa50dc",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_etude_fct.md": "986600d785fa58d88cad32be6d0af4978d8b50b6bebdde23909c7367218f5a75",
     "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_premiers_termes_1.md": "b0d5cda231fb91abde22068f69c77007a9e0321205d13dbadbd478feaa324aa2",
     "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_premiers_termes_2.md": "e4fe27043b0d31a1139514cb99946e9612366e8c82fe552481663d702cf91bb9",
     "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_premiers_termes_3.md": "072f32bfaacd7cd733c6037e562723c21a01fc1245a228e7b6a04512b8c595fb",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_somme_ari_1.md": "d731db94ab49115a42164a7ed2ff3bf85524d7607e23f5dabf72c2e1f5ab04bd",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_somme_ari_2.md": "d525fa9feb4cc6f9cb4f08980b23507a0103edcc69d95bd035d5da11767b31be",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_somme_geo_1.md": "f6b99e0083fe841988ecf92eabf8ab43d4c7449c2caa178c1e2769ae2abcdbae",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_somme_geo_2.md": "cc7d205aa30d9adde3bcd39628cdb12c7a9e451023c3df0f02116e47766ffc86",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_terme_gen_ari.md": "07c40d8e929563b5a184a32ea640d835b519bcc3403cb9ff51b70385827a14ef",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_terme_gen_geo.md": "2aa979e35a54ae78cea4326945ba9f626ed86749fb63a6afd260877c63a9b4a4",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_somme_ari_1.md": "cd74992dbe0f3a74e4471acb72ec68a938f405d005d2d38a34195bfbb983ba78",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_somme_ari_2.md": "800f2b8b731523211dbd0172afccde0fea084ba3fe0f58be6e61e6c3add53d67",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_somme_geo_1.md": "a25a966296230a8284da12cdbda0c50b96e88b907a55358248fe8fb4ccb9ac18",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_somme_geo_2.md": "8b6f0b86ae1306130ad3c9679d67429b3497eaacd76684351af7a98155adb4f2",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_terme_gen_ari.md": "3ae3fe62397dc3ece1c2340ad653c2846bf24ce9ba0fb608f24a738c56e827fe",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_3/moodle_terme_gen_geo.md": "e43baefa09a4c20a9c53597f93ce50de8d57e4d953288ad1fbfafb0257fec9da",
     "D:/Cours/Web/markdown/content/01_pass/exercises_3/simplifications_1.md": "ff0afae1a7d972824c2827e67eaee950fbbcad018496930c49371fade090af53",
     "D:/Cours/Web/markdown/content/01_pass/exercises_3/simplifications_2.md": "bef1f0d22cc82a72adfcd76421b65533b0381f9f4c3eddcceaf0b0530b323126",
     "D:/Cours/Web/markdown/content/01_pass/exercises_3/simplification_1.md": "c36d016a8539b62e71ac371b2503d4a78a646649d98057f2da05b25b0092b81e",
@@ -275,20 +275,35 @@
     "D:/Cours/Web/markdown/content/01_pass/exercises_4/linearisation_1.md": "9089d143900aff7c116a12d70242b722c7672d303449a05589e2d90e87ebd85d",
     "D:/Cours/Web/markdown/content/01_pass/exercises_4/modules_1.md": "a0b2a785549048a7b853163c2ca8eff9e6b6a8093b050eebb4d39927f606ebeb",
     "D:/Cours/Web/markdown/content/01_pass/exercises_4/modules_2.md": "2fd132ec56fb80f2aa29377593a080e90f0b21e222f4647ca4c953e68e5ea319",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_4/moodle_angle_sin_cos.md": "e7b6eae61f9ecf04a0df3e0347264e0d6702aaa7dc6bdaef71e0f595e1938643",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_4/moodle_forme_alg.md": "cc4f788b49032e98a8844f10010522fecbdf5da18358181a2f3c8c403a1f72cd",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_4/moodle_forme_exp.md": "d7428c11377b6cab976cee0f0b0668046ca22f21c8045b6bde38d30103e23f64",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_4/moodle_somme_sin_cos_1.md": "5020cb62852a98e48dce18625d182457531d037121a9f39669208b0ac2dcb99a",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_4/moodle_somme_sin_cos_2.md": "4973145c11e0df3401125a382a91b0a3925791644d097210cec3983d6a60e199",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_4/moodle_angle_sin_cos.md": "effee6a016131114c3df3658bc0c843d6497bb56ec493500504ea91fdf8aaa73",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_4/moodle_forme_alg.md": "abdc6000de578e4e9ea5ba1c3bb7bdd1bef955b0518546537d5e395c728b1882",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_4/moodle_forme_exp.md": "16653969288d1d4b4872c2e7a70cd18a0d6c40e6acfcfb4a6cc1de3f0c531eb8",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_4/moodle_somme_sin_cos_1.md": "e029352b1655b1c33e0055ebc1a2766deffb5d979f1c3159e97872e7f445f8a2",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_4/moodle_somme_sin_cos_2.md": "d5020f53f046dc28e7413ea834446a8c1c42d0ccfecfb9986407acd0d51db4f8",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2021_LaPoste_3.md": "82eb192704983816932c9949d87b4ee77360e70c770fc87f8d5fd87e68cecf6f",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2022_TechChallenger_2_2.md": "65887aecc318f3233e2abf3996fe54d7e7ecf345b8535f42d023657546ee395a",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2022_TechChallenger_2_3.md": "30cb950a5c4817ae44a7e95532c4383020cd05a49ab6e70cc433c17d45c037e5",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_BPCE_Collectif_2.md": "10abbbdfbbbd15fc714485f981418ef28a9432cdc000d20ba1cb838b116987a4",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_MDF1_Pizzas_1.md": "f9acadb88bbf4de714cf893a479ada76daae6562107ef9f5dd81dd80bce67964",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_MDF4_Poubelles_2.md": "f61ad2830a1e8caa4f7ce2a044064afdbce83b78780724ec0a105d4280cd7ae7",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_2/maitre_crepier.md": "5c0c475f2b7531315bc48da272bae62df4e3389f722414f378e3a2b61e87149b",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_2/pizzas_espace.md": "d2b87c7b87cf070eed23bd8d0370a46bc9c63c6c17667fc7c2245f29c9191fe8",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_2/potoo_coin.md": "34302666a058792a968fa774f4cdab10a7f8bbd3f18e3642d4afccb81d5300f8",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_3/List_Complexite.md": "0a51b452315d822ed620040a87424fc5451074bea45b514e677701e299cab3c7",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_destroy.md": "7a19d02d04c2e3858a57c41ce0397c4a6b0a0a6043e72a8ef6c76f28602a2600",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_get.md": "1876c92b342f7ce65ce7cb721bac3e01ae97a9ac57dc27ee89e0028e8864036d",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_insert.md": "4e7730ebbd92cca1ca736bbefef37f2077860638be03bb1ac7c6f0cdad78b6a6",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_pop.md": "9aa3e37ab1ef7c2211defdc226d9528d9051e336cdea2099f038b574bb0ca90e",
+    "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_print.md": "37813fb13c59bd863b081bb50016438db760cc172607bff83cbc6dc68338fe4f",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/bases_1.md": "08a4f9699792a0a4820073c517c58e8ed743e2497965a5bc9881504ae111bcf9",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/definition_appli_lin_1.md": "7d4f61a91237bbb9ff5c968ded544d1ef6171b81b472cbb64df35d10386c71b2",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/espace_engendre.md": "6a5a362279c041cfa630e5bd25f43f2a1ad59f0bc66f2eadf774d4c6207cf374",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/ev_matrice_2.md": "ecbade0998d8b1bbcdeebfc438f343000b7b99625e00adbff4cd2e2e3d627f43",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_app_rp_vers_rq.md": "285271b954d65aeb534e51ce860662369849b1f700c86c311cdecd572306b020",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/espace_engendre.md": "7d7bafe6611957f37dc8916c5b4bb0ef9e16f20f29672f084e8a482cf963fc6e",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/ev_matrice_2.md": "f46c6d23ce9eb64b5c8f812f2d1ba346475ec2fe3b9da3781512768191e39977",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_app_rp_vers_rq.md": "ea4d24d11cd87593eaa722fbec89978eb8341d1e9e4b7ab324c27568df6a8a62",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_base_sev_m2.md": "fa3f62d6a3508ac404050c4d80fd72ffa50c51c6c62410710682fe886d1477ac",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_base_sev_r3.md": "23867b469e3b13abbcf50c5ebe99abbc4771cf989152a5accc73fbfe7f4db077",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_compo_endo_r2.md": "355834d7eaa0e37baa30594e7fa218a03cf5a2e8e12b3d9acd681237d083f29e",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_compo_endo_r3.md": "fcc4f97effae0fc76f62b8205b2f3e7d56529981cb23e067dae6920d9724efa4",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_base_sev_r3.md": "da0af4fb9a8c59e936ba7e35be5eb2fddf1f4147b058acd5692d37cb7fe73889",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_compo_endo_r2.md": "0c782803e3d2d8b95b9ae8bc9d9bf3a91af0099715ca3275b4b2748c15104cc9",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_compo_endo_r3.md": "dc7e7b253a018e81875af81f600569a61ece5cfa2325982a1609b76237f4c521",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_image.md": "2258814d05d39c413006516ca82a4e994d22e7532cf4744e3407a61a7b3d9e1f",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_inverse.md": "727769441f6d840592b9197007db3865aae34f93d8f79d4ac588510a8d61f641",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_noyau.md": "862873603e5e5f51e7d139437a598cc68cfd094bcc99141d550ce358db91d3c7",
@@ -296,7 +311,7 @@
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_relation_lin_3x4.md": "15592f01d5dfcac691c17bea70203d05d25fb7330eadd1d3ee7fca1536e6532c",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_relation_lin_4x5.md": "7af0e177484b6e7a8bdd4cce214ea5285509a43d622809f5b715732fdbe25f69",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/plus_loin_02.md": "cba4e0bb51e2e6050a6a9fbbbceef6b94c1a28b465016824d4c116cfe6328960",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/sev_01.md": "2a6ce7522c0094243562455b72f05ad3dbfa9ac6441c0c7e6ce455cd37920119",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_1/sev_01.md": "b643a4e13e8c367f33125695af2456b44e9533b35eb9cfcafbdf9e6cf9f7158f",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_2/determinant_matrice_inversible.md": "e82e6056f9f934350605cc3bb79b5262b3e63104c2cd4cd7cd96e02fc42a6ccb",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_2/factorisation_polynomes.md": "7d3f61b051ba078066330fe9cc8cb25eb81534f12b81cc5df1dd5e0ddea81acc",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_2/intersection_droites.md": "bf60e7998f1d05666670929786e1b8a347dc1b94b544a44de769c828844689a5",
@@ -326,19 +341,6 @@
     "D:/Cours/Web/markdown/content/03_algebra/exercises_3/somme_directe_1.md": "84465ea3d8d3ea111d60bced889253dece1cf931b8cf97295467132afd306c19",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_3/valeurs_propres_1.md": "4925d093647b4a053ba340fd41d79f865bffc60586cf59e715af08dcc0f40154",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_3/valeurs_propres_3.md": "0ed1a9f9d38e5edada86ccd69a856eb39045bf965ae01ccec88b047d901ef4a2",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/affinite_1.md": "39387a9ab3193dba11f3b0e9022f50648a84b14be4dd11223b3d211a42c0fdea",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/homothetie_1.md": "545cde45b8103cc596a935563607e28d54b9a46c12d588ef4fcf28ceb836cecb",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_1.md": "99bbfe4cf430eee2f1843f7c4e768424bea0a5861cd63afb3c8e4ecd7c8a137c",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_2.md": "16d85837add56d20405dbfd4421c5f32c7a35a0a8a21403fc5570c6bacbe8b57",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_3.md": "f38b75569be351df92e44bafe6a282862241debe00a23d44354733d5d554c668",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_4.md": "b5f57b6554834bb8bcc1d457a25c0b472f92fb560268ccbb5895316884f3d5bd",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/symetrie_1.md": "3e71a614aa9b48ae05f8731a7b21d7fea7191b57b5fc6cef209220972f246d0b",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/symetrie_2.md": "713f097e7f9e3a596edf8c79a7c1b1128ea50e1dfa71359878605445f1d9f66d",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_1.md": "e4a51d895701e05b5b75890314ab1bececdf04d29247d62bffba690ced439c87",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_2.md": "3fca100d60f67aa6aa28744b849dc7a5e4f9e145ee05de9754093c15981ec576",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_3.md": "b7ea0fa08eead3fc8ad70c270b643921444e97c6d1b763fed31353f8d7097574",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_4.md": "006704795b9e6862eab58349c0619493c30bf3a1734e0601d7d77181037e50d6",
-    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_5.md": "2c6970d26af1e4fc95610fbdc88848f6cf5d41b5e0dac05eb9a9178f38fbc54d",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/endo_ortho_1.md": "51ab9af45e4a157662cbed90917942fd382aeace29854e6094b6d30e24d6fed5",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/endo_ortho_2.md": "3af2c21175f146560a97381d56110e41ae2324d29ca790f75c565b3e77b2fec3",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/endo_ortho_3.md": "78393e7bb26d958a468a8a70e1300e5b90d475099302f44f94e65a742026b4c7",
@@ -365,31 +367,29 @@
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/produit_scalaire_1.md": "06c53819422bddf340caa86bf1940e08766f014bce3ae65d33c011465b431eed",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/produit_scalaire_2.md": "15337140666ed6354cc656d6f2ed0a9ffefb0066891959161f730a222839bc2a",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_5/produit_scalaire_3.md": "a0b73cb2c5a18036c02d786e4f8222c607231fb9aaaf4e0fbe6833789f986b27",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/affinite_1.md": "39387a9ab3193dba11f3b0e9022f50648a84b14be4dd11223b3d211a42c0fdea",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/homothetie_1.md": "545cde45b8103cc596a935563607e28d54b9a46c12d588ef4fcf28ceb836cecb",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_1.md": "99bbfe4cf430eee2f1843f7c4e768424bea0a5861cd63afb3c8e4ecd7c8a137c",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_2.md": "16d85837add56d20405dbfd4421c5f32c7a35a0a8a21403fc5570c6bacbe8b57",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_3.md": "f38b75569be351df92e44bafe6a282862241debe00a23d44354733d5d554c668",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/projecteur_4.md": "b5f57b6554834bb8bcc1d457a25c0b472f92fb560268ccbb5895316884f3d5bd",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/symetrie_1.md": "3e71a614aa9b48ae05f8731a7b21d7fea7191b57b5fc6cef209220972f246d0b",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/symetrie_2.md": "713f097e7f9e3a596edf8c79a7c1b1128ea50e1dfa71359878605445f1d9f66d",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_1.md": "e4a51d895701e05b5b75890314ab1bececdf04d29247d62bffba690ced439c87",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_2.md": "3fca100d60f67aa6aa28744b849dc7a5e4f9e145ee05de9754093c15981ec576",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_3.md": "b7ea0fa08eead3fc8ad70c270b643921444e97c6d1b763fed31353f8d7097574",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_4.md": "006704795b9e6862eab58349c0619493c30bf3a1734e0601d7d77181037e50d6",
+    "D:/Cours/Web/markdown/content/03_algebra/exercises_4/synthese_5.md": "2c6970d26af1e4fc95610fbdc88848f6cf5d41b5e0dac05eb9a9178f38fbc54d",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_6/compatibilite_automorphismes.md": "d33a0a839e076bf00dd15062293cc58bc879c55ddc6976402e5b295259223207",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_6/relation_colinearite.md": "5a6bd6b3a31db5f0a995f7ded607b1207c7bdf7c8e600b1aea0e8671e42ece5e",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_6/scene_2d_1.md": "2d00f0e93d0db6877896a3e814b0f03121be9ff607599d84158d48548a1ddd62",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_6/scene_2d_2.md": "fa650de2f43386f48061fe6d407212294bdd3a992ee42fe90acad7fab441f600",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2021_LaPoste_3.md": "ad5be0b55d9f002876435f400b43a482b1534aed00b8b703fd664d7ecd66b9cc",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2022_TechChallenger_2_2.md": "1a94e3e699c927c2d9d639d1b4f227ed92eb9301a5f60de2fb2ba59d7580fcc5",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2022_TechChallenger_2_3.md": "8c813db826c52d56f236031b9ece182597522989f88f68fcd52c0f355a260e34",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_BPCE_Collectif_2.md": "bf8a3056d399eccb8cc0d0b50614a4615f9c704b0817af144e69a46174e1d4a4",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_MDF1_Pizzas_1.md": "487bd5ae23301f307c33b773364c2fab87f63a07470ea181f6f627371a7809e3",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_MDF4_Poubelles_2.md": "5a732e80e2bbe3c714c07d1443e0ecf42d16e2a01b5168b4a64fde8ea8e93b47",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_2/maitre_crepier.md": "0fb30482cdc47401c948ea7c94e24dff43dc1f838beac1284cb35b4f11f25162",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_2/pizzas_espace.md": "797894d6c75b34bdce6d2bf2725f91116acb4d772345eec9ae77ba6be0712db4",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_2/potoo_coin.md": "48b5f1d2575e5f6cca6a86ca9a3176515be29f608fbb0e229241804615f0c9e3",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_Complexite.md": "0a51b452315d822ed620040a87424fc5451074bea45b514e677701e299cab3c7",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_destroy.md": "e3a0a6dcfa6a822902aa0f083560fc09495db307a1be03df78a9eff574e6dc53",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_get.md": "995eec7ce9eec64531b825d64c14e383ea33b88c369e77e75b573ab45869c972",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_insert.md": "e2c0eca8ac6597fb73cba58698cca3426a783e22a4463d70a09017dd91615495",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_pop.md": "42e060663977cc475f7595d8e7214b408e5c986b846a0083cc1a34d720fbca6a",
-    "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_print.md": "cbe10bdecfd304401ce7ad7753547f1aee21314d303907509a7d61f0e002e777",
     "D:/Cours/Web/markdown/content/test/assets/potoo.jpg": "99fa6fc6b8675ab8e3550dce44cd06eb94827547b9c817fa1ad72be7976d5a41",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_2x2.md": "7fb46ac787e3881e9c05f1df7d52cd11e09f6687eed35169d63ee28d33e1706a",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_2x3_infini.md": "b1c1f976829e69fe49ceedf17ebec94d1a206128adf2fa0f6c5592952c91aa3f",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_2x4_infini.md": "13c7df6c974e83e79e669b566826486eaef0eb5ca4cfcb7aeab9172c77faa265",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_2x2.md": "6cb5b05b72eda59bb8aaa756e2aba4a0795d192c71bdd227b0bdd81113c0c0e1",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_2x3_infini.md": "86551fdf1e3a15c30ee6292dac46bd2f507f2a41cb6aa0041a5b1116a5fa768a",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_2x4_infini.md": "dbe3bdf6eb705a6eae9b2056ef26bc80b323c4312d3c03135862d5eaad808a2a",
     "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_3x3.md": "418c13e569b902017daccf9668fd9e45bc0e00da4547629c4bbd667e3d8e976a",
-    "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_3x4_infini.md": "4ff71e54c509c5399c6f8f350be9d407771177255b9009c0576ee8ceeb41f4ed",
+    "D:/Cours/Web/markdown/content/01_pass/exercises_1/linear_alg/moodle_syst_3x4_infini.md": "91321a3072f474ec295602284e0c338d00f4667635aec131913eb5b5c27fa7fd",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/complement/composee_1.md": "ce90c5ead6ddaa53963512d625f382159d40e594813fdf075ce048a502f60168",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/complement/definition_appli_lin_2.md": "2aecc481e6ea221d85720d65ed279b7b2248782c566b04d23e360b2dbbf5f666",
     "D:/Cours/Web/markdown/content/03_algebra/exercises_1/complement/dimension_1.md": "cdec22485d2eb394d82ed021b0b6c71845c71cf301d3f727a02d000a5c902414",
@@ -448,6 +448,11 @@
   "pageOutputPaths": [
     "03_algebra/ch1_espaces_vectoriels.json",
     "03_algebra/ch1_applications_lineaires.json",
+    "03_programming/ch1_revisions.json",
+    "03_programming/ch1_tp.json",
+    "03_programming/ch2_types_abstraits.json",
+    "03_programming/ch2_tp.json",
+    "03_programming/ch3_listes.json",
     "01_pass/ch1_ensembles.json",
     "01_pass/ch1_calcul.json",
     "01_pass/ch1_systemes.json",
@@ -605,6 +610,265 @@
               "D:/Cours/Web/markdown/content/03_algebra/ch6_rendu_graphique.md",
               "D:/Cours/Web/markdown/content/03_algebra/ch6_pipeline_3d.md"
             ]
+          }
+        ]
+      },
+      {
+        "courseSlug": "03_programming",
+        "title": "Algorithmique avancée",
+        "description": "Introduction aux types de donnée abstraits",
+        "authors": [
+          "Arnaud Bannier",
+          "Nicolas Bodin"
+        ],
+        "chapterInputs": [
+          {
+            "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch1_revisions.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "rule"
+              },
+              "remark": {
+                "style": "rule"
+              },
+              "proof": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": false,
+                "style": "rule"
+              },
+              "exercise": {
+                "style": "draw"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "fill"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              }
+            },
+            "courseSlug": "03_programming"
+          },
+          {
+            "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "rule"
+              },
+              "remark": {
+                "style": "rule"
+              },
+              "proof": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": false,
+                "style": "rule"
+              },
+              "exercise": {
+                "style": "draw"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "fill"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              }
+            },
+            "courseSlug": "03_programming"
+          },
+          {
+            "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch2_types_abstraits.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "rule"
+              },
+              "remark": {
+                "style": "rule"
+              },
+              "proof": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": false,
+                "style": "rule"
+              },
+              "exercise": {
+                "style": "draw"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "fill"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              }
+            },
+            "courseSlug": "03_programming"
+          },
+          {
+            "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch2_tp.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "rule"
+              },
+              "remark": {
+                "style": "rule"
+              },
+              "proof": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": false,
+                "style": "rule"
+              },
+              "exercise": {
+                "style": "draw"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "fill"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              }
+            },
+            "courseSlug": "03_programming"
+          },
+          {
+            "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "rule"
+              },
+              "remark": {
+                "style": "rule"
+              },
+              "proof": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": false,
+                "style": "rule"
+              },
+              "exercise": {
+                "style": "draw"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "fill"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              }
+            },
+            "courseSlug": "03_programming"
+          }
+        ],
+        "navigation": [
+          {
+            "kind": "section",
+            "title": "1. Révisions",
+            "chapterSourcePaths": [
+              "D:/Cours/Web/markdown/content/03_programming/ch1_revisions.md",
+              "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md"
+            ]
+          },
+          {
+            "kind": "section",
+            "title": "2. Types abstraits",
+            "chapterSourcePaths": [
+              "D:/Cours/Web/markdown/content/03_programming/ch2_types_abstraits.md",
+              "D:/Cours/Web/markdown/content/03_programming/ch2_tp.md"
+            ]
+          },
+          {
+            "kind": "chapter",
+            "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+          },
+          {
+            "kind": "chapter",
+            "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch4_listes_avancees.md"
+          },
+          {
+            "kind": "chapter",
+            "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch5_arbres.md"
+          },
+          {
+            "kind": "chapter",
+            "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch6_abr.md"
+          },
+          {
+            "kind": "chapter",
+            "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch7_dictionnaires.md"
           }
         ]
       },
@@ -1420,6 +1684,216 @@
         "courseSlug": "03_algebra"
       },
       {
+        "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch1_revisions.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "rule"
+          },
+          "remark": {
+            "style": "rule"
+          },
+          "proof": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": false,
+            "style": "rule"
+          },
+          "exercise": {
+            "style": "draw"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "fill"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          }
+        },
+        "courseSlug": "03_programming"
+      },
+      {
+        "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "rule"
+          },
+          "remark": {
+            "style": "rule"
+          },
+          "proof": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": false,
+            "style": "rule"
+          },
+          "exercise": {
+            "style": "draw"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "fill"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          }
+        },
+        "courseSlug": "03_programming"
+      },
+      {
+        "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch2_types_abstraits.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "rule"
+          },
+          "remark": {
+            "style": "rule"
+          },
+          "proof": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": false,
+            "style": "rule"
+          },
+          "exercise": {
+            "style": "draw"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "fill"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          }
+        },
+        "courseSlug": "03_programming"
+      },
+      {
+        "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch2_tp.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "rule"
+          },
+          "remark": {
+            "style": "rule"
+          },
+          "proof": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": false,
+            "style": "rule"
+          },
+          "exercise": {
+            "style": "draw"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "fill"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          }
+        },
+        "courseSlug": "03_programming"
+      },
+      {
+        "absoluteSourcePath": "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "rule"
+          },
+          "remark": {
+            "style": "rule"
+          },
+          "proof": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": false,
+            "style": "rule"
+          },
+          "exercise": {
+            "style": "draw"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "fill"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          }
+        },
+        "courseSlug": "03_programming"
+      },
+      {
         "absoluteSourcePath": "D:/Cours/Web/markdown/content/01_pass/ch1_ensembles.md",
         "courseBlockDefaults": {
           "example": {
@@ -2159,6 +2633,84 @@
           "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_image.md",
           "D:/Cours/Web/markdown/content/03_algebra/exercises_1/moodle_noyau.md",
           "D:/Cours/Web/markdown/content/03_algebra/exercises_1/plus_loin_02.md"
+        ]
+      },
+      {
+        "outputPath": "03_programming/ch1_revisions.json",
+        "pageId": "inf2031-ch01-révisions",
+        "blockRefs": [],
+        "dependencies": []
+      },
+      {
+        "outputPath": "03_programming/ch1_tp.json",
+        "pageId": "inf2031-ch01-tp",
+        "blockRefs": [],
+        "dependencies": [
+          "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_MDF4_Poubelles_2.md",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_MDF1_Pizzas_1.md",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_1/2022_TechChallenger_2_2.md",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_BPCE_Collectif_2.md",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_1/2022_TechChallenger_2_3.md",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_1/2021_LaPoste_3.md",
+          "D:/Cours/Web/markdown/assets/03_programming/exercises_1_2021_LaPoste_3_code.png"
+        ]
+      },
+      {
+        "outputPath": "03_programming/ch2_types_abstraits.json",
+        "pageId": "inf2031-ch02-types-abstraits",
+        "blockRefs": [],
+        "dependencies": []
+      },
+      {
+        "outputPath": "03_programming/ch2_tp.json",
+        "pageId": "inf2031-ch02-tp",
+        "blockRefs": [],
+        "dependencies": [
+          "D:/Cours/Web/markdown/content/03_programming/exercises_2/pizzas_espace.md",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_2/maitre_crepier.md",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_2/potoo_coin.md"
+        ]
+      },
+      {
+        "outputPath": "03_programming/ch3_listes.json",
+        "pageId": "inf2031-ch02-listes-chainees",
+        "blockRefs": [],
+        "dependencies": [
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-1_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-1_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-2_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-2_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-3_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-3_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_print-1_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_print-1_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_print-2_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_print-2_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_print-3_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_print-3_d.svg",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_print.md",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_get.md",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-1_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-1_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-2_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-2_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-3_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-3_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-4_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-4_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-5_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-5_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-1_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-1_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-2_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-2_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-3_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-3_d.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-4_l.svg",
+          "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-4_d.svg",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_pop.md",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_destroy.md",
+          "D:/Cours/Web/markdown/content/03_programming/exercises_3/List_Complexite.md"
         ]
       },
       {
@@ -3086,6 +3638,141 @@
         ],
         "D:/Cours/Web/markdown/content/03_algebra/exercises_1/plus_loin_02.md": [
           "D:/Cours/Web/markdown/content/03_algebra/ch1_applications_lineaires.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_MDF4_Poubelles_2.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_MDF1_Pizzas_1.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_1/2022_TechChallenger_2_2.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_1/2023_BPCE_Collectif_2.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_1/2022_TechChallenger_2_3.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_1/2021_LaPoste_3.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/exercises_1_2021_LaPoste_3_code.png": [
+          "D:/Cours/Web/markdown/content/03_programming/ch1_tp.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_2/pizzas_espace.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch2_tp.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_2/maitre_crepier.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch2_tp.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_2/potoo_coin.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch2_tp.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-1_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-1_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-2_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-2_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-3_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_intro-3_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_print-1_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_print-1_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_print-2_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_print-2_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_print-3_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_print-3_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_print.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_get.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-1_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-1_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-2_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-2_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-3_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-3_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-4_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-4_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-5_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-first-5_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-1_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-1_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-2_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-2_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-3_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-3_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-4_l.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/assets/03_programming/ch3_add-last-4_d.svg": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_pop.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_3/SList_destroy.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
+        ],
+        "D:/Cours/Web/markdown/content/03_programming/exercises_3/List_Complexite.md": [
+          "D:/Cours/Web/markdown/content/03_programming/ch3_listes.md"
         ],
         "D:/Cours/Web/markdown/assets/01_pass/ch1_ensembles_classiques_l.svg": [
           "D:/Cours/Web/markdown/content/01_pass/ch1_ensembles.md"

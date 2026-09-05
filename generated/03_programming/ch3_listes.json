@@ -1,0 +1,1157 @@
+{
+  "sourcePath": "03_programming/ch3_listes.md",
+  "title": "Introduction aux listes chaînées",
+  "navTitle": "3. Introduction aux listes chaînées",
+  "navOrder": 3,
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin",
+    "Matthieu Le Berre"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Introduction",
+      "slug": "introduction"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Une <strong>liste chaînée</strong> est une structure de données, que l'on utilisera pour stocker des éléments, à l'instar du tableau. On notera les différences suivantes :</p>"
+    },
+    {
+      "kind": "ordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "la taille d'un tableau est fixée à sa création, alors que l'on peut ajouter et supprimer des éléments d'une liste selon les besoins, dans la limite de la mémoire disponible ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "les <strong>maillons</strong> d'une liste chaînée ne sont pas forcément contigus en mémoire : le temps d'accès au <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>i</mi></mrow><annotation encoding=\"application/x-tex\">i</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6595em;\"></span><span class=\"mord mathnormal\">i</span></span></span></span>-ème élément est généralement plus long que pour un tableau classique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>D'un point de vue implémentation, on travaillera avec une structure comportant au moins deux champs : un pour la valeur, et un pour le pointeur vers le prochain maillon.\nLe champ de la valeur est dépendant du type stocké dans la liste : on peut implémenter des listes d'entiers, de flottants, ou encore de types complexes (des structures).\nDans la suite de ce document, on utilisera des listes d'entiers, en se référant à l'implémentation suivante.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">SListNode</span><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">SListNode</span><span class=\"token operator\">*</span> next<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">int</span> value<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> SListNode<span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Ici on déclare une structure <code>SListNode</code> comportant un champ <code>value</code>, qui contiendra un entier, et un champ <code>next</code>, qui contiendra l'adresse du maillon suivant, ou <code>NULL</code> s'il s'agit du dernier maillon.\nOn en profite pour renommer <code>struct SListNode</code> en <code>SListNode</code> via un <code>typedef</code>.</p>\n<p>Pour la manipulation, tout passe par des pointeurs. Prenons le code suivant :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">SListNode<span class=\"token operator\">*</span> maListe <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>SListNode<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>SListNode<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">maListe<span class=\"token operator\">-></span>value <span class=\"token operator\">=</span> <span class=\"token number\">1</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>On déclare un pointeur sur maillon <code>maListe</code>, qui stocke l'adresse que nous renvoie le <code>calloc</code>.\nPour rappel, cette fonction alloue en mémoire un espace (ici de la taille de la structure <code>SListNode</code>), met à zéro toute la zone, et renvoie l'adresse.\nEnsuite, on accède au champ <code>value</code> de la structure dans la zone mémoire concernée, auquel on associe la valeur 1.\nD'un point de vue graphique, on obtient la liste suivante : <code>maListe</code> pointe vers un unique maillon de valeur 1, dont le champ <code>next</code> vaut <code>NULL</code>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Liste composée d&#39;un élément",
+      "displayLabel": "Figure 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_intro-1_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_intro-1_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_intro-1_d.svg\" alt=\"Liste composée d'un élément\" style=\"min-width: 25%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Comme on a utilisé <code>calloc</code>, et non <code>malloc</code>, la zone mémoire a été au préalable mise à zéro.\nPar conséquent, le champ <code>next</code> de la structure vaut <code>NULL</code> (c'est-à-dire zéro pour la plupart des compilateurs).\nÉvidemment, une liste à un maillon, c'est un peu triste, donc on va voir comment en créer plusieurs.\nL'idée, c'est qu'il y aura autant d'appels à <code>calloc</code> qu'il y aura de maillons.\nDans le code suivant, on crée trois maillons, auxquels on assigne les valeurs 1, 2 et 3 :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">SListNode<span class=\"token operator\">*</span> maListe1 <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>SListNode<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>SListNode<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">maListe<span class=\"token operator\">-></span>value <span class=\"token operator\">=</span> <span class=\"token number\">1</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">SListNode<span class=\"token operator\">*</span> maListe2 <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>SListNode<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>SListNode<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">maListe2<span class=\"token operator\">-></span>value <span class=\"token operator\">=</span> <span class=\"token number\">2</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">SListNode<span class=\"token operator\">*</span> maListe3 <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>SListNode<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>SListNode<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">maListe3<span class=\"token operator\">-></span>value <span class=\"token operator\">=</span> <span class=\"token number\">3</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Sauf qu'au lieu de créer une liste de trois maillons, on a créé trois listes d'un seul maillon : <code>maListe3</code> pointe sur un maillon isolé de valeur 3, <code>maListe2</code> sur un maillon isolé de valeur 2, et <code>maListe1</code> sur un maillon isolé de valeur 1, chacun ayant son champ <code>next</code> à <code>NULL</code>.\nCe qu'il manque, ce sont les liens entre les maillons successifs comme l'indique le schéma suivant.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Des maillons non reliés",
+      "displayLabel": "Figure 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_intro-2_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_intro-2_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_intro-2_d.svg\" alt=\"Trois listes de un maillon\" style=\"min-width: 25%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour lier un maillon à son suivant, on se sert du champ <code>next</code> de la structure.\nCe champ est un pointeur, stockant l'adresse du maillon suivant, qui lui-même stockera l'adresse du suivant, ...\nAinsi, il est possible de créer une liste de trois éléments de la manière suivante (mais pas propre du tout).</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">SListNode<span class=\"token operator\">*</span> liste <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>SListNode<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>SListNode<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">liste<span class=\"token operator\">-></span>value <span class=\"token operator\">=</span> <span class=\"token number\">1</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">liste<span class=\"token operator\">-></span>next <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>SListNode<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>SListNode<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">liste<span class=\"token operator\">-></span>next<span class=\"token operator\">-></span>value <span class=\"token operator\">=</span> <span class=\"token number\">2</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">liste<span class=\"token operator\">-></span>next<span class=\"token operator\">-></span>next <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>SListNode<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>SListNode<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">liste<span class=\"token operator\">-></span>next<span class=\"token operator\">-></span>next<span class=\"token operator\">-></span>value <span class=\"token operator\">=</span> <span class=\"token number\">3</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>De cette manière, les maillons sont correctement reliés : <code>liste</code> pointe sur un maillon de valeur 1, dont le <code>next</code> pointe sur un maillon de valeur 2, dont le <code>next</code> pointe à son tour sur un maillon de valeur 3 dont le <code>next</code> vaut <code>NULL</code>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Une liste chainée proprement",
+      "displayLabel": "Figure 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_intro-3_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_intro-3_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_intro-3_d.svg\" alt=\"Trois maillons chainés en une liste\" style=\"min-width: 40%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Analysons étape par étape le code et l'état de la mémoire.\nLa première ligne déclare une variable <code>liste</code>, qui est un pointeur sur <code>SListNode</code>, et donc stocke une adresse sur 8 octets.\nPour des raisons de lisibilité, on oublie les règles de padding des structures.\nEnsuite, on appelle la fonction <code>calloc</code>, qui réserve un espace mémoire suffisamment grand pour y caser notre structure, met tous les octets de la plage à zéro, et renvoie l'adresse qui sera stockée dans la variable <code>liste</code>.\nEnsuite, lorsque l'on exécute la deuxième ligne, la valeur à l'adresse <code>0x7A80</code> est altérée :</p>\n<p><strong>Pile</strong></p>\n<table>\n<thead>\n<tr>\n<th align=\"center\">Adresse</th>\n<th align=\"center\">Valeur</th>\n<th align=\"center\">Nom</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td align=\"center\">. . .</td>\n<td align=\"center\"></td>\n<td align=\"center\"></td>\n</tr>\n<tr>\n<td align=\"center\">0xD4A0 – 0xD4A7</td>\n<td align=\"center\">0x7A80</td>\n<td align=\"center\">liste</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Tas</strong></p>\n<table>\n<thead>\n<tr>\n<th align=\"center\">Adresse</th>\n<th align=\"center\">Valeur</th>\n<th align=\"center\">Nom</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td align=\"center\">0x7A80 – 0x7A87</td>\n<td align=\"center\">NULL</td>\n<td align=\"center\">.next</td>\n</tr>\n<tr>\n<td align=\"center\">0x7A88 – 0x7A8B</td>\n<td align=\"center\">1</td>\n<td align=\"center\">.value</td>\n</tr>\n<tr>\n<td align=\"center\">. . .</td>\n<td align=\"center\"></td>\n<td align=\"center\"></td>\n</tr>\n</tbody>\n</table>\n<p><em>(État de la mémoire après exécution de la ligne 2.)</em></p>\n<p>On répète le même processus sur les lignes 3 et 4 : on procède à une allocation dont on stocke le résultat, ici dans <code>liste->next</code>, pour ensuite altérer la valeur stockée dans la structure, via le champ <code>liste->next->value</code>.\nIdem pour les lignes 5 et 6, qui créent le troisième maillon :</p>\n<p><strong>Pile</strong></p>\n<table>\n<thead>\n<tr>\n<th align=\"center\">Adresse</th>\n<th align=\"center\">Valeur</th>\n<th align=\"center\">Nom</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td align=\"center\">. . .</td>\n<td align=\"center\"></td>\n<td align=\"center\"></td>\n</tr>\n<tr>\n<td align=\"center\">0xD4A0 – 0xD4A7</td>\n<td align=\"center\">0x7A80</td>\n<td align=\"center\">liste</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Tas</strong></p>\n<table>\n<thead>\n<tr>\n<th align=\"center\">Adresse</th>\n<th align=\"center\">Valeur</th>\n<th align=\"center\">Nom</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td align=\"center\">0x7A80 – 0x7A87</td>\n<td align=\"center\">0x7A8C</td>\n<td align=\"center\">.next</td>\n</tr>\n<tr>\n<td align=\"center\">0x7A88 – 0x7A8B</td>\n<td align=\"center\">1</td>\n<td align=\"center\">.value</td>\n</tr>\n<tr>\n<td align=\"center\">0x7A8C – 0x7A93</td>\n<td align=\"center\">0x7A94</td>\n<td align=\"center\">.next</td>\n</tr>\n<tr>\n<td align=\"center\">0x7A94 – 0x7A97</td>\n<td align=\"center\">2</td>\n<td align=\"center\">.value</td>\n</tr>\n<tr>\n<td align=\"center\">0x7A98 – 0x7A9F</td>\n<td align=\"center\">NULL</td>\n<td align=\"center\">.next</td>\n</tr>\n<tr>\n<td align=\"center\">0x7AA0 – 0x7AA3</td>\n<td align=\"center\">3</td>\n<td align=\"center\">.value</td>\n</tr>\n<tr>\n<td align=\"center\">. . .</td>\n<td align=\"center\"></td>\n<td align=\"center\"></td>\n</tr>\n</tbody>\n</table>\n<p><em>(État de la mémoire à la fin de l'exécution du code.)</em></p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Parcours itératif et récursif",
+      "slug": "parcours-itératif-et-récursif"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Parcourir une liste chaînée est plus complexe que parcourir un tableau. Dans une liste simplement chaînée classique, on ne peut pas (1) accéder à un élément directement, on est obligé de les parcourir un à un et (2) on ne peut pas revenir en arrière. Pour un parcours itératif, on se servira généralement d'un pointeur auxiliaire, nous servant de <strong>curseur</strong>, sans pour autant perdre la valeur de la tête de liste. Prenons l'exemple d'une simple fonction d'affichage sur une liste <code>liste</code> de trois éléments (7, 5, 12 dans cet ordre), l'idée est la suivante :</p>"
+    },
+    {
+      "kind": "ordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "on crée un pointeur temporaire <code>current</code> qui nous servira à parcourir la liste (pas de <code>calloc</code>). Ce pointeur sera initialisé avec l'adresse de la liste, et pointera sur la tête de celle-ci, c'est-à-dire le maillon de valeur 7 ;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Initialisation de current",
+      "displayLabel": "Figure 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_print-1_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_print-1_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_print-1_d.svg\" alt=\"Pointeur current sur premier maillon\" style=\"min-width: 40%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "2",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "on affiche la valeur du premier maillon (s'il existe) via l'instruction :"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"[%d]\"</span><span class=\"token punctuation\">,</span> current<span class=\"token operator\">-></span>value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "ordered-list",
+      "start": "3",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "on passe au maillon suivant, on veut donc que <code>current</code> contienne l'adresse du deuxième maillon (valeur 5). Cette adresse est disponible dans le champ <code>next</code> de la première structure, il suffit donc d'attribuer à <code>current</code> la valeur <code>current->next</code> à l'aide de l'instruction :"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">current <span class=\"token operator\">=</span> current<span class=\"token operator\">-></span>next<span class=\"token punctuation\">;</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Incrément de current",
+      "displayLabel": "Figure 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_print-2_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_print-2_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_print-2_d.svg\" alt=\"Pointeur current sur deuxième maillon\" style=\"min-width: 40%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "4",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "on répète les étapes 2 et 3 jusqu'à la fin de la liste, c'est-à-dire lorsque <code>current</code> vaudra <code>NULL</code>. À ce moment-là, on arrête le parcours. Ce cas intervient lorsque <code>current</code> pointe sur le dernier maillon de la liste (valeur 12), et prend ensuite la valeur contenue dans <code>current->next</code>, qui vaut alors <code>NULL</code>."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Fin du parcours",
+      "displayLabel": "Figure 6",
+      "number": "6",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_print-3_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_print-3_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_print-3_d.svg\" alt=\"Pointeur current sur NULL\" style=\"min-width: 42%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>La fonction <code>SList_print(SListNode *list);</code> respecte cette logique.\nOn commence par régler le pointeur courant <code>current</code> sur la tête de la liste.\nEnsuite, tant que <code>current</code> existe, et donc que sa valeur est différente de <code>NULL</code>, on affiche la valeur du maillon et on passe au suivant.\nEnfin, on sort de la boucle, et on affiche <code>\"NULL\"</code>.</p>\n<p><strong>Remarque :</strong> dans le cas présent, on peut se passer de <code>current</code> et utiliser directement le paramètre <code>list</code> comme pointeur auxiliaire, étant donné que l'on est dans une fonction et que <code>list</code> est en fait une copie du pointeur utilisé dans le <code>main</code>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Affichage [Moodle]",
+      "displayLabel": "Exercise 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Implémentez la fonction suivante permettant d'afficher l'ensemble des éléments d'une liste.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">SList_print</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La fonction prend en paramètre un pointeur <code>list</code> sur un nœud en tête de liste et affiche chaque élément de la liste entre crochets. Un tiret est ajouté entre deux éléments voisins. La fin de la liste est représentée à l'aide du texte <code>NULL</code>. Un exemple d'affichage correct est <code>[1]-[3]-[3]-[7]-NULL</code>.</p><p>Implémentez également la version récursive de cette fonction.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">SList_printRec</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La logique de code est la suivante et aucune instruction de boucle n'est autorisée :</p>"
+        },
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Si la liste en paramètre est vide, alors on affiche <code>NULL</code> ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Sinon, on affiche la valeur du premier maillon et on procède à l'affichage de la sous-liste partant du deuxième maillon à l'aide d'un appel récursif."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "html",
+          "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4627\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Accès [Moodle]",
+      "displayLabel": "Exercise 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>En vous inspirant du code qui permet l'affichage d'une liste, développez les deux fonctions suivantes.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">SList_getFirst</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">SList_getLast</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Ces deux fonctions prennent en paramètre un pointeur <code>list</code> sur un nœud de liste et retournent respectivement la valeur du premier nœud de liste et du dernier. La liste ne doit pas être modifiée, c'est-à-dire qu'aucun nœud ne doit être supprimé.</p><p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4627\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Opérateurs d'ajout",
+      "slug": "opérateurs-dajout"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Commençons par la création de fonctions permettant d'ajouter des éléments dans une liste.\nLes trois premières fonctions prendront deux paramètres : la liste dans laquelle ajouter l'élément, et une valeur à stocker dans le nouveau maillon.\nEnsuite, on créera une fonction permettant de <strong>concaténer</strong> deux listes, c'est-à-dire à coller la seconde à la première.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Ajout en tête",
+      "slug": "ajout-en-tête"
+    },
+    {
+      "kind": "html",
+      "html": "<p>L'ajout en tête consiste simplement à créer un nouveau maillon et l'insérer en début de liste.\nIl s'agit de la seule primitive d'ajout d'éléments autorisée pour les piles.\nOn essaiera de créer une fonction fonctionnant de la manière suivante, en partant d'une liste <code>liste</code> à trois éléments (7, 5, 12) à laquelle on ajoutera la valeur 19 :</p>"
+    },
+    {
+      "kind": "ordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "elle récupère deux paramètres : la liste à altérer <code>liste</code> (qui peut être vide, donc à <code>NULL</code>), et un entier <code>valeur</code> (dans notre exemple, 19) ;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Etat initial de la liste",
+      "displayLabel": "Figure 7",
+      "number": "7",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-1_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-1_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-1_d.svg\" alt=\"Pointeur sur le premier des trois maillons\" style=\"min-width: 40%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "2",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "elle crée un nouveau maillon via un <code>calloc</code> qu'elle stocke dans un pointeur <code>tete</code> — ce nouveau maillon, encore isolé de la liste, contient pour l'instant la valeur 0 et pointe sur <code>NULL</code> (mise à zéro par <code>calloc</code>) ;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Création du pointeur temporaire",
+      "displayLabel": "Figure 8",
+      "number": "8",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-2_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-2_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-2_d.svg\" alt=\"Pointeur temporaire à 0-NULL\" style=\"min-width: 40%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "3",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "on assigne <code>valeur</code> au champ <code>value</code> de notre nouveau maillon ;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Modification de valeur du pointeur temporaire",
+      "displayLabel": "Figure 9",
+      "number": "9",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-3_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-3_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-3_d.svg\" alt=\"Pointeur temporaire à 19-NULL\" style=\"min-width: 40%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "4",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "on spécifie au maillon que son suivant est <code>liste</code> en stockant l'adresse dans le champ <code>next</code> de celui-ci : <code>tete</code> devient le premier maillon de la liste, l'ancien premier maillon devient le deuxième, ... ;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Modification du suivant du pointeur temporaire",
+      "displayLabel": "Figure 10",
+      "number": "10",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-4_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-4_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-4_d.svg\" alt=\"Pointeur temporaire pointe sur la tête de liste\" style=\"min-width: 40%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "5",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "enfin, on renvoie la nouvelle adresse de la liste, c'est-à-dire <code>tete</code>, qui pointe désormais sur la liste complète."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Fin de l&#39;insertion",
+      "displayLabel": "Figure 11",
+      "number": "11",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-5_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-5_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-first-5_d.svg\" alt=\"Renvoi du pointeur temporaire\" style=\"min-width: 40%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Si l'ordre des éléments de la liste n'est pas important, alors il s'agit de l'opérateur à privilégier.\nEn effet, la complexité de cette fonction est en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span>, c'est-à-dire que la taille de la liste n'impacte pas le temps d'exécution de cette procédure.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Ajout en fin",
+      "slug": "ajout-en-fin"
+    },
+    {
+      "kind": "html",
+      "html": "<p>L'ajout en fin consiste simplement à créer un nouveau maillon et l'insérer en fin de liste. Il s'agit de la seule primitive d'ajout d'éléments autorisée pour les files. Cette fonction est plus complexe que la précédente, car plusieurs cas sont à prendre en compte. Commençons par le cas général, en partant d'une liste <code>liste</code> à deux éléments (5, 12) à laquelle on ajoutera la valeur 7 en queue :</p>"
+    },
+    {
+      "kind": "ordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "elle récupère deux paramètres : la liste à altérer <code>liste</code> (qui peut être vide, donc à <code>NULL</code>), et un entier <code>valeur</code> (dans notre exemple 7) ;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Etat initial de la liste",
+      "displayLabel": "Figure 12",
+      "number": "12",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-1_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-1_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-1_d.svg\" alt=\"Pointeur sur le premier des deux maillons\" style=\"min-width: 30%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "2",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "elle crée un pointeur temporaire <code>current</code> qui nous servira à parcourir la liste (pas de <code>calloc</code> ici, on ne crée pas encore le nouveau maillon). Ce pointeur sera initialisé avec l'adresse de la liste, et pointera sur la tête de celle-ci ;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Création du pointeur temporaire",
+      "displayLabel": "Figure 13",
+      "number": "13",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-2_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-2_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-2_d.svg\" alt=\"Pointeur temporaire sur la tête de liste\" style=\"min-width: 30%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "3",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "tant qu'on n'est pas arrivé à la fin de la liste, on « décale » notre pointeur. Pour cela, on assigne simplement à <code>current</code> la valeur de son suivant <code>current->next</code>. On s'arrête sur le dernier maillon (valeur 12), c'est-à-dire lorsque <code>current->next</code> vaut <code>NULL</code> ;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Déplacement du pointeur temporaire",
+      "displayLabel": "Figure 14",
+      "number": "14",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-3_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-3_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-3_d.svg\" alt=\"Pointeur temporaire sur le dernier maillon\" style=\"min-width: 30%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "4",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "une fois arrivé au dernier maillon, on en crée un nouveau via le pointeur <code>current->next</code>, <code>current</code> restant positionné sur le maillon de valeur 12 ;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Ajout d&#39;un maillon",
+      "displayLabel": "Figure 15",
+      "number": "15",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-4_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-4_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch3_add-last-4_d.svg\" alt=\"Nouveau maillon après current\" style=\"min-width: 40%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "5",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "enfin, on renvoie l'adresse de la tête de la liste, contenue dans <code>liste</code>. Cela peut sembler inutile, mais le renvoi de la tête de liste sert à gérer le cas particulier détaillé ci-dessous."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Si cette procédure fonctionne dans la plupart des cas, il faut également prendre en compte le scénario dans lequel la liste en entrée est vide (et donc <code>NULL</code>). Pour cela, au commencement de la fonction, si la liste est <code>NULL</code>, alors on crée un maillon que l'on renvoie directement. Ce maillon représente notre nouvelle liste, qui passe de zéro à un élément.</p>\n<p>L'ajout en fin implique de parcourir l'ensemble des éléments de la liste pour trouver le dernier maillon.\nLa complexité de cette opération, dans le cas des listes simplement chaînées, est donc linéaire.\nOn réservera donc principalement cette implémentation lors de l'utilisation de file.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Accès [Moodle]",
+      "displayLabel": "Exercise 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>En vous inspirant du code qui permet l'affichage d'une liste, développez les deux fonctions suivantes.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">SList_getFirst</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">SList_getLast</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Ces deux fonctions prennent en paramètre un pointeur <code>list</code> sur un nœud de liste et retournent respectivement la valeur du premier nœud de liste et du dernier. La liste ne doit pas être modifiée, c'est-à-dire qu'aucun nœud ne doit être supprimé.</p><p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4627\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Suppression d'éléments",
+      "slug": "suppression-déléments"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Destruction d'une liste",
+      "slug": "destruction-dune-liste"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Chaque élément de la liste est créé dynamiquement (non, pas question de faire cette blague). Il faut donc, une fois la liste inutile, détruire proprement chaque élément. En fait, il y aura autant d'appels à <code>free</code> que d'appels à <code>calloc</code>. Voici une implémentation itérative :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">List_destroy</span><span class=\"token punctuation\">(</span>SListNode<span class=\"token operator\">*</span> list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">while</span> <span class=\"token punctuation\">(</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t\tSListNode<span class=\"token operator\">*</span> temp <span class=\"token operator\">=</span> list<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t\tlist <span class=\"token operator\">=</span> list<span class=\"token operator\">-></span>next<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t\t<span class=\"token function\">free</span><span class=\"token punctuation\">(</span>temp<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Au début de la fonction, <code>list</code> contient l'adresse du premier maillon.\nTant que cette adresse est différente de <code>NULL</code>, on procède à (1) l'enregistrement de l'adresse courante dans une variable temporaire <code>temp</code>, (2) le passage au maillon suivant sur le pointeur principal <code>liste</code> et (3) la désallocation du maillon pointé par <code>temp</code>.\nAinsi, on détruit le premier maillon, puis le deuxième, ..., jusqu'à ce que la liste soit vide.\nAttention : le pointeur dans le <code>main</code> n'est pas altéré, il ne vaudra pas <code>NULL</code>.\nIl pointera toujours vers la même zone mémoire, qui contenait le premier maillon, sauf que maintenant on n'a plus le droit d'y accéder.\nIl est donc conseillé de le mettre à <code>NULL</code> une fois la libération complète de la liste effectuée.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Prélèvement en tête",
+      "slug": "prélèvement-en-tête"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Nous avons vu précédemment que lors de l'insertion d'un élément dans une liste, il était nécessaire de retourner un pointeur sur la nouvelle liste.\nLe cas du prélèvement est sensiblement identique.\nSi le maillon prélevé est le dernier d'une liste possédant d'autres maillons, il n'existe pas de problème particulier.\nSi en revanche on souhaite prélever le premier maillon ou le seul maillon de la liste, l'adresse de la tête de liste va changer.\nDans ce cas, il est obligatoire de retourner la nouvelle adresse (en valeur de retour ou par adresse).</p>\n<p>Supposons que la fonction de prélèvement que nous souhaitons coder prenne en paramètre un pointeur <code>list</code> sur le premier nœud d'une liste.\nLa première étape du prélèvement consiste donc à maintenir un pointeur sur la tête de la future liste.\nPour cela, on utilise un pointeur temporaire, par exemple nommé <code>newHead</code>, qui pointe sur le suivant de l'actuelle tête de liste en utilisant l'instruction suivante.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">SListNode <span class=\"token operator\">*</span>newHead <span class=\"token operator\">=</span> list<span class=\"token operator\">-></span>next<span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Il faut bien évidemment prendre garde au cas particulier de la liste vide pour éviter les erreurs de segmentation.\nIl est maintenant possible de libérer l'actuelle tête de liste à l'aide d'un <code>free</code> sur le pointeur <code>list</code>.\nCela libère bien uniquement le premier maillon, le reste de la liste étant maintenant relié au pointeur <code>newHead</code>.\nIl ne reste finalement plus qu'à retourner le pointeur <code>newHead</code> pour conclure, la valeur du nœud supprimé pouvant être retournée par adresse.</p>\n<p>Le prélèvement en queue nécessite lui aussi un pointeur temporaire sur l'avant-dernier maillon de la liste.\nEn effet, il sera nécessaire de mettre le champ suivant de ce pointeur à <code>NULL</code> une fois que le dernier nœud de la liste sera supprimé.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Prélèvement [Moodle]",
+      "displayLabel": "Exercise 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Implémentez les deux fonctions présentées ci-dessous, prenant en paramètres un pointeur <code>list</code> sur la tête de liste ainsi qu'un pointeur sur entier <code>res</code>.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">SListNode <span class=\"token operator\">*</span><span class=\"token function\">SList_popFirst</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> <span class=\"token operator\">*</span>res<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">SListNode <span class=\"token operator\">*</span><span class=\"token function\">SList_popLast</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> <span class=\"token operator\">*</span>res<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Ces fonctions doivent réaliser le prélèvement du nœud en tête de liste (respectivement en queue) et retourner sa valeur par adresse dans le paramètre <code>res</code>. Afin que les modifications de la liste soient prises en compte, en particulier dans le cas où la liste est finalement vide, chacune de ces fonctions doit retourner un pointeur sur la tête de liste ainsi modifiée.</p><p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4627\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Suppression [Moodle]",
+      "displayLabel": "Exercise 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Implémentez la fonction présentée ci-dessous, prenant en paramètre un pointeur <code>list</code> sur la tête de liste et libérant la mémoire allouée par l'ensemble des maillons de la liste. Cette implémentation doit être récursive.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">SList_destroyRec</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4627\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Les différents types de listes",
+      "slug": "les-différents-types-de-listes"
+    },
+    {
+      "kind": "html",
+      "html": "<p>En fonction de l'application, on peut restreindre une liste chaînée à :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "une pile : on ne peut qu'ajouter en tête et supprimer le premier élément. On est sur une logique LIFO (<em>Last In First Out</em>) ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "une file : on ne peut qu'ajouter en fin de liste et supprimer le premier élément. On est sur une logique FIFO (<em>First In First Out</em>) ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "une liste triée : l'ajout des éléments se fait toujours de manière triée, donc via un opérateur spécifique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>On peut également définir une liste <strong>doublement chaînée</strong>, dans laquelle un maillon possède un pointeur vers le suivant mais également vers le précédent. On pourra modifier notre structure de la manière suivante :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">sDSListNode</span><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">int</span> value<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">sDSListNode</span><span class=\"token operator\">*</span> previous<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">sDSListNode</span><span class=\"token operator\">*</span> next<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> DSListNode<span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Le premier maillon de la liste voit son champ <code>previous</code> à <code>NULL</code>, alors que le dernier maillon voit son champ <code>next</code> à <code>NULL</code>. Ainsi, lors du parcours, on pourra facilement : (1) revenir en arrière et (2) obtenir l'adresse du maillon précédent afin de faciliter une insertion ou une suppression.\nCette implémentation sera plus étudiée dans le prochain chapitre.</p>\n<p>Enfin, il est possible d'utiliser les listes simplement ou doublement chaînées pour mettre en place des listes <strong>circulaires</strong>.\nIl suffit pour cela de définir le suivant du dernier maillon comme étant le premier maillon et de définir le précédent du premier maillon comme étant le dernier maillon (dans le cas d'une liste doublement chaînée).\nLe fait même de parler de « premier » et « dernier » maillon n'a alors plus forcément de sens, car on peut considérer que la liste n'a ni début ni fin, et que notre pointeur principal se contentera de pointer vers un maillon quelconque de la liste.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Analyse de complexité",
+      "displayLabel": "Exercise 6",
+      "number": "6",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Soit <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span> le nombre d'éléments présents dans une liste simplement chaînée. Donnez les complexités en nombre d'opérations des fonctions suivantes. Justifiez à l'aide d'un texte court.</p>"
+        },
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Accès à l'élément en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>i</mi></mrow><annotation encoding=\"application/x-tex\">i</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6595em;\"></span><span class=\"mord mathnormal\">i</span></span></span></span>-ème position."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Compter le nombre d'éléments."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Vérifier si un entier est dans la liste."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Suppression des doublons."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Concaténation de deux listes."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Nombre d'occurrences d'un entier."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Insertion triée de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span> éléments dans une liste initialement vide."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Recherche d'un élément dans une liste triée de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span> éléments."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "correction",
+      "displayLabel": "Correction",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": true,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span> en moyenne : il est nécessaire de parcourir les éléments un par un."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span> : il faut parcourir tous les éléments."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span> en moyenne : il faut parcourir tous les éléments dans le pire des cas."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n^2)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1.0641em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\"><span class=\"mord mathnormal\">n</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mclose\">)</span></span></span></span> en moyenne : pour chaque élément, on doit reparcourir la liste pour vérifier s'il existe. <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n \\log(n))</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">))</span></span></span></span> si on enregistre tous les éléments présents dans un tableau trié. <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span> si on utilise un ensemble (<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>log</mi><mo>⁡</mo></mrow><annotation encoding=\"application/x-tex\">\\log</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8889em;vertical-align:-0.1944em;\"></span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span></span></span></span> pour le stockage et la lecture de l'ensemble, mais <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span> pour le parcours de la liste)."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><msub><mi>n</mi><mn>1</mn></msub><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n_1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\"><span class=\"mord mathnormal\">n</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">1</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mclose\">)</span></span></span></span> avec <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>n</mi><mn>1</mn></msub></mrow><annotation encoding=\"application/x-tex\">n_1</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.5806em;vertical-align:-0.15em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">n</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">1</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span></span></span></span> la taille de la première liste. Inutile de parcourir la seconde liste, mais il faut se placer sur le dernier élément de la première."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span> : il faut parcourir tous les éléments."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n^2)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1.0641em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\"><span class=\"mord mathnormal\">n</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mclose\">)</span></span></span></span> : il s'agit d'un tri par insertion sans décalage des éléments. Mais pour chaque élément, il faut en moyenne parcourir la moitié des éléments de la liste pour l'insérer en bonne position."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span> : même si la liste est triée, une recherche dichotomique est impossible car l'accès à l'élément <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>i</mi></mrow><annotation encoding=\"application/x-tex\">i</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6595em;\"></span><span class=\"mord mathnormal\">i</span></span></span></span> n'existe pas, ou n'est pas en temps constant."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Introduction",
+      "id": "introduction"
+    },
+    {
+      "depth": 2,
+      "text": "Parcours itératif et récursif",
+      "id": "parcours-itératif-et-récursif"
+    },
+    {
+      "depth": 1,
+      "text": "Opérateurs d'ajout",
+      "id": "opérateurs-dajout"
+    },
+    {
+      "depth": 2,
+      "text": "Ajout en tête",
+      "id": "ajout-en-tête"
+    },
+    {
+      "depth": 2,
+      "text": "Ajout en fin",
+      "id": "ajout-en-fin"
+    },
+    {
+      "depth": 1,
+      "text": "Suppression d'éléments",
+      "id": "suppression-déléments"
+    },
+    {
+      "depth": 2,
+      "text": "Destruction d'une liste",
+      "id": "destruction-dune-liste"
+    },
+    {
+      "depth": 2,
+      "text": "Prélèvement en tête",
+      "id": "prélèvement-en-tête"
+    },
+    {
+      "depth": 1,
+      "text": "Les différents types de listes",
+      "id": "les-différents-types-de-listes"
+    }
+  ],
+  "figureModules": []
+}

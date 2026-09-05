@@ -1,0 +1,809 @@
+{
+  "sourcePath": "03_programming/ch1_tp.md",
+  "title": "Application",
+  "navTitle": "Application",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Poubelles",
+      "slug": "poubelles"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Ce sujet provient de l'événement <span class=\"md-emph\">Meilleur Dev de France 2023 - Round 4</span>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sujet",
+      "slug": "sujet"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Il est 22h et, après une soirée de folie, enfin votre pendaison de crémaillère est terminée ! Malheureusement, vos invités ont laissé traîner des bouteilles de jus d'Abricot, de Banane et de Carotte et évidemment c'est à vous de tout jeter !</p>\n<p>Vous arrivez devant le local poubelle, et son système de recyclage révolutionnaire : il y a deux poubelles à votre disposition, la bleue et la rouge. La poubelle bleue peut recevoir des bouteilles de jus d'Abricot et de Banane, alors que la rouge peut recevoir des bouteilles de jus de Banane et de Carotte.</p>\n<p>Chaque poubelle peut contenir autant de bouteilles, et vous avez minutieusement compté combien vous possédez de bouteilles de chaque type : comment assigner vos bouteilles vides à chaque poubelle ?</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Entrées",
+      "slug": "entrées"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ligne 1 : un entier V (<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo>≤</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding=\"application/x-tex\">\\leq 10^9</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.7719em;vertical-align:-0.136em;\"></span><span class=\"mrel\">≤</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\">1</span><span class=\"mord\"><span class=\"mord\">0</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">9</span></span></span></span></span></span></span></span></span></span></span>), le nombre de bouteilles que peut contenir chaque poubelle."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ligne 2 : trois entiers A, B et C (<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo>≤</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding=\"application/x-tex\">\\leq 10^9</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.7719em;vertical-align:-0.136em;\"></span><span class=\"mrel\">≤</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\">1</span><span class=\"mord\"><span class=\"mord\">0</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">9</span></span></span></span></span></span></span></span></span></span></span>) correspondant aux nombres respectifs de bouteilles de jus d'Abricot, de Banane et de Carotte que vous devez jeter."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sortie",
+      "slug": "sortie"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Quatre entiers séparés par des espaces : les deux premiers correspondent respectivement aux nombres de bouteilles de jus d'Abricot et de Banane (dans cet ordre) que vous désirez jeter dans la poubelle bleue, les deux derniers correspondent respectivement aux nombres de bouteilles de jus de Banane et de Carotte (dans cet ordre) que vous désirez jeter dans la poubelle rouge.</p>\n<p>On vous garantit qu'il y a toujours une solution possible. Si plusieurs solutions existent, il vous suffit de renvoyer n'importe laquelle.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "titleHtml": "Exemple",
+      "displayLabel": "Example 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour l'entrée</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">6\n</span><span class=\"code-line\">4 6 2\n</span></code></pre><p>Une réponse possible est :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">4 2 4 2\n</span></code></pre><p>En effet, si vous disposez de 4 bouteilles de jus d'Abricot, 6 bouteilles de jus de Banane et 2 de jus de Carotte, vous pouvez placer vos 4 bouteilles de jus d'Abricot ainsi que 2 bouteilles de jus de Banane dans la poubelle bleue, puis les 4 bouteilles restantes de jus de Banane avec les 2 bouteilles de jus de Carotte dans la poubelle rouge.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4599\">Lien Moodle.</a></p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Pizzeria",
+      "slug": "pizzeria"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Ce sujet provient de l'événement <span class=\"md-emph\">Meilleur Dev de France 2023 - Round 1</span>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sujet",
+      "slug": "sujet-1"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Ca y est le grand jour est arrivé, aujourd'hui vous ouvrez votre pizzeria !\nTout est prêt, vos premiers clients arrivent.\nMais horreur, vous vous rendez compte que vous avez oublié le plus important : vous n'avez pas fait les courses des ingrédients !\nVite, vous regardez votre menu et écrivez votre liste de courses : à partir des recettes de votre menu, écrivez un programme qui renvoie le nombre d'ingrédients différents à acheter.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Entrées",
+      "slug": "entrées-1"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ligne 1 : un entier N compris entre 1 et 20, représentant le nombre de recettes à la carte."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "N lignes suivantes : une recette par ligne. Chaque recette est composée de 3 ingrédients séparés par des espaces. Chaque ingrédient est un mot composé de lettres minuscules."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sortie",
+      "slug": "sortie-1"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le nombre d'ingrédients différents dans toutes les recettes.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "titleHtml": "Exemple",
+      "displayLabel": "Example 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour l'entrée</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">3\n</span><span class=\"code-line\">tomato mozzarella ham\n</span><span class=\"code-line\">tomato pineapple ham\n</span><span class=\"code-line\">cream pepper mushroom\n</span></code></pre><p>Votre programme doit renvoyer :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">7\n</span></code></pre><p>En effet, il y a 7 ingrédients différents dans les 3 recettes : tomato, mozzarella, ham, pineapple, cream, pepper et mushroom.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4600\">Lien Moodle.</a></p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Dérèglement climatique",
+      "slug": "dérèglement-climatique"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Ce sujet provient de l'événement <span class=\"md-emph\">Tech Challenger 2022 - Qualif 2-2</span>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sujet",
+      "slug": "sujet-2"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Après avoir brillamment géré la charge du réseau électrique, la Brigade vous envoie sur une des missions les plus importantes pour l'Ordre de l'Innovation : le dérèglement climatique.</p>\n<p>Pour mettre en évidence les écarts à la normale, vous devez effectuer un traitement simple basé sur les médianes successives d'une série de températures.</p>\n<p>En partant du début de la liste, donnez la température médiane du premier mois, des 3 premiers mois, des 5 premiers mois, etc.</p>\n<p>Pour rappel, la médiane d'une série est la valeur telle que l'on y trouve autant de valeurs inférieures que de valeurs supérieures. Comme nous calculons uniquement des médianes sur des sous-listes de taille impaire, la médiane sera toujours un élément de la sous-liste.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Entrées",
+      "slug": "entrées-2"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ligne 1 : un entier <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">N</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.109em;\">N</span></span></span></span>, le nombre de mesures de température disponibles."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ligne 2 : <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">N</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.109em;\">N</span></span></span></span> entiers séparés par des espaces, les mesures mensuelles de température."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sortie",
+      "slug": "sortie-2"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les médianes successives de la première mesure, puis des 3 premières mesures, puis des 5 premières, et ainsi de suite jusqu'à la dernière mesure.\nAffichez tous les nombres sur une seule ligne, séparés par des espaces.</p>\n<p>Il y a entre 1 et 1000 mesures de températures disponibles.\nChaque température est comprise entre -273 et 10 000.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "titleHtml": "Exemple",
+      "displayLabel": "Example 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour l'entrée</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">7\n</span><span class=\"code-line\">2 -12 -4 9 11 13 17\n</span></code></pre><p>La réponse est :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">2 -4 2 9\n</span></code></pre><p>La médiane d'une seule mesure, ici 2, est égale à cette mesure. Le premier résultat sera donc 2.\nLa médiane sur les trois premiers mois [2, -12, -4] est -4.\nLa médiane de [2, -12, -4, 9, 11] est 2 à nouveau.\nLa médiane de [2, -12, -4, 9, 11, 13, 17] vaut 9.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4601\">Lien Moodle.</a></p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Patinage artistique",
+      "slug": "patinage-artistique"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Ce sujet provient de l'événement <span class=\"md-emph\">BPCE par équipe 2023</span>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sujet",
+      "slug": "sujet-3"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Cette année, l'épreuve de patinage artistique est accueillie par l'Inde, dont le célèbre lac de Loktak est devenu complètement gelé avec le refroidissement du climat.</p>\n<p>Les règles de notation du patinage n'ont en revanche pas changé : chaque juge donne une note technique entre 0 et 10.\nParmi les 12 juges, seuls 9 sont retenus aléatoirement par un ordinateur, et c'est la moyenne de leurs 9 notes qui donnera le score final de la performance du patineur.</p>\n<p>Afin de créer une compétition plus juste, vous souhaitez produire un modèle calculant l'impact de la malchance au tirage aléatoire sur la note potentielle d'une performance.</p>\n<p>En vous basant sur la note donnée par chacun des 12 juges, donnez la note minimale, moyenne, médiane et maximale qu'il sera possible d'obtenir après le tirage aléatoire.\nLe procédé est supposé uniforme, chaque tirage de 9 juges est donc équiprobable.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Entrées",
+      "slug": "entrées-3"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Lignes 1 à 12 : Les notes de chaque juge, représentées sous forme de nombre flottant compris entre 0 et 10, avec un chiffre après la virgule.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sortie",
+      "slug": "sortie-3"
+    },
+    {
+      "kind": "html",
+      "html": "<p>4 lignes contenant chacune un nombre : respectivement la note minimale, moyenne, médiane et maximale qu'il est possible d'obtenir.\nUne tolérance de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow><annotation encoding=\"application/x-tex\">10^{-3}</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\">1</span><span class=\"mord\"><span class=\"mord\">0</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\"><span class=\"mord mtight\">−</span><span class=\"mord mtight\">3</span></span></span></span></span></span></span></span></span></span></span></span> sera appliquée sur chaque résultat.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "titleHtml": "Exemple",
+      "displayLabel": "Example 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour l'entrée</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">6.7\n</span><span class=\"code-line\">4.2\n</span><span class=\"code-line\">4.3\n</span><span class=\"code-line\">7.0\n</span><span class=\"code-line\">0.0\n</span><span class=\"code-line\">2.8\n</span><span class=\"code-line\">3.9\n</span><span class=\"code-line\">1.3\n</span><span class=\"code-line\">6.9\n</span><span class=\"code-line\">6.0\n</span><span class=\"code-line\">7.3\n</span><span class=\"code-line\">3.2\n</span></code></pre><p>La réponse attendue est :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">3.6\n</span><span class=\"code-line\">4.4666\n</span><span class=\"code-line\">4.4333\n</span><span class=\"code-line\">5.5\n</span></code></pre><p>Explication :</p>"
+        },
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "La pire note possible est de 3.6, obtenue en prenant la moyenne des 9 juges suivants : 6.7, 4.2, 4.3, 0.0, 2.8, 3.9, 1.3, 6.0, 3.2"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Parmi toutes les notes possibles, la moyenne d'entre elles vaut 4.4666... et leur médiane est 4.4333..."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "La meilleure note possible est de 5.5, obtenue en prenant la moyenne des 9 juges suivants : 6.7, 4.2, 4.3, 7.0, 3.9, 6.9, 6.0, 7.3, 3.2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4602\">Lien Moodle.</a></p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Village sous-marin",
+      "slug": "village-sous-marin"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Ce sujet provient de l'événement <span class=\"md-emph\">Tech Challenger 2022 - Qualif 2-3</span>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sujet",
+      "slug": "sujet-4"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Vous vous faites vite remarquer au sein de la Brigade. Depuis vos exploits sur le dérèglement climatique, vous avez été un des éléments les plus prometteurs de l'Ordre. Mais durant vos missions, vous avez remarqué qu'un méta-humain très puissant va plus vite que vous, et anticipe encore mieux que la Brigade certaines catastrophes...</p>\n<p>Vous n'en parlez pas encore à votre direction, mais vous lancez vos recherches sur ce mystérieux bienfaiteur inconnu de la Brigade. Dans votre quête, vous remarquez un motif étrange : il semblerait que celui-ci se déplace en minimisant à tout prix son empreinte carbone.</p>\n<p>Pour commencer vos recherches, vous décidez de vous concentrer uniquement sur les trajets de la nouvelle ville sous-marine, projet phare pour évaluer la possibilité de construire, plus tard, une ville dans l'espace.</p>\n<p>Dans ce village sous-marin du futur, chaque maison est munie de coordonnées <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>x</mi><mo separator=\"true\">,</mo><mi>y</mi><mo separator=\"true\">,</mo><mi>z</mi></mrow><annotation encoding=\"application/x-tex\">x,y,z</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.625em;vertical-align:-0.1944em;\"></span><span class=\"mord mathnormal\">x</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span></span></span></span> en 3 dimensions. Pour se déplacer d'une maison à l'autre, on utilise un transport économe qui suit un réseau de lignes droites. Ainsi la distance entre deux points <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator=\"true\">,</mo><msub><mi>y</mi><mn>1</mn></msub><mo separator=\"true\">,</mo><msub><mi>z</mi><mn>1</mn></msub><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(x_1, y_1, z_1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\"><span class=\"mord mathnormal\">x</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">1</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">1</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.044em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">1</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mclose\">)</span></span></span></span> et <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator=\"true\">,</mo><msub><mi>y</mi><mn>2</mn></msub><mo separator=\"true\">,</mo><msub><mi>z</mi><mn>2</mn></msub><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(x_2, y_2, z_2)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\"><span class=\"mord mathnormal\">x</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.044em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mclose\">)</span></span></span></span> est définie par la formule suivante (somme des valeurs absolues des différences de chaque coordonnée) :</p>\n<span class=\"katex-display\"><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>∣</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo>∣</mo><mo>+</mo><mo>∣</mo><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub><mo>∣</mo><mo>+</mo><mo>∣</mo><msub><mi>z</mi><mn>2</mn></msub><mo>−</mo><msub><mi>z</mi><mn>1</mn></msub><mo>∣</mo><mi mathvariant=\"normal\">.</mi></mrow><annotation encoding=\"application/x-tex\">\\mid x_2-x_1 \\mid + \\mid y_2-y_1 \\mid + \\mid z_2-z_1 \\mid.</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mrel\">∣</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7333em;vertical-align:-0.15em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">x</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">x</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">1</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∣</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord\">+</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∣</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7778em;vertical-align:-0.1944em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">1</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∣</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord\">+</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∣</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7333em;vertical-align:-0.15em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.044em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.044em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">1</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∣</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.1056em;\"></span><span class=\"mord\">.</span></span></span></span></span>\n<p>Trouvez un parcours passant par les 8 maisons du village et revenant à son point de départ qui soit le plus court possible.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Entrées",
+      "slug": "entrées-4"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Lignes 1 à 8 : 3 entiers <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>x</mi></mrow><annotation encoding=\"application/x-tex\">x</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">x</span></span></span></span>, <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>y</mi></mrow><annotation encoding=\"application/x-tex\">y</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.625em;vertical-align:-0.1944em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span></span></span></span> et <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>z</mi></mrow><annotation encoding=\"application/x-tex\">z</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span></span></span></span> (entre 0 et 10000) représentant les coordonnées de chaque maison. La ligne 1 correspond à la maison 0, jusqu'à la ligne 8 qui correspond à la maison 7.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sortie",
+      "slug": "sortie-4"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Une suite de 8 entiers (de 0 à 7) correspondant à votre ordre de parcours des maisons.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "titleHtml": "Exemple",
+      "displayLabel": "Example 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour l'entrée</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">5 7 5\n</span><span class=\"code-line\">0 8 0\n</span><span class=\"code-line\">5 1 8\n</span><span class=\"code-line\">2 4 4\n</span><span class=\"code-line\">3 0 8\n</span><span class=\"code-line\">1 8 6\n</span><span class=\"code-line\">5 6 3\n</span><span class=\"code-line\">7 1 2\n</span></code></pre><p>Une solution est :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">0 5 1 3 4 2 7 6\n</span></code></pre><p>Ici la distance totale de la meilleure solution est 54 = 6 (0 à 5) + 7 (5 à 1) + 10 (1 à 3) + 9 (3 à 4) + 3 (4 à 2) + 8 (2 à 7) + 8 (7 à 6) + 3 (6 à 0).</p><p>Notons qu'il existe toujours plusieurs solutions possibles (puisque le parcours est une boucle), n'importe laquelle sera acceptée.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4603\">Lien Moodle.</a></p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Code secret",
+      "slug": "code-secret"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Ce sujet provient de l'événement <span class=\"md-emph\">La Poste 2021 - Round 3</span>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sujet",
+      "slug": "sujet-5"
+    },
+    {
+      "kind": "html",
+      "html": "<p>A l'autre bout du portail, vous vous rendez vite compte que vous n'êtes toujours pas en 2021... mais dans un couloir métallique avec des hublots. En vous rapprochant de l'un d'eux, vous réalisez que vous êtes dans l'espace près d'une étoile double, vous semblez être dans le futur.</p>\n<p>Vous croisez alors un petit nain vert, aux oreilles pointues, armé d'une sorte de grande lame de lumière. Il se tourne vers vous, visiblement pressé, et vous dit \"Prendre la machine temporelle tu dois !\" en faisant des signes vers une grande porte. Quelle étrange manière de s'exprimer !</p>\n<p>Derrière la porte, vous trouvez effectivement une grande machine qui semble pouvoir vous ramener en 2021. Problème : il vous manque le code. En fouillant le registre, vous trouvez le protocole à suivre : pour faire fonctionner la machine vous devez saisir une séquence de symboles <code>_</code>, <code>|</code> correspondant à un code composé de chiffres.</p>\n<p>Chaque chiffre de 0 à 9 est représenté par une séquence de 3 ou 4 symboles parmi <code>_</code> et <code>|</code>.</p>\n<p>Vous ne connaissez pas le code, mais vous arrivez à trouver, dans la pièce, deux codes différents correspondant à des séquences de 10 chiffres comportant chaque chiffre de 0 à 9 une seule fois. Cela devrait être suffisant pour comprendre le mécanisme de traduction et composer votre propre code, nécessaire à votre retour.</p>\n<p>Vous trouvez aussi votre propre suite de chiffres dans la base de données, il ne vous reste donc qu'à faire la traduction en une séquence de symboles.</p>\n<p>Indice : un seul code valide est possible pour chaque entrée.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Entrées",
+      "slug": "entrées-5"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ligne 1 : une chaîne de caractères de longueur 10 comportant tous les chiffres de 0 à 9, un espace, et une chaîne de caractères de longueur 30 à 40 composée uniquement des symboles <code>_</code> et <code>|</code>. C'est la première séquence de chiffres et son code associé."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ligne 2 : même convention que la ligne 1. C'est la seconde séquence de chiffres et son code associé."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ligne 3 : une chaîne de caractères de longueur 12 à 16 composée de chiffres de 0 à 9. C'est votre propre séquence de chiffres dont vous devez trouver le code."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sortie",
+      "slug": "sortie-5"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le code de la chaîne de la ligne 3, écrit sur une seule ligne.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "titleHtml": "Exemple",
+      "displayLabel": "Example 6",
+      "number": "6",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour l'entrée</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">4573628901 _||_|___|_|_|____|||_||______||||__\n</span><span class=\"code-line\">0754296318 __||_|_||___||_|||________|_||___||\n</span><span class=\"code-line\">585571121004456\n</span></code></pre><p>Votre programme doit renvoyer :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">|___|||__|___|_|||__||__|||||____||__||_||__||_|_____\n</span></code></pre><p>Car le seul code possible (sachant qu'on utilise toujours 3 ou 4 caractères pour chaque chiffre) pour les 2 premières lignes est d'associer à chaque chiffre le code suivant :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">0 __||\n</span><span class=\"code-line\">1 ||__\n</span><span class=\"code-line\">2 |||\n</span><span class=\"code-line\">3 _|_\n</span><span class=\"code-line\">4 _||_\n</span><span class=\"code-line\">5 |__\n</span><span class=\"code-line\">6 ___\n</span><span class=\"code-line\">7 _|_|\n</span><span class=\"code-line\">8 _||\n</span><span class=\"code-line\">9 ____\n</span></code></pre><p>On en déduit alors que, pour votre propre numéro <code>585571121004456</code>, il faut obtenir la solution proposée.</p>"
+        },
+        {
+          "kind": "block",
+          "blockType": "figure",
+          "titleHtml": "Schéma du codage",
+          "displayLabel": "Figure 1",
+          "number": "1",
+          "options": {
+            "numbered": true,
+            "collapsible": true,
+            "collapsed": false,
+            "style": "figure"
+          },
+          "content": [
+            {
+              "kind": "html",
+              "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/exercises_1_2021_LaPoste_3_code.png\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/exercises_1_2021_LaPoste_3_code.png\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/exercises_1_2021_LaPoste_3_code.png\" alt=\"Détail du codage\" style=\"min-width: 100%;\" loading=\"lazy\" />"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4604\">Lien Moodle.</a></p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Poubelles",
+      "id": "poubelles"
+    },
+    {
+      "depth": 2,
+      "text": "Sujet",
+      "id": "sujet"
+    },
+    {
+      "depth": 2,
+      "text": "Entrées",
+      "id": "entrées"
+    },
+    {
+      "depth": 2,
+      "text": "Sortie",
+      "id": "sortie"
+    },
+    {
+      "depth": 1,
+      "text": "Pizzeria",
+      "id": "pizzeria"
+    },
+    {
+      "depth": 2,
+      "text": "Sujet",
+      "id": "sujet-1"
+    },
+    {
+      "depth": 2,
+      "text": "Entrées",
+      "id": "entrées-1"
+    },
+    {
+      "depth": 2,
+      "text": "Sortie",
+      "id": "sortie-1"
+    },
+    {
+      "depth": 1,
+      "text": "Dérèglement climatique",
+      "id": "dérèglement-climatique"
+    },
+    {
+      "depth": 2,
+      "text": "Sujet",
+      "id": "sujet-2"
+    },
+    {
+      "depth": 2,
+      "text": "Entrées",
+      "id": "entrées-2"
+    },
+    {
+      "depth": 2,
+      "text": "Sortie",
+      "id": "sortie-2"
+    },
+    {
+      "depth": 1,
+      "text": "Patinage artistique",
+      "id": "patinage-artistique"
+    },
+    {
+      "depth": 2,
+      "text": "Sujet",
+      "id": "sujet-3"
+    },
+    {
+      "depth": 2,
+      "text": "Entrées",
+      "id": "entrées-3"
+    },
+    {
+      "depth": 2,
+      "text": "Sortie",
+      "id": "sortie-3"
+    },
+    {
+      "depth": 1,
+      "text": "Village sous-marin",
+      "id": "village-sous-marin"
+    },
+    {
+      "depth": 2,
+      "text": "Sujet",
+      "id": "sujet-4"
+    },
+    {
+      "depth": 2,
+      "text": "Entrées",
+      "id": "entrées-4"
+    },
+    {
+      "depth": 2,
+      "text": "Sortie",
+      "id": "sortie-4"
+    },
+    {
+      "depth": 1,
+      "text": "Code secret",
+      "id": "code-secret"
+    },
+    {
+      "depth": 2,
+      "text": "Sujet",
+      "id": "sujet-5"
+    },
+    {
+      "depth": 2,
+      "text": "Entrées",
+      "id": "entrées-5"
+    },
+    {
+      "depth": 2,
+      "text": "Sortie",
+      "id": "sortie-5"
+    }
+  ],
+  "figureModules": []
+}

@@ -1,0 +1,378 @@
+{
+  "sourcePath": "03_programming/ch2_tp.md",
+  "title": "Application",
+  "navTitle": "Application",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Le but de ce TP est proche de celui du TP précédent, à savoir, la résolution de challenges.\nVous avez à votre disposition une bibliothèque vous permettant de manipuler certains types abstraits présentés dans le cours (pile, ensemble et dictionnaire).\nPour ces exercices, nous vous demandons de réaliser une implémentation par exercice utilisant le type abstrait adapté pour résoudre l’ensemble des instances.\nPour le premier exercice, vous exécuterez le code que vous avez produit pour le même challenge dans le TP pour comparer l’efficacité du type abstrait.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Pizzas de l'espace",
+      "slug": "pizzas-de-lespace"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sujet",
+      "slug": "sujet"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Votre pizzeria a pris de l'ampleur et vous dominez maintenant le marché de la pizza aux ingrédients italiens AOC (Appellation d'Origine Contrebande).</p>\n<p>Vous avez réussi à vous procurer tout un tas d'ingrédients en provenance de la galaxie et souhaitez proposer la carte la plus diversifiée possible. La burrata italienne est excellente, mais rien ne vaut celle de IBI-73 ou la pancetta de JAU-42 (ce sont des systèmes stellaires relativement proches, à peine quelques années-lumière).</p>\n<p>Un collègue d'une galaxie voisine vous propose alors une carte contenant un grand nombre de pizzas avec trois ingrédients par pizza. Comme la dernière fois, vous devez préparer une liste des ingrédients afin d'appeler vos fournisseurs. Combien d'ingrédients différents existe-t-il dans la liste des pizzas fournies ?</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Entrées",
+      "slug": "entrées"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ligne 1 : un entier N compris entre <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">1</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">1</span></span></span></span> et <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mn>10</mn><mn>6</mn></msup></mrow><annotation encoding=\"application/x-tex\">10^6</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\">1</span><span class=\"mord\"><span class=\"mord\">0</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">6</span></span></span></span></span></span></span></span></span></span></span>, représentant le nombre de recettes à la carte."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Les N lignes suivantes : une recette par ligne. Chaque recette est composée de 3 ingrédients séparés par des espaces. Chaque ingrédient est un mot formé de la façon suivante : <code>ingredient_de_XYZ-12</code>, avec <code>ingredient</code> pris parmi une liste d'ingrédients typiquement italiens, et <code>XYZ-12</code> composé de trois lettres et deux chiffres identifiant l'étoile de provenance de l'ingrédient."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sortie",
+      "slug": "sortie"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le nombre d'ingrédients différents dans toutes les recettes.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "titleHtml": "Exemple",
+      "displayLabel": "Example 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour l'entrée</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">5\n</span><span class=\"code-line\">Mozzarella_de_IJE-50 Coppa_de_ZME-68 Poire_de_IEI-55\n</span><span class=\"code-line\">Fromage_de_chevre_de_XZE-82 Mozzarella_de_IJE-50 Poire_de_IEI-55\n</span><span class=\"code-line\">Coppa_de_ZME-68 Basilic_de_FGZ-63 Coppa_de_ZME-68\n</span><span class=\"code-line\">Coppa_de_ZME-68 Creme_fraiche_de_UQQ-73 Poulet_de_ZZF-25\n</span><span class=\"code-line\">Poulet_de_ZZF-25 Fromage_de_chevre_de_XZE-82 Mozzarella_de_IJE-50\n</span></code></pre><p>Votre programme doit renvoyer :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">7\n</span></code></pre><p>En effet, il y a 7 ingrédients différents dans les 5 recettes (on vous laisse les lister).</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4618\">Lien Moodle.</a></p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Maître crêpier",
+      "slug": "maître-crêpier"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sujet",
+      "slug": "sujet-1"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Un maître crêpier s'installe enfin près de l'école. Les étudiants en ayant marre des burgers, ils se jettent goulûment sur les crêpes de ce nouvel artisan.</p>\n<p>Débordé, ce dernier n'a trouvé aucun autre moyen de préparer des crêpes que celui qu'il a toujours fait à la maison. Il place les crêpes dans une assiette, au-dessus des crêpes cuites précédemment. Dès qu'un client lui commande une crêpe, il prend celle du dessus.</p>\n<p>Les clients sont contents : ils pensent toujours avoir la crêpe la plus récente. Pourtant, ce système est injuste. Selon le moment, certaines crêpes sont vendues alors qu'elles ont été cuites il y a une heure ou plus. Or, c'est pile la durée de péremption d'une crêpe fraîche. Une heure après cuisson, les liaisons chimiques entre le blé et le saccharose dégradent instantanément le lactose et ce dernier devient indigeste. Le crêpier, peu scrupuleux, souhaite tout de même vendre ces crêpes périmées.</p>\n<p>Toutefois, il a peur des retombées économiques en cas d'intoxication alimentaire de grande envergure. Il recense donc dans un même fichier l'heure de fabrication de chaque crêpe ainsi que l'heure de chaque vente. Il cherche donc à savoir combien de crêpes périmées il a pu vendre à la fin de sa journée.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Entrées",
+      "slug": "entrées-1"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ligne 1 : un entier N compris entre 1 et 150000, représentant le nombre d'évènements enregistrés (crêpes fabriquées ou vendues)."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Les N lignes suivantes : deux entiers I et H séparés par un espace indiquant respectivement si une crêpe est fabriquée (I=1) ou vendue (I=-1), H donnant l'heure de cet évènement en minutes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sortie",
+      "slug": "sortie-1"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le nombre de crêpes périmées vendues (une heure après fabrication ou plus).</p>\n<p>On assure qu'il n'y a pas de vente de crêpes lorsque l'assiette ne contient aucune crêpe. De plus, le dernier évènement correspond à la vente de la dernière crêpe présente.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "titleHtml": "Exemple",
+      "displayLabel": "Example 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour l'entrée</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">6\n</span><span class=\"code-line\">1 0\n</span><span class=\"code-line\">-1 2\n</span><span class=\"code-line\">1 5\n</span><span class=\"code-line\">1 22\n</span><span class=\"code-line\">-1 40\n</span><span class=\"code-line\">-1 65\n</span></code></pre><p>Votre programme doit renvoyer :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">1\n</span></code></pre><p>En effet, la première crêpe est cuite à l'heure 0 et vendue à l'heure 2, tout va bien. La suivante est cuite à l'heure 5 puis se retrouve sous celle cuite à 22. Cette dernière est vendue à 40 (18 minutes après cuisson) et la dernière est vendue à 65, soit 60 minutes après la cuisson. Il s'agit donc de la seule crêpe périmée vendue.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4619\">Lien Moodle.</a></p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Potoo Coin",
+      "slug": "potoo-coin"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sujet",
+      "slug": "sujet-2"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les ibijaux se lancent sur le marché de la cryptomonnaie. Se trouvant arriérés lorsqu'ils utilisaient des graines en tant que monnaie, ils décident de lancer le PotooCoin. Chaque oiseau a la possibilité d'échanger des graines contre des PotooCoins et inversement. Comme toute monnaie, ils ont également le droit de transférer de l'argent d'un compte vers un autre.</p>\n<p>Le lancement se déroule bien et l'ensemble des transactions se retrouve consigné dans un registre. Les volatiles sont tellement confiants en leur cryptomonnaie que certains vont même jusqu'à faire des promesses de virement et se retrouvent en négatif dès le lancement. D'autres, moins progressistes, ne jurent que par les graines et débitent leurs comptes vides en échange de graines.</p>\n<p>Cependant, les kakapos voient ce lancement d'un mauvais œil. Ils sont jaloux de la richesse qu'ont pu emmagasiner certains volatiles. Puisque cette monnaie n'est pas anonymisée, ils souhaitent identifier l'ibijau le plus riche afin de pirater son compte pour redistribuer le montant à l'association des kakapos du cœur.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Entrées",
+      "slug": "entrées-2"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ligne 1 : un entier N compris entre 1 et <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mn>10</mn><mn>6</mn></msup></mrow><annotation encoding=\"application/x-tex\">10^6</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\">1</span><span class=\"mord\"><span class=\"mord\">0</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">6</span></span></span></span></span></span></span></span></span></span></span>, représentant le nombre de transactions effectuées."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Les N lignes suivantes : une transaction par ligne, commençant par un entier (0 ou 1) suivi d'un identifiant de compte <code>ID_XXX123</code> sur 9 caractères, puis d'une valeur entière V si la ligne débute par un 0, ou d'un autre identifiant <code>ID_YYY456</code> et d'une valeur V si elle débute par un 1. Selon la valeur de début de ligne, le virement signifie :"
+            },
+            {
+              "kind": "unordered-list",
+              "content": [
+                {
+                  "kind": "list-item",
+                  "content": [
+                    {
+                      "kind": "html",
+                      "html": "si la ligne commence par un 0, il s'agit d'un virement de V PotooCoins vers le compte <code>ID_XXX123</code>. Si le compte n'existe pas, il est créé et automatiquement crédité de V PotooCoins ;"
+                    }
+                  ]
+                },
+                {
+                  "kind": "list-item",
+                  "content": [
+                    {
+                      "kind": "html",
+                      "html": "si la ligne commence par un 1, il s'agit d'un virement de V PotooCoins depuis le compte <code>ID_XXX123</code> vers le compte <code>ID_YYY456</code>. Si le ou les comptes n'existent pas, ils sont créés puis crédités ou débités de V PotooCoins."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "html",
+              "html": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Sortie",
+      "slug": "sortie-2"
+    },
+    {
+      "kind": "html",
+      "html": "<p>L'identifiant et le montant du compte possédant le plus de PotooCoins, séparés par un espace. On assure qu'il n'y a pas deux comptes possédant le plus d'argent.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "titleHtml": "Exemple",
+      "displayLabel": "Example 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour l'entrée</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">5\n</span><span class=\"code-line\">0 ID_QMD740 7\n</span><span class=\"code-line\">1 ID_ECD328 ID_ZLH211 78\n</span><span class=\"code-line\">1 ID_ZLH211 ID_ECD328 3\n</span><span class=\"code-line\">0 ID_QMD740 67\n</span><span class=\"code-line\">1 ID_ZLH211 ID_QMD740 9\n</span></code></pre><p>Votre programme doit renvoyer :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">ID_QMD740 83\n</span></code></pre><p>En effet, la première transaction est un virement initial de 7 PotooCoins vers le compte <code>ID_QMD740</code> qui est créé à la volée. La deuxième ligne permet de créer deux comptes, <code>ID_ECD328</code> possédant -78 PotooCoins et le compte <code>ID_ZLH211</code> possédant 78 PotooCoins, et ainsi de suite. Au final, le compte <code>ID_QMD740</code> aura été crédité deux fois (7 + 67 PotooCoins) lors d'échanges de graines et une fois par transaction de 9 PotooCoins.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4620\">Lien Moodle.</a></p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Pizzas de l'espace",
+      "id": "pizzas-de-lespace"
+    },
+    {
+      "depth": 2,
+      "text": "Sujet",
+      "id": "sujet"
+    },
+    {
+      "depth": 2,
+      "text": "Entrées",
+      "id": "entrées"
+    },
+    {
+      "depth": 2,
+      "text": "Sortie",
+      "id": "sortie"
+    },
+    {
+      "depth": 1,
+      "text": "Maître crêpier",
+      "id": "maître-crêpier"
+    },
+    {
+      "depth": 2,
+      "text": "Sujet",
+      "id": "sujet-1"
+    },
+    {
+      "depth": 2,
+      "text": "Entrées",
+      "id": "entrées-1"
+    },
+    {
+      "depth": 2,
+      "text": "Sortie",
+      "id": "sortie-1"
+    },
+    {
+      "depth": 1,
+      "text": "Potoo Coin",
+      "id": "potoo-coin"
+    },
+    {
+      "depth": 2,
+      "text": "Sujet",
+      "id": "sujet-2"
+    },
+    {
+      "depth": 2,
+      "text": "Entrées",
+      "id": "entrées-2"
+    },
+    {
+      "depth": 2,
+      "text": "Sortie",
+      "id": "sortie-2"
+    }
+  ],
+  "figureModules": []
+}

@@ -1,5 +1,25 @@
 {
   "pagesById": {
+    "inf2031-ch01-révisions": {
+      "outputPath": "03_programming/ch1_revisions.json",
+      "blocks": {}
+    },
+    "inf2031-ch01-tp": {
+      "outputPath": "03_programming/ch1_tp.json",
+      "blocks": {}
+    },
+    "inf2031-ch02-types-abstraits": {
+      "outputPath": "03_programming/ch2_types_abstraits.json",
+      "blocks": {}
+    },
+    "inf2031-ch02-tp": {
+      "outputPath": "03_programming/ch2_tp.json",
+      "blocks": {}
+    },
+    "inf2031-ch02-listes-chainees": {
+      "outputPath": "03_programming/ch3_listes.json",
+      "blocks": {}
+    },
     "pass-ensembles": {
       "outputPath": "01_pass/ch1_ensembles.json",
       "blocks": {
