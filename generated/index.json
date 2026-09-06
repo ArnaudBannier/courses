@@ -2,215 +2,8 @@
   "mode": "multi-course",
   "courses": [
     {
-      "courseSlug": "03_algebra",
-      "title": "Algèbre et géométrie",
-      "description": "Diagonalisation, transformation géométriques.",
-      "authors": [
-        "Arnaud Bannier",
-        "Nicolas Bodin"
-      ],
-      "chapters": [
-        {
-          "sourcePath": "03_algebra/ch1_espaces_vectoriels.md",
-          "outputPath": "03_algebra/ch1_espaces_vectoriels.json",
-          "title": "Espaces vectoriels",
-          "navTitle": "Espaces vectoriels",
-          "navHidden": false,
-          "authors": [
-            "Arnaud Bannier",
-            "Nicolas Bodin"
-          ]
-        },
-        {
-          "sourcePath": "03_algebra/ch1_applications_lineaires.md",
-          "outputPath": "03_algebra/ch1_applications_lineaires.json",
-          "title": "Applications linéaires",
-          "navTitle": "Applications linéaires",
-          "navHidden": false,
-          "authors": [
-            "Arnaud Bannier",
-            "Nicolas Bodin"
-          ]
-        }
-      ],
-      "navigation": [
-        {
-          "kind": "section",
-          "title": "1. Révisions",
-          "chapters": [
-            {
-              "sourcePath": "03_algebra/ch1_espaces_vectoriels.md",
-              "outputPath": "03_algebra/ch1_espaces_vectoriels.json",
-              "title": "Espaces vectoriels",
-              "navTitle": "Espaces vectoriels",
-              "navHidden": false,
-              "authors": [
-                "Arnaud Bannier",
-                "Nicolas Bodin"
-              ]
-            },
-            {
-              "sourcePath": "03_algebra/ch1_applications_lineaires.md",
-              "outputPath": "03_algebra/ch1_applications_lineaires.json",
-              "title": "Applications linéaires",
-              "navTitle": "Applications linéaires",
-              "navHidden": false,
-              "authors": [
-                "Arnaud Bannier",
-                "Nicolas Bodin"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "courseSlug": "03_programming",
-      "title": "Algorithmique avancée",
-      "description": "Introduction aux types de donnée abstraits",
-      "authors": [
-        "Arnaud Bannier",
-        "Nicolas Bodin"
-      ],
-      "chapters": [
-        {
-          "sourcePath": "03_programming/ch1_revisions.md",
-          "outputPath": "03_programming/ch1_revisions.json",
-          "title": "Cours",
-          "navTitle": "Cours",
-          "navHidden": false,
-          "authors": [
-            "Arnaud Bannier",
-            "Nicolas Bodin"
-          ]
-        },
-        {
-          "sourcePath": "03_programming/ch1_tp.md",
-          "outputPath": "03_programming/ch1_tp.json",
-          "title": "Application",
-          "navTitle": "Application",
-          "navHidden": false,
-          "authors": [
-            "Arnaud Bannier",
-            "Nicolas Bodin"
-          ]
-        },
-        {
-          "sourcePath": "03_programming/ch2_types_abstraits.md",
-          "outputPath": "03_programming/ch2_types_abstraits.json",
-          "title": "Cours",
-          "navTitle": "Cours",
-          "navHidden": false,
-          "authors": [
-            "Arnaud Bannier",
-            "Nicolas Bodin",
-            "Matthieu Le Berre"
-          ]
-        },
-        {
-          "sourcePath": "03_programming/ch2_tp.md",
-          "outputPath": "03_programming/ch2_tp.json",
-          "title": "Application",
-          "navTitle": "Application",
-          "navHidden": false,
-          "authors": [
-            "Arnaud Bannier",
-            "Nicolas Bodin"
-          ]
-        },
-        {
-          "sourcePath": "03_programming/ch3_listes.md",
-          "outputPath": "03_programming/ch3_listes.json",
-          "title": "Introduction aux listes chaînées",
-          "navTitle": "3. Introduction aux listes chaînées",
-          "navOrder": 3,
-          "navHidden": false,
-          "authors": [
-            "Arnaud Bannier",
-            "Nicolas Bodin",
-            "Matthieu Le Berre"
-          ]
-        }
-      ],
-      "navigation": [
-        {
-          "kind": "section",
-          "title": "1. Révisions",
-          "chapters": [
-            {
-              "sourcePath": "03_programming/ch1_revisions.md",
-              "outputPath": "03_programming/ch1_revisions.json",
-              "title": "Cours",
-              "navTitle": "Cours",
-              "navHidden": false,
-              "authors": [
-                "Arnaud Bannier",
-                "Nicolas Bodin"
-              ]
-            },
-            {
-              "sourcePath": "03_programming/ch1_tp.md",
-              "outputPath": "03_programming/ch1_tp.json",
-              "title": "Application",
-              "navTitle": "Application",
-              "navHidden": false,
-              "authors": [
-                "Arnaud Bannier",
-                "Nicolas Bodin"
-              ]
-            }
-          ]
-        },
-        {
-          "kind": "section",
-          "title": "2. Types abstraits",
-          "chapters": [
-            {
-              "sourcePath": "03_programming/ch2_types_abstraits.md",
-              "outputPath": "03_programming/ch2_types_abstraits.json",
-              "title": "Cours",
-              "navTitle": "Cours",
-              "navHidden": false,
-              "authors": [
-                "Arnaud Bannier",
-                "Nicolas Bodin",
-                "Matthieu Le Berre"
-              ]
-            },
-            {
-              "sourcePath": "03_programming/ch2_tp.md",
-              "outputPath": "03_programming/ch2_tp.json",
-              "title": "Application",
-              "navTitle": "Application",
-              "navHidden": false,
-              "authors": [
-                "Arnaud Bannier",
-                "Nicolas Bodin"
-              ]
-            }
-          ]
-        },
-        {
-          "kind": "chapter",
-          "chapter": {
-            "sourcePath": "03_programming/ch3_listes.md",
-            "outputPath": "03_programming/ch3_listes.json",
-            "title": "Introduction aux listes chaînées",
-            "navTitle": "3. Introduction aux listes chaînées",
-            "navOrder": 3,
-            "navHidden": false,
-            "authors": [
-              "Arnaud Bannier",
-              "Nicolas Bodin",
-              "Matthieu Le Berre"
-            ]
-          }
-        }
-      ]
-    },
-    {
       "courseSlug": "01_pass",
-      "title": "PASS Maths",
+      "title": "S1 - PASS Maths",
       "description": "Remise à niveau en mathématiques",
       "authors": [
         "Arnaud Bannier",
@@ -594,6 +387,213 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "courseSlug": "03_algebra",
+      "title": "S3 - Algèbre et géométrie",
+      "description": "Diagonalisation, transformation géométriques.",
+      "authors": [
+        "Arnaud Bannier",
+        "Nicolas Bodin"
+      ],
+      "chapters": [
+        {
+          "sourcePath": "03_algebra/ch1_espaces_vectoriels.md",
+          "outputPath": "03_algebra/ch1_espaces_vectoriels.json",
+          "title": "Espaces vectoriels",
+          "navTitle": "Espaces vectoriels",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "03_algebra/ch1_applications_lineaires.md",
+          "outputPath": "03_algebra/ch1_applications_lineaires.json",
+          "title": "Applications linéaires",
+          "navTitle": "Applications linéaires",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        }
+      ],
+      "navigation": [
+        {
+          "kind": "section",
+          "title": "1. Révisions",
+          "chapters": [
+            {
+              "sourcePath": "03_algebra/ch1_espaces_vectoriels.md",
+              "outputPath": "03_algebra/ch1_espaces_vectoriels.json",
+              "title": "Espaces vectoriels",
+              "navTitle": "Espaces vectoriels",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "03_algebra/ch1_applications_lineaires.md",
+              "outputPath": "03_algebra/ch1_applications_lineaires.json",
+              "title": "Applications linéaires",
+              "navTitle": "Applications linéaires",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "courseSlug": "03_programming",
+      "title": "S3 - Algorithmique avancée",
+      "description": "Introduction aux types de donnée abstraits",
+      "authors": [
+        "Arnaud Bannier",
+        "Nicolas Bodin"
+      ],
+      "chapters": [
+        {
+          "sourcePath": "03_programming/ch1_revisions.md",
+          "outputPath": "03_programming/ch1_revisions.json",
+          "title": "Cours",
+          "navTitle": "Cours",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "03_programming/ch1_tp.md",
+          "outputPath": "03_programming/ch1_tp.json",
+          "title": "Application",
+          "navTitle": "Application",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "03_programming/ch2_types_abstraits.md",
+          "outputPath": "03_programming/ch2_types_abstraits.json",
+          "title": "Cours",
+          "navTitle": "Cours",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin",
+            "Matthieu Le Berre"
+          ]
+        },
+        {
+          "sourcePath": "03_programming/ch2_tp.md",
+          "outputPath": "03_programming/ch2_tp.json",
+          "title": "Application",
+          "navTitle": "Application",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "03_programming/ch3_listes.md",
+          "outputPath": "03_programming/ch3_listes.json",
+          "title": "Introduction aux listes chaînées",
+          "navTitle": "3. Introduction aux listes chaînées",
+          "navOrder": 3,
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin",
+            "Matthieu Le Berre"
+          ]
+        }
+      ],
+      "navigation": [
+        {
+          "kind": "section",
+          "title": "1. Révisions",
+          "chapters": [
+            {
+              "sourcePath": "03_programming/ch1_revisions.md",
+              "outputPath": "03_programming/ch1_revisions.json",
+              "title": "Cours",
+              "navTitle": "Cours",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "03_programming/ch1_tp.md",
+              "outputPath": "03_programming/ch1_tp.json",
+              "title": "Application",
+              "navTitle": "Application",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "title": "2. Types abstraits",
+          "chapters": [
+            {
+              "sourcePath": "03_programming/ch2_types_abstraits.md",
+              "outputPath": "03_programming/ch2_types_abstraits.json",
+              "title": "Cours",
+              "navTitle": "Cours",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin",
+                "Matthieu Le Berre"
+              ]
+            },
+            {
+              "sourcePath": "03_programming/ch2_tp.md",
+              "outputPath": "03_programming/ch2_tp.json",
+              "title": "Application",
+              "navTitle": "Application",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "chapter",
+          "chapter": {
+            "sourcePath": "03_programming/ch3_listes.md",
+            "outputPath": "03_programming/ch3_listes.json",
+            "title": "Introduction aux listes chaînées",
+            "navTitle": "3. Introduction aux listes chaînées",
+            "navOrder": 3,
+            "navHidden": false,
+            "authors": [
+              "Arnaud Bannier",
+              "Nicolas Bodin",
+              "Matthieu Le Berre"
+            ]
+          }
         }
       ]
     }
