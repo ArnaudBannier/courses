@@ -118,7 +118,7 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4599\">Lien Moodle.</a></p>"
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4599\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
     },
     {
       "kind": "heading",
@@ -229,7 +229,7 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4600\">Lien Moodle.</a></p>"
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4600\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
     },
     {
       "kind": "heading",
@@ -340,7 +340,7 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4601\">Lien Moodle.</a></p>"
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4601\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
     },
     {
       "kind": "heading",
@@ -456,7 +456,7 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4602\">Lien Moodle.</a></p>"
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4602\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
     },
     {
       "kind": "heading",
@@ -540,7 +540,7 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4603\">Lien Moodle.</a></p>"
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4603\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
     },
     {
       "kind": "heading",
@@ -679,7 +679,7 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4604\">Lien Moodle.</a></p>"
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4604\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
     }
   ],
   "tooltipDefs": {},

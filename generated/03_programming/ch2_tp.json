@@ -101,7 +101,7 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4618\">Lien Moodle.</a></p>"
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4618\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
     },
     {
       "kind": "heading",
@@ -191,7 +191,7 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4619\">Lien Moodle.</a></p>"
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4619\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
     },
     {
       "kind": "heading",
@@ -308,7 +308,7 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4620\">Lien Moodle.</a></p>"
+      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4620\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
     }
   ],
   "tooltipDefs": {},
