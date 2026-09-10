@@ -595,6 +595,46 @@
         }
       }
     },
+    "alg3-espaces-vectoriels": {
+      "outputPath": "03_algebra/ch1_espaces_vectoriels.json",
+      "blocks": {
+        "exemple-rel-lineaire": {
+          "num": "5",
+          "label": "Example 5",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "exemple-libre-liee": {
+          "num": "6",
+          "label": "Example 6",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "generalites-sous-espaces": {
+          "num": "4",
+          "label": "Exercise 4",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        }
+      }
+    },
+    "alg3-applications-lineaires": {
+      "outputPath": "03_algebra/ch1_applications_lineaires.json",
+      "blocks": {
+        "proposition-compo": {
+          "num": "2",
+          "label": "Proposition 2",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "proposition-inverse": {
+          "num": "3",
+          "label": "Proposition 3",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        }
+      }
+    },
     "inf2031-ch01-révisions": {
       "outputPath": "03_programming/ch1_revisions.json",
       "blocks": {}
