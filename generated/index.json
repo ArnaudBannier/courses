@@ -420,6 +420,39 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "03_algebra/ch1_coordonnees.md",
+          "outputPath": "03_algebra/ch1_coordonnees.json",
+          "title": "Systèmes de coordonnées",
+          "navTitle": "Systèmes de coordonnées",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "03_algebra/ch2_determinants.md",
+          "outputPath": "03_algebra/ch2_determinants.json",
+          "title": "Déterminants",
+          "navTitle": "Déterminants",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "03_algebra/ch2_polynomes.md",
+          "outputPath": "03_algebra/ch2_polynomes.json",
+          "title": "Factorisation d'un polynôme réel",
+          "navTitle": "Polynômes",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -443,6 +476,45 @@
               "outputPath": "03_algebra/ch1_applications_lineaires.json",
               "title": "Applications linéaires",
               "navTitle": "Applications linéaires",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "03_algebra/ch1_coordonnees.md",
+              "outputPath": "03_algebra/ch1_coordonnees.json",
+              "title": "Systèmes de coordonnées",
+              "navTitle": "Systèmes de coordonnées",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "title": "2. Outils pour la réduction",
+          "chapters": [
+            {
+              "sourcePath": "03_algebra/ch2_determinants.md",
+              "outputPath": "03_algebra/ch2_determinants.json",
+              "title": "Déterminants",
+              "navTitle": "Déterminants",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "03_algebra/ch2_polynomes.md",
+              "outputPath": "03_algebra/ch2_polynomes.json",
+              "title": "Factorisation d'un polynôme réel",
+              "navTitle": "Polynômes",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",

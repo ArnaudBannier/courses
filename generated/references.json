@@ -635,6 +635,47 @@
         }
       }
     },
+    "alg3-coordonnees": {
+      "outputPath": "03_algebra/ch1_coordonnees.json",
+      "blocks": {
+        "exo-coord-04": {
+          "num": "1",
+          "label": "Exercise 1",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "proposition-compo-inv": {
+          "num": "2",
+          "label": "Proposition 2",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "exo-synthese-01": {
+          "num": "9",
+          "label": "Exercise 9",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exemple-passage-1": {
+          "num": "5",
+          "label": "Example 5",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "exemple-passage-2": {
+          "num": "6",
+          "label": "Example 6",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "exo-chgt-base-02": {
+          "num": "14",
+          "label": "Exercise 14",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        }
+      }
+    },
     "inf2031-ch01-révisions": {
       "outputPath": "03_programming/ch1_revisions.json",
       "blocks": {}
