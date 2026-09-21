@@ -445,6 +445,7 @@
     },
     {
       "kind": "block",
+      "anchorId": "definition-scinde",
       "blockType": "definition",
       "titleHtml": "Polynôme scindé",
       "displayLabel": "Definition 1",

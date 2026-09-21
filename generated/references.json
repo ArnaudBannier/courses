@@ -676,6 +676,35 @@
         }
       }
     },
+    "alg3-polynomes": {
+      "outputPath": "03_algebra/ch2_polynomes.json",
+      "blocks": {
+        "theoreme-alembert-gauss": {
+          "num": "2",
+          "label": "Theorem 2",
+          "blockType": "theorem",
+          "kind": "Theorem"
+        },
+        "definition-scinde": {
+          "num": "1",
+          "label": "Definition 1",
+          "blockType": "definition",
+          "kind": "Definition"
+        },
+        "theoreme-racines-rationnelles": {
+          "num": "3",
+          "label": "Theorem 3",
+          "blockType": "theorem",
+          "kind": "Theorem"
+        },
+        "exercice-factorisation-polynomes-02": {
+          "num": "4",
+          "label": "Exercise 4",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        }
+      }
+    },
     "inf2031-ch01-révisions": {
       "outputPath": "03_programming/ch1_revisions.json",
       "blocks": {}
