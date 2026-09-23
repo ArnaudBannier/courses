@@ -1437,7 +1437,7 @@
     {
       "kind": "block",
       "blockType": "exercise",
-      "titleHtml": "Comatrice <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">2 \\times 2</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.7278em;vertical-align:-0.0833em;\"></span><span class=\"mord\">2</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">×</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">2</span></span></span></span> [Moodle]",
+      "titleHtml": "Comatrices [Moodle]",
       "displayLabel": "Exercise 7",
       "number": "7",
       "options": {
@@ -1449,7 +1449,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<p>Calculez le déterminant de chacune des matrices suivantes</p>"
+          "html": "<p>Calculez la comatrice de chacune des matrices suivantes</p>"
         },
         {
           "kind": "layout",
