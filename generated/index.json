@@ -391,6 +391,69 @@
       ]
     },
     {
+      "courseSlug": "01_algebra",
+      "title": "S1 - Algèbre générale",
+      "description": "Ensembles, applications, arithmétique, polynômes.",
+      "authors": [
+        "Arnaud Bannier",
+        "Nicolas Bodin"
+      ],
+      "chapters": [
+        {
+          "sourcePath": "01_algebra/ch1_logique.md",
+          "outputPath": "01_algebra/ch1_logique.json",
+          "title": "Logique",
+          "navTitle": "Logique",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_algebra/ch1_raisonnements.md",
+          "outputPath": "01_algebra/ch1_raisonnements.json",
+          "title": "Raisonnements",
+          "navTitle": "Raisonnements",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        }
+      ],
+      "navigation": [
+        {
+          "kind": "section",
+          "title": "1. Logique et raisonnements",
+          "chapters": [
+            {
+              "sourcePath": "01_algebra/ch1_logique.md",
+              "outputPath": "01_algebra/ch1_logique.json",
+              "title": "Logique",
+              "navTitle": "Logique",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_algebra/ch1_raisonnements.md",
+              "outputPath": "01_algebra/ch1_raisonnements.json",
+              "title": "Raisonnements",
+              "navTitle": "Raisonnements",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "courseSlug": "03_algebra",
       "title": "S3 - Algèbre et géométrie",
       "description": "Diagonalisation, transformation géométriques.",

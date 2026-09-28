@@ -595,6 +595,52 @@
         }
       }
     },
+    "ch1-logique": {
+      "outputPath": "01_algebra/ch1_logique.json",
+      "blocks": {
+        "exemple-non-p-ou-q": {
+          "num": "3",
+          "label": "Example 3",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "exemple-negation-implication": {
+          "num": "5",
+          "label": "Example 5",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "exercice-connecteurs": {
+          "num": "1",
+          "label": "Exercise 1",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "proposition-et-ou": {
+          "num": "1",
+          "label": "Proposition 1",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        }
+      }
+    },
+    "ch1-raisonnements": {
+      "outputPath": "01_algebra/ch1_raisonnements.json",
+      "blocks": {
+        "exemple-preuve-directe": {
+          "num": "3",
+          "label": "Example 3",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "exemple-contraposition": {
+          "num": "4",
+          "label": "Example 4",
+          "blockType": "example",
+          "kind": "Example"
+        }
+      }
+    },
     "alg3-espaces-vectoriels": {
       "outputPath": "03_algebra/ch1_espaces_vectoriels.json",
       "blocks": {
