@@ -453,6 +453,17 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "03_algebra/ch3_reduction_pratique.md",
+          "outputPath": "03_algebra/ch3_reduction_pratique.json",
+          "title": "Diagonalisation, la pratique",
+          "navTitle": "Pratique",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -515,6 +526,23 @@
               "outputPath": "03_algebra/ch2_polynomes.json",
               "title": "Factorisation d'un polynôme réel",
               "navTitle": "Polynômes",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "title": "3. Réduction des endomorphismes",
+          "chapters": [
+            {
+              "sourcePath": "03_algebra/ch3_reduction_pratique.md",
+              "outputPath": "03_algebra/ch3_reduction_pratique.json",
+              "title": "Diagonalisation, la pratique",
+              "navTitle": "Pratique",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",

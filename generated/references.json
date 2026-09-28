@@ -705,6 +705,95 @@
         }
       }
     },
+    "ch04a-reduction-endomorphismes": {
+      "outputPath": "03_algebra/ch3_reduction_pratique.json",
+      "blocks": {
+        "definition-vecteur-propre": {
+          "num": "2",
+          "label": "Definition 2",
+          "blockType": "definition",
+          "kind": "Definition"
+        },
+        "exemple-vecteur-propre-r2": {
+          "num": "1",
+          "label": "Example 1",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "proposition-espace-propre": {
+          "num": "1",
+          "label": "Proposition 1",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "exemple-sous-espace-propre": {
+          "num": "3",
+          "label": "Example 3",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "spectre": {
+          "num": "4",
+          "label": "Definition 4",
+          "blockType": "definition",
+          "kind": "Definition"
+        },
+        "proposition-poly-caracteristique": {
+          "num": "2",
+          "label": "Proposition 2",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "determinant": {
+          "num": "4",
+          "label": "Example 4",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "exemple-poly-car": {
+          "num": "5",
+          "label": "Example 5",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "exercice-polcar-3": {
+          "num": "4",
+          "label": "Exercise 4",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exemple-spectre": {
+          "num": "6",
+          "label": "Example 6",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "proposition-mult-alg-geo": {
+          "num": "3",
+          "label": "Proposition 3",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "diago": {
+          "num": "2",
+          "label": "Theorem 2",
+          "blockType": "theorem",
+          "kind": "Theorem"
+        },
+        "exercice-diagonalisation-2": {
+          "num": "10",
+          "label": "Exercise 10",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-jo-ibijau": {
+          "num": "11",
+          "label": "Exercise 11",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        }
+      }
+    },
     "inf2031-ch01-révisions": {
       "outputPath": "03_programming/ch1_revisions.json",
       "blocks": {}
