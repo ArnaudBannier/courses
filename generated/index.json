@@ -420,6 +420,17 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "01_algebra/ch2_ensembles.md",
+          "outputPath": "01_algebra/ch2_ensembles.json",
+          "title": "Ensembles",
+          "navTitle": "2. Ensembles",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -450,6 +461,20 @@
               ]
             }
           ]
+        },
+        {
+          "kind": "chapter",
+          "chapter": {
+            "sourcePath": "01_algebra/ch2_ensembles.md",
+            "outputPath": "01_algebra/ch2_ensembles.json",
+            "title": "Ensembles",
+            "navTitle": "2. Ensembles",
+            "navHidden": false,
+            "authors": [
+              "Arnaud Bannier",
+              "Nicolas Bodin"
+            ]
+          }
         }
       ]
     },
