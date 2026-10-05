@@ -2177,6 +2177,7 @@
     },
     {
       "kind": "block",
+      "anchorId": "proposition-inj-surj",
       "blockType": "proposition",
       "displayLabel": "Proposition 5",
       "number": "5",
@@ -2245,6 +2246,7 @@
     },
     {
       "kind": "block",
+      "anchorId": "corollaire-endo-bijectif",
       "blockType": "corollary",
       "titleHtml": "Endomorphisme",
       "displayLabel": "Corollary 1",
@@ -2300,19 +2302,17 @@
     },
     {
       "kind": "block",
-      "blockType": "danger",
-      "displayLabel": "Danger 1",
-      "number": "1",
+      "blockType": "warning",
+      "displayLabel": "Warning",
       "options": {
-        "numbered": true,
+        "numbered": false,
         "collapsible": true,
-        "collapsed": false,
-        "style": "fill"
+        "collapsed": false
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Attention à ce résultat, que nous utiliserons souvent.</p>"
+          "html": "<p>Attention à ce résultat que nous utiliserons souvent.</p>"
         },
         {
           "kind": "unordered-list",

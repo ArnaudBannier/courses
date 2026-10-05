@@ -595,7 +595,7 @@
         }
       }
     },
-    "ch1-logique": {
+    "alg1-logique": {
       "outputPath": "01_algebra/ch1_logique.json",
       "blocks": {
         "exemple-non-p-ou-q": {
@@ -621,12 +621,30 @@
           "label": "Proposition 1",
           "blockType": "proposition",
           "kind": "Proposition"
+        },
+        "methode-negation-predicat": {
+          "num": "1",
+          "label": "Method 1",
+          "blockType": "method",
+          "kind": "Method"
         }
       }
     },
-    "ch1-raisonnements": {
+    "alg1-raisonnements": {
       "outputPath": "01_algebra/ch1_raisonnements.json",
       "blocks": {
+        "methode-universel": {
+          "num": "1",
+          "label": "Method 1",
+          "blockType": "method",
+          "kind": "Method"
+        },
+        "methode-existentiel": {
+          "num": "2",
+          "label": "Method 2",
+          "blockType": "method",
+          "kind": "Method"
+        },
         "exemple-preuve-directe": {
           "num": "3",
           "label": "Example 3",
@@ -678,6 +696,18 @@
           "label": "Proposition 3",
           "blockType": "proposition",
           "kind": "Proposition"
+        },
+        "proposition-inj-surj": {
+          "num": "5",
+          "label": "Proposition 5",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "corollaire-endo-bijectif": {
+          "num": "1",
+          "label": "Corollary 1",
+          "blockType": "corollary",
+          "kind": "Corollary"
         }
       }
     },
@@ -722,6 +752,10 @@
         }
       }
     },
+    "alg3-determinants": {
+      "outputPath": "03_algebra/ch2_determinants.json",
+      "blocks": {}
+    },
     "alg3-polynomes": {
       "outputPath": "03_algebra/ch2_polynomes.json",
       "blocks": {
@@ -751,7 +785,7 @@
         }
       }
     },
-    "ch04a-reduction-endomorphismes": {
+    "alg3-reduction-pratique": {
       "outputPath": "03_algebra/ch3_reduction_pratique.json",
       "blocks": {
         "definition-vecteur-propre": {
@@ -840,23 +874,82 @@
         }
       }
     },
-    "inf2031-ch01-révisions": {
+    "alg3-reduction-theorie": {
+      "outputPath": "03_algebra/ch3_reduction_theorie.json",
+      "blocks": {
+        "exercice-sev-6": {
+          "num": "2",
+          "label": "Exercise 2",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-preuve-somme-sev": {
+          "num": "3",
+          "label": "Exercise 3",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "theoreme-somme-directe": {
+          "num": "1",
+          "label": "Theorem 1",
+          "blockType": "theorem",
+          "kind": "Theorem"
+        },
+        "exercice-somme-directe-1": {
+          "num": "4",
+          "label": "Exercise 4",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "Exp_SommeDirecte": {
+          "num": "3",
+          "label": "Example 3",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "exercice-sev-8": {
+          "num": "5",
+          "label": "Exercise 5",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "ValVecProp": {
+          "num": "4",
+          "label": "Definition 4",
+          "blockType": "definition",
+          "kind": "Definition"
+        },
+        "proposition-poly-car": {
+          "num": "6",
+          "label": "Proposition 6",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "proposition-sep-somme-directe": {
+          "num": "7",
+          "label": "Proposition 7",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        }
+      }
+    },
+    "prog3-revisions": {
       "outputPath": "03_programming/ch1_revisions.json",
       "blocks": {}
     },
-    "inf2031-ch01-tp": {
+    "prog3-ch1-tp": {
       "outputPath": "03_programming/ch1_tp.json",
       "blocks": {}
     },
-    "inf2031-ch02-types-abstraits": {
+    "prog3-types-abstraits": {
       "outputPath": "03_programming/ch2_types_abstraits.json",
       "blocks": {}
     },
-    "inf2031-ch02-tp": {
+    "prog3-ch2-tp": {
       "outputPath": "03_programming/ch2_tp.json",
       "blocks": {}
     },
-    "inf2031-ch02-listes-chainees": {
+    "prog3-listes-chainees": {
       "outputPath": "03_programming/ch3_listes.json",
       "blocks": {}
     }
