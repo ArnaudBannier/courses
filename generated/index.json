@@ -479,6 +479,88 @@
       ]
     },
     {
+      "courseSlug": "01_ai_data",
+      "title": "S1 - Parcours Data-IA",
+      "description": "Projet sur l'esieabot",
+      "authors": [
+        "Arnaud Bannier",
+        "Nicolas Bodin"
+      ],
+      "chapters": [
+        {
+          "sourcePath": "01_ai_data/ch1_installation.md",
+          "outputPath": "01_ai_data/ch1_installation.json",
+          "title": "Installation des outils",
+          "navTitle": "Installation",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        }
+      ],
+      "navigation": [
+        {
+          "kind": "section",
+          "title": "1. Découverte",
+          "chapters": [
+            {
+              "sourcePath": "01_ai_data/ch1_installation.md",
+              "outputPath": "01_ai_data/ch1_installation.json",
+              "title": "Installation des outils",
+              "navTitle": "Installation",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "courseSlug": "01_sns",
+      "title": "S1 - Parcours SNS",
+      "description": "Projet sur l'esieabot",
+      "authors": [
+        "Arnaud Bannier",
+        "Nicolas Bodin"
+      ],
+      "chapters": [
+        {
+          "sourcePath": "01_sns/ch1_installation.md",
+          "outputPath": "01_sns/ch1_installation.json",
+          "title": "Installation des outils",
+          "navTitle": "Installation",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        }
+      ],
+      "navigation": [
+        {
+          "kind": "section",
+          "title": "1. Découverte",
+          "chapters": [
+            {
+              "sourcePath": "01_sns/ch1_installation.md",
+              "outputPath": "01_sns/ch1_installation.json",
+              "title": "Installation des outils",
+              "navTitle": "Installation",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "courseSlug": "03_algebra",
       "title": "S3 - Algèbre et géométrie",
       "description": "Diagonalisation, transformation géométriques.",

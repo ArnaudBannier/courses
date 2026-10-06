@@ -742,6 +742,14 @@
         }
       }
     },
+    "data-1-installation": {
+      "outputPath": "01_ai_data/ch1_installation.json",
+      "blocks": {}
+    },
+    "sns-1-installation": {
+      "outputPath": "01_sns/ch1_installation.json",
+      "blocks": {}
+    },
     "alg3-espaces-vectoriels": {
       "outputPath": "03_algebra/ch1_espaces_vectoriels.json",
       "blocks": {

@@ -1,0 +1,176 @@
+{
+  "sourcePath": "01_ai_data/ch1_installation.md",
+  "title": "Installation des outils",
+  "navTitle": "Installation",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Programmer la Raspberry Pi Pico",
+      "slug": "programmer-la-raspberry-pi-pico"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Installer Arduino IDE",
+      "slug": "installer-arduino-ide"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Téléchargez et installez <a href=\"https://www.arduino.cc/en/software/\" target=\"_blank\" rel=\"noopener noreferrer\">Arduino IDE pour Windows</a>.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Ajouter le gestionnaire de cartes RP2040",
+      "slug": "ajouter-le-gestionnaire-de-cartes-rp2040"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Dans Arduino IDE, ouvrez <strong>Fichier → Préférences</strong>."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Dans le champ URL de <strong>gestionnaire de cartes supplémentaires</strong>, ajoutez l'adresse suivante :"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json\n</span></code></pre>\n<p>Si le champ contient déjà d'autres adresses, séparez-les selon le format accepté par votre version d'Arduino IDE, par une virgule ou sur des lignes distinctes.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Installer le package Arduino-Pico",
+      "slug": "installer-le-package-arduino-pico"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ouvrez <strong>Outils → Type de carte → Gestionnaire de cartes</strong>."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Recherchez <code>pico</code>, puis installez le package suivant :"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">Raspberry Pi Pico/RP2040/RP2350 by Earle F. Philhower, III\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Programmer sur le PC",
+      "slug": "programmer-sur-le-pc"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour compiler les programmes sur PC, installez les outils suivants :</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Visual Studio",
+      "slug": "visual-studio"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Téléchargez <a href=\"https://visualstudio.microsoft.com/fr/\" target=\"_blank\" rel=\"noopener noreferrer\">Visual Studio 2026</a>. Nous parlons bien de l'IDE <code>Visual Studio</code> et non de <code>VSCode</code>.\nSi vous avez plusieurs choix, sélectionnez la version stable, et non une version Insider ou Preview.</p>\n<p>Lors de l'installation, ajoutez la charge de travail <strong>Développement Desktop en C++</strong> et vérifiez que vous avez bien la version <code>Community</code>.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "CMake",
+      "slug": "cmake"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Allez sur la page de téléchargement de <a href=\"https://cmake.org/download/\" target=\"_blank\" rel=\"noopener noreferrer\">CMake</a>. Dans <strong>Binary distributions</strong>, téléchargez <code>Windows x64 Installer</code> et non les sources du logiciel.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Programmer la Raspberry Pi Pico",
+      "id": "programmer-la-raspberry-pi-pico"
+    },
+    {
+      "depth": 2,
+      "text": "Installer Arduino IDE",
+      "id": "installer-arduino-ide"
+    },
+    {
+      "depth": 2,
+      "text": "Ajouter le gestionnaire de cartes RP2040",
+      "id": "ajouter-le-gestionnaire-de-cartes-rp2040"
+    },
+    {
+      "depth": 2,
+      "text": "Installer le package Arduino-Pico",
+      "id": "installer-le-package-arduino-pico"
+    },
+    {
+      "depth": 1,
+      "text": "Programmer sur le PC",
+      "id": "programmer-sur-le-pc"
+    },
+    {
+      "depth": 2,
+      "text": "Visual Studio",
+      "id": "visual-studio"
+    },
+    {
+      "depth": 2,
+      "text": "CMake",
+      "id": "cmake"
+    }
+  ],
+  "figureModules": []
+}

@@ -1,0 +1,173 @@
+{
+  "sourcePath": "01_sns/ch1_installation.md",
+  "title": "Installation des outils",
+  "navTitle": "Installation",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Programmer la Raspberry Pi Pico",
+      "slug": "programmer-la-raspberry-pi-pico"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Installer Arduino IDE",
+      "slug": "installer-arduino-ide"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Téléchargez et installez <a href=\"https://www.arduino.cc/en/software/\" target=\"_blank\" rel=\"noopener noreferrer\">Arduino IDE pour Windows</a>.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Ajouter le gestionnaire de cartes RP2040",
+      "slug": "ajouter-le-gestionnaire-de-cartes-rp2040"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Dans Arduino IDE, ouvrez <code>Fichier</code> → <code>Préférences</code>."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Dans le champ URL de <strong>gestionnaire de cartes supplémentaires</strong>, ajoutez l'adresse suivante :"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json\n</span></code></pre>\n<p>Si le champ contient déjà d'autres adresses, séparez-les selon le format accepté par votre version d'Arduino IDE, par une virgule ou sur des lignes distinctes.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Installer le package Arduino-Pico",
+      "slug": "installer-le-package-arduino-pico"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ouvrez <code>Outils</code> → <code>Type de carte</code> → <code>Gestionnaire de cartes</code>."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Recherchez <code>pico</code>, puis installez le package suivant :"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">Raspberry Pi Pico/RP2040/RP2350 by Earle F. Philhower, III\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Développer, compiler et envoyer le binaire",
+      "slug": "développer-compiler-et-envoyer-le-binaire"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour créer un nouveau projet Arduino, vous avez deux solutions :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "dans Arduino IDE cliquez sur le bouton en bas à gauche \"New Sketch\", sauvegardez ensuite le tout avec l'option <code>Save as</code> dans le dossier de votre choix et avec le nom de votre choix."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "OU créez un dossier contenant un fichier <code>.ino</code> du même nom que celui du dossier.\nArduino IDE exige que le fichier principal .ino porte le même nom que le dossier qui le contient.\nCe fichier joue un rôle comparable à celui de main.c dans nos projets en C : il contient l'initialisation du programme et la boucle principale."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Avant de brancher la carte, repérez les ports COM déjà utilisés dans Arduino IDE, sous <strong>Outils → Ports</strong>.\nVous pouvez également les consulter dans le <strong>Gestionnaire de périphériques</strong> de Windows, accessible avec le raccourci <code>Win+X</code>.</p>\n<p>Branchez ensuite la Raspberry Pi Pico à l'ordinateur et ouvrez de nouveau <strong>Outils → Ports</strong>.\nUn nouveau port COM devrait apparaître ; son nom dépend de la configuration de votre ordinateur.\nSélectionnez ce port pour la carte.</p>\n<p>Dans <strong>Outils → Type de carte</strong>, ouvrez le groupe <strong>Raspberry Pi Pico/RP2040/RP2350</strong>, puis choisissez <strong>Raspberry Pi Pico</strong>.\nSi ce groupe n'apparaît pas, vérifiez l'installation du package Pico en suivant les étapes de la page <a href=\"@data-1-installation\">Installation des outils</a>.</p>\n<p>La compilation du projet s'effectue via le bouton <code>Verify</code> ( ✓ ).\nLe bouton voisin <code>Upload</code> ( ➜ ) permet de compiler ET d'envoyer le binaire sur la carte si la compilation a réussie.\nNous vous recommandons de toujours compiler votre code au préalable : cela permet de vérifier que le compilateur n'a levé aucun warning.</p>\n<p>Un programme pour microcontrôleur s'exécute généralement en continu et présente la structure suivante.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">setup</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// Du code pour initialiser la carte, les GPIO etc.</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">loop</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// Le programme qui tourne en boucle à l'infini</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Au démarrage de la carte, Arduino appelle une fois <code>setup()</code>, qui sert à initialiser le programme.\nEnsuite, Arduino appelle <code>loop()</code> à répétition tant que la carte fonctionne.\nOn peut représenter simplement ce cycle ainsi en C, à la différence que le code Arduino ne s'arrête jamais.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">main</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">setup</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">while</span> <span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token function\">loop</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Programmer la Raspberry Pi Pico",
+      "id": "programmer-la-raspberry-pi-pico"
+    },
+    {
+      "depth": 2,
+      "text": "Installer Arduino IDE",
+      "id": "installer-arduino-ide"
+    },
+    {
+      "depth": 2,
+      "text": "Ajouter le gestionnaire de cartes RP2040",
+      "id": "ajouter-le-gestionnaire-de-cartes-rp2040"
+    },
+    {
+      "depth": 2,
+      "text": "Installer le package Arduino-Pico",
+      "id": "installer-le-package-arduino-pico"
+    },
+    {
+      "depth": 2,
+      "text": "Développer, compiler et envoyer le binaire",
+      "id": "développer-compiler-et-envoyer-le-binaire"
+    }
+  ],
+  "figureModules": []
+}
