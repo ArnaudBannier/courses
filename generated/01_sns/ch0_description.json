@@ -1,0 +1,99 @@
+{
+  "sourcePath": "01_sns/ch0_description.md",
+  "title": "Présentation du projet",
+  "navTitle": "Description",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Présentation globale",
+      "slug": "présentation-globale"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Jo l'ibijau et Po le kakapo (oui, encore eux) souhaitent révolutionner le domaine des communications privées.\nEstimant que leurs <span class=\"md-tooltip-trigger md-tooltip-ready\" tabindex=\"0\" data-tooltip-ref=\"tooltip-inline-1\">échanges</span> risquent d'être compromis à force d'être observés, ils souhaitent développer un mode de communication numérique innovant.\nIls en parlent donc à leurs tribus respectives et décident unanimement que l'idée doit être creusée.</p>\n<p>Après une réunion au sommet à laquelle les kakapos sont arrivés en retard, les différents volatiles ont convenu qu'il fallait se baser sur une copie simplifiée de la pile de communication TCP-IP (aussi appelée pile Internet ou modèle OSI).</p>\n<table>\n<thead>\n<tr>\n<th>Exemples de protocoles</th>\n<th>Modèle OSI</th>\n<th>Pile TCP/IP</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>HTTP, DNS, SMTP, SSH</td>\n<td>7. Application</td>\n<td>Application</td>\n</tr>\n<tr>\n<td>TLS, JPEG, ASCII</td>\n<td>6. Présentation</td>\n<td>Application</td>\n</tr>\n<tr>\n<td>SIP, NetBIOS, RPC</td>\n<td>5. Session</td>\n<td>Application</td>\n</tr>\n<tr>\n<td>TCP, UDP</td>\n<td>4. Transport</td>\n<td>Transport</td>\n</tr>\n<tr>\n<td>IPv4, IPv6, ICMP</td>\n<td>3. Réseau</td>\n<td>Internet</td>\n</tr>\n<tr>\n<td>Ethernet, Wi-Fi, CAN, I2C</td>\n<td>2. Liaison de données</td>\n<td>Accès réseau</td>\n</tr>\n<tr>\n<td>USB, ADSL, SPI, Manchester, fibre optique</td>\n<td>1. Physique</td>\n<td>Accès réseau</td>\n</tr>\n</tbody>\n</table>\n<p>Une fois cette pile de communication en place, ils auront alors tout le loisir de fiabiliser et sécuriser leurs communications.\nN'ayant pas les compétences techniques pour tirer un nouveau réseau filaire ou fibre, ni construire de grandes antennes, ils décident d'utiliser un signal électromagnétique qui se diffusera simplement dans l'air : l'infrarouge.\nDe plus, ces satanés poissons ne pourront pas en profiter directement !</p>\n<p>Étant particulièrement organisés, ils souhaitent adopter une démarche ingénieur pour réaliser ce projet.\nLes kakapos pensent que la réflexion (longue et intense) prévaut sur l'action (surtout si elle est intense) et se disent donc qu'une méthodologie avec de multiples cycles en V semble particulièrement adaptée.\nDe leur côté, les ibijaux, prudents, estiment qu'il ne faut se lancer dans la conception définitive, mais plutôt dans un premier prototype qui sera amélioré au fil du temps.\nTout cela leur permettra de découvrir de nouvelles notions au fur et à mesure de leur apprentissage à l'<span class=\"md-tooltip-trigger md-tooltip-ready\" tabindex=\"0\" data-tooltip-ref=\"tooltip-inline-2\">esiea</span>.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Partie 1 : premier prototype",
+      "slug": "partie-1--premier-prototype"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le premier prototype utilise deux cartes Raspberry Pi Pico : l'une émet un signal infrarouge, l'autre le reçoit.</p>\n<pre class=\"language-mermaid\"><code class=\"language-mermaid code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">flowchart</span> LR\n</span><span class=\"code-line\">    PC<span class=\"token text string\">[PC]</span> <span class=\"token arrow operator\">---</span> TX<span class=\"token text string\">[\"Carte Pico Tx\"]</span>\n</span><span class=\"code-line\">    PC <span class=\"token arrow operator\">---</span> RX<span class=\"token text string\">[\"Carte Pico Rx\"]</span>\n</span><span class=\"code-line\">    TX <span class=\"token arrow operator\">---</span> EM<span class=\"token text string\">[\"Montage émetteur&#x3C;br/>LED infrarouge\"]</span>\n</span><span class=\"code-line\">    RX <span class=\"token arrow operator\">---</span> RE<span class=\"token text string\">[\"Montage récepteur&#x3C;br/>photodiode\"]</span>\n</span></code></pre>\n<p>On utilisera des composants de base afin d'observer l'impact de l'environnement sur le signal.\nL'objectif du prototype est de découvrir la programmation et l'électronique au travers de montages simples.\nUne communication très basique pourra être établie, sans gros objectif de débit ou de fiabilité.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Partie 2 : utilisation d'un récepteur dédié",
+      "slug": "partie-2--utilisation-dun-récepteur-dédié"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les problèmes soulevés lors de la première partie permettent de justifier l'usage d'un composant plus complexe au niveau du récepteur.</p>\n<pre class=\"language-mermaid\"><code class=\"language-mermaid code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">flowchart</span> LR\n</span><span class=\"code-line\">    PC<span class=\"token text string\">[PC]</span> <span class=\"token arrow operator\">---</span> TX<span class=\"token text string\">[\"Carte Pico Tx\"]</span>\n</span><span class=\"code-line\">    PC <span class=\"token arrow operator\">---</span> RX<span class=\"token text string\">[\"Carte Pico Rx\"]</span>\n</span><span class=\"code-line\">    TX <span class=\"token arrow operator\">---</span> EM<span class=\"token text string\">[\"Montage émetteur&#x3C;br/>LED infrarouge\"]</span>\n</span><span class=\"code-line\">    RX <span class=\"token arrow operator\">---</span> RE<span class=\"token text string\">[\"Montage récepteur&#x3C;br/>photorécepteur\"]</span>\n</span></code></pre>\n<p>Si le schéma semble globalement le même, l'usage d'un photorécepteur à la place de la photodiode implique une logique de code différente.\nDe nouvelles notions théoriques seront introduites et le prototype produit permettra de fixer des objectifs réalistes en termes de débit et de fiabilité à atteindre pour le modèle final.\nL'objectif de cette partie est d'identifier et de résoudre l'ensemble des problèmes électroniques ou physiques qui pourraient se poser.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Partie 3 : développement d'une bibliothèque dédiée",
+      "slug": "partie-3--développement-dune-bibliothèque-dédiée"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Avec les mêmes composants que pour la partie précédente, une bibliothèque logicielle complète sera mise en place.</p>\n<pre class=\"language-mermaid\"><code class=\"language-mermaid code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">flowchart</span> LR\n</span><span class=\"code-line\">    PC<span class=\"token text string\">[PC]</span> <span class=\"token arrow operator\">---</span> TXRX<span class=\"token text string\">[\"Carte Pico Tx/Rx\"]</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">subgraph</span> NETWORK<span class=\"token text string\">[\"Carte réseau\"]</span>\n</span><span class=\"code-line\">        TXRX <span class=\"token arrow operator\">---</span> EM<span class=\"token text string\">[\"Montage émetteur&#x3C;br/>LED infrarouge\"]</span>\n</span><span class=\"code-line\">        TXRX <span class=\"token arrow operator\">---</span> RE<span class=\"token text string\">[\"Montage récepteur&#x3C;br/>photorécepteur\"]</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">end</span>\n</span></code></pre>\n<p>Le fait d'avoir résolu les problèmes électroniques à la partie précédente permet de se concentrer uniquement sur le code.\nLa bibliothèque produite devra être facile à prendre en main et réutilisable.\nNous en profiterons pour rajouter une couche de fiabilité et intégrer quelques couches supérieures du modèle OSI.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Partie 4 : intégration à l'esieabot",
+      "slug": "partie-4--intégration-à-lesieabot"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Cette dernière partie a pour but de construire le prototype final de carte réseau qui sera ajouté à l'esieabot.</p>\n<pre class=\"language-mermaid\"><code class=\"language-mermaid code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">flowchart</span> LR\n</span><span class=\"code-line\">    PC<span class=\"token text string\">[PC]</span> <span class=\"token arrow operator\">-.-</span><span class=\"token label property\">|sans fil|</span> esieabot<span class=\"token text string\">[\"esieabot\"]</span>\n</span><span class=\"code-line\">    esieabot <span class=\"token arrow operator\">---</span><span class=\"token label property\">|port série|</span> CR<span class=\"token text string\">[\"Carte réseau\"]</span>\n</span></code></pre>\n<p>Après l'étape de construction finale de la carte électronique avec soudure des composants, viendra le temps d'intégration du module.\nLe but sera de mettre en place une communication entre la Raspberry Pi présente sur l'esieabot et la carte réseau développée sur la Pico pour autoriser l'échange de messages quelconques entre deux esieabots.</p>"
+    }
+  ],
+  "tooltipDefs": {
+    "tooltip-inline-1": {
+      "html": "Pour un nictybidae, les communications reviennent à effectuer des mouvements du corps et des ailes particulièrement complexes. Les kakapos, eux, se contentent de légers mouvements de tête."
+    },
+    "tooltip-inline-2": {
+      "html": "Établissement des Spécimens Immobiles, Endothermes et Aptères"
+    }
+  },
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Présentation globale",
+      "id": "présentation-globale"
+    },
+    {
+      "depth": 1,
+      "text": "Partie 1 : premier prototype",
+      "id": "partie-1--premier-prototype"
+    },
+    {
+      "depth": 1,
+      "text": "Partie 2 : utilisation d'un récepteur dédié",
+      "id": "partie-2--utilisation-dun-récepteur-dédié"
+    },
+    {
+      "depth": 1,
+      "text": "Partie 3 : développement d'une bibliothèque dédiée",
+      "id": "partie-3--développement-dune-bibliothèque-dédiée"
+    },
+    {
+      "depth": 1,
+      "text": "Partie 4 : intégration à l'esieabot",
+      "id": "partie-4--intégration-à-lesieabot"
+    }
+  ],
+  "figureModules": []
+}

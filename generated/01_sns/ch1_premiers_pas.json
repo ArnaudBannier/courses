@@ -1,0 +1,149 @@
+{
+  "sourcePath": "01_sns/ch1_premiers_pas.md",
+  "title": "Premiers pas en Arduino",
+  "navTitle": "Premiers pas",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Après avoir suivi les étapes de la page <a href=\"@data-1-installation\">Installation des outils</a>, vous devriez pouvoir compiler et téléverser des programmes sur la Raspberry Pi Pico.\nPour commencer, créez un dossier dédié à vos projets destinés à la Pico. Respectez les <a href=\"@data-1-conventions\">conventions de nommage du projet</a> : les noms de fichiers et de dossiers s'écrivent en <code>snake_case</code>.</p>\n<p>Créez un nouveau sketch Arduino et copiez-y le code suivant.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">setup</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">pinMode</span><span class=\"token punctuation\">(</span>LED_BUILTIN<span class=\"token punctuation\">,</span> OUTPUT<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Serial<span class=\"token punctuation\">.</span><span class=\"token function\">begin</span><span class=\"token punctuation\">(</span><span class=\"token number\">115200</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">loop</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">digitalWrite</span><span class=\"token punctuation\">(</span>LED_BUILTIN<span class=\"token punctuation\">,</span> HIGH<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">delay</span><span class=\"token punctuation\">(</span><span class=\"token number\">1000</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">digitalWrite</span><span class=\"token punctuation\">(</span>LED_BUILTIN<span class=\"token punctuation\">,</span> LOW<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">delay</span><span class=\"token punctuation\">(</span><span class=\"token number\">1000</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Compilez le programme, puis téléversez-le sur la carte.\nLa LED intégrée devrait clignoter : elle reste allumée une seconde, puis éteinte une seconde, avant de recommencer.\nModifions maintenant le code pour pouvoir intéragir avec via le port série.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">loop</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>Serial<span class=\"token punctuation\">.</span><span class=\"token function\">available</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span> <span class=\"token operator\">></span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        String inputStr <span class=\"token operator\">=</span> Serial<span class=\"token punctuation\">.</span><span class=\"token function\">readStringUntil</span><span class=\"token punctuation\">(</span><span class=\"token char\">'\\n'</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        Serial<span class=\"token punctuation\">.</span><span class=\"token function\">print</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"You entered: \"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        Serial<span class=\"token punctuation\">.</span><span class=\"token function\">println</span><span class=\"token punctuation\">(</span>inputStr<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token function\">digitalWrite</span><span class=\"token punctuation\">(</span>LED_BUILTIN<span class=\"token punctuation\">,</span> HIGH<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">delay</span><span class=\"token punctuation\">(</span><span class=\"token number\">1000</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">digitalWrite</span><span class=\"token punctuation\">(</span>LED_BUILTIN<span class=\"token punctuation\">,</span> LOW<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">delay</span><span class=\"token punctuation\">(</span><span class=\"token number\">1000</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Serial.available()</code> renvoie le nombre d'octets en attente dans le tampon de réception."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Serial.readStringUntil('\\n')</code> lit les caractères reçus jusqu'au prochain saut de ligne (<code>\\n</code>), puis renvoie le texte lu. La lecture attend ce caractère ou l'expiration du délai d'attente."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Serial.print()</code> écrit du texte sur le port série sans ajouter de saut de ligne."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Serial.println()</code> écrit du texte et termine par un saut de ligne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le programme lit donc une ligne reçue sur le port série, puis la renvoie précédée de <code>You entered:</code>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "warning",
+      "titleHtml": "Prot série",
+      "displayLabel": "Warning",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>L'usage du port série ralentit l'exécution de votre code.\nIl en est de même pour l'usage du terminal en C, mais l'effet est bien plus important sur un microcontroleur.\nSa puissance de calcul est très limitée et les instructions utilisant le port série prennent énormément de temps.\nIl faut donc l'utiliser avec parcimonie !</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Conservez la fonction <code>setup()</code> précédente et remplacez <code>loop()</code> par cette nouvelle version. Compilez et téléversez le programme, puis ouvrez le moniteur série avec <strong>Outils → Moniteur série</strong> ou l'icône correspondante dans Arduino IDE.</p>\n<p>Réglez le débit sur <strong>115200 bauds</strong>, comme dans l'appel à <code>Serial.begin(115200)</code>, et choisissez <strong>Nouvelle ligne</strong> comme fin de ligne afin que le moniteur envoie le caractère attendu par <code>readStringUntil('\\n')</code>.</p>\n<p>La réponse peut sembler lente lorsque vous envoyez du texte. La Pico n'est pas en manque de puissance : après chaque lecture, le programme attend deux secondes au total avec ses deux appels à <code>delay(1000)</code>. Pendant ces attentes, il ne peut pas traiter les nouvelles données reçues.</p>\n<p>Modifions maintenant le comportement : la LED doit s'allumer pendant une seconde à la réception d'une ligne, puis rester éteinte jusqu'à la suivante. Voici une première tentative :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">loop</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>Serial<span class=\"token punctuation\">.</span><span class=\"token function\">available</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span> <span class=\"token operator\">></span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        String inputStr <span class=\"token operator\">=</span> Serial<span class=\"token punctuation\">.</span><span class=\"token function\">readStringUntil</span><span class=\"token punctuation\">(</span><span class=\"token char\">'\\n'</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        Serial<span class=\"token punctuation\">.</span><span class=\"token function\">print</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"You entered: \"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        Serial<span class=\"token punctuation\">.</span><span class=\"token function\">println</span><span class=\"token punctuation\">(</span>inputStr<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">        <span class=\"token function\">digitalWrite</span><span class=\"token punctuation\">(</span>LED_BUILTIN<span class=\"token punctuation\">,</span> HIGH<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        <span class=\"token function\">delay</span><span class=\"token punctuation\">(</span><span class=\"token number\">1000</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token function\">digitalWrite</span><span class=\"token punctuation\">(</span>LED_BUILTIN<span class=\"token punctuation\">,</span> LOW<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>La carte peut maintenant répondre rapidement, mais <code>delay(1000)</code> bloque l'exécution pendant une seconde après chaque message.\nEssayez d'envoyer plusieurs caractères <code>a</code>, en appuyant sur <strong>Entrée</strong> après chacun, pour observer cette attente.</p>\n<p>Que se passe-t-il si l'on retire simplement l'appel à <code>delay(1000)</code> ?</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "correction",
+      "displayLabel": "Correction",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": true,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>La carte répond immédiatement, mais la LED ne semble plus s'allumer. En effet, le programme la met à l'état haut, puis la remet à l'état bas.\nLe processeur de la Pico fonctionne à plusieurs MHz, soit plusieurs millions de cycles par seconde : sans pause, ces changements d'état se succèdent très rapidement.\nL'impulsion est donc trop brève pour être perceptible.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour mesurer une durée sans bloquer l'exécution de <code>loop()</code>, nous allons utiliser <code>millis()</code>.\nDans l'exemple suivant, une <span class=\"md-tooltip-trigger md-tooltip-ready\" tabindex=\"0\" data-tooltip-ref=\"tooltip-inline-1\">variable globale</span> nommée <code>lastTime</code> mémorise l'instant de démarrage.\nLa LED restera allumée pendant dix secondes, tandis que la boucle continuera de s'exécuter.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">unsigned</span> <span class=\"token keyword\">long</span> lastTime <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">setup</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">pinMode</span><span class=\"token punctuation\">(</span>LED_BUILTIN<span class=\"token punctuation\">,</span> OUTPUT<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Serial<span class=\"token punctuation\">.</span><span class=\"token function\">begin</span><span class=\"token punctuation\">(</span><span class=\"token number\">115200</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    lastTime <span class=\"token operator\">=</span> <span class=\"token function\">millis</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token function\">digitalWrite</span><span class=\"token punctuation\">(</span>LED_BUILTIN<span class=\"token punctuation\">,</span> HIGH<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">loop</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">unsigned</span> <span class=\"token keyword\">long</span> currentTime <span class=\"token operator\">=</span> <span class=\"token function\">millis</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>currentTime <span class=\"token operator\">-</span> lastTime <span class=\"token operator\">></span> <span class=\"token number\">10000</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token function\">digitalWrite</span><span class=\"token punctuation\">(</span>LED_BUILTIN<span class=\"token punctuation\">,</span> LOW<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>Serial<span class=\"token punctuation\">.</span><span class=\"token function\">available</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span> <span class=\"token operator\">></span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        String inputStr <span class=\"token operator\">=</span> Serial<span class=\"token punctuation\">.</span><span class=\"token function\">readStringUntil</span><span class=\"token punctuation\">(</span><span class=\"token char\">'\\n'</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        Serial<span class=\"token punctuation\">.</span><span class=\"token function\">print</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"You entered: \"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        Serial<span class=\"token punctuation\">.</span><span class=\"token function\">println</span><span class=\"token punctuation\">(</span>inputStr<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "block",
+      "blockType": "warning",
+      "titleHtml": "Variables globales",
+      "displayLabel": "Warning",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Dans cet exemple, <code>lastTime</code> est une variable globale parce qu'elle doit conserver sa valeur entre les appels successifs à <code>loop()</code>.\nLes variables globales sont fréquentes dans les programmes pour microcontrôleur, mais elles ne sont pas toujours nécessaires.\nDans le cours de programmation en C, privilégiez les variables locales et le passage de paramètres ; nous étudierons plus tard les cas où une variable globale est utile.\nMal utilisées, les variables globales provoquent des erreurs très difficile à détecter.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Au démarrage, <code>setup()</code> initialise <code>lastTime</code> avec la valeur renvoyée par <code>millis()</code>, c'est-à-dire le nombre de millisecondes écoulées depuis le démarrage de la carte, puis allume la LED.\nÀ chaque passage dans <code>loop()</code>, le programme compare le temps courant à <code>lastTime</code>.\nTant que moins de dix secondes se sont écoulées, il ne modifie pas l'état de la LED : elle reste allumée.\nLorsque dix secondes sont dépassées, la LED est éteinte.\nLa boucle continue toutefois de s'exécuter et de lire les messages reçus sur le port série.</p>\n<p>Vérifiez que la carte reçoit et renvoie les messages envoyés sur le port série, y compris après l'extinction de la LED.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "displayLabel": "Exercise",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Modifiez le programme pour que la LED s'allume pendant une seconde à chaque fois que la carte reçoit une ligne sur le port série.\nLa carte doit continuer à traiter les messages sans attendre : n'utilisez pas la fonction bloquante <code>delay()</code>.</p><p>Si un nouveau message arrive alors que la LED est déjà allumée, redémarrez le délai d'une seconde à partir de ce message.\nLa LED doit donc rester allumée une seconde après le dernier message reçu.</p>"
+        }
+      ]
+    }
+  ],
+  "tooltipDefs": {
+    "tooltip-inline-1": {
+      "html": "Une variable globale est déclarée en dehors de toute fonction et reste accessible depuis les fonctions du programme."
+    }
+  },
+  "toc": [],
+  "figureModules": []
+}

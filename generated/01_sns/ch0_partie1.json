@@ -1,0 +1,101 @@
+{
+  "sourcePath": "01_sns/ch0_partie1.md",
+  "title": "Première partie -- photodiodes et cartes dédiées",
+  "navTitle": "Partie 1",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Le premier prototype utilise deux cartes Raspberry Pi Pico : l'une émet un signal infrarouge, l'autre le reçoit.\nÀ cette étape, il ne s'agit pas encore de transmettre un message : on vérifie d'abord que la carte réceptrice mesure une variation lorsque la LED infrarouge s'allume et s'éteint.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Étape 1 : préparer les montages",
+      "slug": "étape-1--préparer-les-montages"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Créez deux sketches Arduino distincts, un pour chaque carte.\nLe montage d'émission comprend une LED infrarouge reliée à une sortie de la Pico.\nLe montage de réception comprend une photodiode et une résistance de rappel (pull-up) ; reliez le point de mesure à une entrée analogique de la carte réceptrice.</p>\n<p>Montage d'émission de la LED infrarouge :</p>\n<pre class=\"language-mermaid\"><code class=\"language-mermaid code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">flowchart</span> LR\n</span><span class=\"code-line\">        GPIO<span class=\"token text string\">[\"GPIO (sortie)\"]</span> <span class=\"token arrow operator\">---</span> R<span class=\"token text string\">[\"Résistance&#x3C;br/>220 Ω\"]</span>\n</span><span class=\"code-line\">        R <span class=\"token arrow operator\">---</span> LED<span class=\"token text string\">[\"LED IR&#x3C;br/>cathode vers GND\"]</span>\n</span><span class=\"code-line\">        LED <span class=\"token arrow operator\">---</span> GND<span class=\"token text string\">[GND]</span>\n</span></code></pre>\n<p>Montage de réception de la photodiode, polarisée en inverse :</p>\n<pre class=\"language-mermaid\"><code class=\"language-mermaid code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">flowchart</span> TD\n</span><span class=\"code-line\">        VCC<span class=\"token text string\">[\"+3.3 V\"]</span> <span class=\"token arrow operator\">---</span> R<span class=\"token text string\">[\"Résistance&#x3C;br/>100 kΩ\"]</span>\n</span><span class=\"code-line\">        R <span class=\"token arrow operator\">---</span> GPIO<span class=\"token text string\">[\"GPIO 3&#x3C;br/>entrée analogique\"]</span>\n</span><span class=\"code-line\">        R <span class=\"token arrow operator\">---</span> C<span class=\"token text string\">[\"Photodiode&#x3C;br/>anode vers GND\"]</span> \n</span><span class=\"code-line\">        C <span class=\"token arrow operator\">---</span> GND<span class=\"token text string\">[GND]</span>\n</span></code></pre>\n<p>Respectez la polarité des composants et les valeurs des résistances.\nSur une diode (qui comprend photodiode et LED), la patte la plus <strong>C</strong>ourte est la <strong>C</strong>athode, la plus longue est l'anode.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "warning",
+      "displayLabel": "Warning",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Vérifiez le câblage avant de mettre les cartes sous tension !\nUn mauvais cablage peut entrainer un court-circuit et rendre la carte inopérante !</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Étape 2 : créer une bibliothèque pour les LED",
+      "slug": "étape-2--créer-une-bibliothèque-pour-les-led"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Développez un code de commande des LED dans des fichiers <code>led.c</code> et <code>led.h</code> séparés afin de pouvoir les réutiliser dans les deux sketches.\nLa bibliothèque doit permettre de préciser la broche utilisée et de commander la durée d'allumage ou l'extinction.</p>\n<p>Ajoutez également une LED par carte.\nPour la partie émission, l'idée est que la LED visible s'allume lorsque la LED IR est alimentée : une dérivation semble donc intéressante.\nPour la partie réception, le LED sera allumée lorsqu'un message sera en cours de réception.\nElle sera donc nécessairement branchée sur une broche numérique indépendante.</p>\n<p>Commencez par faire clignoter une LED avec <code>delay()</code> pour valider le câblage et la commande d'une sortie.\nFaites ensuite évoluer la bibliothèque pour gérer les durées avec <code>millis()</code> à l'aide de variables globales afin de mémoriser l'état ainsi que l'instant du dernier changement.\nCette version non bloquante permettra à la carte de continuer à mesurer ou à traiter des données pendant le clignotement.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Étape 3 : réaliser le récepteur",
+      "slug": "étape-3--réaliser-le-récepteur"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans sketch <em>Réception</em>, lisez régulièrement l'entrée analogique reliée au circuit de la photodiode et affichez sa valeur dans le moniteur série (une valeur par ligne).\nOuvrez ensuite le Serial Plotter d'Arduino IDE pour observer l'évolution de la mesure.</p>\n<p>Relevez les valeurs lorsque la LED infrarouge est éteinte, puis lorsqu'elle est allumée.\nComparez les mesures dans différentes conditions d'éclairage et avec plusieurs orientations et distances entre les cartes.\nSi la variation est suffisamment nette, choisissez un seuil pour distinguer les deux états.\nVous pourrez alors commander la LED témoin de réception lorsque la mesure dépasse ce seuil.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Étape 4 : vérifier le prototype",
+      "slug": "étape-4--vérifier-le-prototype"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Testez séparément la commande des LED, la mesure analogique et la détection du seuil, puis faites fonctionner les deux cartes ensemble.\nNotez les valeurs observées et les conditions de chaque essai afin de pouvoir reproduire les résultats.</p>\n<p>Ajoutez des tests pour les parties dont le comportement peut être vérifié sans matériel, par exemple la gestion des états et des durées dans la bibliothèque.\nComplétez-les par des essais sur les cartes pour valider le câblage, l'émission infrarouge et sa détection.\nLe prototype est validé lorsque l'allumage de la LED infrarouge provoque une variation mesurable et reproductible sur la carte réceptrice.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 2,
+      "text": "Étape 1 : préparer les montages",
+      "id": "étape-1--préparer-les-montages"
+    },
+    {
+      "depth": 2,
+      "text": "Étape 2 : créer une bibliothèque pour les LED",
+      "id": "étape-2--créer-une-bibliothèque-pour-les-led"
+    },
+    {
+      "depth": 2,
+      "text": "Étape 3 : réaliser le récepteur",
+      "id": "étape-3--réaliser-le-récepteur"
+    },
+    {
+      "depth": 2,
+      "text": "Étape 4 : vérifier le prototype",
+      "id": "étape-4--vérifier-le-prototype"
+    }
+  ],
+  "figureModules": []
+}

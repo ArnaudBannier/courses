@@ -1,0 +1,587 @@
+{
+  "sourcePath": "03_programming/ch4_listes_avancees.md",
+  "title": "Listes, concepts avancés",
+  "navTitle": "4. Listes, concepts avancés",
+  "navOrder": 4,
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin",
+    "Matthieu Le Berre"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Définition du type liste doublement chainée",
+      "slug": "définition-du-type-liste-doublement-chainée"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans le cours précédent, nous avons vu le fonctionnement des listes chaînées classiques.\nCependant, nous avons également vu que leur utilisation peut être coûteuse.\nPrenons l'exemple d'un ajout en fin de liste, la complexité était en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span>, avec <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span> la taille de la liste.\nEn effet, si l'on considère notre implémentation, il est obligatoire de parcourir à chaque fois la liste du début à la fin.</p>\n<p>Il est cependant possible de remédier à un grand nombre de difficultés en complexifiant la structure de données utilisée.\nOn va se servir ici des listes doublement chaînées avec accès direct sur le début et la fin de liste.\nOn travaillera sur deux structures, la première étant :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">ListIntNode</span> ListIntNode<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">struct</span> <span class=\"token class-name\">ListIntNode</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\tListIntNode <span class=\"token operator\">*</span>prev<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\tListIntNode <span class=\"token operator\">*</span>next<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">int</span> value<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>on retrouve une structure décrivant un maillon <code>ListIntNode</code> qui possède :</p>"
+    },
+    {
+      "kind": "ordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "un pointeur vers l'élément suivant <code>next</code> ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "un pointeur vers l'élément précédent <code>prev</code> ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "un entier <code>value</code> permettant de stocker une valeur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Un nœud de liste possède donc maintenant deux liens : un pointeur vers le nœud suivant, mais également un pointeur vers le nœud précédent.\nCela permettra de faciliter certains parcours, et également de faciliter les insertions et suppressions de nœuds dans la liste.</p>\n<p>D'un point de vue implémentation C, le code se complexifie vite.\nEn fonction des primitives à coder, il faudra en effet prendre en compte plus de cas spécifiques que dans le cas de listes chaînées simples, en particulier le cas de la liste vide.\nPour remédier à cela, on vous propose <span class=\"md-tooltip-trigger md-tooltip-ready\" tabindex=\"0\" data-tooltip-ref=\"tooltip_impose\"><i class=\"fa-solid fa-circle-plus\"></i></span> la structure <em>maîtresse</em> suivante :</p>\n\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">ListInt</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\tListIntNode sentinel<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">int</span> nodeCount<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> ListInt<span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Cette structure maîtresse simplifie la gestion de la liste au travers des fonctions de manipulation.\nL'objectif ici est d'avoir facilement sous la main la taille de la liste ainsi que des pointeurs sur le début et la fin de la liste au sein d'un même endroit.\nOn utilise pour cela un nœud <em>sentinelle</em>, qui contient les pointeurs sur le début et la fin de la liste.</p>\n<p>Ce nœud symbolisera l'atteinte d'un des bords de la liste, et viendra remplacer la valeur <code>NULL</code>.\nAinsi, lorsque le précédent d'un nœud sera la sentinelle, on saura que l'on se trouve sur le premier nœud, et, lorsque le suivant d'un nœud sera la sentinelle, on saura que l'on se trouve sur le dernier nœud.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Création d'une liste vide",
+      "slug": "création-dune-liste-vide"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Précédemment, une liste était identifiée par un pointeur sur son premier maillon.\nUn pointeur de liste vide était un pointeur <code>NULL</code>.\nMaintenant, la structure maîtresse se charge d'identifier si la liste est vide ou non.\nIl est donc nécessaire d'allouer et initialiser cette structure pour définir correctement une liste (vide dans un premier temps).</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">ListInt<span class=\"token operator\">*</span> <span class=\"token function\">ListInt_create</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">  ListInt <span class=\"token operator\">*</span>list <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>ListInt<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span>list<span class=\"token punctuation\">)</span> <span class=\"token keyword\">return</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">\tListIntNode <span class=\"token operator\">*</span>sentinel <span class=\"token operator\">=</span> <span class=\"token operator\">&#x26;</span><span class=\"token punctuation\">(</span>list<span class=\"token operator\">-></span>sentinel<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">\tsentinel<span class=\"token operator\">-></span>next <span class=\"token operator\">=</span> sentinel<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\tsentinel<span class=\"token operator\">-></span>prev <span class=\"token operator\">=</span> sentinel<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\tsentinel<span class=\"token operator\">-></span>value <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">\tlist<span class=\"token operator\">-></span>nodeCount <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">return</span> list<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Après l'allocation de la structure, on initialise les pointeurs sur le début et la fin de liste en leur affectant tous les deux l'adresse de la sentinelle.\nLa liste est vide lorsque le suivant et le précédent de la sentinelle pointent tous les deux vers la sentinelle elle-même, tout comme le pointeur <code>list</code> vers la sentinelle, comme indiqué dans le schéma suivant.\nNotons que le pointeur <code>list</code> doit en permanence pointer sur la sentinelle et sur aucun autre noeud !\nC'est en effet notre seul point d'entrée vers les élements de la liste.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Etat initial de la liste : la sentinelle pointe sur elle même",
+      "displayLabel": "Figure 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch4_sentinel_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch4_sentinel_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch4_sentinel_d.svg\" alt=\"Sentinelle pointant sur elle même\" style=\"min-width: 30%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "remark",
+      "displayLabel": "Remark 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Chaque flèche désigne un pointeur de type <code>ListIntNode *</code>.\nLe point de départ de la flèche désigne son emplacement : un champ <code>next</code> (partie gauche du maillon) ou <code>prev</code> (partie droite) ou bien le pointeur de la structure maitresse.\nCes pointeurs étant chacun du type <code>ListIntNode *</code>, ils pointeront dans tous les cas vers le premier octet de la plage mémoire occupée par un maillon de type <code>ListIntNode</code> ; et ce, quelque soit la zone d'arrivée illustrée sur le schéma.\nPar exemple sur le schéma précédent, les trois flèches désignent trois pointeurs ayant la même valeur !</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>On remarque que la valeur du nœud sentinelle n'a pas d'importance, ici on laissera la valeur à 0.\nLa sentinelle désigne désigna à la fois le début <strong>ET</strong> la fin de la liste.\nS'il n'y a pas de noeud, les deux pointeurs pointent sur elle même.\nSi un ou des noeuds sont présent, le suivant de la sentinelle désigne la tête de la liste et le précédent désigne le dernier élément.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Primitives d&#39;existence [Moodle]",
+      "displayLabel": "Exercise 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Développez les fonctions suivantes permettant de gérer une liste vide (création, liste vide) ou n'accédant qu'au pointeur de référence (taille).\nPour les fonctions prenant un paramètre, on suppose que l'on dispose d'un pointeur <code>list</code> sur une liste d'entiers de type <code>ListInt</code> contenant, ou non, des éléments.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">ListInt <span class=\"token operator\">*</span><span class=\"token function\">ListInt_create</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_size</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">bool <span class=\"token function\">ListInt_isEmpty</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4634\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Primitives de lecture [Moodle]",
+      "displayLabel": "Exercise 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Développez les fonctions suivantes permettant de lire des informations dans une liste sans en modifier le contenu.\nOn suppose que l'on dispose en paramètre de chaque fonction d'un pointeur <code>list</code> sur une liste d'entiers de type <code>ListInt</code> contenant, ou non, des éléments.\nAucune des fonctions ne doit modifier le contenu de la liste.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_print</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_getFirst</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_getLast</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4634\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Insertion et suppression",
+      "slug": "insertion-et-suppression"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Prenons l'exemple d'une liste contenant déjà un maillon, la valeur 5, et ajoutons un nouvel élément en tête.\nNotons que la procédure consiste finalement à intercaler un noeud entre deux autres : le noeud 7 sera placée entre la sentinelle et le noeud 5.\nOn possède donc un pointeur <code>list</code> qui pointe vers une structure de type <code>ListInt</code> contenant la sentinelle et la taille de la liste.\nDans les schémas suivants, nous ignorerons la taille et <code>list</code> pointera toujours sur la sentinelle.</p>"
+    },
+    {
+      "kind": "ordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Avant de procéder à l'insertion, on dispose d'un pointeur vers la sentinelle de la liste ainsi que d'un pointeur sur le noeud à insérer.\nDans le cas général, on disposera d'un pointeur vers le noeud dont le suivant désignera le nouveau maillon."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Allocation du nouveau maillon",
+      "displayLabel": "Figure 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_1_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_1_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_1_d.svg\" alt=\"Une list et un pointeur sur un nouveau maillon\" style=\"min-width: 30%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "2",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "On définit le précédent de <code>node</code> comme étant la sentinelle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Nouveau prev pour nouveau maillon",
+      "displayLabel": "Figure 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_2_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_2_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_2_d.svg\" alt=\"Prev du nouveau maillon pointe sur la sentinelle\" style=\"min-width: 30%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "3",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "On définit le suivant de <code>node</code> comme étant le suivant de la sentinelle, c'est-à-dire le nœud (7)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Nouveau next pour nouveau maillon",
+      "displayLabel": "Figure 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_3_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_3_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_3_d.svg\" alt=\"Next du nouveau maillon pointe sur le premier noeud de la liste\" style=\"min-width: 30%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "4",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "A ce stade <code>node</code> possède un suivant et un précédent, mais ces derniers ne sont pas au courant.\nOn définit donc le suivant du précédent de <code>node</code> comme étant <code>node</code> : dans notre cas, cela consiste à redéfinir le suivant de la sentinelle, qui pointait auparavant sur le nœud (7), pour qu'il pointe maintenant sur <code>node</code> (5)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Nouveau next pour la sentinelle",
+      "displayLabel": "Figure 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_4_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_4_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_4_d.svg\" alt=\"Next de sentinelle pointe sur le nouveau maillon\" style=\"min-width: 30%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "ordered-list",
+      "start": "5",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "De la même manière, on définit donc le précédent du suivant de <code>node</code> comme étant <code>node</code> : dans notre cas, cela consiste à redéfinir le précédent du nœud contenant 7."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Nouveau prev pour le noeud de liste",
+      "displayLabel": "Figure 6",
+      "number": "6",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_5_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_5_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_5_d.svg\" alt=\"Prev de next du nouveau maillon pointe sur le nouveau maillon\" style=\"min-width: 30%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>La procédure d'insertion est alors terminée.\nOn obtient finalement une liste chaînée à deux éléments, dans l'ordre 5 puis 7 : la sentinelle pointe (via <code>next</code>) sur le nœud (5), qui pointe sur le nœud (7), dont le <code>next</code> boucle de nouveau sur la sentinelle ; symétriquement pour les <code>prev</code> dans l'autre sens.\nUne fois le schéma précédent réorganisé, on voit que tout est bien relié.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "La liste correctement organisée",
+      "displayLabel": "Figure 7",
+      "number": "7",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_6_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_6_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_6_d.svg\" alt=\"Liste doublement chainée avec deux maillons\" style=\"min-width: 30%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>On pourrait se dire « mais en quoi c'est plus simple ? La procédure est encore plus complexe qu'avant ! ».\nCertes, mais il n'y a plus de cas particulier, comme le cas d'ajout d'un noeud sur une liste vide.</p>\n<p>Prenons justement le cas d'une liste vide : les champs <code>sentinel->next</code> et <code>sentinel->prev</code> pointent tous les deux vers la sentinelle.\nUne allocation dynamique permet de créer un nouveau maillon <code>node</code> contenant la valeur 7 et dont les champs <code>next</code> et <code>prev</code> sont tous les deux à <code>NULL</code> : le nouveau maillon est pour l'instant complètement isolé de la liste.</p>\n<p>Il est temps de relier ce nouveau maillon à notre liste.\nRappelons que la sentinelle pointe sur le premier et dernier nœud de liste à l'aide de ses champs <code>next</code> et <code>prev</code>.\nCes deux champs sont donc modifiés pour pointer vers le nouveau maillon <code>node</code>.\nLe cas est similaire pour le nœud <code>node</code> : son suivant est la sentinelle, tout comme son précédent.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Les trois étapes pour ajouter un noeud à une liste vide",
+      "displayLabel": "Figure 8",
+      "number": "8",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_empty_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_empty_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch4_add_list_empty_d.svg\" alt=\"Un pointeur list dont la sentinelle pointe vers un maillon\" style=\"min-width: 30%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>On voit donc que le cas général s'applique ici aussi.\nLe nouveau noeud s'est intercalé entre deux noeuds de la liste : la sentinelle en tant que noeud précédent et la sentinelle en tant que noeud suivant.\nLors de l'implémentation de la primitive d'insertion, il sera intéressant de définir des pointeurs dès le début de la fonction sur les deux noeuds qui encadreront le nouveau noeud pour clarifier le code.</p>\n<p>Il y a peu de choses à rajouter pour évoquer la suppression d'un élément.\nLa mécanique reste similaire à l'insertion, mais il n'y a dans ce cas aucune allocation à faire.\nLes pointeurs de la liste autour du maillon à supprimer sont simplement raccordés pour exclure le maillon de la liste.\nUne fois réalisé, le noeud à supprimer peut être libéré, à condition d'avoir pensé à conserver un pointeur sur ce dernier.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Fonctions privées [Moodle]",
+      "displayLabel": "Exercise 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Les fonctions suivantes font partie des fonctions <em>privées</em> de la bibliothèque.\nAussi, il ne faudra pas déclarer leur prototype dans le header pour les conserver privées.\nEn revanche, il est fortement recommandé de déclarer leur prototype en début de fichier source afin d'éviter les problèmes lors de l'édition de liens.</p><p>On suppose ici que l’on dispose d’un pointeur <code>list</code> sur une liste d’entiers de type <code>ListInt</code>.\nOn dispose également d'un pointeur <code>node</code> vers un nœud spécifique de la liste (de type <code>ListIntNode</code>) qui sera le nœud ajouté (resp. supprimé) à la liste.\nCes fonctions doivent donc modifier l'état de la liste, y compris sa taille.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_insertNodeAfter</span><span class=\"token punctuation\">(</span>ListInt<span class=\"token operator\">*</span> list<span class=\"token punctuation\">,</span> ListIntNode<span class=\"token operator\">*</span> ref<span class=\"token punctuation\">,</span> ListIntNode<span class=\"token operator\">*</span> node<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_popNode</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> ListIntNode <span class=\"token operator\">*</span>node<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La fonction <code>insertNodeAfter</code> contient également un autre pointeur <code>ref</code> sur le nœud qui sert de référence.\nLe maillon <code>node</code> devra se placer juste après le nœud <code>ref</code> dans la liste.\nRemarquons que le nœud <code>ref</code> peut désigner la sentinelle pour indiquer que l'on insère le nœud en tête de liste.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4634\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "API publique et fonctions privées",
+      "slug": "api-publique-et-fonctions-privées"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "API publique",
+      "slug": "api-publique"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les primitives de modification présentées précédemment permettent d’insérer ou de retirer un maillon à partir de pointeurs sur les nœuds.\nElles sont utiles pour implémenter les opérations de la bibliothèque, mais elles exposent les détails internes de la liste : elles font donc partie de son API privée et ne sont pas destinées à être appelées directement par les utilisateurs.\nCela implique que leur prototype n'est pas présent dans le fichier <code>.h</code>.\nCela empêche l'utilisateur de la bibliothèque d'appeler ces fonctions.</p>\n<p>L’API publique propose des opérations plus simples, qui ne nécessitent pas de manipuler les maillons : insérer un élément en tête ou en queue de liste, et retirer l’élément situé en tête ou en queue.\nCes fonctions s’appuient sur les primitives privées pour modifier les liens et la taille de la liste, tout en masquant à l’utilisateur sa représentation interne.\nElles exposent donc leur prototype dans le fichier <code>.h</code> afin que l'utilisateur puisse les appeler à son bon vouloir.</p>\n<p>Le but d'une telle pratique est double :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "faciliter le développement avec l'ajout de primitives privées qui peuvent être réutilisées,"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "faciliter la manipulation de la bibliothèque auprès de l'utilisateur en exposant un unique type de données : <code>ListInt</code>."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "API publique [Moodle]",
+      "displayLabel": "Exercise 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Les fonctions suivantes font partie de la partie publique de la bibliothèque de la bibliothèque et ont donc leur prototype présent dans le header.</p><p>On dispose donc ici uniquement d’un pointeur <code>list</code> sur une liste d’entiers de type <code>ListInt</code> et optionnellement d'un entier <code>value</code> pour les fonctions d'ajout.\nCes fonctions font appels aux primitives internes codées précédemment et doivent avoir une complexité constante.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_insertFirst</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_insertLast</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_popFirst</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_popLast</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4634\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Itérateur",
+      "slug": "itérateur"
+    },
+    {
+      "kind": "html",
+      "html": "<p>L’objectif de cette section est de développer un premier itérateur sur un type de données abstrait.\nUn <em>itérateur</em> peut être vu comme un pointeur sur les éléments de ce type, qui permet de les parcourir.\nDans le contexte des listes doublement chaînées avec sentinelle utilisées dans ce chapitre, un itérateur est un pointeur sur un nœud de la liste.\nAfin de faciliter sa gestion, nous lui ajoutons également, au sein d’une structure, un pointeur vers la sentinelle de la liste à parcourir :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">ListIntIter</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    ListIntNode <span class=\"token operator\">*</span>sentinel<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    ListIntNode <span class=\"token operator\">*</span>current<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> ListIntIter<span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>L’initialisation de l’itérateur consiste à allouer et à initialiser correctement une structure de type <code>ListIntIter</code>.\nPar défaut, lors de sa création, l’itérateur pointe vers le premier élément de la liste (ou vers la sentinelle si la liste est vide).\nL’itérateur est alors <strong>valide</strong>, c’est-à-dire qu’il pointe vers un élément de la liste.\nLorsqu’il a parcouru l’ensemble des éléments, son pointeur <code>current</code> pointe vers la sentinelle, ce qui indique la fin du parcours.</p>\n<p>Précisons enfin que lors de l'utilisation d'un itérateur, l'utilisateur <strong>ne doit pas</strong> modifier la liste en ajoutant ou supprimant des maillons.\nEn effet, cela pourrait fausser la position de l'itérateur et le faire rater des éléments ou en parcourir certains deux fois.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Itérateur sur liste [Moodle]",
+      "displayLabel": "Exercise 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Développez les fonctions suivantes permettant de gérer un itérateur sur une liste d'entiers.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">ListIntIter <span class=\"token operator\">*</span><span class=\"token function\">ListIntIter_create</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListIntIter_destroy</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListIntIter_get</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListIntIter_next</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">bool <span class=\"token function\">ListIntIter_isValid</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Lors de sa création, l'itérateur pointe sur le premier maillon de la liste, si la taille de celle-ci est supérieure à 1.\nUne fois l'itérateur créé, l'utilisateur doit utiliser la fonction <code>isValid</code> afin de vérifier que l'itérateur pointe bien sur un maillon de la liste et non la sentinelle (ce qui indiquerait qu'il ne reste plus d'éléments à parcourir).\nLa fonction <code>get</code> retourne la valeur du maillon sur lequel pointe l'itérateur et <code>next</code> permet d'incrémenter l'itérateur vers le maillon suivant.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4634\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+        }
+      ]
+    }
+  ],
+  "tooltipDefs": {
+    "tooltip_impose": {
+      "html": "<span class=\"md-tooltip-line\">on vous <em>impose</em></span>"
+    }
+  },
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Définition du type liste doublement chainée",
+      "id": "définition-du-type-liste-doublement-chainée"
+    },
+    {
+      "depth": 1,
+      "text": "Création d'une liste vide",
+      "id": "création-dune-liste-vide"
+    },
+    {
+      "depth": 1,
+      "text": "Insertion et suppression",
+      "id": "insertion-et-suppression"
+    },
+    {
+      "depth": 1,
+      "text": "API publique et fonctions privées",
+      "id": "api-publique-et-fonctions-privées"
+    },
+    {
+      "depth": 2,
+      "text": "API publique",
+      "id": "api-publique"
+    },
+    {
+      "depth": 2,
+      "text": "Itérateur",
+      "id": "itérateur"
+    }
+  ],
+  "figureModules": []
+}

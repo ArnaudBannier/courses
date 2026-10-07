@@ -497,6 +497,39 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch1_conventions.md",
+          "outputPath": "01_ai_data/ch1_conventions.json",
+          "title": "Conventions du projet",
+          "navTitle": "Conventions",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch1_pico.md",
+          "outputPath": "01_ai_data/ch1_pico.json",
+          "title": "Microcontrôleur Raspberry Pico",
+          "navTitle": "Pico",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch1_radio.md",
+          "outputPath": "01_ai_data/ch1_radio.json",
+          "title": "Module radio nRF24L01",
+          "navTitle": "Radio",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -509,6 +542,39 @@
               "outputPath": "01_ai_data/ch1_installation.json",
               "title": "Installation des outils",
               "navTitle": "Installation",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_ai_data/ch1_conventions.md",
+              "outputPath": "01_ai_data/ch1_conventions.json",
+              "title": "Conventions du projet",
+              "navTitle": "Conventions",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_ai_data/ch1_pico.md",
+              "outputPath": "01_ai_data/ch1_pico.json",
+              "title": "Microcontrôleur Raspberry Pico",
+              "navTitle": "Pico",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_ai_data/ch1_radio.md",
+              "outputPath": "01_ai_data/ch1_radio.json",
+              "title": "Module radio nRF24L01",
+              "navTitle": "Radio",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",
@@ -529,10 +595,54 @@
       ],
       "chapters": [
         {
+          "sourcePath": "01_sns/ch0_description.md",
+          "outputPath": "01_sns/ch0_description.json",
+          "title": "Présentation du projet",
+          "navTitle": "Description",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_sns/ch0_partie1.md",
+          "outputPath": "01_sns/ch0_partie1.json",
+          "title": "Première partie -- photodiodes et cartes dédiées",
+          "navTitle": "Partie 1",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
           "sourcePath": "01_sns/ch1_installation.md",
           "outputPath": "01_sns/ch1_installation.json",
           "title": "Installation des outils",
           "navTitle": "Installation",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_sns/ch1_conventions.md",
+          "outputPath": "01_sns/ch1_conventions.json",
+          "title": "Conventions du projet",
+          "navTitle": "Conventions",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_sns/ch1_premiers_pas.md",
+          "outputPath": "01_sns/ch1_premiers_pas.json",
+          "title": "Premiers pas en Arduino",
+          "navTitle": "Premiers pas",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -543,6 +653,34 @@
       "navigation": [
         {
           "kind": "section",
+          "title": "0. Le projet",
+          "chapters": [
+            {
+              "sourcePath": "01_sns/ch0_description.md",
+              "outputPath": "01_sns/ch0_description.json",
+              "title": "Présentation du projet",
+              "navTitle": "Description",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_sns/ch0_partie1.md",
+              "outputPath": "01_sns/ch0_partie1.json",
+              "title": "Première partie -- photodiodes et cartes dédiées",
+              "navTitle": "Partie 1",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "section",
           "title": "1. Découverte",
           "chapters": [
             {
@@ -550,6 +688,28 @@
               "outputPath": "01_sns/ch1_installation.json",
               "title": "Installation des outils",
               "navTitle": "Installation",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_sns/ch1_conventions.md",
+              "outputPath": "01_sns/ch1_conventions.json",
+              "title": "Conventions du projet",
+              "navTitle": "Conventions",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_sns/ch1_premiers_pas.md",
+              "outputPath": "01_sns/ch1_premiers_pas.json",
+              "title": "Premiers pas en Arduino",
+              "navTitle": "Premiers pas",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",
@@ -811,6 +971,19 @@
             "Nicolas Bodin",
             "Matthieu Le Berre"
           ]
+        },
+        {
+          "sourcePath": "03_programming/ch4_listes_avancees.md",
+          "outputPath": "03_programming/ch4_listes_avancees.json",
+          "title": "Listes, concepts avancés",
+          "navTitle": "4. Listes, concepts avancés",
+          "navOrder": 4,
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin",
+            "Matthieu Le Berre"
+          ]
         }
       ],
       "navigation": [
@@ -879,6 +1052,22 @@
             "title": "Introduction aux listes chaînées",
             "navTitle": "3. Introduction aux listes chaînées",
             "navOrder": 3,
+            "navHidden": false,
+            "authors": [
+              "Arnaud Bannier",
+              "Nicolas Bodin",
+              "Matthieu Le Berre"
+            ]
+          }
+        },
+        {
+          "kind": "chapter",
+          "chapter": {
+            "sourcePath": "03_programming/ch4_listes_avancees.md",
+            "outputPath": "03_programming/ch4_listes_avancees.json",
+            "title": "Listes, concepts avancés",
+            "navTitle": "4. Listes, concepts avancés",
+            "navOrder": 4,
             "navHidden": false,
             "authors": [
               "Arnaud Bannier",

@@ -746,8 +746,36 @@
       "outputPath": "01_ai_data/ch1_installation.json",
       "blocks": {}
     },
+    "data-1-conventions": {
+      "outputPath": "01_ai_data/ch1_conventions.json",
+      "blocks": {}
+    },
+    "data-1-pico": {
+      "outputPath": "01_ai_data/ch1_pico.json",
+      "blocks": {}
+    },
+    "data-1-radio": {
+      "outputPath": "01_ai_data/ch1_radio.json",
+      "blocks": {}
+    },
+    "sns-0-description": {
+      "outputPath": "01_sns/ch0_description.json",
+      "blocks": {}
+    },
+    "sns-0-partie1": {
+      "outputPath": "01_sns/ch0_partie1.json",
+      "blocks": {}
+    },
     "sns-1-installation": {
       "outputPath": "01_sns/ch1_installation.json",
+      "blocks": {}
+    },
+    "sns-1-conventions": {
+      "outputPath": "01_sns/ch1_conventions.json",
+      "blocks": {}
+    },
+    "sns-1-premiers-pas": {
+      "outputPath": "01_sns/ch1_premiers_pas.json",
       "blocks": {}
     },
     "alg3-espaces-vectoriels": {
@@ -1042,6 +1070,10 @@
     },
     "prog3-listes-chainees": {
       "outputPath": "03_programming/ch3_listes.json",
+      "blocks": {}
+    },
+    "prog3-listes-avancees": {
+      "outputPath": "03_programming/ch4_listes_avancees.json",
       "blocks": {}
     }
   }

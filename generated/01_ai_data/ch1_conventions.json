@@ -1,0 +1,413 @@
+{
+  "sourcePath": "01_ai_data/ch1_conventions.md",
+  "title": "Conventions du projet",
+  "navTitle": "Conventions",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Introduction à Markdown",
+      "slug": "introduction-à-markdown"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Markdown est un langage de balisage léger qui permet de structurer du texte à l'aide d'une syntaxe concise et simple, sans passer par un logiciel de traitement de texte.\nLes fichiers Markdown, dont l'extension est généralement <code>.md</code>, sont des fichiers texte brut. Ils peuvent être consultés et modifiés dans un éditeur de code, sans outil spécialisé.\nIls sont généralement convertis en HTML ou en PDF afin d'en faciliter la lecture. Cette conversion est souvent réalisée automatiquement par les outils de prévisualisation, notamment Visual Studio et Visual Studio Code, que nous utiliserons.\nDe même, GitHub met automatiquement en forme les fichiers Markdown lorsqu'on les consulte sur le site.</p>\n<p>Dans un projet informatique, cette simplicité est particulièrement utile. Les fichiers Markdown sont faciles à versionner avec Git : les changements sont lisibles dans un diff, peuvent être relus en revue de code et restent associés aux changements du projet. L'équipe peut ainsi maintenir sa documentation au même endroit que le code, plutôt que dans un document séparé qui risque de devenir obsolète.</p>\n<p>On utilise Markdown notamment pour le <code>README.md</code> qui présente le projet et explique comment le démarrer, pour les guides d'installation et d'utilisation, les notes techniques et la documentation interne. Il convient aux contenus principalement textuels, avec des titres, des listes, des liens ou des exemples de code. Pour un document qui exige une mise en page très précise ou une composition graphique complexe, un outil spécialisé sera plus adapté.</p>\n<p>La syntaxe de base de Markdown reste limitée : elle ne fournit que quelques conventions simples pour structurer un document. Plusieurs extensions permettent toutefois d'enrichir ces possibilités. Associé à des outils spécialisés, Markdown peut ainsi servir à générer des sites web ou des sites de documentation complets, avec des outils comme <a href=\"https://docusaurus.io/fr/docs\" target=\"_blank\" rel=\"noopener noreferrer\">Docusaurus</a> et <a href=\"https://www.mkdocs.org/\" target=\"_blank\" rel=\"noopener noreferrer\">MkDocs</a>. Il est également utilisé pour produire des publications scientifiques et techniques, notamment avec <a href=\"https://quarto.org/\" target=\"_blank\" rel=\"noopener noreferrer\">Quarto</a>.\nPour information, les cours sur ce site sont tous rédigés avec une extension personnalisée du Markdown.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Exemples de syntaxe",
+      "slug": "exemples-de-syntaxe"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Titres",
+      "slug": "titres"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour créer un titre, placez de un à six signes <code>#</code> au début d'une ligne, suivis d'une espace et du texte du titre. Le nombre de signes détermine son niveau.</p>\n<pre class=\"language-md\"><code class=\"language-md code-highlight\"><span class=\"code-line\"><span class=\"token title important\"><span class=\"token punctuation\">#</span> Titre de niveau 1</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token title important\"><span class=\"token punctuation\">##</span> Titre de niveau 2</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token title important\"><span class=\"token punctuation\">###</span> Titre de niveau 3</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Paragraphes",
+      "slug": "paragraphes"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour commencer un nouveau paragraphe, laissez une ligne vide entre deux blocs de texte. Un simple retour à la ligne ne suffit pas à les séparer.</p>\n<pre class=\"language-md\"><code class=\"language-md code-highlight\"><span class=\"code-line\">Les Nyctibiidae, communément appelés ibijaux, forment une famille d'oiseaux\n</span><span class=\"code-line\">de l'ordre des Nyctibiiformes. Ils sont apparentés aux engoulevents et aux podarges.\n</span><span class=\"code-line\">Ils étaient autrefois classés avec les engoulevents dans l'ordre des Caprimulgiformes.\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">Les ibijaux sont des insectivores nocturnes. Contrairement aux vrais engoulevents,\n</span><span class=\"code-line\">ils n'ont pas de soies autour de la bouche. Ils chassent depuis un perchoir,\n</span><span class=\"code-line\">comme le font les pies-grièches et les moucherolles.\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Emphase",
+      "slug": "emphase"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour mettre du texte en italique, encadrez-le d'un seul <code>_</code> ou <code>*</code>. Pour le mettre en gras, encadrez-le de deux <code>**</code>. Combinez les délimiteurs pour appliquer les deux styles en même temps.</p>\n<pre class=\"language-md\"><code class=\"language-md code-highlight\"><span class=\"code-line\">Le <span class=\"token bold\"><span class=\"token punctuation\">**</span><span class=\"token content\">kakapo</span><span class=\"token punctuation\">**</span></span> ne peut pas voler, mais c'est un <span class=\"token italic\"><span class=\"token punctuation\">_</span><span class=\"token content\">excellent</span><span class=\"token punctuation\">_</span></span> grimpeur. Il peut\n</span><span class=\"code-line\">atteindre la cime des arbres les plus hauts, puis se <span class=\"token italic\"><span class=\"token punctuation\">_</span><span class=\"token content\">laisser tomber</span><span class=\"token punctuation\">_</span></span> en\n</span><span class=\"code-line\">déployant ses ailes. Il peut ainsi parcourir <span class=\"token italic\"><span class=\"token punctuation\">_</span><span class=\"token content\"><span class=\"token bold\"><span class=\"token punctuation\">**</span><span class=\"token content\">quelques mètres</span><span class=\"token punctuation\">**</span></span></span><span class=\"token punctuation\">_</span></span> dans les\n</span><span class=\"code-line\">airs, à un angle <span class=\"token bold\"><span class=\"token punctuation\">**</span><span class=\"token content\">inférieur</span><span class=\"token punctuation\">**</span></span> à 45 degrés.\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Listes",
+      "slug": "listes"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour créer une liste, commencez chaque élément sur une nouvelle ligne avec le marqueur correspondant : un numéro suivi d'un point pour une liste ordonnée, ou un tiret, un astérisque ou un signe plus pour une liste non ordonnée.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 3,
+      "text": "Liste ordonnée",
+      "slug": "liste-ordonnée"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour chaque élément, écrivez un numéro suivi d'un point et d'une espace. Les numéros s'affichent dans l'ordre, même si vous utilisez le même numéro dans le fichier.</p>\n<pre class=\"language-md\"><code class=\"language-md code-highlight\"><span class=\"code-line\"><span class=\"token list punctuation\">1.</span> Premier élément\n</span><span class=\"code-line\"><span class=\"token list punctuation\">2.</span> Deuxième élément\n</span><span class=\"code-line\"><span class=\"token list punctuation\">3.</span> Troisième élément\n</span><span class=\"code-line\"><span class=\"token list punctuation\">4.</span> Quatrième élément\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 3,
+      "text": "Liste non ordonnée",
+      "slug": "liste-non-ordonnée"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Commencez chaque élément par <code>-</code>, <code>*</code> ou <code>+</code>, suivi d'une espace. Pour créer une sous-liste, indentez ses lignes sous l'élément auquel elle se rattache.</p>\n<pre class=\"language-md\"><code class=\"language-md code-highlight\"><span class=\"code-line\"><span class=\"token list punctuation\">-</span> Premier élément\n</span><span class=\"code-line\"><span class=\"token list punctuation\">-</span> Deuxième élément\n</span><span class=\"code-line\"><span class=\"token list punctuation\">-</span> Troisième élément\n</span><span class=\"code-line\">    <span class=\"token list punctuation\">-</span> Sous-élément\n</span><span class=\"code-line\">    <span class=\"token list punctuation\">-</span> Sous-élément\n</span><span class=\"code-line\"><span class=\"token list punctuation\">-</span> Quatrième élément\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Code",
+      "slug": "code"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour afficher du code dans une phrase, encadrez-le d'accents graves simples. Pour un bloc de code, placez trois accents graves sur des lignes séparées avant et après le code. Ajoutez éventuellement le nom du langage après les accents ouvrants pour activer la coloration syntaxique.</p>\n<pre class=\"language-md\"><code class=\"language-md code-highlight\"><span class=\"code-line\">\n</span><span class=\"code-line\">La fonction <span class=\"token code-snippet code keyword\">`main()`</span> correspond au point d'entrée d'un programme en <span class=\"token code-snippet code keyword\">`C`</span>.\n</span><span class=\"code-line\"><span class=\"token code\"><span class=\"token punctuation\">```</span><span class=\"token code-language\">c</span>\n</span></span><span class=\"code-line\"><span class=\"token code\"><span class=\"token code-block language-c\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">&#x3C;stdio.h></span></span>\n</span></span></span><span class=\"code-line\"><span class=\"token code\"><span class=\"token code-block language-c\">\n</span></span></span><span class=\"code-line\"><span class=\"token code\"><span class=\"token code-block language-c\"><span class=\"token keyword\">int</span> <span class=\"token function\">main</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> argc<span class=\"token punctuation\">,</span> <span class=\"token keyword\">char</span> <span class=\"token operator\">*</span>argv<span class=\"token punctuation\">[</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">)</span>\n</span></span></span><span class=\"code-line\"><span class=\"token code\"><span class=\"token code-block language-c\"><span class=\"token punctuation\">{</span>\n</span></span></span><span class=\"code-line\"><span class=\"token code\"><span class=\"token code-block language-c\">    <span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"Bonjour les ibijaux\\n\"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></span></span><span class=\"code-line\"><span class=\"token code\"><span class=\"token code-block language-c\">    <span class=\"token keyword\">return</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span></span></span><span class=\"code-line\"><span class=\"token code\"><span class=\"token code-block language-c\"><span class=\"token punctuation\">}</span></span>\n</span></span><span class=\"code-line\"><span class=\"token code\"><span class=\"token punctuation\">```</span></span>\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Tableaux",
+      "slug": "tableaux"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Séparez les cellules d'un tableau avec des barres verticales <code>|</code>. Après la ligne d'en-tête, ajoutez une ligne de tirets ; placez-y des deux-points pour aligner les colonnes à gauche, au centre ou à droite. Un tableau en markdown doit toujours contenir un en-tête.</p>\n<pre class=\"language-md\"><code class=\"language-md code-highlight\"><span class=\"code-line\"><span class=\"token table\"><span class=\"token table-header-row\"><span class=\"token punctuation\">|</span><span class=\"token table-header important\"> Titre 1   </span><span class=\"token punctuation\">|</span><span class=\"token table-header important\">  Titre 2   </span><span class=\"token punctuation\">|</span><span class=\"token table-header important\">   Titre 3 </span><span class=\"token punctuation\">|</span>\n</span></span></span><span class=\"code-line\"><span class=\"token table\"><span class=\"token table-header-row\"></span><span class=\"token table-line\"><span class=\"token punctuation\">|</span> <span class=\"token punctuation\">:--------</span> <span class=\"token punctuation\">|</span> <span class=\"token punctuation\">:--------:</span> <span class=\"token punctuation\">|</span> <span class=\"token punctuation\">--------:</span> <span class=\"token punctuation\">|</span>\n</span></span></span><span class=\"code-line\"><span class=\"token table\"><span class=\"token table-line\"></span><span class=\"token table-data-rows\"><span class=\"token punctuation\">|</span><span class=\"token table-data\"> Colonne   </span><span class=\"token punctuation\">|</span><span class=\"token table-data\">  Colonne   </span><span class=\"token punctuation\">|</span><span class=\"token table-data\">   Colonne </span><span class=\"token punctuation\">|</span>\n</span></span></span><span class=\"code-line\"><span class=\"token table\"><span class=\"token table-data-rows\"><span class=\"token punctuation\">|</span><span class=\"token table-data\"> Alignée à </span><span class=\"token punctuation\">|</span><span class=\"token table-data\"> Alignée au </span><span class=\"token punctuation\">|</span><span class=\"token table-data\"> Alignée à </span><span class=\"token punctuation\">|</span>\n</span></span></span><span class=\"code-line\"><span class=\"token table\"><span class=\"token table-data-rows\"><span class=\"token punctuation\">|</span><span class=\"token table-data\"> Gauche    </span><span class=\"token punctuation\">|</span><span class=\"token table-data\">   Centre   </span><span class=\"token punctuation\">|</span><span class=\"token table-data\">    Droite </span><span class=\"token punctuation\">|</span>\n</span></span></span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Compléments",
+      "slug": "compléments"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour créer un lien, écrivez le texte entre crochets, puis l'adresse entre parenthèses : <code>[texte](adresse)</code>. Pour afficher une image, utilisez la même syntaxe en ajoutant <code>!</code> devant les crochets : <code>![description](adresse)</code>.</p>\n<p>Plusieurs outils de prévisualisation accèptent également les diagrammes écrits avec la syntaxe <code>Mermaid</code>. Consultez la <a href=\"https://mermaid.js.org/intro/\" target=\"_blank\" rel=\"noopener noreferrer\">documentation de Mermaid</a> ou essayez quelques exemples dans son <a href=\"https://mermaid.live/edit\" target=\"_blank\" rel=\"noopener noreferrer\">éditeur en ligne</a>.</p>\n<p>Si vous souhaitez un exemple d'un README et d'un tutoriel rédigés en Markdown, vous pouvez consulter le dépôt de <a href=\"https://github.com/ArnaudBannier/space-pixels-sdl3/\" target=\"_blank\" rel=\"noopener noreferrer\">Space Pixels</a>, notre projet d'informatique du second semestre. Sur Github, n'hésitez pas à choisir l'onglet <code>Code</code> au lieu de <code>Preview</code> lorsque vous consultez un fichier en Markdown pour voir comment il est rédigé.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Création du README",
+      "displayLabel": "Exercise 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Créez un fichier <code>README.md</code> à la racine de votre projet et ajoutez un minimum d'information.\nSi vous ne savez pas du tout à quoi peut ressembler un readme pour un projet informatique, vous pouvez par exemple regader celui de <a href=\"https://github.com/microsoft/vscode/blob/main/README.md\" target=\"_blank\" rel=\"noopener noreferrer\">vscode</a>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Créez-vous un fichier mémo de la syntaxe markdown."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Conventions de code",
+      "slug": "conventions-de-code"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans un programme, les variables, les fonctions, les structures, les fichiers et les dossiers portent des noms qui permettent de comprendre leur rôle. Pour écrire ces noms, les développeurs suivent des conventions : elles déterminent notamment comment séparer plusieurs mots et quelles lettres mettre en majuscule. Voici les plus courantes.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Casses usuelles",
+      "displayLabel": "Definition 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<code>camelCase</code> : le premier mot commence par une minuscule, puis chaque mot suivant commence par une majuscule ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<code>PascalCase</code> : tous les mots commencent par une majuscule ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<code>kebab-case</code> : tous les mots sont en minuscules et sont séparés par un tiret ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<code>snake_case</code> : tous les mots sont en minuscules et sont séparés par un underscore ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<code>UPPER_CASE</code> ou <code>SCREAMING_SNAKE_CASE</code> : tous les mots sont en majuscules et sont séparés par un underscore."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Conventions du projet",
+      "slug": "conventions-du-projet"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans ce projet, les noms de fichiers et de dossiers doivent être écrits en <code>snake_case</code>. Ce sont des conventions que vous pouvez appliquer dès maintenant. Vous pouvez utiliser du français pour les noms de fichiers et dossiers de votre répertoire pricinpal. Nous vous conseillons aussi d'ércire toutes vos notes et commentaires de code en français, ils sont là pour vous aider. En revanche, tous les noms utilisé dans un code seront en <span class=\"md-emph\">anglais</span>. Cela inclus également les noms des fichiers sources et dossiers ne contenant que du code.</p>\n<p>Le C n'autorise pas les tirets dans les noms de variables ou de fonctions : dans une expression, le tiret est utilisé comme une opération de soustraction. Nous n'utiliserons donc pas, ou très peu, la <code>kebab-case</code> pour nommer les éléments du code.</p>\n<table>\n<thead>\n<tr>\n<th>Fonction</th>\n<th>Casse</th>\n<th>Exemple</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Variable</td>\n<td><code>camelCase</code></td>\n<td><code>currentTime</code></td>\n</tr>\n<tr>\n<td>Fonction</td>\n<td><code>camelCase</code></td>\n<td><code>getDeltaTime()</code></td>\n</tr>\n<tr>\n<td>Structure</td>\n<td><code>PascalCase</code></td>\n<td><code>GraphicsSystem</code></td>\n</tr>\n<tr>\n<td>Typedef</td>\n<td><code>PascalCase</code></td>\n<td><code>GraphicsSystem</code></td>\n</tr>\n<tr>\n<td>Fichier</td>\n<td><code>snake_case</code></td>\n<td><code>graphics_system.h</code></td>\n</tr>\n<tr>\n<td>Dossier</td>\n<td><code>snake_case</code></td>\n<td><code>third_party</code></td>\n</tr>\n<tr>\n<td>Macro</td>\n<td><code>UPPER_CASE</code></td>\n<td><code>ROOT_PATH</code></td>\n</tr>\n</tbody>\n</table>\n<p>Les conventions des fonctions, des structures, des types et des macros sont indiquées ici à titre de repère. Vous n'avez pas besoin de toutes les maîtriser maintenant : nous les expliquerons au fur et à mesure que vous rencontrerez ces éléments.\nRetenez que nous préfèrerons toujours un nom un peu trop long mais clair et explicite à un nom court que seul vous comprenez et que vous risquez de ne plus comprendre quelques semaines plus tard.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Mise en forme du code C et C++",
+      "slug": "mise-en-forme-du-code-c-et-c"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les conventions ne concernent pas seulement les noms : elles définissent aussi la présentation du code. Une présentation uniforme ne change pas le résultat du programme, mais elle rend le code plus facile à lire et à comprendre.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 3,
+      "text": "Indentation et accolades",
+      "slug": "indentation-et-accolades"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans ce projet, chaque niveau d'indentation correspond à quatre espaces. On n'utilise pas de tabulation. Les accolades ouvrantes sont placées sur une nouvelle ligne ; le code qu'elles encadrent est décalé d'un niveau, et l'accolade fermante revient à l'alignement de la ligne qui ouvre le bloc.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 3,
+      "text": "Espaces",
+      "slug": "espaces"
+    },
+    {
+      "kind": "html",
+      "html": "<p>On met une espace après certains mots-clés, comme <code>if</code> ou <code>while</code>, mais pas entre le nom d'une fonction et sa parenthèse : <code>if (condition)</code> et <code>calculateTotal(value)</code>. On ne met pas d'espace juste après la parenthèse ouvrante ni juste avant la parenthèse fermante. Dans une instruction <code>switch</code>, les étiquettes <code>case</code> s'alignent avec <code>switch</code>, et les instructions associées sont indentées.</p>\n<p>Quand vous étudierez les pointeurs, vous verrez que nous écrivons par exemple <code>Timer* self</code>, avec l'étoile accolée au type.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">&#x3C;stdio.h></span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">main</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> potooCount <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"Donnez le nombre d'ibijaux : \"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">scanf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"%d\"</span><span class=\"token punctuation\">,</span> <span class=\"token operator\">&#x26;</span>potooCount<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> kakapoCount <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"Donnez le nombre de kakapos : \"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">scanf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"%d\"</span><span class=\"token punctuation\">,</span> <span class=\"token operator\">&#x26;</span>kakapoCount<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>potooCount <span class=\"token operator\">></span> kakapoCount<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"Il y a %d d'ibijaux de plus\\n\"</span><span class=\"token punctuation\">,</span> potooCount <span class=\"token operator\">-</span> kakapoCount<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">else</span> <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>potooCount <span class=\"token operator\">&#x3C;</span> kakapoCount<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token function\">printf</span><span class=\"token punctuation\">(</span>\n</span><span class=\"code-line\">            <span class=\"token string\">\"Il y a %d kakapos\\nC'est %d de plus que les ibijaux\\n\"</span><span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">            kakapoCount<span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">            kakapoCount <span class=\"token operator\">-</span> potooCount\n</span><span class=\"code-line\">        <span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 3,
+      "text": "Fichier .editorconfig",
+      "slug": "fichier-editorconfig"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans certains projets, vous trouverez un fichier nommé <code>.editorconfig</code>. Il rassemble les préférences de mise en forme pour que les éditeurs compatibles puissent les appliquer de façon cohérente. Il règle aussi des détails de fichier, comme l'encodage UTF-8, les fins de ligne et la suppression des espaces inutiles en fin de ligne. Ces réglages sont généralement pris en charge par l'éditeur sans qu'il soit nécessaire de les modifier à la main.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Fonctions associées à une structure",
+      "slug": "fonctions-associées-à-une-structure"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Plus tard, lorsque nous étudierons les structures, nous utiliserons une convention particulière pour les fonctions qui servent à les manipuler. Le nom de ces fonctions commencera par celui de la structure, suivi d'un underscore. Le premier argument sera souvent un pointeur vers la structure, appelé <code>self</code>.</p>\n<p>Voici un exemple :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">Timer</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">.</span><span class=\"token punctuation\">.</span><span class=\"token punctuation\">.</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> Timer<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">Timer<span class=\"token operator\">*</span> <span class=\"token function\">Timer_create</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_destroy</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_start</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_update</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_setTimeScale</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token keyword\">float</span> scale<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>À ce stade, retenez seulement la convention de nommage (<code>Timer_start</code>, par exemple). Il est normal de ne pas encore comprendre la syntaxe de cet exemple ni les notions de structure et de pointeur : nous les étudierons plus tard.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Documentation du code",
+      "slug": "documentation-du-code"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour documenter le code, nous utiliserons la convention <strong>Doxygen</strong>. Elle repose sur des commentaires placés juste avant l'élément documenté et sur des balises qui précisent le rôle de chaque information. Pour écrire un commentaire Doxygen sur plusieurs lignes, commencez chaque ligne par <code>///</code>.</p>\n<p>Une documentation doit aider à comprendre comment utiliser un élément sans avoir à lire son implémentation. Décrivez donc son rôle et, si nécessaire, les unités, les valeurs possibles ou les conditions à respecter. Pour une fonction, indiquez ce que représentent ses paramètres avec <code>@param</code> et ce qu'elle renvoie avec <code>@return</code>. La balise <code>@brief</code> introduit une description courte de l'élément.</p>\n<p>La documentation des structures, des fonctions et des types publics se trouve généralement dans les fichiers d'en-tête <code>.h</code>, près de leur déclaration. On peut aussi documenter les champs d'une structure afin de préciser la signification de chacun.</p>\n<p>Voici un exemple de documentation d'une structure et de ses champs :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/// @brief Structure représentant un vecteur à deux dimensions.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">Vec2</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Première composante du vecteur.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">float</span> x<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Seconde composante du vecteur.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">float</span> y<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> Vec2<span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Voici maintenant une fonction associée à cette structure. Son commentaire précise les vecteurs utilisés et l'unité ainsi que l'intervalle de la valeur renvoyée :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/// @brief Renvoie l'angle (signé, orienté dans le sens trigonométrique)</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// formé entre deux vecteurs.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// L'angle est exprimé en degrés (de -180 à 180).</span>\n</span><span class=\"code-line\"><span class=\"token comment\">///</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param from le vecteur de départ.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param to le vecteur d'arrivée.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @return L'angle orienté du vecteur from vers le vecteur to.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">float</span> <span class=\"token function\">Vec2_signedAngleDeg</span><span class=\"token punctuation\">(</span>Vec2 from<span class=\"token punctuation\">,</span> Vec2 to<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Introduction à Markdown",
+      "id": "introduction-à-markdown"
+    },
+    {
+      "depth": 1,
+      "text": "Exemples de syntaxe",
+      "id": "exemples-de-syntaxe"
+    },
+    {
+      "depth": 2,
+      "text": "Titres",
+      "id": "titres"
+    },
+    {
+      "depth": 2,
+      "text": "Paragraphes",
+      "id": "paragraphes"
+    },
+    {
+      "depth": 2,
+      "text": "Emphase",
+      "id": "emphase"
+    },
+    {
+      "depth": 2,
+      "text": "Listes",
+      "id": "listes"
+    },
+    {
+      "depth": 3,
+      "text": "Liste ordonnée",
+      "id": "liste-ordonnée"
+    },
+    {
+      "depth": 3,
+      "text": "Liste non ordonnée",
+      "id": "liste-non-ordonnée"
+    },
+    {
+      "depth": 2,
+      "text": "Code",
+      "id": "code"
+    },
+    {
+      "depth": 2,
+      "text": "Tableaux",
+      "id": "tableaux"
+    },
+    {
+      "depth": 2,
+      "text": "Compléments",
+      "id": "compléments"
+    },
+    {
+      "depth": 1,
+      "text": "Conventions de code",
+      "id": "conventions-de-code"
+    },
+    {
+      "depth": 2,
+      "text": "Conventions du projet",
+      "id": "conventions-du-projet"
+    },
+    {
+      "depth": 2,
+      "text": "Mise en forme du code C et C++",
+      "id": "mise-en-forme-du-code-c-et-c"
+    },
+    {
+      "depth": 3,
+      "text": "Indentation et accolades",
+      "id": "indentation-et-accolades"
+    },
+    {
+      "depth": 3,
+      "text": "Espaces",
+      "id": "espaces"
+    },
+    {
+      "depth": 3,
+      "text": "Fichier .editorconfig",
+      "id": "fichier-editorconfig"
+    },
+    {
+      "depth": 2,
+      "text": "Fonctions associées à une structure",
+      "id": "fonctions-associées-à-une-structure"
+    },
+    {
+      "depth": 2,
+      "text": "Documentation du code",
+      "id": "documentation-du-code"
+    }
+  ],
+  "figureModules": []
+}

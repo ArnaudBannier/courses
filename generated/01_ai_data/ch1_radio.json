@@ -1,0 +1,623 @@
+{
+  "sourcePath": "01_ai_data/ch1_radio.md",
+  "title": "Module radio nRF24L01",
+  "navTitle": "Radio",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Présentation du module",
+      "slug": "présentation-du-module"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le nRF24L01 est un circuit émetteur-récepteur radio, aussi appelé <span class=\"md-emph\">transceiver</span>. Il communique dans la bande des 2,4 GHz, comme le Wi-Fi et le Bluetooth. On le trouve souvent sur de petits modules peu coûteux, utilisés dans des projets électroniques. Un microcontrôleur, par exemple un Arduino, peut le commander au moyen du bus SPI.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Alimentation",
+      "slug": "alimentation"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le module doit être alimenté en <span class=\"md-emph\">3,3 V</span> : ne le branchez pas directement sur une alimentation de 5 V.</p>\n<p>Lors des émissions radio, le module peut consommer brièvement davantage de courant. Une alimentation instable peut alors perturber les communications. Si vous alimentez le module depuis la sortie 3,3 V d'un Raspberry Pi Pico, vérifiez que la consommation totale reste dans les limites de la carte. Pour aider à stabiliser la tension, placez un condensateur de découplage d'environ <strong>10 µF</strong> entre <code>VCC</code> et <code>GND</code>, au plus près du module. Certaines cartes adaptatrices pour nRF24L01 intègrent déjà un condensateur de découplage.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Canaux radio et Wi-Fi",
+      "slug": "canaux-radio-et-wi-fi"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le nRF24L01 dispose de 126 canaux radio, espacés de 1 MHz. Ils couvrent la plage de <strong>2,400 GHz à 2,525 GHz</strong>. Le canal <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span>, où <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span> va de 0 à 125, correspond à la fréquence <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>2</mn><mo separator=\"true\">,</mo><mn>400</mn><mo>+</mo><mn>0</mn><mo separator=\"true\">,</mo><mn>001</mn><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">2,400 + 0,001n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8389em;vertical-align:-0.1944em;\"></span><span class=\"mord\">2</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">400</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8389em;vertical-align:-0.1944em;\"></span><span class=\"mord\">0</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">001</span><span class=\"mord mathnormal\">n</span></span></span></span> GHz.</p>\n<p>Cette plage recoupe celle du Wi-Fi 2,4 GHz : les transmissions Wi-Fi peuvent perturber les communications du nRF24L01, et inversement. Choisir un canal moins encombré peut limiter ces perturbations, sans garantir l'absence d'interférences.</p>\n<p>Les fréquences centrales des canaux Wi-Fi 2,4 GHz se situent généralement entre <strong>2,412 GHz et 2,484 GHz</strong>. La bande du nRF24L01 s'étend plus haut, jusqu'à <strong>2,525 GHz</strong>. Nous choisirons donc les derniers canaux du nRF24L01, du canal <strong>110 au canal 125</strong> (soit de <strong>2,510 GHz à 2,525 GHz</strong>), afin de nous éloigner des canaux Wi-Fi usuels et de réduire le risque d'interférences. Cela ne garantit toutefois pas qu'il n'y en aura aucune.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Débit et portée",
+      "slug": "débit-et-portée"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le nRF24L01 propose trois débits radio :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>250 kbit/s</strong> ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>1 Mbit/s</strong> ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>2 Mbit/s</strong>."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Ces unités indiquent la quantité de bits transmise par seconde. En général, choisir un débit plus faible peut améliorer la portée, tandis qu'un débit plus élevé permet de transmettre plus rapidement. La portée réelle dépend aussi des antennes, de l'alimentation et de l'environnement.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Données et adresses PIPE",
+      "slug": "données-et-adresses-pipe"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Chaque paquet de données transmis peut contenir jusqu'à <strong>32 octets</strong>.</p>\n<p>Le nRF24L01 peut écouter jusqu'à six adresses de réception, appelées <span class=\"md-emph\">pipes</span>. Un <code>PIPE</code> est une adresse radio, et non un canal de fréquence. Les modules doivent utiliser des réglages compatibles, notamment le même canal radio et une adresse <code>PIPE</code> correspondante, pour échanger des données. Ces <code>PIPE</code> sont des adresses formées de 5 octets (40 bits). Le développeur peut les choisir librement.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Branchement",
+      "slug": "branchement"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le nRF24L01 est équipé d'un connecteur à 8 broches.</p>\n<table>\n<thead>\n<tr>\n<th>Broche</th>\n<th>Nom</th>\n<th>Signification</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>1</strong></td>\n<td><code>GND</code></td>\n<td>Ground</td>\n</tr>\n<tr>\n<td><strong>2</strong></td>\n<td><code>VCC</code></td>\n<td>Voltage Common Collector</td>\n</tr>\n<tr>\n<td><strong>3</strong></td>\n<td><code>CE</code></td>\n<td>Chip Enable</td>\n</tr>\n<tr>\n<td><strong>4</strong></td>\n<td><code>CSN</code></td>\n<td>Chip Select Not</td>\n</tr>\n<tr>\n<td><strong>5</strong></td>\n<td><code>SCK</code></td>\n<td>Serial Clock</td>\n</tr>\n<tr>\n<td><strong>6</strong></td>\n<td><code>MOSI</code></td>\n<td>Master Out, Slave In</td>\n</tr>\n<tr>\n<td><strong>7</strong></td>\n<td><code>MISO</code></td>\n<td>Master In, Slave Out</td>\n</tr>\n<tr>\n<td><strong>8</strong></td>\n<td><code>IRQ</code></td>\n<td>Interrupt Request</td>\n</tr>\n</tbody>\n</table>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "nRF24L01 Pinout",
+      "displayLabel": "Figure 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_ai_data/nrf24.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_ai_data/nrf24.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_ai_data/nrf24.svg\" alt=\"nRF24L01\" style=\"min-width: 50%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Détaillons le rôle de chacune des broches.</p>"
+    },
+    {
+      "kind": "ordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>GND</code> Masse électrique commune entre le nRF24L01 et le microcontrôleur."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>VCC</code> Alimentation du module. Le nRF24L01 fonctionne en <strong>3,3 V</strong>. Faites bien attention à ne pas le brancher sur une sortie 5V."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>CE</code> Contrôle le <strong>mode radio</strong>. Permet notamment de passer en émission ou en réception. C'est une sortie GPIO du microcontrôleur."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>CSN</code> Sélectionne le nRF24L01 sur le bus <strong>SPI</strong>. Lorsque <code>CSN</code> est mis à la masse, le microcontrôleur peut communiquer avec le nRF24L01."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>SCK</code> Horloge du bus <strong>SPI</strong>. Générée par le microcontrôleur."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>MOSI</code> Ligne SPI allant du <strong>microcontrôleur</strong> vers le <strong>nRF24L01</strong>. Sert à envoyer des commandes et des données au module."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>MISO</code> Ligne SPI allant du <strong>nRF24L01</strong> vers le <strong>microcontrôleur</strong>. Sert à lire les registres et les données reçues."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>IRQ</code> Sortie d'interruption du nRF24L01 vers le microcontrôleur. Permet au module de signaler certains événements (réception, émission terminée, erreur). Elle optionnelle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Liaison avec la Pico",
+      "slug": "liaison-avec-la-pico"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Nous allons maintenant étudier le branchement du module nRF24L01 à la Raspberry Pi Pico. Le tableau ci-dessous indique l'association des broches utilisée ; consultez le <a href=\"https://devboards.info/boards/raspberry-pi-pico\" target=\"_blank\" rel=\"noopener noreferrer\">schéma des broches de la Raspberry Pi Pico</a> pour repérer les broches sur la carte.</p>\n<table>\n<thead>\n<tr>\n<th>Pico</th>\n<th>GPIO</th>\n<th>SPI</th>\n<th>nRF24L01</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>26</code></td>\n<td><code>GP20</code></td>\n<td></td>\n<td><code>CE</code></td>\n</tr>\n<tr>\n<td><code>25</code></td>\n<td><code>GP19</code></td>\n<td><code>SPI0 TX</code></td>\n<td><code>MOSI</code></td>\n</tr>\n<tr>\n<td><code>24</code></td>\n<td><code>GP18</code></td>\n<td><code>SPI0 SCK</code></td>\n<td><code>SCK</code></td>\n</tr>\n<tr>\n<td><code>22</code></td>\n<td><code>GP17</code></td>\n<td><code>SPI0 CSN</code></td>\n<td><code>CSN</code></td>\n</tr>\n<tr>\n<td><code>21</code></td>\n<td><code>GP16</code></td>\n<td><code>SPI0 RX</code></td>\n<td><code>MISO</code></td>\n</tr>\n</tbody>\n</table>\n<p>La figure suivante illustre ce câblage.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Branchement entre une Pico et un nRF24",
+      "displayLabel": "Figure 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/01_ai_data/pico_nrf24.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_ai_data/pico_nrf24.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_ai_data/pico_nrf24.svg\" alt=\"nRF24 et Pico\" style=\"min-width: 80%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Alimentation du module radio",
+      "slug": "alimentation-du-module-radio"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Alimentez le module depuis la sortie <strong>3,3 V</strong> de la Raspberry Pi Pico. Sur la Pico, utilisez la broche physique <strong>36</strong> (<code>3V3(OUT)</code>) pour le <code>VCC</code> du module et la broche physique <strong>38</strong> (<code>GND</code>) pour sa masse. Le <a href=\"https://devboards.info/boards/raspberry-pi-pico\" target=\"_blank\" rel=\"noopener noreferrer\">schéma des broches de la Pico</a> permet de les repérer.</p>\n<p>Pour stabiliser l'alimentation, ajoutez un condensateur de découplage de <strong>10 µF</strong> entre <code>VCC</code> et <code>GND</code>, au plus près du nRF24L01. Sur une plaque de prototypage, reliez une borne du condensateur à la ligne <code>3V3</code>/<code>VCC</code> et l'autre à la ligne <code>GND</code> : il est ainsi branché en parallèle avec le module. Si le condensateur est polarisé, reliez sa borne positive au <code>3V3</code> et sa borne négative au <code>GND</code>. Ne branchez jamais le module à une alimentation de 5 V.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Programmation",
+      "slug": "programmation"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour piloter le nRF24L01 depuis Arduino IDE, installez la bibliothèque <strong>RF24</strong>. Ouvrez <strong>Outils → Gérer les bibliothèques</strong>, recherchez <code>RF24</code>, puis installez <strong>RF24 by TMRh20</strong>.</p>\n<p>Dans le dossier qui contient vos programmes Arduino, créez un sous-dossier nommé <code>radio_hello</code>, puis créez-y un fichier nommé <code>radio_hello.ino</code>.</p>\n<p>Le programme utilise la bibliothèque <code>SPI</code> pour communiquer avec le module. Dans l'exemple ci-dessous, les broches SPI et les broches <code>CE</code> et <code>CSN</code> correspondent au câblage présenté plus haut. Le code crée ensuite l'objet <code>radio</code>, configure le canal, le débit et la puissance d'émission, puis démarre l'écoute sur une adresse <code>PIPE</code>.</p>\n<pre class=\"language-cpp\"><code class=\"language-cpp code-highlight\"><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">&#x3C;SPI.h></span></span>\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">&#x3C;RF24.h></span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">define</span> <span class=\"token macro-name\">pinCE</span> <span class=\"token expression\"><span class=\"token number\">20</span></span></span>\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">define</span> <span class=\"token macro-name\">pinCSN</span> <span class=\"token expression\"><span class=\"token number\">17</span></span></span>\n</span><span class=\"code-line\">RF24 <span class=\"token function\">radio</span><span class=\"token punctuation\">(</span>pinCE<span class=\"token punctuation\">,</span> pinCSN<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">const</span> byte pipe<span class=\"token punctuation\">[</span><span class=\"token number\">5</span><span class=\"token punctuation\">]</span> <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span><span class=\"token char\">'P'</span><span class=\"token punctuation\">,</span> <span class=\"token char\">'I'</span><span class=\"token punctuation\">,</span> <span class=\"token char\">'P'</span><span class=\"token punctuation\">,</span> <span class=\"token char\">'E'</span><span class=\"token punctuation\">,</span> <span class=\"token char\">'0'</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">setup</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    SPI<span class=\"token punctuation\">.</span><span class=\"token function\">setSCK</span><span class=\"token punctuation\">(</span><span class=\"token number\">18</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    SPI<span class=\"token punctuation\">.</span><span class=\"token function\">setRX</span><span class=\"token punctuation\">(</span><span class=\"token number\">16</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    SPI<span class=\"token punctuation\">.</span><span class=\"token function\">setTX</span><span class=\"token punctuation\">(</span><span class=\"token number\">19</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    SPI<span class=\"token punctuation\">.</span><span class=\"token function\">begin</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    Serial<span class=\"token punctuation\">.</span><span class=\"token function\">begin</span><span class=\"token punctuation\">(</span><span class=\"token number\">115200</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    radio<span class=\"token punctuation\">.</span><span class=\"token function\">begin</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    radio<span class=\"token punctuation\">.</span><span class=\"token function\">setChannel</span><span class=\"token punctuation\">(</span><span class=\"token number\">110</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    radio<span class=\"token punctuation\">.</span><span class=\"token function\">setDataRate</span><span class=\"token punctuation\">(</span>RF24_1MBPS<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    radio<span class=\"token punctuation\">.</span><span class=\"token function\">setPALevel</span><span class=\"token punctuation\">(</span>RF24_PA_MIN<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    radio<span class=\"token punctuation\">.</span><span class=\"token function\">openReadingPipe</span><span class=\"token punctuation\">(</span><span class=\"token number\">0</span><span class=\"token punctuation\">,</span> pipe<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    radio<span class=\"token punctuation\">.</span><span class=\"token function\">startListening</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Étude de l&#39;initialisation",
+      "displayLabel": "Exercise 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Reliez les valeurs de broches utilisées dans le code au tableau de câblage. À quoi correspondent les autres paramètres, comme le canal, le débit et la puissance d'émission ? Reportez-vous à la présentation du module plus haut dans cette page.</p><p>Pour consulter les valeurs possibles, utilisez <code>Ctrl</code>+<code>clic</code> sur <code>RF24_1MBPS</code>, par exemple. Assurez-vous de comprendre le rôle de chaque paramètre avant de poursuivre ; demandez de l'aide à votre enseignant si nécessaire.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Envoi d'un message",
+      "slug": "envoi-dun-message"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Supposons que le message à envoyer soit stocké dans une variable <code>inputStr</code> de type <code>String</code>. Un paquet radio peut contenir au plus <strong>32 octets</strong>. L'exemple ci-dessous copie le message dans un tableau de 32 octets (<code>uint8_t</code> est un entier non signé sur 8 bits) avant de le transmettre. Il ne traite pas explicitement le cas d'un message trop long.</p>\n<pre class=\"language-cpp\"><code class=\"language-cpp code-highlight\"><span class=\"code-line\"><span class=\"token comment\">// Convert the input string to a byte array</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">uint8_t</span> data<span class=\"token punctuation\">[</span><span class=\"token number\">32</span><span class=\"token punctuation\">]</span> <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span> <span class=\"token number\">0</span> <span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">inputStr<span class=\"token punctuation\">.</span><span class=\"token function\">getBytes</span><span class=\"token punctuation\">(</span>data<span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>data<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Pour transmettre un message, le module quitte le mode écoute et passe en mode émission. L'appel à <code>radio.write()</code> envoie le tableau ; le programme vérifie ensuite si la transmission a réussi.</p>\n<pre class=\"language-cpp\"><code class=\"language-cpp code-highlight\"><span class=\"code-line\">radio<span class=\"token punctuation\">.</span><span class=\"token function\">stopListening</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">radio<span class=\"token punctuation\">.</span><span class=\"token function\">openWritingPipe</span><span class=\"token punctuation\">(</span>pipe<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">bool</span> success <span class=\"token operator\">=</span> radio<span class=\"token punctuation\">.</span><span class=\"token function\">write</span><span class=\"token punctuation\">(</span>data<span class=\"token punctuation\">,</span> <span class=\"token number\">32</span><span class=\"token punctuation\">,</span> <span class=\"token boolean\">true</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>success<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Serial<span class=\"token punctuation\">.</span><span class=\"token function\">println</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"Message sent successfully.\"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">else</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Serial<span class=\"token punctuation\">.</span><span class=\"token function\">println</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"Failed to send message.\"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Pendant l'émission, le module ne reçoit pas de messages. Après l'envoi, vous devez appeler <code>radio.openReadingPipe()</code> et <code>radio.startListening()</code> pour reprendre l'écoute.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Réception d'un message",
+      "slug": "réception-dun-message"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Lorsque le module est en mode écoute, <code>radio.available()</code> permet de vérifier si un paquet a été reçu. Le code ci-dessous lit alors les données dans un tableau, puis les affiche sur le port série.</p>\n<pre class=\"language-cpp\"><code class=\"language-cpp code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>radio<span class=\"token punctuation\">.</span><span class=\"token function\">available</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">uint8_t</span> radioData<span class=\"token punctuation\">[</span><span class=\"token number\">32</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    radio<span class=\"token punctuation\">.</span><span class=\"token function\">read</span><span class=\"token punctuation\">(</span>radioData<span class=\"token punctuation\">,</span> <span class=\"token number\">32</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    Serial<span class=\"token punctuation\">.</span><span class=\"token function\">print</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"Received: \"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Serial<span class=\"token punctuation\">.</span><span class=\"token function\">write</span><span class=\"token punctuation\">(</span>radioData<span class=\"token punctuation\">,</span> <span class=\"token number\">32</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Serial<span class=\"token punctuation\">.</span><span class=\"token function\">println</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Prise en main",
+      "slug": "prise-en-main"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Communication radio",
+      "displayLabel": "Exercise 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Écrivez un programme pour la Raspberry Pi Pico qui permet à la carte d'émettre et de recevoir des messages :</p>"
+        },
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "elle écoute en permanence sur un <code>pipe</code> et un canal définis ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "lorsqu'elle reçoit un message radio, elle l'affiche sur le port série ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "lorsqu'elle reçoit une ligne sur le port série, elle l'envoie par radio, puis reprend l'écoute."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "html",
+          "html": "<p>Le même programme doit donc gérer l'émission et la réception. Concevez un protocole simple pour tester les échanges et éviter les renvois de messages en boucle. Faites valider le fonctionnement par votre enseignant.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Lumière !",
+      "displayLabel": "Exercise 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Reprenez le programme précédent et modifiez-le pour que la LED intégrée s'allume pendant <strong>500 ms</strong> après chaque émission réussie ou réception d'un message.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Tests",
+      "displayLabel": "Exercise 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Évaluez la fiabilité et la portée de votre système de communication. Mesurez l'effet des méthodes <code>setDataRate()</code> et <code>setPALevel()</code>, puis comparez vos résultats.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Introduction à la POO",
+      "slug": "introduction-à-la-poo"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Jusqu'à présent, le programme principal commande directement la LED et utilise une variable globale pour suivre le temps. Pour mieux organiser le code, nous allons regrouper la gestion de la LED dans une classe, répartie entre deux fichiers : <code>led.h</code> pour sa déclaration et <code>led.cpp</code> pour son implémentation.</p>\n<p>Cette séparation rendra le programme principal plus lisible et permettra de gérer plusieurs LED plus facilement. Elle facilitera aussi l'ajout de comportements, comme régler la durée d'allumage ou faire clignoter la LED plusieurs fois. Enfin, le temps propre à chaque LED sera conservé dans l'objet correspondant, plutôt que dans une variable globale générique comme <code>lastTime</code>.</p>\n<p>Les programmes Arduino sont écrits en C++, un langage qui reprend une grande partie de la syntaxe du C et qui permet notamment d'organiser le programme avec la <span class=\"md-emph\">programmation orientée objet</span> (POO).</p>\n<p>En POO, une <span class=\"md-emph\">classe</span> regroupe les données d'un élément et les opérations qui permettent de le manipuler. Elle sert de modèle pour créer des <span class=\"md-emph\">objets</span> : chaque objet possède ses propres données, mais utilise les opérations définies par sa classe. Ces opérations sont appelées <span class=\"md-emph\">méthodes</span>. Une classe peut aussi avoir un <span class=\"md-emph\">constructeur</span>, appelé automatiquement lors de la création d'un objet, pour initialiser ses données.\nEn C++, le constructeur correspond à la méthode qui porte le même nom que sa classe.</p>\n<p>La classe peut garder certaines données <span class=\"md-emph\">privées</span> : le reste du programme ne peut alors pas les modifier directement et passe par les méthodes prévues à cet effet. Ici, nous allons créer une classe <code>LED</code> pour regrouper la broche et le temps associés à une LED, ainsi que les opérations qui la contrôlent.</p>\n<p>L'exemple est réparti entre trois fichiers : <code>led.h</code> déclare la classe, <code>led.cpp</code> contient l'implémentation de ses méthodes et <code>radio_hello.ino</code> utilise cette classe dans le programme Arduino. Ajoutez <code>led.h</code> et <code>led.cpp</code> au projet. Vous pouvez les créer avec l'explorateur de fichiers ou depuis Arduino IDE, à l'aide du bouton <code>...</code> situé à gauche des onglets.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Modification du projet",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Vous trouverez ci-dessous le détail de chaque fichier ainsi qu'une explication du code qu'il contient.</p>"
+        },
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "items": [
+            {
+              "titleHtml": "led.h",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-cpp\"><code class=\"language-cpp code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">pragma</span> <span class=\"token expression\">once</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">&#x3C;Arduino.h></span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">class</span> <span class=\"token class-name\">LED</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">public</span><span class=\"token operator\">:</span>\n</span><span class=\"code-line\">    <span class=\"token function\">LED</span><span class=\"token punctuation\">(</span>pin_size_t pin<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">void</span> <span class=\"token function\">begin</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">void</span> <span class=\"token function\">on</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">void</span> <span class=\"token function\">update</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">private</span><span class=\"token operator\">:</span>\n</span><span class=\"code-line\">    pin_size_t m_pin<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">unsigned</span> <span class=\"token keyword\">long</span> m_lastTime<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Ce fichier contient la <strong>déclaration</strong> de la classe <code>LED</code> : il présente les méthodes disponibles et les données qu'elle conserve. Le constructeur <code>LED(pin_size_t pin)</code> reçoit le numéro de la broche.\nLes méthodes <code>begin()</code>, <code>on()</code> et <code>update()</code> forment l'interface que le reste du programme peut utiliser.</p><p>Les membres <code>m_pin</code> et <code>m_lastTime</code>, placés après <code>private:</code>, sont privés. Ils mémorisent respectivement la broche de la LED et une valeur de temps utilisée pour la gérer. Le programme principal ne les modifie pas directement : il demande à l'objet d'agir en appelant ses méthodes.</p><p>Le préfixe <code>m_</code> est une convention courante en C++ pour signaler qu'un nom désigne un membre de classe. Cette convention n'est pas définie dans les règles de nommage du projet ; elle est utilisée ici pour distinguer les membres des variables locales.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "led.cpp",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-cpp\"><code class=\"language-cpp code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"led.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token class-name\">LED</span><span class=\"token double-colon punctuation\">::</span><span class=\"token function\">LED</span><span class=\"token punctuation\">(</span>pin_size_t pin<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    m_pin <span class=\"token operator\">=</span> pin<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    m_lastTime <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token class-name\">LED</span><span class=\"token double-colon punctuation\">::</span><span class=\"token function\">begin</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token class-name\">LED</span><span class=\"token double-colon punctuation\">::</span><span class=\"token function\">on</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token class-name\">LED</span><span class=\"token double-colon punctuation\">::</span><span class=\"token function\">update</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre><p>Ce fichier contient l'<strong>implémentation</strong> des méthodes déclarées dans <code>led.h</code>. Le constructeur y reçoit le numéro de broche et initialise <code>m_pin</code> et <code>m_lastTime</code>\nComme vous pouvez le voir, les membres d'un objet sont directement accessibles avec leur nom dans l'implémentation de toutes les méthodes.</p><p>Les méthodes <code>begin()</code>, <code>on()</code> et <code>update()</code> sont encore vides dans cet exemple, ce sera à vous de les programmer.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "radio_hello.ino",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-cpp\"><code class=\"language-cpp code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">&#x3C;SPI.h></span></span>\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">&#x3C;RF24.h></span></span>\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"led.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">LED <span class=\"token function\">led</span><span class=\"token punctuation\">(</span>LED_BUILTIN<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">setup</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    led<span class=\"token punctuation\">.</span><span class=\"token function\">begin</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">loop</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    led<span class=\"token punctuation\">.</span><span class=\"token function\">update</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token boolean\">true</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        led<span class=\"token punctuation\">.</span><span class=\"token function\">on</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre><p>Ce fichier reste le programme principal. La ligne <code>LED led(LED_BUILTIN);</code> crée l'objet <code>led</code> et lui indique d'utiliser la LED intégrée à la carte.\nLe constructeur <code>LED::LED(pin_size_t pin)</code>, défini dans <code>led.cpp</code>, reçoit <code>LED_BUILTIN</code> comme argument et affecte cette valeur au membre privé <code>m_pin</code> de l'objet <code>led</code>.</p><p>Arduino appelle <code>setup()</code> une fois au démarrage, où le programme initialise la LED avec <code>led.begin()</code>, puis exécute <code>loop()</code> en continu. La boucle appelle <code>led.update()</code> à chaque passage.</p><p>La condition <code>if (true)</code> est provisoire : elle est toujours vraie, donc <code>led.on()</code> est appelée à chaque passage dans <code>loop()</code>. Elle sera remplacée par une condition qui indique quand la LED doit s'allumer, par exemple à la réception ou à l'émission d'un message.</p>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Classe LED",
+      "displayLabel": "Exercise 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Complétez les fonctions <code>begin()</code>, <code>on()</code> et <code>update()</code> du fichier <code>led.cpp</code> puis adaptez votre programme pour utiliser cette classe.</p><p>Vous pouvez ensuite améliorer cette classe comme vous le souhaitez. N'hésitez pas à demander des conseils avec votre enseignant pour l'interface et la syntaxe.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Ouverture",
+      "displayLabel": "Exercise 6",
+      "number": "6",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Vous venez d'explorer le fonctionnement du module nRF24L01. Le projet vise à utiliser ce module pour transmettre en temps réel les positions de plusieurs robots.</p>"
+        },
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Quelles étapes faudra-t-il suivre pour passer des essais réalisés dans ce chapitre à cet objectif ?"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Quels éléments faut-il vérifier pour déterminer si le projet est réalisable ?"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Présentation du module",
+      "id": "présentation-du-module"
+    },
+    {
+      "depth": 2,
+      "text": "Alimentation",
+      "id": "alimentation"
+    },
+    {
+      "depth": 2,
+      "text": "Canaux radio et Wi-Fi",
+      "id": "canaux-radio-et-wi-fi"
+    },
+    {
+      "depth": 2,
+      "text": "Débit et portée",
+      "id": "débit-et-portée"
+    },
+    {
+      "depth": 2,
+      "text": "Données et adresses PIPE",
+      "id": "données-et-adresses-pipe"
+    },
+    {
+      "depth": 1,
+      "text": "Branchement",
+      "id": "branchement"
+    },
+    {
+      "depth": 2,
+      "text": "Liaison avec la Pico",
+      "id": "liaison-avec-la-pico"
+    },
+    {
+      "depth": 2,
+      "text": "Alimentation du module radio",
+      "id": "alimentation-du-module-radio"
+    },
+    {
+      "depth": 1,
+      "text": "Programmation",
+      "id": "programmation"
+    },
+    {
+      "depth": 2,
+      "text": "Envoi d'un message",
+      "id": "envoi-dun-message"
+    },
+    {
+      "depth": 2,
+      "text": "Réception d'un message",
+      "id": "réception-dun-message"
+    },
+    {
+      "depth": 2,
+      "text": "Prise en main",
+      "id": "prise-en-main"
+    },
+    {
+      "depth": 1,
+      "text": "Introduction à la POO",
+      "id": "introduction-à-la-poo"
+    }
+  ],
+  "figureModules": []
+}
