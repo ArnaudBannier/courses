@@ -1,0 +1,953 @@
+{
+  "sourcePath": "03_programming/ch5_arbres.md",
+  "title": "Les arbres",
+  "navTitle": "5. Les arbres",
+  "navOrder": 5,
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin",
+    "Matthieu Le Berre"
+  ],
+  "contentSchemaVersion": 3,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Le chapitre précédent vous a permis de découvrir un des avantages des listes : l'insertion rapide d'un élément.\nL'un des points faibles reste la recherche d'un élément qui s'effectue en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span> avec <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span> désignant la taille de la liste.\nUn des moyens d'améliorer cette problématique, tout en ajoutant de la souplesse aux listes, est d'utiliser les arbres.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Définitions",
+      "slug": "définitions"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Introduisons ce cours avec le vocabulaire lié aux arbres.\nCes derniers sont des structures fondamentales, comme les listes, et sont couramment utilisés.\nOn pense naturellement aux arbres généalogiques ou aux organigrammes qui sont des applications de la vie courante.\nOn retrouve également les arbres dans les systèmes d'exploitation avec l'organisation des fichiers ou l'ordonnanceur de tâches, dans les bases de données, dans la bibliothèque JPEG ou encore dans l'intelligence artificielle.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Arbre — définition récursive",
+      "displayLabel": "Definition 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Un <em>arbre</em> est soit une feuille, soit un nœud pointant sur un ensemble d'arbres.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Cette définition récursive est le moyen le plus simple de définir correctement un arbre.\nLe fait de pointer indique implicitement qu'il existe un sens pour parcourir les nœuds de l'arbre : on ne revient jamais sur ses pas.\nLa notion de feuille doit être vue comme celle d'un nœud terminal de liste : un espace contenant une information, dont un autre nœud d'arbre pointe dessus, et qui ne pointe sur aucun autre nœud.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Quelques exemples d&#39;arbres",
+      "displayLabel": "Figure 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_tree_1_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_tree_1_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_tree_1_d.svg\" alt=\"Trois arbres\" style=\"min-width: 25%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les ronds représentent les <em>nœuds</em> : ce sont des structures de données qui sont reliées à un ou plusieurs autres nœuds par des <em>arêtes</em>.\nLa <em>taille</em> de l'arbre correspond à son nombre de nœuds.\nL'organisation d'un arbre est faite de haut en bas.\nLe nœud le plus en haut est appelé <em>racine</em> et il est le <em>parent</em> d'un ou plusieurs nœuds <em>enfant</em>.\nChaque nœud peut donc avoir plusieurs enfants, son <em>degré</em> correspond alors au nombre d'enfants, mais ne possède qu'un seul parent.\nUn nœud peut donc être :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "la <em>racine</em> s'il est l'ancêtre commun à tous les autres nœuds ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "un <em>nœud interne</em> s'il possède un ou plusieurs enfants ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "une <em>feuille</em> s'il ne possède pas d'enfant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Cela implique que les parcours au sein d'un arbre se font toujours de haut en bas, autrement dit de la racine vers les feuilles.\nCe parcours permet de traverser l'arbre de <em>branches</em> en branches : le chemin ainsi formé assure que tous les nœuds de l'arbre ont été rencontrés.\nOn définit la <em>hauteur</em> par la plus grande distance entre la racine et les feuilles de l'arbre.\nEnfin, la <em>profondeur</em> correspond à la longueur de la branche reliant ce nœud à la racine.\nLa hauteur de l'arbre correspond donc à la plus grande profondeur des nœuds de l'arbre.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Un exemple d&#39;arbre étiquetté",
+      "displayLabel": "Figure 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_tree_2_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_tree_2_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_tree_2_d.svg\" alt=\"Un arbre avec 8 noeuds\" style=\"min-width: 25%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "displayLabel": "Example 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Etudions l'exemple présenté dans la figure précédente, possédant quatre noeuds internes (1,2,4,6) et quatre feuilles (3,5,7,8).\nLa racine est identifiée par le nœud 1 qui a pour enfants les nœuds 2, 3 et 4, elle est donc de degré 3.\nLa taille de l'arbre est 8, sa hauteur vaut 3, ce qui correspond à la longueur de la branche [1-8].\nLa branche reliant les nœuds 4 et 8 est de longueur 2 et le nœud 6 a une profondeur égale à 2.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Est-ce ou n&#39;est-ce pas ?",
+      "displayLabel": "Exercise 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour chacun des schémas suivants, indiquez s’il s’agit d’un arbre et, si oui, donnez sa hauteur, son nombre de noeuds internes et de feuilles et la longueur de la branche reliant la racine 0 au noeud 3.</p>"
+        },
+        {
+          "kind": "block",
+          "blockType": "figure",
+          "displayLabel": "Figure 3",
+          "number": "3",
+          "options": {
+            "numbered": true,
+            "collapsible": true,
+            "collapsed": false,
+            "style": "figure"
+          },
+          "content": [
+            {
+              "kind": "html",
+              "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch5_exo_tree_or_not_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch5_exo_tree_or_not_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch5_exo_tree_or_not_d.svg\" alt=\"Trois arbres ?\" style=\"min-width: 25%;\" loading=\"lazy\" />"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "correction",
+      "displayLabel": "Correction",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": true,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>1.Il s’agit bien d’un arbre de hauteur 3 avec trois noeuds internes et deux feuilles et la branche 0-3 est de longueur 2.\n2.Il s’agit à nouveau d’un arbre de hauteur 3, formé de six noeuds internes et quatre feuilles. La branche 0-3 est de longueur 3.\n3.Il est possible de joindre les noeuds 0 et 4 en passant soit par le noeud 2, soit par le 3. Il s’agit donc d’un graphe et non d’un arbre.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Une typologie permet de regrouper les arbres selon leurs formes ou leur utilité.\nAinsi, sans être exhaustif, on retrouve les catégories et sous-catégories suivantes :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "B-arbres : arbre équilibré dans lequel les données sont ordonnées et chaque nœud peut posséder plusieurs données ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "arbres binaires : chaque nœud possède au plus deux enfants ;"
+            },
+            {
+              "kind": "unordered-list",
+              "content": [
+                {
+                  "kind": "list-item",
+                  "content": [
+                    {
+                      "kind": "html",
+                      "html": "arbre binaire de recherche (ABR) : les nœuds sont ordonnés pour faciliter la recherche ;"
+                    }
+                  ]
+                },
+                {
+                  "kind": "list-item",
+                  "content": [
+                    {
+                      "kind": "html",
+                      "html": "AVL : ABR qui s'équilibre lors de l'insertion pour que la hauteur soit la plus faible possible ;"
+                    }
+                  ]
+                },
+                {
+                  "kind": "list-item",
+                  "content": [
+                    {
+                      "kind": "html",
+                      "html": "tas : ABR presque complet, rempli à gauche ;"
+                    }
+                  ]
+                },
+                {
+                  "kind": "list-item",
+                  "content": [
+                    {
+                      "kind": "html",
+                      "html": "arbre rouge-noir : les nœuds possèdent également un attribut de couleur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "html",
+              "html": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Nous étudierons donc au travers de ce cours plusieurs applications liées aux arbres binaires puisque ces derniers sont particulièrement utilisés pour retrouver rapidement une information.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Arbres binaires",
+      "slug": "arbres-binaires"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Arbre binaire",
+      "displayLabel": "Definition 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Un arbre <em>binaire</em> est un arbre dont chaque nœud est de degré inférieur ou égal à 2.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>L'intérêt principal des arbres binaires est de hiérarchiser facilement l'information.\nTraditionnellement, un arbre binaire possède un <em>fils gauche</em> et un <em>fils droit</em> s'il a deux enfants.\nNous verrons plus tard que l'intérêt d'une telle organisation réside dans la rapidité de l'ajout d'information de façon triée et de recherche d'un élément.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Exemples d&#39;arbres binaires",
+      "displayLabel": "Figure 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_binary_trees_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_binary_trees_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_binary_trees_d.svg\" alt=\"Trois arbres binaires\" style=\"min-width: 25%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "displayLabel": "Example 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>On distingue généralement trois cas particuliers d'arbres binaires, présentés dans l'exemple ci-dessus.\nUn arbre <em>quelconque</em> (1) n'a aucune particularité : chaque nœud possède 0, 1 ou 2 enfants.\nUn arbre <em>parfait</em> (2) est tel que tous les nœuds ont exactement deux enfants (sauf les feuilles).\nEnfin, un arbre est dit <em>complet</em> (3) lorsque le dernier niveau n'est pas entièrement plein mais que ses feuilles sont alignées à gauche.\nNotons que selon les ressources utilisées, les notions d'arbre complet et parfait sont parfois interverties.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Afin de développer une bibliothèque gérant les arbres binaires, il est nécessaire, comme pour les listes, de préciser une structure de données pour un nœud d'arbre et une autre pour l'arbre qui contiendra un pointeur sur la racine (qui est un nœud).</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span> BinTreeNode<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span> <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">int</span> value<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span><span class=\"token operator\">*</span> left<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span><span class=\"token operator\">*</span> right<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTree</span> BinTree<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTree</span> <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">int</span> size<span class=\"token punctuation\">;</span>    <span class=\"token comment\">// On peut également ajouter la hauteur si besoin</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span><span class=\"token operator\">*</span> root<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Nous utiliserons dans un premier temps une structure d'arbre simplifiée afin d'avoir une bonne première prise en main.\nUn nœud d'arbre possède donc une information nommée <code>value</code> de type entier.\nChaque nœud possède deux pointeurs vers ses potentiels fils gauche et fils droit.\nEn cas d'absence d'enfant, les pointeurs seront mis à <code>NULL</code>.\nCette hiérarchie est regroupée dans la structure <code>BinTree</code> qui contient la taille de l'arbre ainsi qu'un pointeur sur la racine.</p>\n<p>L'allocation d'un arbre passe donc tout d'abord par l'allocation et la mise à zéro d'un objet de type <code>BinTree</code>.\nChaque nœud (objet de type <code>BinTreeNode</code>) sera ensuite alloué à l'aide d'une fonction d'allocation dynamique, puis raccordé en tant que fils droit ou gauche d'un nœud de l'arbre.</p>\n<p><em>(Une vidéo complémentaire sur les mécanismes d'allocation mémoire et d'ajout de nœuds est disponible : <a href=\"https://youtu.be/xGUrXdkWLQQ\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/xGUrXdkWLQQ</a>)</em></p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Dessine-moi un arbre",
+      "displayLabel": "Exercise 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Après avoir visionné la vidéo du cours détaillant l’état de la mémoire lors de la création\nd’un arbre, dessinez l’arbre ainsi créé.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "correction",
+      "displayLabel": "Correction",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": true,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "block",
+          "blockType": "figure",
+          "displayLabel": "Figure 5",
+          "number": "5",
+          "options": {
+            "numbered": true,
+            "collapsible": true,
+            "collapsed": false,
+            "style": "figure"
+          },
+          "content": [
+            {
+              "kind": "html",
+              "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch5_exo_draw_tree_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch5_exo_draw_tree_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch5_exo_draw_tree_d.svg\" alt=\"Arbre complet\" style=\"min-width: 25%;\" loading=\"lazy\" />"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Etat de la mémoire [Moodle]",
+      "displayLabel": "Exercise 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Faire exercice : État de la mémoire sur Moodle.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4649\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Primitives de création [Moodle]",
+      "displayLabel": "Exercise 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Commençons le développement de votre bibliothèque sur les arbres binaires.\nDéveloppez dans le fichier <code>bin_tree_int.c</code> les fonctions suivantes en vous inspirant de votre travail sur les listes.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">BinTreeInt<span class=\"token operator\">*</span> <span class=\"token function\">BinTreeInt_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">void</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">BinTreeIntNode<span class=\"token operator\">*</span> <span class=\"token function\">BinTreeInt_nodeCreate</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La fonction <code>create()</code> alloue une structure d’arbre et retourne un pointeur sur la mémoire ainsi allouée.\nLa fonction <code>nodeCreate()</code> alloue un nouveau noeud\nd’arbre ayant pour valeur le paramètre <code>value</code>.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4651\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Parcours",
+      "slug": "parcours"
+    },
+    {
+      "kind": "html",
+      "html": "<p>La première notion à maîtriser sur les arbres est sans surprise le parcours de ces objets.\nComme pour les listes, le parcours d'un arbre nous permettra plus tard d'ajouter, supprimer ou rechercher un élément.\nIl consiste à atteindre tous les nœuds de l'arbre en les listant une seule fois chacun.\nDeux types de parcours sont à différencier.</p>\n<p>Le parcours en largeur pourrait être considéré comme le plus facile à réaliser pour un humain.\nLes nœuds sont atteints de haut en bas, niveau par niveau et de gauche à droite.\nSi ce parcours est facile d'accès pour un humain, il est beaucoup moins simple à implémenter.</p>\n<p>Pour faciliter l'implémentation, le parcours en profondeur possède une autre stratégie.\nIl cherche à descendre le plus bas possible dans l'arbre, du côté gauche puis, lorsqu'il ne peut plus, remonte d'un niveau et passe du côté droit.\nLe côté droit traité, il recommence son parcours sur les nœuds encore non visités en remontant vers la racine.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Un arbre binaire",
+      "displayLabel": "Figure 6",
+      "number": "6",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_binary_tree_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_binary_tree_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_binary_tree_d.svg\" alt=\"Un arbre binaire\" style=\"min-width: 25%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "displayLabel": "Example 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Lorsqu'on réalise un parcours en largeur sur l'arbre présenté ci-dessus, nous allons atteindre les nœuds dans l'ordre suivant : 0-1-2-3-4-5-6-7.\nConcernant le parcours en profondeur, les nœuds seront atteints dans l'ordre suivant : 0-1-3-6-7-4-2-5.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Parcours génériques itératifs",
+      "slug": "parcours-génériques-itératifs"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Même si nous traitons dans ce cours du cas particulier des arbres binaires, il est évidemment possible de réaliser des parcours sur des arbres n-aires.\nLes parcours en largeur et en profondeur sont réalisables de façon itérative et récursive.\nSi le récursif est souvent plus simple à implémenter, nous allons remarquer que l'itératif est bien plus élégant.\nL'idée est alors de placer les nœuds dans une structure de données permettant un traitement ultérieur.\nSelon le type de structure utilisé (pile ou file), le parcours sera en largeur ou en profondeur.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 3,
+      "text": "Largeur",
+      "slug": "largeur"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le parcours en largeur est le seul parcours que l'on implémente de façon itérative et non récursive.\nLes autres parcours supportent les deux types d'implémentation.\nL'objectif est de parcourir les nœuds de l'arbre dans le sens de lecture : de gauche à droite sur chaque niveau en partant de la racine.\nLa lecture humaine est naturelle, la programmation d'un tel parcours nécessite quant à elle l'utilisation d'une file.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "algorithm",
+      "titleHtml": "ParcoursEnLargeur(A)",
+      "displayLabel": "Algorithm 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p><span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Entrée :</span> <span class=\"algo-token algo-token-type tok-type\" data-algo-type=\"type\">Arbre</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">A</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Sortie :</span> —\n\n<span class=\"algo-token algo-token-type tok-type\" data-algo-type=\"type\">File</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">F</span>\n<span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Enfiler</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">A</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">,</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">F</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Tant que</span> <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">nonVide</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">F</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span> <span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">faire</span>\n  <span class=\"algo-token algo-token-type tok-type\" data-algo-type=\"type\">Nœud</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span> ← <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Défiler</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">F</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Traiter</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Enfiler</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span>FilsGauche<span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">,</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">F</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Enfiler</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span>FilsDroit<span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">,</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">F</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Fin Tant que</span></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><em>(Une vidéo complémentaire sur le parcours en largeur est disponible : <a href=\"https://youtu.be/qyFns_VP2PA\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/qyFns_VP2PA</a>)</em></p>\n<p>Il est évident qu'il est possible d'ajouter des nœuds à la file seulement si ces derniers sont présents.\nCette condition n'a pas été ajoutée à l'algorithme afin d'alléger ce dernier mais reste obligatoire lors de son implémentation.\nSans donner de preuve formelle de validité de l'algorithme, on peut présenter le fonctionnement suivant.\nLe premier nœud ajouté à la liste est la racine.\nElle est extraite dès le début de la boucle <code>Tant que</code> pour être traitée puis ses enfants sont ajoutés à la liste.\nOn a donc à ce moment uniquement les nœuds du niveau 1.\nUn nouveau nœud est extrait et on ajoute en fin de liste ses enfants (niveau 2).\nLe nœud de file suivant est donc le frère du précédent (niveau 1) ou le premier fils du nœud précédent (niveau 2).\nEn poursuivant l'algorithme, on s'aperçoit que la file reçoit au fur et à mesure des nœuds de niveau supérieur ou égal à ceux qui sont déjà présents, d'où la réalisation du parcours en largeur.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 3,
+      "text": "Profondeur",
+      "slug": "profondeur"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le parcours en profondeur est plus facilement défini de façon récursive.\nIl consiste à visiter un nœud puis à visiter son sous-arbre gauche (SAG) puis son sous-arbre droit (SAD).\nL'ordre de visite (nœud - SAG - SAD ou permutation de ces éléments) détermine un sous-type de parcours : infixe, préfixe ou suffixe.\nNous introduisons dans cette section le parcours en profondeur dans sa version itérative.\nSon principal intérêt est de présenter le même algorithme que le parcours en largeur itératif, mais cette fois en utilisant une pile.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "algorithm",
+      "titleHtml": "ParcoursEnProfondeur(A)",
+      "displayLabel": "Algorithm 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p><span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Entrée :</span> <span class=\"algo-token algo-token-type tok-type\" data-algo-type=\"type\">Arbre</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">A</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Sortie :</span> —\n\n<span class=\"algo-token algo-token-type tok-type\" data-algo-type=\"type\">Pile</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">P</span>\n<span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Empiler</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">A</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">,</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">P</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Tant que</span> <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">nonVide</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">P</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span> <span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">faire</span>\n  <span class=\"algo-token algo-token-type tok-type\" data-algo-type=\"type\">Nœud</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span> ← <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Dépiler</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">P</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Traiter</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Empiler</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span>FilsDroit<span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">,</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">P</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Empiler</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span>FilsGauche<span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">,</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">P</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Fin Tant que</span></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><em>(Une vidéo complémentaire sur le parcours en profondeur est disponible : <a href=\"https://youtu.be/MSdbTF8BGv0\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/MSdbTF8BGv0</a>)</em></p>\n<p>De même que pour le parcours en largeur, l'ajout de nœuds à la pile ne peut s'effectuer que s'ils existent.\nNotez également que l'ordre de parcours des enfants est inversé (fils droit avant fils gauche).\nEn effet, il est habituel pour un parcours en profondeur de traiter en premier le fils gauche, puis le fils droit.\nLe fait d'empiler le fils droit en premier fait qu'il se retrouvera sous son frère, donc le fils gauche sera bien dépilé et traité en premier.</p>\n<p>La présence de la structure de pile pour stocker les futurs nœuds permet le parcours en profondeur : les enfants étant ajoutés en début de pile, ce seront les premiers à être visités après le nœud courant, sauf s'ils ont des enfants.\nOn retrouve donc la définition récursive du parcours : une fois le nœud traité, la visite du sous-arbre gauche s'effectue, puis celle du sous-arbre droit.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Explorations [Moodle]",
+      "displayLabel": "Exercise 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Poursuivons le développement de votre bibliothèque sur les arbres binaires.\nCet exercice est dédié à l’affichage de l’arbre avec deux parcours différents.\nComme indiqué dans le cours, vous aurez besoin de\nmanipuler une pile et une file.\nUtilisez la bibliothèque fournie sur les listes et suivez les algorithmes donnés dans le cours pour implémenter les fonctions suivantes.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_breadthFirstPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_depthFirstPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La fonction <code>breadthFirstPrint()</code> réalisera un aprcours en largeur pour afficher les noeuds de l'arbre.\nLa fonction <code>depthFirstPrint()</code> affiche les noeuds lors d'un parcours en profondeur.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4651\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Parcours récursifs arbres binaires",
+      "slug": "parcours-récursifs-arbres-binaires"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Comme expliqué précédemment, le parcours en profondeur cache en réalité trois parcours différents selon l'ordre de traitement des éléments.\nSi le nœud est traité en premier, puis ses sous-arbres, le parcours est dit <em>préfixe</em>.\nInversement, si les sous-arbres sont traités en premier, le parcours est <em>suffixe</em> (on dit aussi postfixe).\nEnfin, si le nœud est traité entre le parcours des fils, le parcours est <em>infixe</em>.\nNotons que les parcours préfixe et suffixe sont tout à fait adaptés aux parcours d'arbres n-aires, le parcours infixe étant non adapté aux arbres génériques.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "algorithm",
+      "titleHtml": "Préfixe(n)",
+      "displayLabel": "Algorithm 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p><span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Entrée :</span> <span class=\"algo-token algo-token-type tok-type\" data-algo-type=\"type\">Nœud</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Sortie :</span> —\n\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Si</span> <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">nonVide</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span> <span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Alors</span>\n  <span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Traiter</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Préfixe</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span>Gauche<span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Préfixe</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span>Droit<span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Fin Si</span></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><em>(Une vidéo complémentaire sur le parcours préfixe est disponible : <a href=\"https://youtu.be/daC-HmJZ2kY\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/daC-HmJZ2kY</a>)</em></p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "algorithm",
+      "titleHtml": "Infixe(n)",
+      "displayLabel": "Algorithm 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p><span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Entrée :</span> <span class=\"algo-token algo-token-type tok-type\" data-algo-type=\"type\">Nœud</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Sortie :</span> —\n\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Si</span> <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">nonVide</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span> <span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Alors</span>\n  <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Infixe</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span>Gauche<span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Traiter</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Infixe</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span>Droit<span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Fin Si</span></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><em>(Une vidéo complémentaire sur le parcours infixe est disponible : <a href=\"https://youtu.be/CFvjkjSa_VY\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/CFvjkjSa_VY</a>)</em></p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "algorithm",
+      "titleHtml": "Suffixe(n)",
+      "displayLabel": "Algorithm 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p><span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Entrée :</span> <span class=\"algo-token algo-token-type tok-type\" data-algo-type=\"type\">Nœud</span> <span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Sortie :</span> —\n\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Si</span> <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">nonVide</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span> <span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Alors</span>\n  <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Suffixe</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span>Gauche<span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-fn tok-fn\" data-algo-type=\"fn\">Suffixe</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span>Droit<span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n  <span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Traiter</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">(</span><span class=\"algo-token algo-token-var tok-var\" data-algo-type=\"var\">n</span><span class=\"algo-token algo-token-punct tok-punct\" data-algo-type=\"punct\">)</span>\n<span class=\"algo-token algo-token-kw tok-kw\" data-algo-type=\"kw\">Fin Si</span></p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p><em>(Une vidéo complémentaire sur le parcours suffixe est disponible : <a href=\"https://youtu.be/iOAeQu0BjJA\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/iOAeQu0BjJA</a>)</em></p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "figure",
+      "titleHtml": "Un arbre binaire",
+      "displayLabel": "Figure 7",
+      "number": "7",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "figure"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_binary_tree_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_binary_tree_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch5_example_binary_tree_d.svg\" alt=\"Un arbre binaire\" style=\"min-width: 25%;\" loading=\"lazy\" />"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "displayLabel": "Example 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Reprenons l'exemple d'arbre vu précédemment rappelé ci-dessus.\nLe parcours préfixe traite en premier le nœud, puis le sous-arbre gauche et enfin le droit.\nIl parcourt donc les nœuds de l'arbre dans l'ordre 0-1-3-6-7-4-2-5.\nLe parcours infixe descend d'abord dans le sous-arbre gauche, traite le nœud puis parcourt le sous-arbre droit.\nLes nœuds seront donc atteints dans l'ordre 6-3-7-1-4-0-5-2.\nEnfin, le parcours suffixe traite la racine en dernier, après avoir parcouru le sous-arbre gauche puis le sous-arbre droit.\nLe parcours induit est donc 6-7-3-4-1-5-2-0.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Analyse du tas",
+      "displayLabel": "Exercise 6",
+      "number": "6",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>On suppose que la mémoire est initialisée avec les valeurs présentées dans la table ci-après\net qu’on ré-utilise la structure <code>BinTreeIntNode</code> du cours.\nAZfin de mieux identifier les différentes variables, un élément sur deux a été mis en gras.</p><table>\n<thead>\n<tr>\n<th>Adresse</th>\n<th>Valeur</th>\n<th>Nom</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>@55</strong></td>\n<td><strong>5</strong></td>\n<td><strong>.size</strong></td>\n</tr>\n<tr>\n<td><strong>@56</strong></td>\n<td><strong>@57</strong></td>\n<td><strong>.root</strong></td>\n</tr>\n<tr>\n<td>@57</td>\n<td>0</td>\n<td>.value</td>\n</tr>\n<tr>\n<td>@58</td>\n<td>@69</td>\n<td>.left</td>\n</tr>\n<tr>\n<td>@59</td>\n<td>@63</td>\n<td>.right</td>\n</tr>\n<tr>\n<td><strong>@60</strong></td>\n<td><strong>1</strong></td>\n<td><strong>.value</strong></td>\n</tr>\n<tr>\n<td><strong>@61</strong></td>\n<td><strong>NULL</strong></td>\n<td><strong>.left</strong></td>\n</tr>\n<tr>\n<td><strong>@62</strong></td>\n<td><strong>NULL</strong></td>\n<td><strong>.right</strong></td>\n</tr>\n<tr>\n<td>@63</td>\n<td>2</td>\n<td>.value</td>\n</tr>\n<tr>\n<td>@64</td>\n<td>@66</td>\n<td>.left</td>\n</tr>\n<tr>\n<td>@65</td>\n<td>NULL</td>\n<td>.right</td>\n</tr>\n<tr>\n<td><strong>@66</strong></td>\n<td><strong>3</strong></td>\n<td><strong>.value</strong></td>\n</tr>\n<tr>\n<td><strong>@67</strong></td>\n<td><strong>NULL</strong></td>\n<td><strong>.left</strong></td>\n</tr>\n<tr>\n<td><strong>@68</strong></td>\n<td><strong>NULL</strong></td>\n<td><strong>.right</strong></td>\n</tr>\n<tr>\n<td>@69</td>\n<td>4</td>\n<td>.value</td>\n</tr>\n<tr>\n<td>@70</td>\n<td>@60</td>\n<td>.left</td>\n</tr>\n<tr>\n<td>@71</td>\n<td>NULL</td>\n<td>.right</td>\n</tr>\n</tbody>\n</table><p>On définit également la fonction <code>print()</code> suivante.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">print</span><span class=\"token punctuation\">(</span>BinTreeIntNode <span class=\"token operator\">*</span>node<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> d<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> flag<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span>node<span class=\"token punctuation\">)</span> <span class=\"token keyword\">return</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token function\">print</span><span class=\"token punctuation\">(</span>node<span class=\"token operator\">-></span>right<span class=\"token punctuation\">,</span> d<span class=\"token operator\">+</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">for</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> i<span class=\"token operator\">=</span><span class=\"token number\">0</span><span class=\"token punctuation\">;</span> i <span class=\"token operator\">&#x3C;</span> d<span class=\"token operator\">-</span><span class=\"token number\">1</span><span class=\"token punctuation\">;</span> i<span class=\"token operator\">++</span><span class=\"token punctuation\">)</span> \n</span><span class=\"code-line\">        <span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"    \"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>d<span class=\"token operator\">></span><span class=\"token number\">0</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>flag<span class=\"token punctuation\">)</span> \n</span><span class=\"code-line\">            <span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"  \\\\-\"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        <span class=\"token keyword\">else</span> \n</span><span class=\"code-line\">            <span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"  /-\"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"%d\\n\"</span><span class=\"token punctuation\">,</span> node<span class=\"token operator\">-></span>value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token function\">print</span><span class=\"token punctuation\">(</span>node<span class=\"token operator\">-></span>left<span class=\"token punctuation\">,</span> d<span class=\"token operator\">+</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token number\">1</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre><p>Dans ce contexte, qu’affiche l’instruction <code>print(p->root, 0, 1);</code> dont <code>p</code> vaut <code>@55</code> ?</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "correction",
+      "displayLabel": "Correction",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": true,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p><code>p->root</code> désigne l'adresse @56, dont la valeur est @57.\nL'instruction est donc équivalente à <code>print(@57, 0, 1);</code>\nLes instructions <code>printf()</code> affiche le lien entre le noeud et son parent selon la valeur du <code>flag</code>.\nEn cas de fils droit, l'instruction affiche un slash, un backslash dans le cas contraire.</p><p>Au final, le programme affiche un parcours en profondeur depuis la racine.</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">    /-2\n</span><span class=\"code-line\">        \\-3\n</span><span class=\"code-line\">0\n</span><span class=\"code-line\">    \\-4\n</span><span class=\"code-line\">        \\-1\n</span></code></pre>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Promenons-nous dans les bois",
+      "displayLabel": "Exercise 7",
+      "number": "7",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Déroulez les parcours en largeur, préfixe, infixe et postfixe sur chacun des arbres de la\nfigure suivante, lorsque le parcours est réalisable.</p>"
+        },
+        {
+          "kind": "block",
+          "blockType": "figure",
+          "titleHtml": "Un arbre binaire",
+          "displayLabel": "Figure 8",
+          "number": "8",
+          "options": {
+            "numbered": true,
+            "collapsible": true,
+            "collapsed": false,
+            "style": "figure"
+          },
+          "content": [
+            {
+              "kind": "html",
+              "html": "<img src=\"/courses/generated/assets/project/assets/03_programming/ch5_exo_exploration_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/03_programming/ch5_exo_exploration_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/03_programming/ch5_exo_exploration_d.svg\" alt=\"Trois arbres à parcourir\" style=\"min-width: 25%;\" loading=\"lazy\" />"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "correction",
+      "displayLabel": "Correction",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": true,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<p>Largeur : [0-1-2-3-4-5].\nPréfixe : [0-1-3-2-4-5].\nInfixe : [1-3-0-4-2-5].\nPostfixe : [3-1-4-5-2-0]</p>"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<p>Largeur : OOTLEOIVPO.\nPréfixe : OOLIEVPTOO.\nInfixe : ILOVEPOTOO.\nPostfixe : ILVPEOOOTO</p>"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<p>Largeur : OFAPEKAKOS.\nPréfixe : OFEOSAKAKP.\nInfixe : impossible.\nPostfixe : OSEFKAKAPO</p>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le choix d'un parcours dépend de ce que l'on veut faire avec l'arbre.\nDans les exercices proposés jusqu'à présent, le parcours de l'arbre a pour seule utilité l'affichage de ce dernier.\nMais il en est autrement pour d'autres applications.\nPar exemple, la libération d'un arbre implique un parcours postfixe.\nSi les données d'un arbre binaire sont ordonnées, le parcours de ces dernières, dans l'ordre croissant, demandera un parcours infixe.\nLe calcul d'une expression syntaxique stockée sous forme d'arbre (utile aux compilateurs par exemple) sera lui réalisé via un parcours préfixe.\nEn conclusion, connaître ces différents parcours vous permettra de choisir le bon lorsqu'un problème nécessitera l'utilisation d'arbres.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Libération d'un (sous-)arbre",
+      "slug": "libération-dun-sous-arbre"
+    },
+    {
+      "kind": "html",
+      "html": "<p>La dernière étape de ce cours consiste à libérer proprement un arbre.\nComme pour une liste, il faut tout d'abord libérer les nœuds puis libérer la structure d'arbre.\nLes parcours prennent alors tout leur sens : ils permettent de visiter l'ensemble des nœuds de l'arbre et de les traiter, en l'occurrence, ici, de les libérer.\nComme pour les listes, il faut en revanche prendre garde à garder en mémoire un pointeur sur le parent et ainsi ne pas libérer un nœud avant que l'ensemble de son sous-arbre soit libéré.\nPour libérer un nœud, il faut avoir libéré ses sous-arbres au préalable.\nIl convient donc d'utiliser un parcours postfixé pour libérer un arbre : le fils gauche est parcouru avant le fils droit, puis le nœud est finalement libéré.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Explorations [Moodle]",
+      "displayLabel": "Exercise 8",
+      "number": "8",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "draw"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Terminons le développement de votre bibliothèque sur les arbres binaires.\nCette dernière partie consiste à implémenter les parcours récursifs présentés dans le cours pour afficher le contenu des arbres.\nCes fonctions ne sont utilisées que pour l’affichage, seul le principe du parcours sera réutilisé pour les algorithmes suivants.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_print</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_preOrderPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_inOrderPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_postOrderPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La première fonction <code>print()</code> affiche l'arbre de façon graphique sur le terminal.\nLa racine est sur la gauche, les noeuds à distance 1 sont à une tabulation etc.</p><p>Les trois autres fonctions affichent simplement les noeuds atteints dans l'ordre d'un parcours spécifique indiqué dans le nom de la fonction.</p><p>Vous complèterez également la fonction suivante réalisant la libération mémoire complète de l'arbre <code>tree</code> donné en paramètres.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_delete</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4651\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+        }
+      ]
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Définitions",
+      "id": "définitions"
+    },
+    {
+      "depth": 1,
+      "text": "Arbres binaires",
+      "id": "arbres-binaires"
+    },
+    {
+      "depth": 1,
+      "text": "Parcours",
+      "id": "parcours"
+    },
+    {
+      "depth": 2,
+      "text": "Parcours génériques itératifs",
+      "id": "parcours-génériques-itératifs"
+    },
+    {
+      "depth": 3,
+      "text": "Largeur",
+      "id": "largeur"
+    },
+    {
+      "depth": 3,
+      "text": "Profondeur",
+      "id": "profondeur"
+    },
+    {
+      "depth": 2,
+      "text": "Parcours récursifs arbres binaires",
+      "id": "parcours-récursifs-arbres-binaires"
+    },
+    {
+      "depth": 2,
+      "text": "Libération d'un (sous-)arbre",
+      "id": "libération-dun-sous-arbre"
+    }
+  ],
+  "figureModules": []
+}

@@ -431,6 +431,17 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "01_algebra/ch3_applications.md",
+          "outputPath": "01_algebra/ch3_applications.json",
+          "title": "Généralités sur les applications",
+          "navTitle": "Généralités",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -475,6 +486,23 @@
               "Nicolas Bodin"
             ]
           }
+        },
+        {
+          "kind": "section",
+          "title": "3. Applications",
+          "chapters": [
+            {
+              "sourcePath": "01_algebra/ch3_applications.md",
+              "outputPath": "01_algebra/ch3_applications.json",
+              "title": "Généralités sur les applications",
+              "navTitle": "Généralités",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -984,6 +1012,19 @@
             "Nicolas Bodin",
             "Matthieu Le Berre"
           ]
+        },
+        {
+          "sourcePath": "03_programming/ch5_arbres.md",
+          "outputPath": "03_programming/ch5_arbres.json",
+          "title": "Les arbres",
+          "navTitle": "5. Les arbres",
+          "navOrder": 5,
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin",
+            "Matthieu Le Berre"
+          ]
         }
       ],
       "navigation": [
@@ -1068,6 +1109,22 @@
             "title": "Listes, concepts avancés",
             "navTitle": "4. Listes, concepts avancés",
             "navOrder": 4,
+            "navHidden": false,
+            "authors": [
+              "Arnaud Bannier",
+              "Nicolas Bodin",
+              "Matthieu Le Berre"
+            ]
+          }
+        },
+        {
+          "kind": "chapter",
+          "chapter": {
+            "sourcePath": "03_programming/ch5_arbres.md",
+            "outputPath": "03_programming/ch5_arbres.json",
+            "title": "Les arbres",
+            "navTitle": "5. Les arbres",
+            "navOrder": 5,
             "navHidden": false,
             "authors": [
               "Arnaud Bannier",

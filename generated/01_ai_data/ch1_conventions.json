@@ -248,7 +248,28 @@
     },
     {
       "kind": "html",
-      "html": "<p>Dans ce projet, les noms de fichiers et de dossiers doivent être écrits en <code>snake_case</code>. Ce sont des conventions que vous pouvez appliquer dès maintenant. Vous pouvez utiliser du français pour les noms de fichiers et dossiers de votre répertoire pricinpal. Nous vous conseillons aussi d'ércire toutes vos notes et commentaires de code en français, ils sont là pour vous aider. En revanche, tous les noms utilisé dans un code seront en <span class=\"md-emph\">anglais</span>. Cela inclus également les noms des fichiers sources et dossiers ne contenant que du code.</p>\n<p>Le C n'autorise pas les tirets dans les noms de variables ou de fonctions : dans une expression, le tiret est utilisé comme une opération de soustraction. Nous n'utiliserons donc pas, ou très peu, la <code>kebab-case</code> pour nommer les éléments du code.</p>\n<table>\n<thead>\n<tr>\n<th>Fonction</th>\n<th>Casse</th>\n<th>Exemple</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Variable</td>\n<td><code>camelCase</code></td>\n<td><code>currentTime</code></td>\n</tr>\n<tr>\n<td>Fonction</td>\n<td><code>camelCase</code></td>\n<td><code>getDeltaTime()</code></td>\n</tr>\n<tr>\n<td>Structure</td>\n<td><code>PascalCase</code></td>\n<td><code>GraphicsSystem</code></td>\n</tr>\n<tr>\n<td>Typedef</td>\n<td><code>PascalCase</code></td>\n<td><code>GraphicsSystem</code></td>\n</tr>\n<tr>\n<td>Fichier</td>\n<td><code>snake_case</code></td>\n<td><code>graphics_system.h</code></td>\n</tr>\n<tr>\n<td>Dossier</td>\n<td><code>snake_case</code></td>\n<td><code>third_party</code></td>\n</tr>\n<tr>\n<td>Macro</td>\n<td><code>UPPER_CASE</code></td>\n<td><code>ROOT_PATH</code></td>\n</tr>\n</tbody>\n</table>\n<p>Les conventions des fonctions, des structures, des types et des macros sont indiquées ici à titre de repère. Vous n'avez pas besoin de toutes les maîtriser maintenant : nous les expliquerons au fur et à mesure que vous rencontrerez ces éléments.\nRetenez que nous préfèrerons toujours un nom un peu trop long mais clair et explicite à un nom court que seul vous comprenez et que vous risquez de ne plus comprendre quelques semaines plus tard.</p>"
+      "html": "<p>Dans ce projet, les noms de fichiers et de dossiers doivent être écrits en <code>snake_case</code>. Ce sont des conventions que vous pouvez appliquer dès maintenant. Vous pouvez utiliser du français pour les noms de fichiers et dossiers de votre répertoire pricinpal. Nous vous conseillons aussi d'ércire toutes vos notes et commentaires de code en français, ils sont là pour vous aider. En revanche, tous les noms utilisé dans un code seront en <span class=\"md-emph\">anglais</span>. Cela inclus également les noms des fichiers sources et dossiers ne contenant que du code.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "warning",
+      "titleHtml": "Accents",
+      "displayLabel": "Warning",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Les accents français, ou plus généralement tous les caractères qui ne sont pas dans la table ASCII, sont interdits dans les noms de fichiers, de dossiers ou dans tous les codes (à l'exception des commentaires).</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le C n'autorise pas les tirets dans les noms de variables ou de fonctions : dans une expression, le tiret est utilisé comme une opération de soustraction. Nous n'utiliserons donc pas, ou très peu, la <code>kebab-case</code> pour nommer les éléments du code.</p>\n<table>\n<thead>\n<tr>\n<th>Fonction</th>\n<th>Casse</th>\n<th>Exemple</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Variable</td>\n<td><code>camelCase</code></td>\n<td><code>currentTime</code></td>\n</tr>\n<tr>\n<td>Fonction</td>\n<td><code>camelCase</code></td>\n<td><code>getDeltaTime()</code></td>\n</tr>\n<tr>\n<td>Structure</td>\n<td><code>PascalCase</code></td>\n<td><code>GraphicsSystem</code></td>\n</tr>\n<tr>\n<td>Typedef</td>\n<td><code>PascalCase</code></td>\n<td><code>GraphicsSystem</code></td>\n</tr>\n<tr>\n<td>Fichier</td>\n<td><code>snake_case</code></td>\n<td><code>graphics_system.h</code></td>\n</tr>\n<tr>\n<td>Dossier</td>\n<td><code>snake_case</code></td>\n<td><code>third_party</code></td>\n</tr>\n<tr>\n<td>Macro</td>\n<td><code>UPPER_CASE</code></td>\n<td><code>ROOT_PATH</code></td>\n</tr>\n</tbody>\n</table>\n<p>Les conventions des fonctions, des structures, des types et des macros sont indiquées ici à titre de repère. Vous n'avez pas besoin de toutes les maîtriser maintenant : nous les expliquerons au fur et à mesure que vous rencontrerez ces éléments.\nRetenez que nous préfèrerons toujours un nom un peu trop long mais clair et explicite à un nom court que seul vous comprenez et que vous risquez de ne plus comprendre quelques semaines plus tard.</p>"
     },
     {
       "kind": "heading",

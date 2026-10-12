@@ -742,6 +742,10 @@
         }
       }
     },
+    "alg1-applications": {
+      "outputPath": "01_algebra/ch3_applications.json",
+      "blocks": {}
+    },
     "data-1-installation": {
       "outputPath": "01_ai_data/ch1_installation.json",
       "blocks": {}
@@ -1074,6 +1078,10 @@
     },
     "prog3-listes-avancees": {
       "outputPath": "03_programming/ch4_listes_avancees.json",
+      "blocks": {}
+    },
+    "prog3-arbres": {
+      "outputPath": "03_programming/ch5_arbres.json",
       "blocks": {}
     }
   }

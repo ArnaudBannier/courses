@@ -104,13 +104,13 @@
       "content": [
         {
           "kind": "html",
-          "html": "<p>Chaque flèche désigne un pointeur de type <code>ListIntNode *</code>.\nLe point de départ de la flèche désigne son emplacement : un champ <code>next</code> (partie gauche du maillon) ou <code>prev</code> (partie droite) ou bien le pointeur de la structure maitresse.\nCes pointeurs étant chacun du type <code>ListIntNode *</code>, ils pointeront dans tous les cas vers le premier octet de la plage mémoire occupée par un maillon de type <code>ListIntNode</code> ; et ce, quelque soit la zone d'arrivée illustrée sur le schéma.\nPar exemple sur le schéma précédent, les trois flèches désignent trois pointeurs ayant la même valeur !</p>"
+          "html": "<p>Chaque flèche désigne un pointeur de type <code>ListIntNode*</code>.\nLe point de départ de la flèche désigne son emplacement : un champ <code>next</code> (partie droite du maillon) ou <code>prev</code> (partie gauche) ou bien le pointeur de la structure maitresse.\nCes pointeurs étant chacun du type <code>ListIntNode*</code>, ils pointeront dans tous les cas vers le premier octet de la plage mémoire occupée par un maillon de type <code>ListIntNode</code> ; et ce, quelque soit la zone d'arrivée illustrée sur le schéma.\nPar exemple sur le schéma précédent, les trois flèches désignent trois pointeurs ayant la même valeur !</p>"
         }
       ]
     },
     {
       "kind": "html",
-      "html": "<p>On remarque que la valeur du nœud sentinelle n'a pas d'importance, ici on laissera la valeur à 0.\nLa sentinelle désigne désigna à la fois le début <strong>ET</strong> la fin de la liste.\nS'il n'y a pas de noeud, les deux pointeurs pointent sur elle même.\nSi un ou des noeuds sont présent, le suivant de la sentinelle désigne la tête de la liste et le précédent désigne le dernier élément.</p>"
+      "html": "<p>On remarque que la valeur du nœud sentinelle n'a pas d'importance, ici on laissera la valeur à 0.\nLa sentinelle désigne à la fois le début <strong>ET</strong> la fin de la liste.\nS'il n'y a pas de noeud, les deux pointeurs pointent sur elle même.\nSi un ou des noeuds sont présent, le suivant de la sentinelle désigne la tête de la liste et le précédent désigne le dernier élément.</p>"
     },
     {
       "kind": "block",

@@ -15,7 +15,7 @@
     },
     {
       "kind": "heading",
-      "depth": 2,
+      "depth": 1,
       "text": "Étape 1 : préparer les montages",
       "slug": "étape-1--préparer-les-montages"
     },
@@ -35,7 +35,7 @@
       "content": [
         {
           "kind": "html",
-          "html": "<p>Vérifiez le câblage avant de mettre les cartes sous tension !\nUn mauvais cablage peut entrainer un court-circuit et rendre la carte inopérante !</p>"
+          "html": "<p>Vérifiez le câblage avant de mettre les cartes sous tension !\nUn mauvais cablage peut entrainer un court-circuit et rendre la carte inopérante !\nTous les pins GPIO peuvent être utilisés sur la pico pour la partie émission, mais seul trois sont autorisés pour la partie réception.</p>"
         }
       ]
     },
@@ -45,17 +45,17 @@
     },
     {
       "kind": "heading",
-      "depth": 2,
+      "depth": 1,
       "text": "Étape 2 : créer une bibliothèque pour les LED",
       "slug": "étape-2--créer-une-bibliothèque-pour-les-led"
     },
     {
       "kind": "html",
-      "html": "<p>Développez un code de commande des LED dans des fichiers <code>led.c</code> et <code>led.h</code> séparés afin de pouvoir les réutiliser dans les deux sketches.\nLa bibliothèque doit permettre de préciser la broche utilisée et de commander la durée d'allumage ou l'extinction.</p>\n<p>Ajoutez également une LED par carte.\nPour la partie émission, l'idée est que la LED visible s'allume lorsque la LED IR est alimentée : une dérivation semble donc intéressante.\nPour la partie réception, le LED sera allumée lorsqu'un message sera en cours de réception.\nElle sera donc nécessairement branchée sur une broche numérique indépendante.</p>\n<p>Commencez par faire clignoter une LED avec <code>delay()</code> pour valider le câblage et la commande d'une sortie.\nFaites ensuite évoluer la bibliothèque pour gérer les durées avec <code>millis()</code> à l'aide de variables globales afin de mémoriser l'état ainsi que l'instant du dernier changement.\nCette version non bloquante permettra à la carte de continuer à mesurer ou à traiter des données pendant le clignotement.</p>"
+      "html": "<p>Développez un code de commande des LED dans des fichiers <code>led.cpp</code> et <code>led.h</code> séparés afin de pouvoir les réutiliser dans les deux sketches.\nLa bibliothèque doit permettre de préciser la broche utilisée et de commander la durée d'allumage ou l'extinction.</p>\n<p>Ajoutez également une LED par carte.\nPour la partie émission, l'idée est que la LED visible s'allume lorsque la LED IR est alimentée : une dérivation semble donc intéressante.\nPour la partie réception, le LED sera allumée lorsqu'un message sera en cours de réception.\nElle sera donc nécessairement branchée sur une broche numérique indépendante.</p>\n<p>Commencez par faire clignoter une LED avec <code>delay()</code> pour valider le câblage et la commande d'une sortie.\nFaites ensuite évoluer la bibliothèque pour gérer les durées avec <code>millis()</code> à l'aide de variables globales afin de mémoriser l'état ainsi que l'instant du dernier changement.\nCette version non bloquante permettra à la carte de continuer à mesurer ou à traiter des données pendant le clignotement.</p>"
     },
     {
       "kind": "heading",
-      "depth": 2,
+      "depth": 1,
       "text": "Étape 3 : réaliser le récepteur",
       "slug": "étape-3--réaliser-le-récepteur"
     },
@@ -65,7 +65,7 @@
     },
     {
       "kind": "heading",
-      "depth": 2,
+      "depth": 1,
       "text": "Étape 4 : vérifier le prototype",
       "slug": "étape-4--vérifier-le-prototype"
     },
@@ -77,22 +77,22 @@
   "tooltipDefs": {},
   "toc": [
     {
-      "depth": 2,
+      "depth": 1,
       "text": "Étape 1 : préparer les montages",
       "id": "étape-1--préparer-les-montages"
     },
     {
-      "depth": 2,
+      "depth": 1,
       "text": "Étape 2 : créer une bibliothèque pour les LED",
       "id": "étape-2--créer-une-bibliothèque-pour-les-led"
     },
     {
-      "depth": 2,
+      "depth": 1,
       "text": "Étape 3 : réaliser le récepteur",
       "id": "étape-3--réaliser-le-récepteur"
     },
     {
-      "depth": 2,
+      "depth": 1,
       "text": "Étape 4 : vérifier le prototype",
       "id": "étape-4--vérifier-le-prototype"
     }
