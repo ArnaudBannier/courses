@@ -442,6 +442,17 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "01_algebra/ch3_bijections.md",
+          "outputPath": "01_algebra/ch3_bijections.json",
+          "title": "Injections, surjections et bijections",
+          "navTitle": "Bijections",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -496,6 +507,17 @@
               "outputPath": "01_algebra/ch3_applications.json",
               "title": "Généralités sur les applications",
               "navTitle": "Généralités",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_algebra/ch3_bijections.md",
+              "outputPath": "01_algebra/ch3_bijections.json",
+              "title": "Injections, surjections et bijections",
+              "navTitle": "Bijections",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",

@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "generatedAt": "2026-10-12T16:49:42.057Z",
+  "generatedAt": "2026-10-13T18:14:09.356Z",
   "sourceHashes": {
     "D:/Cours/Web/markdown-courses/content/courses.yaml": "4ed2d2e855b7914d7d66276cc83a28f7745efd92711140dcfa79068e88b9d7ff",
     "D:/Cours/Web/markdown-courses/content/01_ai_data/ch1_cmake_vs.md": "a3f06cc264df7ab27c4755d47aa2cde7b215a4e31a451c7364d1c19734006530",
@@ -15,12 +15,19 @@
     "D:/Cours/Web/markdown-courses/content/01_algebra/ch1_raisonnements.md": "b58036b92f3b1d35768fba2103c344c33f90c9f24c85fd8c15b860365c10cf30",
     "D:/Cours/Web/markdown-courses/content/01_algebra/ch2_ensembles.md": "47d307b5196f70b25dad2b6247a090d0fc7c347015d93824321a9e0770c24fc9",
     "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_applications.md": "0169b4715b78515367214dad5e0de8d347c59afab53a3e077ab904c240f13962",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md": "03fa6ad4ca98a606583f26e5354e8558549c3fe2c6bf0e756d915380b901cc90",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md": "ff78f31e5ef02a959518416f0393c190c60c19f95c35af4c1a6f753189f77cfc",
     "D:/Cours/Web/markdown-courses/content/01_algebra/ch4_polynomes.md": "7e87f7e75fb483bf4c18aff43d4abec3fa025f19019c060c43c34bf13248227d",
     "D:/Cours/Web/markdown-courses/content/01_algebra/ch5_cartes_magiques.md": "1e9e219fcaa7ab863e4d98b9fa93a881c00b383ecc8e156336284bcf979af7a6",
     "D:/Cours/Web/markdown-courses/content/01_algebra/ch5_divisibilite.md": "ae32e2802d717e6e3ef961c5ec8cea2d363e7045bb185be0b104f7d2c466f709",
     "D:/Cours/Web/markdown-courses/content/01_algebra/ch6_congruences.md": "bfd7003a6d5ff57adc2d7e2214370bc7dc7116759c90695cb9b5f60ffe92a4ba",
     "D:/Cours/Web/markdown-courses/content/01_algebra/_course.yaml": "1b5daf990ef3b198c6dd2ff2283f56912b0f7e3b26f425a14b983b950ff8859e",
+    "D:/Cours/Web/markdown-courses/content/01_sns/ch0_description.md": "cb7edf732014bb5990f5a8d7348932bc3c198b44814769c73103fc2e8e06fcfd",
+    "D:/Cours/Web/markdown-courses/content/01_sns/ch0_partie1.md": "1db5c68a412adf8fdeb56fbac9c378b080c9dc29d5db30cc24d55aaf3855c9a2",
+    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_conventions.md": "fb097513b733db7f764ad73a98053c66df91320711f1bbaae8187d793bece3a0",
+    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_installation.md": "1e5ac98b4697fcaa6e16ae9fbb35a715d21e7f113fdae8ff1435a51cafc5f5f2",
+    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_premiers_pas.md": "92071a1e1f66d2afd5b15f9abbd87735d7b1f94b325920c289d2fe9357106427",
+    "D:/Cours/Web/markdown-courses/content/01_sns/todo.md": "915dc65ed8508d3845af5ae48e00de5d8b4e561a2548fb3fffd6c77daf09474f",
+    "D:/Cours/Web/markdown-courses/content/01_sns/_course.yaml": "c419d77a6bb69771e7503da9f040317359aebc5106ffe8ad151c9d9d611ea143",
     "D:/Cours/Web/markdown-courses/content/01_pass/ch1_calcul.md": "3ad56b62b8517036d2bf1f4f0cfecd64080d171a92bb3a9ef203120936a322bc",
     "D:/Cours/Web/markdown-courses/content/01_pass/ch1_complements.md": "3f1ca11c79955935b028d3c6e88bd4b1524e30f59a2809ae9e0d93f28adf01df",
     "D:/Cours/Web/markdown-courses/content/01_pass/ch1_ensembles.md": "dd4e903bdd0947a9d7e0fcf9b70c65835be8dbe6d7d99e063dcb0aa31608a764",
@@ -38,13 +45,6 @@
     "D:/Cours/Web/markdown-courses/content/01_pass/ch4_complexes.md": "fecaee9a1a2781a0c1b2f181ff2a117ab881415c185b8c0f20beba7f080ce5b9",
     "D:/Cours/Web/markdown-courses/content/01_pass/ch4_trigonometrie.md": "37c1d9dcf2330d502d5ce4047011a5903fee229de6859e4ff69692cbae14b14b",
     "D:/Cours/Web/markdown-courses/content/01_pass/_course.yaml": "0912a23f4bb18642c03b02be95ca12b4e0ee05595545ae93956d673b8426787b",
-    "D:/Cours/Web/markdown-courses/content/01_sns/ch0_description.md": "cb7edf732014bb5990f5a8d7348932bc3c198b44814769c73103fc2e8e06fcfd",
-    "D:/Cours/Web/markdown-courses/content/01_sns/ch0_partie1.md": "1db5c68a412adf8fdeb56fbac9c378b080c9dc29d5db30cc24d55aaf3855c9a2",
-    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_conventions.md": "fb097513b733db7f764ad73a98053c66df91320711f1bbaae8187d793bece3a0",
-    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_installation.md": "1e5ac98b4697fcaa6e16ae9fbb35a715d21e7f113fdae8ff1435a51cafc5f5f2",
-    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_premiers_pas.md": "92071a1e1f66d2afd5b15f9abbd87735d7b1f94b325920c289d2fe9357106427",
-    "D:/Cours/Web/markdown-courses/content/01_sns/todo.md": "915dc65ed8508d3845af5ae48e00de5d8b4e561a2548fb3fffd6c77daf09474f",
-    "D:/Cours/Web/markdown-courses/content/01_sns/_course.yaml": "c419d77a6bb69771e7503da9f040317359aebc5106ffe8ad151c9d9d611ea143",
     "D:/Cours/Web/markdown-courses/content/02_algebra/ch1_gauss.md": "bc7a273821f8ae47400d7e1a20e79712454e7e9c340cb7467e1b925e4059ca5c",
     "D:/Cours/Web/markdown-courses/content/02_algebra/ch2_matrices.md": "10e33ae19ff514b55276743a2387336667de31e43ff2b342243accbb79be5848",
     "D:/Cours/Web/markdown-courses/content/02_algebra/ch3_calculs_vectoriels.md": "6d23aac345735f34706d4870272d7dc3f361515959ccede46a0082d31182b14c",
@@ -53,6 +53,13 @@
     "D:/Cours/Web/markdown-courses/content/02_algebra/ch6_espaces_vectoriels.md": "83e8eb69af9508b1891de2180476eb6a8eadbda55bcf56bf3bd3df7a8338470f",
     "D:/Cours/Web/markdown-courses/content/02_algebra/ch7_coordonnees.md": "7d54bb48e713610f01aeab77e3acc7b3e07ba3f8764c0b3af85bbf72cc8f7843",
     "D:/Cours/Web/markdown-courses/content/02_algebra/_course.yaml": "7632d20c178da7f7eca64db6e1c246160413a80220a925675124bde6e2623b95",
+    "D:/Cours/Web/markdown-courses/content/01_programming/ch1_bases.md": "7d5bbc1ba7f3e6a229d202038fd6120c95709133377414107fe004be4d47989d",
+    "D:/Cours/Web/markdown-courses/content/01_programming/ch2_instructions.md": "a290389f068607c9f6f2a840ae98563aa53e22a6dc29a4eb1e751a0b9177da48",
+    "D:/Cours/Web/markdown-courses/content/01_programming/ch3_fonctions.md": "2b43fa300056b8d185576c76d69a8af1ecad1307c4d1783b0c3680517ad7563d",
+    "D:/Cours/Web/markdown-courses/content/01_programming/ch4_pointeurs.md": "fd71811750030e4c6e9311c297cf2180648d85419f8e206a9e0b08391079a7a6",
+    "D:/Cours/Web/markdown-courses/content/01_programming/ch5_tableaux.md": "8051febca313c70c2bb72cbc97ea089ddf2bae52863380833ea7f7876972d25f",
+    "D:/Cours/Web/markdown-courses/content/01_programming/ch6_tableaux_theorie.md": "9802d7668a206894f1bc109442b511b3b21ab83e68a14bcbc7e9e629bf9b53ce",
+    "D:/Cours/Web/markdown-courses/content/01_programming/_course.yaml": "e8cda276017924ee4389b0055005d239ab18485d2105ff117bd4c725336d205c",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch1_applications_lineaires.md": "3121b1349d595cc44e3cbafbdb3bde15204d38a326705f5d07ff0c057b49ff3d",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch1_complements.md": "6b9316acc74caf424104ca014ac763254034c52c59a784c8b22422aca5d38ed4",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch1_coordonnees.md": "7384c20408aa0451c08d809b83c71025ea0296994bd7ff8d7339ae6cad9ec8ce",
@@ -67,13 +74,6 @@
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch6_pipeline_3d.md": "f065b5a753b99e4d1cdefa7f9ee771d938a9c753be4927dbfd505a6d78179f38",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch6_rendu_graphique.md": "6f0e06fc719e3f4dd4194cc9871007d1acd0e6c04ebbe85e45cc2e2c23c24f61",
     "D:/Cours/Web/markdown-courses/content/03_algebra/_course.yaml": "61914b3812468842dd859c2e03d26bb354177d7d88fbb3ff55eef09637ab0449",
-    "D:/Cours/Web/markdown-courses/content/01_programming/ch1_bases.md": "7d5bbc1ba7f3e6a229d202038fd6120c95709133377414107fe004be4d47989d",
-    "D:/Cours/Web/markdown-courses/content/01_programming/ch2_instructions.md": "a290389f068607c9f6f2a840ae98563aa53e22a6dc29a4eb1e751a0b9177da48",
-    "D:/Cours/Web/markdown-courses/content/01_programming/ch3_fonctions.md": "2b43fa300056b8d185576c76d69a8af1ecad1307c4d1783b0c3680517ad7563d",
-    "D:/Cours/Web/markdown-courses/content/01_programming/ch4_pointeurs.md": "fd71811750030e4c6e9311c297cf2180648d85419f8e206a9e0b08391079a7a6",
-    "D:/Cours/Web/markdown-courses/content/01_programming/ch5_tableaux.md": "8051febca313c70c2bb72cbc97ea089ddf2bae52863380833ea7f7876972d25f",
-    "D:/Cours/Web/markdown-courses/content/01_programming/ch6_tableaux_theorie.md": "9802d7668a206894f1bc109442b511b3b21ab83e68a14bcbc7e9e629bf9b53ce",
-    "D:/Cours/Web/markdown-courses/content/01_programming/_course.yaml": "e8cda276017924ee4389b0055005d239ab18485d2105ff117bd4c725336d205c",
     "D:/Cours/Web/markdown-courses/content/03_programming/ch1_revisions.md": "f33e20de36555eb32d4d79a77c76946d4e1f032015808e72b974ddc16159001c",
     "D:/Cours/Web/markdown-courses/content/03_programming/ch1_tp.md": "d15c96d16abb6b3cbb3b9afa84bcbfa048d0c7951f91f7eb855d7409c5ab9d0b",
     "D:/Cours/Web/markdown-courses/content/03_programming/ch2_tp.md": "a8c8bef1dc68f660690bf7b445995721ad998a1286f6ae5d5b4c75ebf42306a5",
@@ -331,7 +331,7 @@
     "D:/Cours/Web/markdown-courses/content/03_programming/exercises_4/ListInt_get.md": "094b2e353f7cf046b5536c2d66de5b6ee1d452444f0788c3226ba6c4b9544fac",
     "D:/Cours/Web/markdown-courses/content/03_programming/exercises_4/ListInt_iterator.md": "b2d9f80228b723ab26f4df3f1389e86fd8b7ab5ab2eeebd6652189804ab052b9",
     "D:/Cours/Web/markdown-courses/content/03_programming/exercises_4/ListInt_private.md": "e2de9099bb92e3e8dd04ba136ce9b7e7b8789972a5b64e57f238ec7d3be90e96",
-    "D:/Cours/Web/markdown-courses/content/03_programming/exercises_4/ListInt_public.md": "e1f92ad78393cfa66683798a6d6c7d2464a9ff6d929d248fb3e1dc7e8fcec54c",
+    "D:/Cours/Web/markdown-courses/content/03_programming/exercises_4/ListInt_public.md": "25cf2a82b655018a9a354015914f4864ceff0e4951a41a5e44b4009fca7e81af",
     "D:/Cours/Web/markdown-courses/content/03_programming/exercises_5/BinTreeInt_def.md": "e3d55a370f241b8fc70edd50c8febf5e53f65b349965649b556a7e8e3d0e9fc6",
     "D:/Cours/Web/markdown-courses/content/03_programming/exercises_5/BinTreeInt_dfs.md": "69f71b8a2cb898fed93d81b8c5e07d2eb706feb342dfff36e02388f5e4f6e3e2",
     "D:/Cours/Web/markdown-courses/content/03_programming/exercises_5/BinTreeInt_exploration.md": "da2089e691a16e4a0a1e1ef32bfc8c66a809261cd3b844dcbe3fd0f684dd225f",
@@ -367,14 +367,6 @@
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_3.md": "ee27a8a67f3c25437cb9b1ad977a54e0fb610c5fcd0cdd16cf3f4680a53c3aab",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_5.md": "22f002b2b80d2eb518609f3fdcbac018da22c580ceec20802741efe0c68510f3",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_6.md": "9d89cd1efccf6e5c3d524822705968bb72e0617549eba501f9f32504902d8785",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/appartenance_1.md": "10965ec10ea2f473ca88be86b8ea9c019328a656e5557697e57e7fc32e0214d8",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/appartenance_2.md": "95048f1cdd95daf12d17f5387756779af51a71479f39762aecdb2483991a83d5",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/appartenance_4.md": "74e5f1a3dea2a59976ee68306bdb8bdefb503c770fed2054cdd4a77fdc58b6d1",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/diffsym_2.md": "9305b5c2eb5777289bb5f9780758b250431e36661d42e3c1914387a5e2cf92e4",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/ecriture_3.md": "2940df299b39329591b7af5a609ec95d18c06409a76513306c812393ffaaf764",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/ens_parties_2.md": "cc692e58b7aacdc02271c02a9d7cd859d46f195bfa8d60bd899893deb79df41b",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/preuve_inc_3.md": "4a6fcaf5bbded1386935e4239147d9056b12b7bbf56837387b775f120b7857fc",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/prod_cart_3.md": "359daf95dd6ac45bf8704f73aba6671a13f939f3c0a7bf7d9c449110756965a3",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/applications/analyse_demonstrations_moodle.md": "adda90104e69630acf36c9c9a1e331366eed487a1ab9b62d0b0b2641e92d57d2",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/applications/antecedents.md": "f260d0d297baef6e7250ca121e8a87409100b98dd48eb4625828e6ae201d56f9",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/applications/ca_commute_preuve.md": "06e105f2bd7fba6dd4893057034ade5933a05cea2bc4d2dcb20e9b0c48ab822a",
@@ -390,13 +382,26 @@
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/applications/moodle_image_directe.md": "de438fe10307e09751df6a2dd6c8a53bb34169106a3b0231f3b1d69765881da4",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/applications/moodle_rearrangement.md": "cbbb93b18d07f65973b754f10880c7108fbf00284dce3af920433b8d8dbf3cb7",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/applications/questions_cours_image_directe_reciproque.md": "0af322d0f69d9e3ca50097ce0b86fd44e8e4a70b8c67ad37504ecd4c74ee41b1",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/bijective.md": "330c68d705c2f09bfd219b0651c95101418a1d5033399e3303ed527b68f27d33",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/composee_bijective.md": "e8bb1af909d4daa109c1299ceae0b0aef1000e31e4c7a126f1fd6f6863a2ca02",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/contre_exemples.md": "9fedf811def2f02fefbbbdf27e89071f3478a5f0ea457a6f348f0a1689fc8822",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/graphique_inj_surj.md": "9c033488d5d95eff97db62c13e9cc4ac61bb5e4b6d7625a5c277fd87943fd839",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/groupe_perm_1.md": "c9992b9e244d8b6e8d6efd4345a6cd55a999911f5288b3124e705fad3dd9fbae",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/groupe_perm_2.md": "ed2eba3155e411b9265d1ac9c5735e939ea72f813229c384733149e18151706c",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/injective_surjective_bijective.md": "d34581bb01a405293ee8dfe548034e336e68580e8ad7c65d5942741111d50d04",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/questions_cours_injection_surjection.md": "4754aa66759be11e9a0f3f6ced6c3cfdb38dca3e6f64c12074c7a108402dee66",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/contre_exemples.md": "2ceeb7cdbabefe00a513f074fc439d73bd6d9680cec5f5bedf73b3e5f2970858",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/graphique_inj_surj.md": "e298e9dd24cd98443fda3f79812d541b470982942dd480751b72e61594e50602",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/groupe_perm_1.md": "c13ef6e37d5e071b22ac2034c838b0809d975b3565776fd77bc8fba0420a99b0",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/groupe_perm_2.md": "69909f5d23d25471ab605edfc98091c35fd8a266b91323d701fa58a02aaa0d6e",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/injective_surjective.md": "3598b0f7549270efcbedae90040fcb1385967f7916539a3e9866221e2364cd1d",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_bijection_r2.md": "2a8c22fd106b6f0608692f09543f55fdd821011ced7b73795346effdc2f1f462",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_bijection_r3.md": "a5559e5c78a4a4aa2cc3e60d1db9521992c65a50ac38eecdf2d88ef17ea4c12c",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_rearrangement_1.md": "0ae6dc70a50b1fd5e2115ec03d12dee798d61f06c5f1f0fb75be05ead0af1e64",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_rearrangement_2.md": "dc47526144b926deb92d46fe585652a938944bd66c51e99e22f817819f1c48b9",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/questions_cours_injection_surjection.md": "0127c60d05a0d643805bf22baba06187229821d3ce1ec97948b4a5e4e072f859",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/appartenance_1.md": "10965ec10ea2f473ca88be86b8ea9c019328a656e5557697e57e7fc32e0214d8",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/appartenance_2.md": "95048f1cdd95daf12d17f5387756779af51a71479f39762aecdb2483991a83d5",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/appartenance_4.md": "74e5f1a3dea2a59976ee68306bdb8bdefb503c770fed2054cdd4a77fdc58b6d1",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/diffsym_2.md": "9305b5c2eb5777289bb5f9780758b250431e36661d42e3c1914387a5e2cf92e4",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/ecriture_3.md": "2940df299b39329591b7af5a609ec95d18c06409a76513306c812393ffaaf764",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/ens_parties_2.md": "cc692e58b7aacdc02271c02a9d7cd859d46f195bfa8d60bd899893deb79df41b",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/preuve_inc_3.md": "4a6fcaf5bbded1386935e4239147d9056b12b7bbf56837387b775f120b7857fc",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/prod_cart_3.md": "359daf95dd6ac45bf8704f73aba6671a13f939f3c0a7bf7d9c449110756965a3",
     "D:/Cours/Web/markdown-courses/content/01_pass/exercises_1/linear_alg/moodle_syst_2x2.md": "6cb5b05b72eda59bb8aaa756e2aba4a0795d192c71bdd227b0bdd81113c0c0e1",
     "D:/Cours/Web/markdown-courses/content/01_pass/exercises_1/linear_alg/moodle_syst_2x3_infini.md": "86551fdf1e3a15c30ee6292dac46bd2f507f2a41cb6aa0041a5b1116a5fa768a",
     "D:/Cours/Web/markdown-courses/content/01_pass/exercises_1/linear_alg/moodle_syst_2x4_infini.md": "dbe3bdf6eb705a6eae9b2056ef26bc80b323c4312d3c03135862d5eaad808a2a",
@@ -539,6 +544,7 @@
     "01_algebra/ch1_raisonnements.json",
     "01_algebra/ch2_ensembles.json",
     "01_algebra/ch3_applications.json",
+    "01_algebra/ch3_bijections.json",
     "01_ai_data/ch1_installation.json",
     "01_ai_data/ch1_conventions.json",
     "01_ai_data/ch1_pico.json",
@@ -1428,6 +1434,48 @@
           },
           {
             "absoluteSourcePath": "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_applications.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "rule"
+              },
+              "remark": {
+                "style": "rule"
+              },
+              "proof": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": false,
+                "style": "rule"
+              },
+              "exercise": {
+                "style": "rule"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "draw"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              }
+            },
+            "courseSlug": "01_algebra"
+          },
+          {
+            "absoluteSourcePath": "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md",
             "courseBlockDefaults": {
               "example": {
                 "style": "rule"
@@ -3473,6 +3521,48 @@
       },
       {
         "absoluteSourcePath": "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_applications.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "rule"
+          },
+          "remark": {
+            "style": "rule"
+          },
+          "proof": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": false,
+            "style": "rule"
+          },
+          "exercise": {
+            "style": "rule"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "draw"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          }
+        },
+        "courseSlug": "01_algebra"
+      },
+      {
+        "absoluteSourcePath": "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md",
         "courseBlockDefaults": {
           "example": {
             "style": "rule"
@@ -5729,6 +5819,45 @@
         ]
       },
       {
+        "outputPath": "01_algebra/ch3_bijections.json",
+        "pageId": "alg1-bijections",
+        "blockRefs": [],
+        "dependencies": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/questions_cours_injection_surjection.md",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_injection_fini_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_injection_fini_d.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_surjection_fini_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_surjection_fini_d.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_injection_continu_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_injection_continu_d.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_surjection_continu_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_surjection_continu_d.svg",
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/graphique_inj_surj.md",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/exercice_bijections_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/exercice_bijections_d.svg",
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/injective_surjective.md",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/propriete_composition_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/propriete_composition_d.svg",
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_rearrangement_1.md",
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/contre_exemples.md",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_bijection_1_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_bijection_1_d.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_bijection_2_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_bijection_2_d.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_reciproque_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_reciproque_d.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_reciproque_continu_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_reciproque_continu_d.svg",
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/bijective.md",
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_bijection_r2.md",
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_bijection_r3.md",
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_rearrangement_2.md",
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/composee_bijective.md",
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/groupe_perm_1.md",
+          "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/groupe_perm_2.md"
+        ]
+      },
+      {
         "outputPath": "01_ai_data/ch1_installation.json",
         "pageId": "data-1-installation",
         "blockRefs": [],
@@ -7232,6 +7361,102 @@
         ],
         "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/applications/ca_commute_preuve.md": [
           "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_applications.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/questions_cours_injection_surjection.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_injection_fini_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_injection_fini_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_surjection_fini_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_surjection_fini_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_injection_continu_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_injection_continu_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_surjection_continu_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_surjection_continu_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/graphique_inj_surj.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/exercice_bijections_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/exercice_bijections_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/injective_surjective.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/propriete_composition_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/propriete_composition_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_rearrangement_1.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/contre_exemples.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_bijection_1_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_bijection_1_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_bijection_2_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_bijection_2_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_reciproque_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_reciproque_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_reciproque_continu_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/01_algebra/ch3/def_reciproque_continu_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/bijective.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_bijection_r2.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_bijection_r3.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_rearrangement_2.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/composee_bijective.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/groupe_perm_1.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/groupe_perm_2.md": [
+          "D:/Cours/Web/markdown-courses/content/01_algebra/ch3_bijections.md"
         ],
         "D:/Cours/Web/markdown-courses/assets/01_ai_data/nrf24.svg": [
           "D:/Cours/Web/markdown-courses/content/01_ai_data/ch1_radio.md"

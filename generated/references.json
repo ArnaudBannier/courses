@@ -746,6 +746,10 @@
       "outputPath": "01_algebra/ch3_applications.json",
       "blocks": {}
     },
+    "alg1-bijections": {
+      "outputPath": "01_algebra/ch3_bijections.json",
+      "blocks": {}
+    },
     "data-1-installation": {
       "outputPath": "01_ai_data/ch1_installation.json",
       "blocks": {}
