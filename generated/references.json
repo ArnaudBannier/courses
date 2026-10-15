@@ -1060,6 +1060,77 @@
         }
       }
     },
+    "alg3-transformations-geometriques": {
+      "outputPath": "03_algebra/ch4_transformations_geometriques.json",
+      "blocks": {
+        "homothetie": {
+          "num": "2",
+          "label": "Example 2",
+          "blockType": "example",
+          "kind": "Example"
+        },
+        "homoLambdaId": {
+          "num": "1",
+          "label": "Proposition 1",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "proposition-matrice-projection": {
+          "num": "6",
+          "label": "Proposition 6",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "exercice-projecteur-1": {
+          "num": "3",
+          "label": "Exercise 3",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-projecteur-2": {
+          "num": "4",
+          "label": "Exercise 4",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "proposition-matrice-symetrie": {
+          "num": "8",
+          "label": "Proposition 8",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "exercice-synthese-2": {
+          "num": "6",
+          "label": "Exercise 6",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "proposition-matrice-affinite": {
+          "num": "9",
+          "label": "Proposition 9",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        },
+        "exercice-affinite-1": {
+          "num": "8",
+          "label": "Exercise 8",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-synthese-5": {
+          "num": "9",
+          "label": "Exercise 9",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "exercice-synthese-4": {
+          "num": "10",
+          "label": "Exercise 10",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        }
+      }
+    },
     "prog3-revisions": {
       "outputPath": "03_programming/ch1_revisions.json",
       "blocks": {}

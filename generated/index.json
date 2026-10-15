@@ -855,6 +855,17 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "03_algebra/ch4_transformations_geometriques.md",
+          "outputPath": "03_algebra/ch4_transformations_geometriques.json",
+          "title": "Transformations géométriques",
+          "navTitle": "4. Transformations géométriques",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -952,6 +963,20 @@
               ]
             }
           ]
+        },
+        {
+          "kind": "chapter",
+          "chapter": {
+            "sourcePath": "03_algebra/ch4_transformations_geometriques.md",
+            "outputPath": "03_algebra/ch4_transformations_geometriques.json",
+            "title": "Transformations géométriques",
+            "navTitle": "4. Transformations géométriques",
+            "navHidden": false,
+            "authors": [
+              "Arnaud Bannier",
+              "Nicolas Bodin"
+            ]
+          }
         }
       ]
     },
