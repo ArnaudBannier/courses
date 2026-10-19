@@ -838,7 +838,7 @@
           "sourcePath": "03_algebra/ch3_reduction_pratique.md",
           "outputPath": "03_algebra/ch3_reduction_pratique.json",
           "title": "Diagonalisation, la pratique",
-          "navTitle": "Pratique",
+          "navTitle": "Partie 1",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -849,7 +849,7 @@
           "sourcePath": "03_algebra/ch3_reduction_theorie.md",
           "outputPath": "03_algebra/ch3_reduction_theorie.json",
           "title": "Diagonalisation, la théorie",
-          "navTitle": "Théorie",
+          "navTitle": "Partie 2",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -944,7 +944,7 @@
               "sourcePath": "03_algebra/ch3_reduction_pratique.md",
               "outputPath": "03_algebra/ch3_reduction_pratique.json",
               "title": "Diagonalisation, la pratique",
-              "navTitle": "Pratique",
+              "navTitle": "Partie 1",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",
@@ -955,7 +955,7 @@
               "sourcePath": "03_algebra/ch3_reduction_theorie.md",
               "outputPath": "03_algebra/ch3_reduction_theorie.json",
               "title": "Diagonalisation, la théorie",
-              "navTitle": "Théorie",
+              "navTitle": "Partie 2",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",

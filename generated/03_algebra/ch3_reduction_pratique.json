@@ -1,7 +1,7 @@
 {
   "sourcePath": "03_algebra/ch3_reduction_pratique.md",
   "title": "Diagonalisation, la pratique",
-  "navTitle": "Pratique",
+  "navTitle": "Partie 1",
   "navHidden": false,
   "authors": [
     "Arnaud Bannier",
@@ -3340,15 +3340,6 @@
                 {
                   "kind": "html",
                   "html": "Quand il dort, il a <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>80</mn><mi mathvariant=\"normal\">%</mi></mrow><annotation encoding=\"application/x-tex\">80\\%</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8056em;vertical-align:-0.0556em;\"></span><span class=\"mord\">80%</span></span></span></span> de chances de poursuivre son sommeil et donc seulement <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>20</mn><mi mathvariant=\"normal\">%</mi></mrow><annotation encoding=\"application/x-tex\">20\\%</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8056em;vertical-align:-0.0556em;\"></span><span class=\"mord\">20%</span></span></span></span> de chances de partir manger."
-                }
-              ]
-            },
-            {
-              "kind": "list-item",
-              "content": [
-                {
-                  "kind": "html",
-                  "html": "Quand il mange, il a <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>40</mn><mi mathvariant=\"normal\">%</mi></mrow><annotation encoding=\"application/x-tex\">40\\%</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8056em;vertical-align:-0.0556em;\"></span><span class=\"mord\">40%</span></span></span></span> de chances de retourner dormir les cinq prochaines minutes."
                 }
               ]
             },
