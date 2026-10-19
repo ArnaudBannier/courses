@@ -656,6 +656,12 @@
           "label": "Example 4",
           "blockType": "example",
           "kind": "Example"
+        },
+        "exemple-preuve-somme": {
+          "num": "7",
+          "label": "Example 7",
+          "blockType": "example",
+          "kind": "Example"
         }
       }
     },
