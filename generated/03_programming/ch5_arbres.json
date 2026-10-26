@@ -364,7 +364,16 @@
     },
     {
       "kind": "html",
-      "html": "<p>Afin de développer une bibliothèque gérant les arbres binaires, il est nécessaire, comme pour les listes, de préciser une structure de données pour un nœud d'arbre et une autre pour l'arbre qui contiendra un pointeur sur la racine (qui est un nœud).</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span> BinTreeNode<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span> <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">int</span> value<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span><span class=\"token operator\">*</span> left<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span><span class=\"token operator\">*</span> right<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTree</span> BinTree<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTree</span> <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">int</span> size<span class=\"token punctuation\">;</span>    <span class=\"token comment\">// On peut également ajouter la hauteur si besoin</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span><span class=\"token operator\">*</span> root<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Nous utiliserons dans un premier temps une structure d'arbre simplifiée afin d'avoir une bonne première prise en main.\nUn nœud d'arbre possède donc une information nommée <code>value</code> de type entier.\nChaque nœud possède deux pointeurs vers ses potentiels fils gauche et fils droit.\nEn cas d'absence d'enfant, les pointeurs seront mis à <code>NULL</code>.\nCette hiérarchie est regroupée dans la structure <code>BinTree</code> qui contient la taille de l'arbre ainsi qu'un pointeur sur la racine.</p>\n<p>L'allocation d'un arbre passe donc tout d'abord par l'allocation et la mise à zéro d'un objet de type <code>BinTree</code>.\nChaque nœud (objet de type <code>BinTreeNode</code>) sera ensuite alloué à l'aide d'une fonction d'allocation dynamique, puis raccordé en tant que fils droit ou gauche d'un nœud de l'arbre.</p>\n<p><em>(Une vidéo complémentaire sur les mécanismes d'allocation mémoire et d'ajout de nœuds est disponible : <a href=\"https://youtu.be/xGUrXdkWLQQ\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/xGUrXdkWLQQ</a>)</em></p>"
+      "html": "<p>Afin de développer une bibliothèque gérant les arbres binaires, il est nécessaire, comme pour les listes, de préciser une structure de données pour un nœud d'arbre et une autre pour l'arbre qui contiendra un pointeur sur la racine (qui est un nœud).</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span> BinTreeNode<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span> <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">int</span> value<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span><span class=\"token operator\">*</span> left<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span><span class=\"token operator\">*</span> right<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTree</span> BinTree<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTree</span> <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">int</span> size<span class=\"token punctuation\">;</span>    <span class=\"token comment\">// On peut également ajouter la hauteur si besoin</span>\n</span><span class=\"code-line\">\t<span class=\"token keyword\">struct</span> <span class=\"token class-name\">BinTreeNode</span><span class=\"token operator\">*</span> root<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Nous utiliserons dans un premier temps une structure d'arbre simplifiée afin d'avoir une bonne première prise en main.\nUn nœud d'arbre possède donc une information nommée <code>value</code> de type entier.\nChaque nœud possède deux pointeurs vers ses potentiels fils gauche et fils droit.\nEn cas d'absence d'enfant, les pointeurs seront mis à <code>NULL</code>.\nCette hiérarchie est regroupée dans la structure <code>BinTree</code> qui contient la taille de l'arbre ainsi qu'un pointeur sur la racine.</p>\n<p>L'allocation d'un arbre passe donc tout d'abord par l'allocation et la mise à zéro d'un objet de type <code>BinTree</code>.\nChaque nœud (objet de type <code>BinTreeNode</code>) sera ensuite alloué à l'aide d'une fonction d'allocation dynamique, puis raccordé en tant que fils droit ou gauche d'un nœud de l'arbre.</p>"
+    },
+    {
+      "kind": "video",
+      "url": "https://youtu.be/xGUrXdkWLQQ",
+      "title": "État de la mémoire"
+    },
+    {
+      "kind": "html",
+      "html": ""
     },
     {
       "kind": "block",
@@ -577,7 +586,16 @@
     },
     {
       "kind": "html",
-      "html": "<p><em>(Une vidéo complémentaire sur le parcours en largeur est disponible : <a href=\"https://youtu.be/qyFns_VP2PA\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/qyFns_VP2PA</a>)</em></p>\n<p>Il est évident qu'il est possible d'ajouter des nœuds à la file seulement si ces derniers sont présents.\nCette condition n'a pas été ajoutée à l'algorithme afin d'alléger ce dernier mais reste obligatoire lors de son implémentation.\nSans donner de preuve formelle de validité de l'algorithme, on peut présenter le fonctionnement suivant.\nLe premier nœud ajouté à la liste est la racine.\nElle est extraite dès le début de la boucle <code>Tant que</code> pour être traitée puis ses enfants sont ajoutés à la liste.\nOn a donc à ce moment uniquement les nœuds du niveau 1.\nUn nouveau nœud est extrait et on ajoute en fin de liste ses enfants (niveau 2).\nLe nœud de file suivant est donc le frère du précédent (niveau 1) ou le premier fils du nœud précédent (niveau 2).\nEn poursuivant l'algorithme, on s'aperçoit que la file reçoit au fur et à mesure des nœuds de niveau supérieur ou égal à ceux qui sont déjà présents, d'où la réalisation du parcours en largeur.</p>"
+      "html": ""
+    },
+    {
+      "kind": "video",
+      "url": "https://youtu.be/qyFns_VP2PA",
+      "title": "Parcours en largeur"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Il est évident qu'il est possible d'ajouter des nœuds à la file seulement si ces derniers sont présents.\nCette condition n'a pas été ajoutée à l'algorithme afin d'alléger ce dernier mais reste obligatoire lors de son implémentation.\nSans donner de preuve formelle de validité de l'algorithme, on peut présenter le fonctionnement suivant.\nLe premier nœud ajouté à la liste est la racine.\nElle est extraite dès le début de la boucle <code>Tant que</code> pour être traitée puis ses enfants sont ajoutés à la liste.\nOn a donc à ce moment uniquement les nœuds du niveau 1.\nUn nouveau nœud est extrait et on ajoute en fin de liste ses enfants (niveau 2).\nLe nœud de file suivant est donc le frère du précédent (niveau 1) ou le premier fils du nœud précédent (niveau 2).\nEn poursuivant l'algorithme, on s'aperçoit que la file reçoit au fur et à mesure des nœuds de niveau supérieur ou égal à ceux qui sont déjà présents, d'où la réalisation du parcours en largeur.</p>"
     },
     {
       "kind": "heading",
@@ -610,7 +628,16 @@
     },
     {
       "kind": "html",
-      "html": "<p><em>(Une vidéo complémentaire sur le parcours en profondeur est disponible : <a href=\"https://youtu.be/MSdbTF8BGv0\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/MSdbTF8BGv0</a>)</em></p>\n<p>De même que pour le parcours en largeur, l'ajout de nœuds à la pile ne peut s'effectuer que s'ils existent.\nNotez également que l'ordre de parcours des enfants est inversé (fils droit avant fils gauche).\nEn effet, il est habituel pour un parcours en profondeur de traiter en premier le fils gauche, puis le fils droit.\nLe fait d'empiler le fils droit en premier fait qu'il se retrouvera sous son frère, donc le fils gauche sera bien dépilé et traité en premier.</p>\n<p>La présence de la structure de pile pour stocker les futurs nœuds permet le parcours en profondeur : les enfants étant ajoutés en début de pile, ce seront les premiers à être visités après le nœud courant, sauf s'ils ont des enfants.\nOn retrouve donc la définition récursive du parcours : une fois le nœud traité, la visite du sous-arbre gauche s'effectue, puis celle du sous-arbre droit.</p>"
+      "html": ""
+    },
+    {
+      "kind": "video",
+      "url": "https://youtu.be/MSdbTF8BGv0",
+      "title": "Parcours en profondeur"
+    },
+    {
+      "kind": "html",
+      "html": "<p>De même que pour le parcours en largeur, l'ajout de nœuds à la pile ne peut s'effectuer que s'ils existent.\nNotez également que l'ordre de parcours des enfants est inversé (fils droit avant fils gauche).\nEn effet, il est habituel pour un parcours en profondeur de traiter en premier le fils gauche, puis le fils droit.\nLe fait d'empiler le fils droit en premier fait qu'il se retrouvera sous son frère, donc le fils gauche sera bien dépilé et traité en premier.</p>\n<p>La présence de la structure de pile pour stocker les futurs nœuds permet le parcours en profondeur : les enfants étant ajoutés en début de pile, ce seront les premiers à être visités après le nœud courant, sauf s'ils ont des enfants.\nOn retrouve donc la définition récursive du parcours : une fois le nœud traité, la visite du sous-arbre gauche s'effectue, puis celle du sous-arbre droit.</p>"
     },
     {
       "kind": "block",
@@ -671,7 +698,16 @@
     },
     {
       "kind": "html",
-      "html": "<p><em>(Une vidéo complémentaire sur le parcours préfixe est disponible : <a href=\"https://youtu.be/daC-HmJZ2kY\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/daC-HmJZ2kY</a>)</em></p>"
+      "html": ""
+    },
+    {
+      "kind": "video",
+      "url": "https://youtu.be/daC-HmJZ2kY",
+      "title": "Parcours en préfixe"
+    },
+    {
+      "kind": "html",
+      "html": ""
     },
     {
       "kind": "block",
@@ -694,7 +730,16 @@
     },
     {
       "kind": "html",
-      "html": "<p><em>(Une vidéo complémentaire sur le parcours infixe est disponible : <a href=\"https://youtu.be/CFvjkjSa_VY\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/CFvjkjSa_VY</a>)</em></p>"
+      "html": ""
+    },
+    {
+      "kind": "video",
+      "url": "https://youtu.be/CFvjkjSa_VY",
+      "title": "Parcours en infixe"
+    },
+    {
+      "kind": "html",
+      "html": ""
     },
     {
       "kind": "block",
@@ -717,7 +762,16 @@
     },
     {
       "kind": "html",
-      "html": "<p><em>(Une vidéo complémentaire sur le parcours suffixe est disponible : <a href=\"https://youtu.be/iOAeQu0BjJA\" target=\"_blank\" rel=\"noopener noreferrer\">https://youtu.be/iOAeQu0BjJA</a>)</em></p>"
+      "html": ""
+    },
+    {
+      "kind": "video",
+      "url": "https://youtu.be/iOAeQu0BjJA",
+      "title": "Parcours en suffixe"
+    },
+    {
+      "kind": "html",
+      "html": ""
     },
     {
       "kind": "block",

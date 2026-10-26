@@ -2121,6 +2121,15 @@
       "html": ""
     },
     {
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=e-0FTtO5izc",
+      "title": "Image directe d'un fonction réelle"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
       "kind": "block",
       "blockType": "definition",
       "titleHtml": "Image réciproque",
@@ -2161,6 +2170,15 @@
           "html": "<img src=\"/courses/generated/assets/project/assets/01_algebra/ch3/def_image_reciproque_l.svg\" data-theme-image=\"true\" data-light-src=\"/courses/generated/assets/project/assets/01_algebra/ch3/def_image_reciproque_l.svg\" data-dark-src=\"/courses/generated/assets/project/assets/01_algebra/ch3/def_image_reciproque_d.svg\" alt=\"Image réciproque\" style=\"width: 100%; max-height: 12rem; margin:auto\" loading=\"lazy\" />"
         }
       ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=eQPmmmAqOGU",
+      "title": "Image réciproque d'une fonction réelle"
     },
     {
       "kind": "html",
@@ -3279,6 +3297,15 @@
           ]
         }
       ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "video",
+      "url": "https://www.youtube.com/watch?v=j6YS5y-1_kI",
+      "title": "Composition de fonction réelles"
     },
     {
       "kind": "html",
