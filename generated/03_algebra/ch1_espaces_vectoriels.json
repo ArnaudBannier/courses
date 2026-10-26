@@ -7,7 +7,7 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
     {
       "kind": "html",
@@ -159,7 +159,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -310,7 +310,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Sous-espaces vectoriels",
-      "slug": "sous-espaces-vectoriels"
+      "slug": "sous-espaces-vectoriels",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -371,7 +372,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -444,7 +445,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -490,7 +491,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "fill"
       },
       "content": [
         {
@@ -544,7 +545,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -572,7 +573,12 @@
       "content": [
         {
           "kind": "html",
-          "html": "<p>Soient <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>E</mi><mo>=</mo><msup><mi mathvariant=\"double-struck\">R</mi><mn>2</mn></msup></mrow><annotation encoding=\"application/x-tex\">E = \\R^2</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0576em;\">E</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\"><span class=\"mord mathbb\">R</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span></span></span></span> et <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>F</mi><mo>=</mo><mo stretchy=\"false\">{</mo><mo stretchy=\"false\">(</mo><mi>x</mi><mo separator=\"true\">,</mo><mi>y</mi><mo stretchy=\"false\">)</mo><mo>∈</mo><msup><mi mathvariant=\"double-struck\">R</mi><mn>2</mn></msup><mo>∣</mo><mi>x</mi><mo>−</mo><mi>y</mi><mo>=</mo><mn>0</mn><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">F = \\{ (x,y) \\in \\R^2 \\mid x - y = 0 \\}</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">{(</span><span class=\"mord mathnormal\">x</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"mclose\">)</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∈</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1.0641em;vertical-align:-0.25em;\"></span><span class=\"mord\"><span class=\"mord mathbb\">R</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∣</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6667em;vertical-align:-0.0833em;\"></span><span class=\"mord mathnormal\">x</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.625em;vertical-align:-0.1944em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord\">0</span><span class=\"mclose\">}</span></span></span></span>. Montrez que <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>F</mi></mrow><annotation encoding=\"application/x-tex\">F</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span></span></span></span> est un sous-espace vectoriel de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>E</mi></mrow><annotation encoding=\"application/x-tex\">E</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0576em;\">E</span></span></span></span>.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=6274\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Soient <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>E</mi><mo>=</mo><msup><mi mathvariant=\"double-struck\">R</mi><mn>2</mn></msup></mrow><annotation encoding=\"application/x-tex\">E = \\R^2</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0576em;\">E</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\"><span class=\"mord mathbb\">R</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span></span></span></span> et <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>F</mi><mo>=</mo><mo stretchy=\"false\">{</mo><mo stretchy=\"false\">(</mo><mi>x</mi><mo separator=\"true\">,</mo><mi>y</mi><mo stretchy=\"false\">)</mo><mo>∈</mo><msup><mi mathvariant=\"double-struck\">R</mi><mn>2</mn></msup><mo>∣</mo><mi>x</mi><mo>−</mo><mi>y</mi><mo>=</mo><mn>0</mn><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">F = \\{ (x,y) \\in \\R^2 \\mid x - y = 0 \\}</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">{(</span><span class=\"mord mathnormal\">x</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"mclose\">)</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∈</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1.0641em;vertical-align:-0.25em;\"></span><span class=\"mord\"><span class=\"mord mathbb\">R</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∣</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6667em;vertical-align:-0.0833em;\"></span><span class=\"mord mathnormal\">x</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.625em;vertical-align:-0.1944em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord\">0</span><span class=\"mclose\">}</span></span></span></span>. Montrez que <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>F</mi></mrow><annotation encoding=\"application/x-tex\">F</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span></span></span></span> est un sous-espace vectoriel de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>E</mi></mrow><annotation encoding=\"application/x-tex\">E</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0576em;\">E</span></span></span></span>.</p>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=6274",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -584,7 +590,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Familles de vecteurs",
-      "slug": "familles-de-vecteurs"
+      "slug": "familles-de-vecteurs",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -678,7 +685,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "fill"
       },
       "content": [
         {
@@ -700,7 +707,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -780,7 +787,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -791,6 +798,7 @@
           "kind": "layout",
           "layoutType": "tabs",
           "align": "center",
+          "footer": true,
           "items": [
             {
               "titleHtml": "Forme matricielle",
@@ -932,8 +940,9 @@
           ]
         },
         {
-          "kind": "html",
-          "html": "<p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=6268\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=6268",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -1107,8 +1116,9 @@
           ]
         },
         {
-          "kind": "html",
-          "html": "<p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=6268\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=6268",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -1254,7 +1264,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "fill"
       },
       "content": [
         {
@@ -1301,7 +1311,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1345,7 +1355,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Bases et dimension",
-      "slug": "bases-et-dimension"
+      "slug": "bases-et-dimension",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -1489,7 +1500,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "fill"
       },
       "content": [
         {
@@ -1512,7 +1523,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1778,7 +1789,12 @@
       "content": [
         {
           "kind": "html",
-          "html": "<p>Donnez une base du sous-espace vectoriel <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>F</mi></mrow><annotation encoding=\"application/x-tex\">F</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span></span></span></span> de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mi mathvariant=\"double-struck\">R</mi><mn>3</mn></msup></mrow><annotation encoding=\"application/x-tex\">\\R^3</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\"><span class=\"mord mathbb\">R</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">3</span></span></span></span></span></span></span></span></span></span></span> défini par</p><span class=\"katex-display\"><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>F</mi><mo>=</mo><mo stretchy=\"false\">{</mo><mo stretchy=\"false\">(</mo><mi>x</mi><mo separator=\"true\">,</mo><mi>y</mi><mo separator=\"true\">,</mo><mi>z</mi><mo stretchy=\"false\">)</mo><mo>∈</mo><msup><mi mathvariant=\"double-struck\">R</mi><mn>3</mn></msup><mo>∣</mo><mn>3</mn><mi>y</mi><mo>−</mo><mi>z</mi><mo>=</mo><mi>x</mi><mo>+</mo><mi>z</mi><mo stretchy=\"false\">}</mo><mtext> </mtext><mi mathvariant=\"normal\">.</mi></mrow><annotation encoding=\"application/x-tex\">F = \\{ (x,y,z) \\in \\R^3 \\mid 3y - z = x + z \\} \\,.</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">{(</span><span class=\"mord mathnormal\">x</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span><span class=\"mclose\">)</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∈</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1.1141em;vertical-align:-0.25em;\"></span><span class=\"mord\"><span class=\"mord mathbb\">R</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8641em;\"><span style=\"top:-3.113em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">3</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∣</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8389em;vertical-align:-0.1944em;\"></span><span class=\"mord\">3</span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6667em;vertical-align:-0.0833em;\"></span><span class=\"mord mathnormal\">x</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span><span class=\"mclose\">}</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">.</span></span></span></span></span><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=6267\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Donnez une base du sous-espace vectoriel <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>F</mi></mrow><annotation encoding=\"application/x-tex\">F</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span></span></span></span> de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mi mathvariant=\"double-struck\">R</mi><mn>3</mn></msup></mrow><annotation encoding=\"application/x-tex\">\\R^3</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\"><span class=\"mord mathbb\">R</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">3</span></span></span></span></span></span></span></span></span></span></span> défini par</p><span class=\"katex-display\"><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>F</mi><mo>=</mo><mo stretchy=\"false\">{</mo><mo stretchy=\"false\">(</mo><mi>x</mi><mo separator=\"true\">,</mo><mi>y</mi><mo separator=\"true\">,</mo><mi>z</mi><mo stretchy=\"false\">)</mo><mo>∈</mo><msup><mi mathvariant=\"double-struck\">R</mi><mn>3</mn></msup><mo>∣</mo><mn>3</mn><mi>y</mi><mo>−</mo><mi>z</mi><mo>=</mo><mi>x</mi><mo>+</mo><mi>z</mi><mo stretchy=\"false\">}</mo><mtext> </mtext><mi mathvariant=\"normal\">.</mi></mrow><annotation encoding=\"application/x-tex\">F = \\{ (x,y,z) \\in \\R^3 \\mid 3y - z = x + z \\} \\,.</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">{(</span><span class=\"mord mathnormal\">x</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span><span class=\"mclose\">)</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∈</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1.1141em;vertical-align:-0.25em;\"></span><span class=\"mord\"><span class=\"mord mathbb\">R</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8641em;\"><span style=\"top:-3.113em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">3</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∣</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8389em;vertical-align:-0.1944em;\"></span><span class=\"mord\">3</span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6667em;vertical-align:-0.0833em;\"></span><span class=\"mord mathnormal\">x</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.044em;\">z</span><span class=\"mclose\">}</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">.</span></span></span></span></span>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=6267",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -1928,7 +1944,12 @@
       "content": [
         {
           "kind": "html",
-          "html": "<p>Donnez une base du sous-espace vectoriel <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>F</mi></mrow><annotation encoding=\"application/x-tex\">F</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span></span></span></span> de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi mathvariant=\"script\">M</mi><mn>2</mn></msub><mo stretchy=\"false\">(</mo><mi mathvariant=\"double-struck\">R</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">\\mathcal{M}_2(\\R)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord\"><span class=\"mord mathcal\">M</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mopen\">(</span><span class=\"mord mathbb\">R</span><span class=\"mclose\">)</span></span></span></span> défini par</p><span class=\"katex-display\"><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>F</mi><mo>=</mo><mrow><mo fence=\"true\">{</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mi>b</mi></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mo>−</mo><mi>a</mi></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mo fence=\"true\" lspace=\"0.05em\" rspace=\"0.05em\">|</mo><mtext>  </mtext><mi>a</mi><mo separator=\"true\">,</mo><mi>b</mi><mo>∈</mo><mi mathvariant=\"double-struck\">R</mi><mo fence=\"true\">}</mo></mrow><mtext> </mtext><mi mathvariant=\"normal\">.</mi></mrow><annotation encoding=\"application/x-tex\">F = \\left\\{\n\\begin{pmatrix} a-b &#x26; a-b \\\\ b &#x26; -a \\end{pmatrix}\n\\middle|\\; a,b \\in \\R\n\\right\\} \\,.</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:2.4em;vertical-align:-0.95em;\"></span><span class=\"minner\"><span class=\"mopen delimcenter\" style=\"top:0em;\"><span class=\"delimsizing size3\">{</span></span><span class=\"minner\"><span class=\"mopen delimcenter\" style=\"top:0em;\"><span class=\"delimsizing size3\">(</span></span><span class=\"mord\"><span class=\"mtable\"><span class=\"col-align-c\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:1.45em;\"><span style=\"top:-3.61em;\"><span class=\"pstrut\" style=\"height:3em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">a</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mord mathnormal\">b</span></span></span><span style=\"top:-2.41em;\"><span class=\"pstrut\" style=\"height:3em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">b</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.95em;\"><span></span></span></span></span></span><span class=\"arraycolsep\" style=\"width:0.5em;\"></span><span class=\"arraycolsep\" style=\"width:0.5em;\"></span><span class=\"col-align-c\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:1.45em;\"><span style=\"top:-3.61em;\"><span class=\"pstrut\" style=\"height:3em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">a</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mord mathnormal\">b</span></span></span><span style=\"top:-2.41em;\"><span class=\"pstrut\" style=\"height:3em;\"></span><span class=\"mord\"><span class=\"mord\">−</span><span class=\"mord mathnormal\">a</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.95em;\"><span></span></span></span></span></span></span></span><span class=\"mclose delimcenter\" style=\"top:0em;\"><span class=\"delimsizing size3\">)</span></span></span><span><span class=\"delimsizing mult\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:1.45em;\"><span style=\"top:-3.45em;\"><span class=\"pstrut\" style=\"height:4.4em;\"></span><span style=\"width:0.333em;height:2.4em;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"0.333em\" height=\"2.4em\" viewBox=\"0 0 333 2400\"><path d=\"M145 15 v585 v1200 v585 c2.667,10,9.667,15,21,15\nc10,0,16.667,-5,20,-15 v-585 v-1200 v-585 c-2.667,-10,-9.667,-15,-21,-15\nc-10,0,-16.667,5,-20,15z M188 15 H145 v585 v1200 v585 h43z\"></path></svg></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.95em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mord mathnormal\">a</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord mathnormal\">b</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∈</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mord mathbb\">R</span><span class=\"mclose delimcenter\" style=\"top:0em;\"><span class=\"delimsizing size3\">}</span></span></span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">.</span></span></span></span></span><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=6267\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Donnez une base du sous-espace vectoriel <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>F</mi></mrow><annotation encoding=\"application/x-tex\">F</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span></span></span></span> de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi mathvariant=\"script\">M</mi><mn>2</mn></msub><mo stretchy=\"false\">(</mo><mi mathvariant=\"double-struck\">R</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">\\mathcal{M}_2(\\R)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord\"><span class=\"mord mathcal\">M</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:0em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mopen\">(</span><span class=\"mord mathbb\">R</span><span class=\"mclose\">)</span></span></span></span> défini par</p><span class=\"katex-display\"><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>F</mi><mo>=</mo><mrow><mo fence=\"true\">{</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mi>b</mi></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mo>−</mo><mi>a</mi></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mo fence=\"true\" lspace=\"0.05em\" rspace=\"0.05em\">|</mo><mtext>  </mtext><mi>a</mi><mo separator=\"true\">,</mo><mi>b</mi><mo>∈</mo><mi mathvariant=\"double-struck\">R</mi><mo fence=\"true\">}</mo></mrow><mtext> </mtext><mi mathvariant=\"normal\">.</mi></mrow><annotation encoding=\"application/x-tex\">F = \\left\\{\n\\begin{pmatrix} a-b &#x26; a-b \\\\ b &#x26; -a \\end{pmatrix}\n\\middle|\\; a,b \\in \\R\n\\right\\} \\,.</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">F</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:2.4em;vertical-align:-0.95em;\"></span><span class=\"minner\"><span class=\"mopen delimcenter\" style=\"top:0em;\"><span class=\"delimsizing size3\">{</span></span><span class=\"minner\"><span class=\"mopen delimcenter\" style=\"top:0em;\"><span class=\"delimsizing size3\">(</span></span><span class=\"mord\"><span class=\"mtable\"><span class=\"col-align-c\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:1.45em;\"><span style=\"top:-3.61em;\"><span class=\"pstrut\" style=\"height:3em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">a</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mord mathnormal\">b</span></span></span><span style=\"top:-2.41em;\"><span class=\"pstrut\" style=\"height:3em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">b</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.95em;\"><span></span></span></span></span></span><span class=\"arraycolsep\" style=\"width:0.5em;\"></span><span class=\"arraycolsep\" style=\"width:0.5em;\"></span><span class=\"col-align-c\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:1.45em;\"><span style=\"top:-3.61em;\"><span class=\"pstrut\" style=\"height:3em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">a</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mord mathnormal\">b</span></span></span><span style=\"top:-2.41em;\"><span class=\"pstrut\" style=\"height:3em;\"></span><span class=\"mord\"><span class=\"mord\">−</span><span class=\"mord mathnormal\">a</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.95em;\"><span></span></span></span></span></span></span></span><span class=\"mclose delimcenter\" style=\"top:0em;\"><span class=\"delimsizing size3\">)</span></span></span><span><span class=\"delimsizing mult\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:1.45em;\"><span style=\"top:-3.45em;\"><span class=\"pstrut\" style=\"height:4.4em;\"></span><span style=\"width:0.333em;height:2.4em;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"0.333em\" height=\"2.4em\" viewBox=\"0 0 333 2400\"><path d=\"M145 15 v585 v1200 v585 c2.667,10,9.667,15,21,15\nc10,0,16.667,-5,20,-15 v-585 v-1200 v-585 c-2.667,-10,-9.667,-15,-21,-15\nc-10,0,-16.667,5,-20,15z M188 15 H145 v585 v1200 v585 h43z\"></path></svg></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.95em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mord mathnormal\">a</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord mathnormal\">b</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∈</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mord mathbb\">R</span><span class=\"mclose delimcenter\" style=\"top:0em;\"><span class=\"delimsizing size3\">}</span></span></span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">.</span></span></span></span></span>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=6267",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -2134,7 +2155,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -2176,7 +2197,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "fill"
       },
       "content": [
         {
@@ -2222,7 +2243,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -2255,6 +2276,12 @@
       ]
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Reprenez les fondements de l'algèbre linéaire : espaces vectoriels, sous-espaces, familles, bases et applications linéaires. Ces notions structurent l'étude des vecteurs et de leurs transformations.</p>"
+    }
+  ],
   "tooltipDefs": {
     "tooltip-inline-1": {
       "html": "On montre facilement que l&#39;opposé est unique. On le note plus simplement <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo>−</mo><mi>u</mi></mrow><annotation encoding=\"application/x-tex\">-u</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6667em;vertical-align:-0.0833em;\"></span><span class=\"mord\">−</span><span class=\"mord mathnormal\">u</span></span></span></span>"
@@ -2267,12 +2294,14 @@
     {
       "depth": 1,
       "text": "Sous-espaces vectoriels",
-      "id": "sous-espaces-vectoriels"
+      "id": "sous-espaces-vectoriels",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Familles de vecteurs",
-      "id": "familles-de-vecteurs"
+      "id": "familles-de-vecteurs",
+      "sectionNumber": 2
     },
     {
       "depth": 2,
@@ -2287,7 +2316,8 @@
     {
       "depth": 1,
       "text": "Bases et dimension",
-      "id": "bases-et-dimension"
+      "id": "bases-et-dimension",
+      "sectionNumber": 3
     }
   ],
   "figureModules": []

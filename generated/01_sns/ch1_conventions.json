@@ -7,13 +7,14 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
     {
       "kind": "heading",
       "depth": 1,
       "text": "Introduction à Markdown",
-      "slug": "introduction-à-markdown"
+      "slug": "introduction-à-markdown",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -23,7 +24,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Exemples de syntaxe",
-      "slug": "exemples-de-syntaxe"
+      "slug": "exemples-de-syntaxe",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -129,7 +131,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -165,7 +167,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Conventions de code",
-      "slug": "conventions-de-code"
+      "slug": "conventions-de-code",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -316,12 +319,14 @@
     {
       "depth": 1,
       "text": "Introduction à Markdown",
-      "id": "introduction-à-markdown"
+      "id": "introduction-à-markdown",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Exemples de syntaxe",
-      "id": "exemples-de-syntaxe"
+      "id": "exemples-de-syntaxe",
+      "sectionNumber": 2
     },
     {
       "depth": 2,
@@ -371,7 +376,8 @@
     {
       "depth": 1,
       "text": "Conventions de code",
-      "id": "conventions-de-code"
+      "id": "conventions-de-code",
+      "sectionNumber": 3
     },
     {
       "depth": 2,

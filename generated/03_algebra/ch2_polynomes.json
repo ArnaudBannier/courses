@@ -7,7 +7,7 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
     {
       "kind": "html",
@@ -39,7 +39,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Division euclidienne",
-      "slug": "division-euclidienne"
+      "slug": "division-euclidienne",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -78,7 +79,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -132,8 +133,9 @@
           ]
         },
         {
-          "kind": "html",
-          "html": "<p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=6290\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=6290",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -166,7 +168,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Racines",
-      "slug": "racines"
+      "slug": "racines",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -205,7 +208,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -228,7 +231,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -274,7 +277,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -291,7 +294,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Multiplicité d'une racine",
-      "slug": "multiplicité-dune-racine"
+      "slug": "multiplicité-dune-racine",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -367,7 +371,12 @@
       "content": [
         {
           "kind": "html",
-          "html": "<p>Considérons le polynôme <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>P</mi><mo>=</mo><msup><mi>X</mi><mn>4</mn></msup><mo>+</mo><mn>5</mn><msup><mi>X</mi><mn>3</mn></msup><mo>+</mo><mn>9</mn><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><mn>7</mn><mi>X</mi><mo>+</mo><mn>2</mn><mo>∈</mo><mi mathvariant=\"double-struck\">R</mi><mo stretchy=\"false\">[</mo><mi>X</mi><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">P = X^4 + 5X^3 + 9X^2 + 7X + 2 \\in \\R[X]</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">P</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">4</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\">5</span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">3</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\">9</span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7667em;vertical-align:-0.0833em;\"></span><span class=\"mord\">7</span><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6835em;vertical-align:-0.0391em;\"></span><span class=\"mord\">2</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∈</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathbb\">R</span><span class=\"mopen\">[</span><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"mclose\">]</span></span></span></span>.\nDéterminez les multiplicités des racines <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mo>−</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">r_1 = -2</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.5806em;vertical-align:-0.15em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">r</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">1</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7278em;vertical-align:-0.0833em;\"></span><span class=\"mord\">−</span><span class=\"mord\">2</span></span></span></span> et <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">r_2 = -1</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.5806em;vertical-align:-0.15em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">r</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7278em;vertical-align:-0.0833em;\"></span><span class=\"mord\">−</span><span class=\"mord\">1</span></span></span></span> de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>P</mi></mrow><annotation encoding=\"application/x-tex\">P</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">P</span></span></span></span>.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=6290\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Considérons le polynôme <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>P</mi><mo>=</mo><msup><mi>X</mi><mn>4</mn></msup><mo>+</mo><mn>5</mn><msup><mi>X</mi><mn>3</mn></msup><mo>+</mo><mn>9</mn><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><mn>7</mn><mi>X</mi><mo>+</mo><mn>2</mn><mo>∈</mo><mi mathvariant=\"double-struck\">R</mi><mo stretchy=\"false\">[</mo><mi>X</mi><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">P = X^4 + 5X^3 + 9X^2 + 7X + 2 \\in \\R[X]</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">P</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">4</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\">5</span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">3</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\">9</span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7667em;vertical-align:-0.0833em;\"></span><span class=\"mord\">7</span><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6835em;vertical-align:-0.0391em;\"></span><span class=\"mord\">2</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∈</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathbb\">R</span><span class=\"mopen\">[</span><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"mclose\">]</span></span></span></span>.\nDéterminez les multiplicités des racines <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mo>−</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">r_1 = -2</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.5806em;vertical-align:-0.15em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">r</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">1</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7278em;vertical-align:-0.0833em;\"></span><span class=\"mord\">−</span><span class=\"mord\">2</span></span></span></span> et <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">r_2 = -1</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.5806em;vertical-align:-0.15em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">r</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7278em;vertical-align:-0.0833em;\"></span><span class=\"mord\">−</span><span class=\"mord\">1</span></span></span></span> de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>P</mi></mrow><annotation encoding=\"application/x-tex\">P</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">P</span></span></span></span>.</p>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=6290",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -476,7 +485,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -498,7 +507,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -515,7 +524,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Racines rationnelles",
-      "slug": "racines-rationnelles"
+      "slug": "racines-rationnelles",
+      "sectionNumber": 4
     },
     {
       "kind": "html",
@@ -555,7 +565,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -583,7 +593,12 @@
       "content": [
         {
           "kind": "html",
-          "html": "<p>Factorisez le polynôme <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>P</mi><mo>=</mo><msup><mi>X</mi><mn>4</mn></msup><mo>−</mo><mn>2</mn><msup><mi>X</mi><mn>3</mn></msup><mo>−</mo><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>X</mi><mo>∈</mo><mi mathvariant=\"double-struck\">R</mi><mo stretchy=\"false\">[</mo><mi>X</mi><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">P = X^4 - 2X^3 - X^2 + 2X \\in \\R[X]</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">P</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">4</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\">2</span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">3</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7224em;vertical-align:-0.0391em;\"></span><span class=\"mord\">2</span><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∈</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathbb\">R</span><span class=\"mopen\">[</span><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"mclose\">]</span></span></span></span>.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=6290\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Factorisez le polynôme <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>P</mi><mo>=</mo><msup><mi>X</mi><mn>4</mn></msup><mo>−</mo><mn>2</mn><msup><mi>X</mi><mn>3</mn></msup><mo>−</mo><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>X</mi><mo>∈</mo><mi mathvariant=\"double-struck\">R</mi><mo stretchy=\"false\">[</mo><mi>X</mi><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">P = X^4 - 2X^3 - X^2 + 2X \\in \\R[X]</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.1389em;\">P</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">4</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\">2</span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">3</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7224em;vertical-align:-0.0391em;\"></span><span class=\"mord\">2</span><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">∈</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathbb\">R</span><span class=\"mopen\">[</span><span class=\"mord mathnormal\" style=\"margin-right:0.0785em;\">X</span><span class=\"mclose\">]</span></span></span></span>.</p>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=6290",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -894,6 +909,12 @@
       ]
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Apprenez à factoriser des polynômes, notamment à l'aide de leurs racines, et à exploiter la division euclidienne. Ces techniques préparent au calcul du polynôme caractéristique et à la réduction des endomorphismes.</p>"
+    }
+  ],
   "tooltipDefs": {
     "tooltip-inline-1": {
       "html": "La notation de fraction entre deux ensembles n&#39;est pas standard mais permet de bien comprendre ici comment sont calculées les racines candidates."
@@ -906,22 +927,26 @@
     {
       "depth": 1,
       "text": "Division euclidienne",
-      "id": "division-euclidienne"
+      "id": "division-euclidienne",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Racines",
-      "id": "racines"
+      "id": "racines",
+      "sectionNumber": 2
     },
     {
       "depth": 1,
       "text": "Multiplicité d'une racine",
-      "id": "multiplicité-dune-racine"
+      "id": "multiplicité-dune-racine",
+      "sectionNumber": 3
     },
     {
       "depth": 1,
       "text": "Racines rationnelles",
-      "id": "racines-rationnelles"
+      "id": "racines-rationnelles",
+      "sectionNumber": 4
     }
   ],
   "figureModules": []

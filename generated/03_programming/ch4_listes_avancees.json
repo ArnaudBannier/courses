@@ -9,13 +9,18 @@
     "Nicolas Bodin",
     "Matthieu Le Berre"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Définition du type liste doublement chainée",
-      "slug": "définition-du-type-liste-doublement-chainée"
+      "slug": "définition-du-type-liste-doublement-chainée",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -61,7 +66,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Création d'une liste vide",
-      "slug": "création-dune-liste-vide"
+      "slug": "création-dune-liste-vide",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -99,7 +105,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -122,12 +128,17 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Développez les fonctions suivantes permettant de gérer une liste vide (création, liste vide) ou n'accédant qu'au pointeur de référence (taille).\nPour les fonctions prenant un paramètre, on suppose que l'on dispose d'un pointeur <code>list</code> sur une liste d'entiers de type <code>ListInt</code> contenant, ou non, des éléments.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">ListInt <span class=\"token operator\">*</span><span class=\"token function\">ListInt_create</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_size</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">bool <span class=\"token function\">ListInt_isEmpty</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4634\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Développez les fonctions suivantes permettant de gérer une liste vide (création, liste vide) ou n'accédant qu'au pointeur de référence (taille).\nPour les fonctions prenant un paramètre, on suppose que l'on dispose d'un pointeur <code>list</code> sur une liste d'entiers de type <code>ListInt</code> contenant, ou non, des éléments.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">ListInt <span class=\"token operator\">*</span><span class=\"token function\">ListInt_create</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_size</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">bool <span class=\"token function\">ListInt_isEmpty</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=4634",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -145,12 +156,17 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Développez les fonctions suivantes permettant de lire des informations dans une liste sans en modifier le contenu.\nOn suppose que l'on dispose en paramètre de chaque fonction d'un pointeur <code>list</code> sur une liste d'entiers de type <code>ListInt</code> contenant, ou non, des éléments.\nAucune des fonctions ne doit modifier le contenu de la liste.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_print</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_getFirst</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_getLast</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4634\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Développez les fonctions suivantes permettant de lire des informations dans une liste sans en modifier le contenu.\nOn suppose que l'on dispose en paramètre de chaque fonction d'un pointeur <code>list</code> sur une liste d'entiers de type <code>ListInt</code> contenant, ou non, des éléments.\nAucune des fonctions ne doit modifier le contenu de la liste.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_print</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_getFirst</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_getLast</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=4634",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -162,7 +178,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Insertion et suppression",
-      "slug": "insertion-et-suppression"
+      "slug": "insertion-et-suppression",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -433,12 +450,17 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Les fonctions suivantes font partie des fonctions <em>privées</em> de la bibliothèque.\nAussi, il ne faudra pas déclarer leur prototype dans le header pour les conserver privées.\nEn revanche, il est fortement recommandé de déclarer leur prototype en début de fichier source afin d'éviter les problèmes lors de l'édition de liens.</p><p>On suppose ici que l’on dispose d’un pointeur <code>list</code> sur une liste d’entiers de type <code>ListInt</code>.\nOn dispose également d'un pointeur <code>node</code> vers un nœud spécifique de la liste (de type <code>ListIntNode</code>) qui sera le nœud ajouté (resp. supprimé) à la liste.\nCes fonctions doivent donc modifier l'état de la liste, y compris sa taille.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_insertNodeAfter</span><span class=\"token punctuation\">(</span>ListInt<span class=\"token operator\">*</span> list<span class=\"token punctuation\">,</span> ListIntNode<span class=\"token operator\">*</span> ref<span class=\"token punctuation\">,</span> ListIntNode<span class=\"token operator\">*</span> node<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_popNode</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> ListIntNode <span class=\"token operator\">*</span>node<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La fonction <code>insertNodeAfter</code> contient également un autre pointeur <code>ref</code> sur le nœud qui sert de référence.\nLe maillon <code>node</code> devra se placer juste après le nœud <code>ref</code> dans la liste.\nRemarquons que le nœud <code>ref</code> peut désigner la sentinelle pour indiquer que l'on insère le nœud en tête de liste.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4634\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Les fonctions suivantes font partie des fonctions <em>privées</em> de la bibliothèque.\nAussi, il ne faudra pas déclarer leur prototype dans le header pour les conserver privées.\nEn revanche, il est fortement recommandé de déclarer leur prototype en début de fichier source afin d'éviter les problèmes lors de l'édition de liens.</p><p>On suppose ici que l’on dispose d’un pointeur <code>list</code> sur une liste d’entiers de type <code>ListInt</code>.\nOn dispose également d'un pointeur <code>node</code> vers un nœud spécifique de la liste (de type <code>ListIntNode</code>) qui sera le nœud ajouté (resp. supprimé) à la liste.\nCes fonctions doivent donc modifier l'état de la liste, y compris sa taille.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_insertNodeAfter</span><span class=\"token punctuation\">(</span>ListInt<span class=\"token operator\">*</span> list<span class=\"token punctuation\">,</span> ListIntNode<span class=\"token operator\">*</span> ref<span class=\"token punctuation\">,</span> ListIntNode<span class=\"token operator\">*</span> node<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_popNode</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> ListIntNode <span class=\"token operator\">*</span>node<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La fonction <code>insertNodeAfter</code> contient également un autre pointeur <code>ref</code> sur le nœud qui sert de référence.\nLe maillon <code>node</code> devra se placer juste après le nœud <code>ref</code> dans la liste.\nRemarquons que le nœud <code>ref</code> peut désigner la sentinelle pour indiquer que l'on insère le nœud en tête de liste.</p>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=4634",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -450,7 +472,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "API publique et fonctions privées",
-      "slug": "api-publique-et-fonctions-privées"
+      "slug": "api-publique-et-fonctions-privées",
+      "sectionNumber": 4
     },
     {
       "kind": "html",
@@ -503,12 +526,17 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Les fonctions suivantes font partie de la partie publique de la bibliothèque et ont donc leur prototype présent dans le header.</p><p>On dispose donc ici uniquement d’un pointeur <code>list</code> sur une liste d’entiers de type <code>ListInt</code> et optionnellement d'un entier <code>value</code> pour les fonctions d'ajout.\nCes fonctions font appels aux primitives internes codées précédemment et doivent avoir une complexité constante.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_insertFirst</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_insertLast</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_popFirst</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_popLast</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4634\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Les fonctions suivantes font partie de la partie publique de la bibliothèque et ont donc leur prototype présent dans le header.</p><p>On dispose donc ici uniquement d’un pointeur <code>list</code> sur une liste d’entiers de type <code>ListInt</code> et optionnellement d'un entier <code>value</code> pour les fonctions d'ajout.\nCes fonctions font appels aux primitives internes codées précédemment et doivent avoir une complexité constante.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_insertFirst</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListInt_insertLast</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_popFirst</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListInt_popLast</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=4634",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -536,14 +564,25 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Développez les fonctions suivantes permettant de gérer un itérateur sur une liste d'entiers.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">ListIntIter <span class=\"token operator\">*</span><span class=\"token function\">ListIntIter_create</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListIntIter_destroy</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListIntIter_get</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListIntIter_next</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">bool <span class=\"token function\">ListIntIter_isValid</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Lors de sa création, l'itérateur pointe sur le premier maillon de la liste, si la taille de celle-ci est supérieure à 1.\nUne fois l'itérateur créé, l'utilisateur doit utiliser la fonction <code>isValid</code> afin de vérifier que l'itérateur pointe bien sur un maillon de la liste et non la sentinelle (ce qui indiquerait qu'il ne reste plus d'éléments à parcourir).\nLa fonction <code>get</code> retourne la valeur du maillon sur lequel pointe l'itérateur et <code>next</code> permet d'incrémenter l'itérateur vers le maillon suivant.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4634\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Développez les fonctions suivantes permettant de gérer un itérateur sur une liste d'entiers.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">ListIntIter <span class=\"token operator\">*</span><span class=\"token function\">ListIntIter_create</span><span class=\"token punctuation\">(</span>ListInt <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListIntIter_destroy</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">ListIntIter_get</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">ListIntIter_next</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">bool <span class=\"token function\">ListIntIter_isValid</span><span class=\"token punctuation\">(</span>ListIntIter <span class=\"token operator\">*</span>iter<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Lors de sa création, l'itérateur pointe sur le premier maillon de la liste, si la taille de celle-ci est supérieure à 1.\nUne fois l'itérateur créé, l'utilisateur doit utiliser la fonction <code>isValid</code> afin de vérifier que l'itérateur pointe bien sur un maillon de la liste et non la sentinelle (ce qui indiquerait qu'il ne reste plus d'éléments à parcourir).\nLa fonction <code>get</code> retourne la valeur du maillon sur lequel pointe l'itérateur et <code>next</code> permet d'incrémenter l'itérateur vers le maillon suivant.</p>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=4634",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Passez aux listes doublement chaînées pour faciliter les parcours et les opérations aux deux extrémités. Explorez les choix de structure qui améliorent les performances des listes.</p>"
     }
   ],
   "tooltipDefs": {
@@ -555,22 +594,26 @@
     {
       "depth": 1,
       "text": "Définition du type liste doublement chainée",
-      "id": "définition-du-type-liste-doublement-chainée"
+      "id": "définition-du-type-liste-doublement-chainée",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Création d'une liste vide",
-      "id": "création-dune-liste-vide"
+      "id": "création-dune-liste-vide",
+      "sectionNumber": 2
     },
     {
       "depth": 1,
       "text": "Insertion et suppression",
-      "id": "insertion-et-suppression"
+      "id": "insertion-et-suppression",
+      "sectionNumber": 3
     },
     {
       "depth": 1,
       "text": "API publique et fonctions privées",
-      "id": "api-publique-et-fonctions-privées"
+      "id": "api-publique-et-fonctions-privées",
+      "sectionNumber": 4
     },
     {
       "depth": 2,

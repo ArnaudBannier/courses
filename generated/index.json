@@ -3,12 +3,17 @@
   "courses": [
     {
       "courseSlug": "01_pass",
-      "title": "S1 - PASS Maths",
+      "title": "PASS Maths",
       "description": "Remise à niveau en mathématiques",
+      "tags": [
+        "S1",
+        "maths"
+      ],
       "authors": [
         "Arnaud Bannier",
         "Nicolas Bodin"
       ],
+      "cardColor": 1,
       "chapters": [
         {
           "sourcePath": "01_pass/ch1_ensembles.md",
@@ -392,12 +397,17 @@
     },
     {
       "courseSlug": "01_algebra",
-      "title": "S1 - Algèbre générale",
+      "title": "Algèbre générale",
       "description": "Ensembles, applications, arithmétique, polynômes.",
+      "tags": [
+        "S1",
+        "maths"
+      ],
       "authors": [
         "Arnaud Bannier",
         "Nicolas Bodin"
       ],
+      "cardColor": 1,
       "chapters": [
         {
           "sourcePath": "01_algebra/ch1_logique.md",
@@ -530,12 +540,17 @@
     },
     {
       "courseSlug": "01_ai_data",
-      "title": "S1 - Parcours Data-IA",
+      "title": "Parcours Data-IA",
       "description": "Projet sur l'esieabot",
+      "tags": [
+        "S1",
+        "Parcours"
+      ],
       "authors": [
         "Arnaud Bannier",
         "Nicolas Bodin"
       ],
+      "cardColor": 1,
       "chapters": [
         {
           "sourcePath": "01_ai_data/ch1_installation.md",
@@ -637,12 +652,17 @@
     },
     {
       "courseSlug": "01_sns",
-      "title": "S1 - Parcours SNS",
+      "title": "Parcours SNS",
       "description": "Projet sur l'esieabot",
+      "tags": [
+        "S1",
+        "Parcours"
+      ],
       "authors": [
         "Arnaud Bannier",
         "Nicolas Bodin"
       ],
+      "cardColor": 1,
       "chapters": [
         {
           "sourcePath": "01_sns/ch0_description.md",
@@ -772,12 +792,17 @@
     },
     {
       "courseSlug": "03_algebra",
-      "title": "S3 - Algèbre et géométrie",
+      "title": "Algèbre et géométrie",
       "description": "Diagonalisation, transformation géométriques.",
+      "tags": [
+        "S3",
+        "Maths"
+      ],
       "authors": [
         "Arnaud Bannier",
         "Nicolas Bodin"
       ],
+      "cardColor": 3,
       "chapters": [
         {
           "sourcePath": "03_algebra/ch1_espaces_vectoriels.md",
@@ -838,7 +863,7 @@
           "sourcePath": "03_algebra/ch3_reduction_pratique.md",
           "outputPath": "03_algebra/ch3_reduction_pratique.json",
           "title": "Diagonalisation, la pratique",
-          "navTitle": "Partie 1",
+          "navTitle": "Diagonalisation, partie 1",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -849,7 +874,7 @@
           "sourcePath": "03_algebra/ch3_reduction_theorie.md",
           "outputPath": "03_algebra/ch3_reduction_theorie.json",
           "title": "Diagonalisation, la théorie",
-          "navTitle": "Partie 2",
+          "navTitle": "Diagonalisation, partie 2",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -944,7 +969,7 @@
               "sourcePath": "03_algebra/ch3_reduction_pratique.md",
               "outputPath": "03_algebra/ch3_reduction_pratique.json",
               "title": "Diagonalisation, la pratique",
-              "navTitle": "Partie 1",
+              "navTitle": "Diagonalisation, partie 1",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",
@@ -955,7 +980,7 @@
               "sourcePath": "03_algebra/ch3_reduction_theorie.md",
               "outputPath": "03_algebra/ch3_reduction_theorie.json",
               "title": "Diagonalisation, la théorie",
-              "navTitle": "Partie 2",
+              "navTitle": "Diagonalisation, partie 2",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",
@@ -982,12 +1007,17 @@
     },
     {
       "courseSlug": "03_programming",
-      "title": "S3 - Algorithmique avancée",
+      "title": "Algorithmique avancée",
       "description": "Introduction aux types de donnée abstraits",
+      "tags": [
+        "S3",
+        "Programmation"
+      ],
       "authors": [
         "Arnaud Bannier",
         "Nicolas Bodin"
       ],
+      "cardColor": 3,
       "chapters": [
         {
           "sourcePath": "03_programming/ch1_revisions.md",

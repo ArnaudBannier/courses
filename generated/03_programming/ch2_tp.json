@@ -7,7 +7,7 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
     {
       "kind": "html",
@@ -17,7 +17,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Pizzas de l'espace",
-      "slug": "pizzas-de-lespace"
+      "slug": "pizzas-de-lespace",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -90,7 +91,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -101,13 +102,23 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4618\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+      "html": ""
+    },
+    {
+      "kind": "moodle",
+      "url": "https://learning.esiea.fr/mod/vpl/view.php?id=4618",
+      "title": "Effectuer cet exercice sur Moodle"
+    },
+    {
+      "kind": "html",
+      "html": ""
     },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Maître crêpier",
-      "slug": "maître-crêpier"
+      "slug": "maître-crêpier",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -180,7 +191,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -191,13 +202,23 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4619\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+      "html": ""
+    },
+    {
+      "kind": "moodle",
+      "url": "https://learning.esiea.fr/mod/vpl/view.php?id=4619",
+      "title": "Effectuer cet exercice sur Moodle"
+    },
+    {
+      "kind": "html",
+      "html": ""
     },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Potoo Coin",
-      "slug": "potoo-coin"
+      "slug": "potoo-coin",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -297,7 +318,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -308,7 +329,18 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4620\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+      "html": ""
+    },
+    {
+      "kind": "moodle",
+      "url": "https://learning.esiea.fr/mod/vpl/view.php?id=4620",
+      "title": "Effectuer cet exercice sur Moodle"
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Résolvez des challenges en choisissant le type abstrait adapté, puis comparez son efficacité à celle de votre solution précédente. Une mise en pratique des piles, ensembles et dictionnaires.</p>"
     }
   ],
   "tooltipDefs": {},
@@ -316,7 +348,8 @@
     {
       "depth": 1,
       "text": "Pizzas de l'espace",
-      "id": "pizzas-de-lespace"
+      "id": "pizzas-de-lespace",
+      "sectionNumber": 1
     },
     {
       "depth": 2,
@@ -336,7 +369,8 @@
     {
       "depth": 1,
       "text": "Maître crêpier",
-      "id": "maître-crêpier"
+      "id": "maître-crêpier",
+      "sectionNumber": 2
     },
     {
       "depth": 2,
@@ -356,7 +390,8 @@
     {
       "depth": 1,
       "text": "Potoo Coin",
-      "id": "potoo-coin"
+      "id": "potoo-coin",
+      "sectionNumber": 3
     },
     {
       "depth": 2,

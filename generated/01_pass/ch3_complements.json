@@ -7,13 +7,18 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Suites",
-      "slug": "suites"
+      "slug": "suites",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -654,7 +659,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Fonctions dérivables",
-      "slug": "fonctions-dérivables"
+      "slug": "fonctions-dérivables",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -1259,17 +1265,25 @@
       ]
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Entraînez-vous sur les suites, les fonctions dérivables et les logarithmes à travers des exercices complémentaires couvrant les notions essentielles du chapitre.</p>"
+    }
+  ],
   "tooltipDefs": {},
   "toc": [
     {
       "depth": 1,
       "text": "Suites",
-      "id": "suites"
+      "id": "suites",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Fonctions dérivables",
-      "id": "fonctions-dérivables"
+      "id": "fonctions-dérivables",
+      "sectionNumber": 2
     }
   ],
   "figureModules": []

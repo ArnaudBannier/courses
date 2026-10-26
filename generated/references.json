@@ -598,15 +598,9 @@
     "alg1-logique": {
       "outputPath": "01_algebra/ch1_logique.json",
       "blocks": {
-        "exemple-non-p-ou-q": {
+        "exemple-implication": {
           "num": "3",
           "label": "Example 3",
-          "blockType": "example",
-          "kind": "Example"
-        },
-        "exemple-negation-implication": {
-          "num": "5",
-          "label": "Example 5",
           "blockType": "example",
           "kind": "Example"
         },

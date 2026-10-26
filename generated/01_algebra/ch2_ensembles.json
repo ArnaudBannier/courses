@@ -7,7 +7,7 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
     {
       "kind": "html",
@@ -17,7 +17,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Éléments de théorie des ensembles",
-      "slug": "éléments-de-théorie-des-ensembles"
+      "slug": "éléments-de-théorie-des-ensembles",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -107,7 +108,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -225,7 +226,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "fill"
       },
       "content": [
         {
@@ -271,7 +272,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -286,7 +287,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -532,7 +533,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -631,8 +632,14 @@
       },
       "content": [
         {
-          "kind": "html",
-          "html": "<p>Répondez au QCM sur Moodle : <a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=9016\" target=\"_blank\" rel=\"noopener noreferrer\">partie 1</a> et <a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=9017\" target=\"_blank\" rel=\"noopener noreferrer\">partie 2</a>.</p>"
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=9016",
+          "title": "Effectuer la partie 1 sur Moodle"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=9017",
+          "title": "Effectuer la partie 2 sur Moodle"
         }
       ]
     },
@@ -696,7 +703,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "fill"
       },
       "content": [
         {
@@ -742,7 +749,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -757,7 +764,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -858,7 +865,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -998,7 +1005,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1585,8 +1592,9 @@
       },
       "content": [
         {
-          "kind": "html",
-          "html": "<p>Répondez au QCM sur <a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=9018\" target=\"_blank\" rel=\"noopener noreferrer\">Moodle</a>.</p>"
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=9018",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -1604,7 +1612,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1648,7 +1656,7 @@
         "numbered": false,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1692,7 +1700,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Opérations sur les ensembles",
-      "slug": "opérations-sur-les-ensembles"
+      "slug": "opérations-sur-les-ensembles",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -1783,7 +1792,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -2168,7 +2177,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -2241,8 +2250,9 @@
       },
       "content": [
         {
-          "kind": "html",
-          "html": "<p>Répondez à cet exercice sur <a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=9019\" target=\"_blank\" rel=\"noopener noreferrer\">Moodle</a>.</p>"
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=9019",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -2624,7 +2634,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -2807,7 +2817,7 @@
         "numbered": false,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -2896,7 +2906,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -3551,8 +3561,9 @@
       },
       "content": [
         {
-          "kind": "html",
-          "html": "<p>Répondez à cet exercice sur <a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=9020\" target=\"_blank\" rel=\"noopener noreferrer\">Moodle</a>.</p>"
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=9020",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -4098,7 +4109,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Ensembles particuliers",
-      "slug": "ensembles-particuliers"
+      "slug": "ensembles-particuliers",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -4146,7 +4158,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -4403,7 +4415,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -4467,7 +4479,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -4690,7 +4702,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -4732,7 +4744,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -5102,6 +5114,12 @@
       ]
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Apprenez à décrire et comparer des ensembles, puis à les construire grâce aux opérations usuelles, à l'ensemble des parties et au produit cartésien. Des exemples et méthodes vous aideront à raisonner avec appartenance et inclusion.</p>"
+    }
+  ],
   "tooltipDefs": {
     "tooltip-disjoint": {
       "html": "<span class=\"md-tooltip-line\">L'ensemble vide !<br>\nOn a effectivement <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">∅</mi><mo>∩</mo><mi mathvariant=\"normal\">∅</mi><mo>=</mo><mi mathvariant=\"normal\">∅</mi></mrow><annotation encoding=\"application/x-tex\">\\emptyset \\cap \\emptyset = \\emptyset</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8056em;vertical-align:-0.0556em;\"></span><span class=\"mord\">∅</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">∩</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8056em;vertical-align:-0.0556em;\"></span><span class=\"mord\">∅</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8056em;vertical-align:-0.0556em;\"></span><span class=\"mord\">∅</span></span></span></span>, donc <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">∅</mi></mrow><annotation encoding=\"application/x-tex\">\\emptyset</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8056em;vertical-align:-0.0556em;\"></span><span class=\"mord\">∅</span></span></span></span> et <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">∅</mi></mrow><annotation encoding=\"application/x-tex\">\\emptyset</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8056em;vertical-align:-0.0556em;\"></span><span class=\"mord\">∅</span></span></span></span> sont bien disjoints.</span>"
@@ -5111,7 +5129,8 @@
     {
       "depth": 1,
       "text": "Éléments de théorie des ensembles",
-      "id": "éléments-de-théorie-des-ensembles"
+      "id": "éléments-de-théorie-des-ensembles",
+      "sectionNumber": 1
     },
     {
       "depth": 2,
@@ -5126,7 +5145,8 @@
     {
       "depth": 1,
       "text": "Opérations sur les ensembles",
-      "id": "opérations-sur-les-ensembles"
+      "id": "opérations-sur-les-ensembles",
+      "sectionNumber": 2
     },
     {
       "depth": 2,
@@ -5141,7 +5161,8 @@
     {
       "depth": 1,
       "text": "Ensembles particuliers",
-      "id": "ensembles-particuliers"
+      "id": "ensembles-particuliers",
+      "sectionNumber": 3
     },
     {
       "depth": 2,

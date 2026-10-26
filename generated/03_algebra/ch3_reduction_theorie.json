@@ -1,13 +1,13 @@
 {
   "sourcePath": "03_algebra/ch3_reduction_theorie.md",
   "title": "Diagonalisation, la théorie",
-  "navTitle": "Partie 2",
+  "navTitle": "Diagonalisation, partie 2",
   "navHidden": false,
   "authors": [
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
     {
       "kind": "html",
@@ -17,7 +17,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Résumé du chapitre précédent",
-      "slug": "résumé-du-chapitre-précédent"
+      "slug": "résumé-du-chapitre-précédent",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -27,7 +28,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Somme d'espaces",
-      "slug": "somme-despaces"
+      "slug": "somme-despaces",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -75,7 +77,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -220,7 +222,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -481,7 +483,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -503,7 +505,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -672,7 +674,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "fill"
       },
       "content": [
         {
@@ -920,7 +922,7 @@
         "numbered": false,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -963,7 +965,8 @@
       "options": {
         "numbered": false,
         "collapsible": true,
-        "collapsed": false
+        "collapsed": false,
+        "style": "fill"
       },
       "content": [
         {
@@ -986,7 +989,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1077,7 +1080,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1279,7 +1282,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Preuve de la diagonalisation",
-      "slug": "preuve-de-la-diagonalisation"
+      "slug": "preuve-de-la-diagonalisation",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -1790,7 +1794,7 @@
         "numbered": false,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1982,6 +1986,7 @@
                   "kind": "layout",
                   "layoutType": "tabs",
                   "align": "center",
+                  "footer": true,
                   "items": [
                     {
                       "titleHtml": "<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>E</mi><mn>0</mn></msub></mrow><annotation encoding=\"application/x-tex\">E_0</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8333em;vertical-align:-0.15em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\" style=\"margin-right:0.0576em;\">E</span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.3011em;\"><span style=\"top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">0</span></span></span></span><span class=\"vlist-s\">​</span></span><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.15em;\"><span></span></span></span></span></span></span></span></span></span>",
@@ -2109,17 +2114,25 @@
       ]
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Explorez les fondements théoriques de la diagonalisation : valeurs propres, espaces propres et critères permettant de savoir si un endomorphisme est diagonalisable. Vous comprendrez ainsi pourquoi la méthode fonctionne.</p>"
+    }
+  ],
   "tooltipDefs": {},
   "toc": [
     {
       "depth": 1,
       "text": "Résumé du chapitre précédent",
-      "id": "résumé-du-chapitre-précédent"
+      "id": "résumé-du-chapitre-précédent",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Somme d'espaces",
-      "id": "somme-despaces"
+      "id": "somme-despaces",
+      "sectionNumber": 2
     },
     {
       "depth": 2,
@@ -2139,7 +2152,8 @@
     {
       "depth": 1,
       "text": "Preuve de la diagonalisation",
-      "id": "preuve-de-la-diagonalisation"
+      "id": "preuve-de-la-diagonalisation",
+      "sectionNumber": 3
     }
   ],
   "figureModules": []

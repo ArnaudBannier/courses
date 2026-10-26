@@ -7,13 +7,18 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Poubelles",
-      "slug": "poubelles"
+      "slug": "poubelles",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -107,7 +112,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -118,13 +123,23 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4599\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+      "html": ""
+    },
+    {
+      "kind": "moodle",
+      "url": "https://learning.esiea.fr/mod/vpl/view.php?id=4599",
+      "title": "Effectuer cet exercice sur Moodle"
+    },
+    {
+      "kind": "html",
+      "html": ""
     },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Pizzeria",
-      "slug": "pizzeria"
+      "slug": "pizzeria",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -218,7 +233,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -229,13 +244,23 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4600\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+      "html": ""
+    },
+    {
+      "kind": "moodle",
+      "url": "https://learning.esiea.fr/mod/vpl/view.php?id=4600",
+      "title": "Effectuer cet exercice sur Moodle"
+    },
+    {
+      "kind": "html",
+      "html": ""
     },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Dérèglement climatique",
-      "slug": "dérèglement-climatique"
+      "slug": "dérèglement-climatique",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -329,7 +354,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -340,13 +365,23 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4601\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+      "html": ""
+    },
+    {
+      "kind": "moodle",
+      "url": "https://learning.esiea.fr/mod/vpl/view.php?id=4601",
+      "title": "Effectuer cet exercice sur Moodle"
+    },
+    {
+      "kind": "html",
+      "html": ""
     },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Patinage artistique",
-      "slug": "patinage-artistique"
+      "slug": "patinage-artistique",
+      "sectionNumber": 4
     },
     {
       "kind": "html",
@@ -413,7 +448,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -456,13 +491,23 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4602\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+      "html": ""
+    },
+    {
+      "kind": "moodle",
+      "url": "https://learning.esiea.fr/mod/vpl/view.php?id=4602",
+      "title": "Effectuer cet exercice sur Moodle"
+    },
+    {
+      "kind": "html",
+      "html": ""
     },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Village sous-marin",
-      "slug": "village-sous-marin"
+      "slug": "village-sous-marin",
+      "sectionNumber": 5
     },
     {
       "kind": "html",
@@ -529,7 +574,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -540,13 +585,23 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4603\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+      "html": ""
+    },
+    {
+      "kind": "moodle",
+      "url": "https://learning.esiea.fr/mod/vpl/view.php?id=4603",
+      "title": "Effectuer cet exercice sur Moodle"
+    },
+    {
+      "kind": "html",
+      "html": ""
     },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Code secret",
-      "slug": "code-secret"
+      "slug": "code-secret",
+      "sectionNumber": 6
     },
     {
       "kind": "html",
@@ -649,7 +704,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -679,7 +734,18 @@
     },
     {
       "kind": "html",
-      "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4604\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+      "html": ""
+    },
+    {
+      "kind": "moodle",
+      "url": "https://learning.esiea.fr/mod/vpl/view.php?id=4604",
+      "title": "Effectuer cet exercice sur Moodle"
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Mettez en pratique vos bases de programmation en C à travers plusieurs challenges inspirés de problèmes concrets.</p>"
     }
   ],
   "tooltipDefs": {},
@@ -687,7 +753,8 @@
     {
       "depth": 1,
       "text": "Poubelles",
-      "id": "poubelles"
+      "id": "poubelles",
+      "sectionNumber": 1
     },
     {
       "depth": 2,
@@ -707,7 +774,8 @@
     {
       "depth": 1,
       "text": "Pizzeria",
-      "id": "pizzeria"
+      "id": "pizzeria",
+      "sectionNumber": 2
     },
     {
       "depth": 2,
@@ -727,7 +795,8 @@
     {
       "depth": 1,
       "text": "Dérèglement climatique",
-      "id": "dérèglement-climatique"
+      "id": "dérèglement-climatique",
+      "sectionNumber": 3
     },
     {
       "depth": 2,
@@ -747,7 +816,8 @@
     {
       "depth": 1,
       "text": "Patinage artistique",
-      "id": "patinage-artistique"
+      "id": "patinage-artistique",
+      "sectionNumber": 4
     },
     {
       "depth": 2,
@@ -767,7 +837,8 @@
     {
       "depth": 1,
       "text": "Village sous-marin",
-      "id": "village-sous-marin"
+      "id": "village-sous-marin",
+      "sectionNumber": 5
     },
     {
       "depth": 2,
@@ -787,7 +858,8 @@
     {
       "depth": 1,
       "text": "Code secret",
-      "id": "code-secret"
+      "id": "code-secret",
+      "sectionNumber": 6
     },
     {
       "depth": 2,

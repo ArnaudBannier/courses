@@ -7,13 +7,18 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Faire clignoter la LED",
-      "slug": "faire-clignoter-la-led"
+      "slug": "faire-clignoter-la-led",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -23,7 +28,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Communiquer par le port série",
-      "slug": "communiquer-par-le-port-série"
+      "slug": "communiquer-par-le-port-série",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -78,7 +84,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Gérer la LED sans bloquer le programme",
-      "slug": "gérer-la-led-sans-bloquer-le-programme"
+      "slug": "gérer-la-led-sans-bloquer-le-programme",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -113,7 +120,8 @@
       "options": {
         "numbered": false,
         "collapsible": true,
-        "collapsed": false
+        "collapsed": false,
+        "style": "fill"
       },
       "content": [
         {
@@ -134,7 +142,7 @@
         "numbered": false,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -142,6 +150,12 @@
           "html": "<p>Modifiez le programme pour que la LED s'allume pendant une seconde à chaque fois que la carte reçoit une ligne sur le port série. La carte doit continuer à traiter les messages sans attendre : n'utilisez pas la fonction bloquante <code>delay()</code>.</p><p>Si un nouveau message arrive alors que la LED est déjà allumée, redémarrez le délai d'une seconde à partir de ce message. La LED doit donc rester allumée une seconde après le dernier message reçu.</p>"
         }
       ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Faites vos premiers pas avec la Raspberry Pi Pico en programmant sa LED, puis découvrez comment interagir avec ses entrées et sorties. Un premier aperçu concret de la programmation d'un microcontrôleur.</p>"
     }
   ],
   "tooltipDefs": {
@@ -156,17 +170,20 @@
     {
       "depth": 1,
       "text": "Faire clignoter la LED",
-      "id": "faire-clignoter-la-led"
+      "id": "faire-clignoter-la-led",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Communiquer par le port série",
-      "id": "communiquer-par-le-port-série"
+      "id": "communiquer-par-le-port-série",
+      "sectionNumber": 2
     },
     {
       "depth": 1,
       "text": "Gérer la LED sans bloquer le programme",
-      "id": "gérer-la-led-sans-bloquer-le-programme"
+      "id": "gérer-la-led-sans-bloquer-le-programme",
+      "sectionNumber": 3
     }
   ],
   "figureModules": []

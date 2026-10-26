@@ -8,7 +8,7 @@
     "Nicolas Bodin",
     "Matthieu Le Berre"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
     {
       "kind": "html",
@@ -18,7 +18,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Introduction",
-      "slug": "introduction"
+      "slug": "introduction",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -66,7 +67,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -183,7 +184,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Tableaux",
-      "slug": "tableaux"
+      "slug": "tableaux",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -271,7 +273,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -293,7 +295,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -388,7 +390,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -405,7 +407,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Listes chainées",
-      "slug": "listes-chainées"
+      "slug": "listes-chainées",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -587,7 +590,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Piles et files",
-      "slug": "piles-et-files"
+      "slug": "piles-et-files",
+      "sectionNumber": 4
     },
     {
       "kind": "html",
@@ -775,7 +779,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -870,7 +874,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -887,7 +891,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Ensembles",
-      "slug": "ensembles"
+      "slug": "ensembles",
+      "sectionNumber": 5
     },
     {
       "kind": "html",
@@ -975,7 +980,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -997,7 +1002,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1014,7 +1019,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Tableaux associatifs",
-      "slug": "tableaux-associatifs"
+      "slug": "tableaux-associatifs",
+      "sectionNumber": 6
     },
     {
       "kind": "html",
@@ -1175,7 +1181,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1197,7 +1203,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1214,7 +1220,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Conclusion",
-      "slug": "conclusion"
+      "slug": "conclusion",
+      "sectionNumber": 7
     },
     {
       "kind": "html",
@@ -1313,12 +1320,19 @@
       "html": "<p>Résumons finalement les différents types abstraits rencontrés dans ce cours au travers du tableau suivant.\nPour chaque type, si l'opération existe, sa complexité est donnée.\nRappelons que ce n'est pas en regardant simplement les complexités que le choix d'un type se fait.\nLe choix final dépend de la façon dont les données vont être traitées.</p>\n<table>\n<thead>\n<tr>\n<th></th>\n<th>Recherche</th>\n<th>Lecture</th>\n<th>Modification</th>\n<th>Insertion</th>\n<th>Suppression</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>Array</strong></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span></td>\n<td><code>[i]</code> en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td><code>[i]</code> en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td>—</td>\n<td>—</td>\n</tr>\n<tr>\n<td><strong>Vector</strong></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span></td>\n<td><code>[i]</code> en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td><code>[i]</code> en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td>dernier en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span></td>\n<td>dernier en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n</tr>\n<tr>\n<td><strong>List</strong></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span></td>\n<td>tête/queue <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td>tête/queue <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td>tête/queue <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n</tr>\n<tr>\n<td><strong>Stack (LIFO)</strong></td>\n<td>—</td>\n<td>en tête en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td>—</td>\n<td>en tête en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td>en tête en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n</tr>\n<tr>\n<td><strong>Queue (FIFO)</strong></td>\n<td>—</td>\n<td>tête/queue <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td>—</td>\n<td>en queue en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td>en tête en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n</tr>\n<tr>\n<td><strong>Priority queue</strong></td>\n<td>—</td>\n<td>tête en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td>—</td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(\\log(n))</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">))</span></span></span></span></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(\\log(n))</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">))</span></span></span></span></td>\n</tr>\n<tr>\n<td><strong>Set</strong></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(\\log(n))</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">))</span></span></span></span></td>\n<td>—</td>\n<td>—</td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(\\log(n))</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">))</span></span></span></span></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(\\log(n))</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">))</span></span></span></span></td>\n</tr>\n<tr>\n<td><strong>Map (Arbres)</strong></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(\\log(n))</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">))</span></span></span></span></td>\n<td><code>[.]</code> en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(\\log(n))</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">))</span></span></span></span></td>\n<td><code>[.]</code> en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(\\log(n))</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">))</span></span></span></span></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(\\log(n))</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">))</span></span></span></span></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>log</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(\\log(n))</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mop\">lo<span style=\"margin-right:0.0139em;\">g</span></span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">))</span></span></span></span></td>\n</tr>\n<tr>\n<td><strong>Map (Hash table)</strong></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td><code>[.]</code> en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td><code>[.]</code> en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span></td>\n<td><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0278em;\">O</span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span></td>\n</tr>\n</tbody>\n</table>"
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Découvrez les principaux types de données abstraits, leurs opérations et leurs coûts. Comprenez comment leurs différentes implémentations influencent les performances et dans quels cas les utiliser.</p>"
+    }
+  ],
   "tooltipDefs": {},
   "toc": [
     {
       "depth": 1,
       "text": "Introduction",
-      "id": "introduction"
+      "id": "introduction",
+      "sectionNumber": 1
     },
     {
       "depth": 2,
@@ -1333,32 +1347,38 @@
     {
       "depth": 1,
       "text": "Tableaux",
-      "id": "tableaux"
+      "id": "tableaux",
+      "sectionNumber": 2
     },
     {
       "depth": 1,
       "text": "Listes chainées",
-      "id": "listes-chainées"
+      "id": "listes-chainées",
+      "sectionNumber": 3
     },
     {
       "depth": 1,
       "text": "Piles et files",
-      "id": "piles-et-files"
+      "id": "piles-et-files",
+      "sectionNumber": 4
     },
     {
       "depth": 1,
       "text": "Ensembles",
-      "id": "ensembles"
+      "id": "ensembles",
+      "sectionNumber": 5
     },
     {
       "depth": 1,
       "text": "Tableaux associatifs",
-      "id": "tableaux-associatifs"
+      "id": "tableaux-associatifs",
+      "sectionNumber": 6
     },
     {
       "depth": 1,
       "text": "Conclusion",
-      "id": "conclusion"
+      "id": "conclusion",
+      "sectionNumber": 7
     },
     {
       "depth": 2,

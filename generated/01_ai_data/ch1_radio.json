@@ -7,13 +7,18 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Présentation du module",
-      "slug": "présentation-du-module"
+      "slug": "présentation-du-module",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -99,7 +104,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Branchement",
-      "slug": "branchement"
+      "slug": "branchement",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -256,7 +262,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Programmation",
-      "slug": "programmation"
+      "slug": "programmation",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -272,7 +279,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -325,7 +332,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -384,7 +391,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -407,7 +414,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -424,7 +431,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Introduction à la POO",
-      "slug": "introduction-à-la-poo"
+      "slug": "introduction-à-la-poo",
+      "sectionNumber": 4
     },
     {
       "kind": "html",
@@ -449,6 +457,7 @@
           "kind": "layout",
           "layoutType": "tabs",
           "align": "center",
+          "footer": true,
           "items": [
             {
               "titleHtml": "led.h",
@@ -495,7 +504,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -518,7 +527,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -551,12 +560,19 @@
       ]
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Découvrez le module radio nRF24L01 et ses caractéristiques, puis apprenez à le raccorder et à le faire communiquer avec un microcontrôleur. De quoi établir une liaison sans fil entre vos projets.</p>"
+    }
+  ],
   "tooltipDefs": {},
   "toc": [
     {
       "depth": 1,
       "text": "Présentation du module",
-      "id": "présentation-du-module"
+      "id": "présentation-du-module",
+      "sectionNumber": 1
     },
     {
       "depth": 2,
@@ -581,7 +597,8 @@
     {
       "depth": 1,
       "text": "Branchement",
-      "id": "branchement"
+      "id": "branchement",
+      "sectionNumber": 2
     },
     {
       "depth": 2,
@@ -596,7 +613,8 @@
     {
       "depth": 1,
       "text": "Programmation",
-      "id": "programmation"
+      "id": "programmation",
+      "sectionNumber": 3
     },
     {
       "depth": 2,
@@ -616,7 +634,8 @@
     {
       "depth": 1,
       "text": "Introduction à la POO",
-      "id": "introduction-à-la-poo"
+      "id": "introduction-à-la-poo",
+      "sectionNumber": 4
     }
   ],
   "figureModules": []

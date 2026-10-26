@@ -7,13 +7,18 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Programmer la Raspberry Pi Pico",
-      "slug": "programmer-la-raspberry-pi-pico"
+      "slug": "programmer-la-raspberry-pi-pico",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -107,7 +112,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Programmer sur le PC",
-      "slug": "programmer-sur-le-pc"
+      "slug": "programmer-sur-le-pc",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -134,12 +140,19 @@
       "html": "<p>Allez sur la page de téléchargement de <a href=\"https://cmake.org/download/\" target=\"_blank\" rel=\"noopener noreferrer\">CMake</a>. Dans <strong>Binary distributions</strong>, téléchargez <code>Windows x64 Installer</code> et non les sources du logiciel.</p>"
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Préparez votre environnement pour programmer la Raspberry Pi Pico : installez Arduino IDE, ajoutez le support des cartes RP2040 et configurez les outils nécessaires pour compiler et téléverser vos programmes.</p>"
+    }
+  ],
   "tooltipDefs": {},
   "toc": [
     {
       "depth": 1,
       "text": "Programmer la Raspberry Pi Pico",
-      "id": "programmer-la-raspberry-pi-pico"
+      "id": "programmer-la-raspberry-pi-pico",
+      "sectionNumber": 1
     },
     {
       "depth": 2,
@@ -159,7 +172,8 @@
     {
       "depth": 1,
       "text": "Programmer sur le PC",
-      "id": "programmer-sur-le-pc"
+      "id": "programmer-sur-le-pc",
+      "sectionNumber": 2
     },
     {
       "depth": 2,

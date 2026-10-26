@@ -7,13 +7,18 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Introduction à Markdown",
-      "slug": "introduction-à-markdown"
+      "slug": "introduction-à-markdown",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -23,7 +28,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Exemples de syntaxe",
-      "slug": "exemples-de-syntaxe"
+      "slug": "exemples-de-syntaxe",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -129,7 +135,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -165,7 +171,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Conventions de code",
-      "slug": "conventions-de-code"
+      "slug": "conventions-de-code",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -258,7 +265,8 @@
       "options": {
         "numbered": false,
         "collapsible": true,
-        "collapsed": false
+        "collapsed": false,
+        "style": "fill"
       },
       "content": [
         {
@@ -332,17 +340,25 @@
       "html": "<p>Pour documenter le code, nous utiliserons la convention <strong>Doxygen</strong>. Elle repose sur des commentaires placés juste avant l'élément documenté et sur des balises qui précisent le rôle de chaque information. Pour écrire un commentaire Doxygen sur plusieurs lignes, commencez chaque ligne par <code>///</code>.</p>\n<p>Une documentation doit aider à comprendre comment utiliser un élément sans avoir à lire son implémentation. Décrivez donc son rôle et, si nécessaire, les unités, les valeurs possibles ou les conditions à respecter. Pour une fonction, indiquez ce que représentent ses paramètres avec <code>@param</code> et ce qu'elle renvoie avec <code>@return</code>. La balise <code>@brief</code> introduit une description courte de l'élément.</p>\n<p>La documentation des structures, des fonctions et des types publics se trouve généralement dans les fichiers d'en-tête <code>.h</code>, près de leur déclaration. On peut aussi documenter les champs d'une structure afin de préciser la signification de chacun.</p>\n<p>Voici un exemple de documentation d'une structure et de ses champs :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/// @brief Structure représentant un vecteur à deux dimensions.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">Vec2</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Première composante du vecteur.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">float</span> x<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Seconde composante du vecteur.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">float</span> y<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> Vec2<span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Voici maintenant une fonction associée à cette structure. Son commentaire précise les vecteurs utilisés et l'unité ainsi que l'intervalle de la valeur renvoyée :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/// @brief Renvoie l'angle (signé, orienté dans le sens trigonométrique)</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// formé entre deux vecteurs.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// L'angle est exprimé en degrés (de -180 à 180).</span>\n</span><span class=\"code-line\"><span class=\"token comment\">///</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param from le vecteur de départ.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param to le vecteur d'arrivée.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @return L'angle orienté du vecteur from vers le vecteur to.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">float</span> <span class=\"token function\">Vec2_signedAngleDeg</span><span class=\"token punctuation\">(</span>Vec2 from<span class=\"token punctuation\">,</span> Vec2 to<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Adoptez des conventions claires pour rédiger la documentation et organiser votre code. Découvrez Markdown et les bonnes pratiques qui rendent un projet plus lisible et plus facile à maintenir.</p>"
+    }
+  ],
   "tooltipDefs": {},
   "toc": [
     {
       "depth": 1,
       "text": "Introduction à Markdown",
-      "id": "introduction-à-markdown"
+      "id": "introduction-à-markdown",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Exemples de syntaxe",
-      "id": "exemples-de-syntaxe"
+      "id": "exemples-de-syntaxe",
+      "sectionNumber": 2
     },
     {
       "depth": 2,
@@ -392,7 +408,8 @@
     {
       "depth": 1,
       "text": "Conventions de code",
-      "id": "conventions-de-code"
+      "id": "conventions-de-code",
+      "sectionNumber": 3
     },
     {
       "depth": 2,

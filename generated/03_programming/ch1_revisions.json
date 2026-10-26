@@ -7,7 +7,7 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
     {
       "kind": "html",
@@ -23,7 +23,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -40,7 +40,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Pointeurs",
-      "slug": "pointeurs"
+      "slug": "pointeurs",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -178,7 +179,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -195,7 +196,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Allocation dynamique",
-      "slug": "allocation-dynamique"
+      "slug": "allocation-dynamique",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -210,7 +212,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -232,7 +234,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -249,7 +251,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Structures",
-      "slug": "structures"
+      "slug": "structures",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -314,7 +317,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -363,7 +366,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -380,7 +383,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Récursivité",
-      "slug": "récursivité"
+      "slug": "récursivité",
+      "sectionNumber": 4
     },
     {
       "kind": "html",
@@ -418,7 +422,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -440,7 +444,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -450,27 +454,37 @@
       ]
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Réactivez les notions de C indispensables pour aborder l'algorithmique avancée : pointeurs, allocation dynamique, structures et récursivité. Un rappel ciblé pour être prêt à manipuler des structures de données.</p>"
+    }
+  ],
   "tooltipDefs": {},
   "toc": [
     {
       "depth": 1,
       "text": "Pointeurs",
-      "id": "pointeurs"
+      "id": "pointeurs",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Allocation dynamique",
-      "id": "allocation-dynamique"
+      "id": "allocation-dynamique",
+      "sectionNumber": 2
     },
     {
       "depth": 1,
       "text": "Structures",
-      "id": "structures"
+      "id": "structures",
+      "sectionNumber": 3
     },
     {
       "depth": 1,
       "text": "Récursivité",
-      "id": "récursivité"
+      "id": "récursivité",
+      "sectionNumber": 4
     }
   ],
   "figureModules": []

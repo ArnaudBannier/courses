@@ -7,13 +7,18 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Raisonner avec les quantificateurs",
-      "slug": "raisonner-avec-les-quantificateurs"
+      "slug": "raisonner-avec-les-quantificateurs",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -76,7 +81,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -91,7 +96,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -163,7 +168,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -178,7 +183,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -201,7 +206,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Implications et équivalences",
-      "slug": "implications-et-équivalences"
+      "slug": "implications-et-équivalences",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -264,7 +270,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -279,7 +285,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -472,6 +478,7 @@
           "kind": "layout",
           "layoutType": "tabs",
           "align": "center",
+          "footer": true,
           "items": [
             {
               "titleHtml": "<span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi><mo>=</mo><mn>3</mn><mi>k</mi></mrow><annotation encoding=\"application/x-tex\">n = 3k</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6944em;\"></span><span class=\"mord\">3</span><span class=\"mord mathnormal\" style=\"margin-right:0.0315em;\">k</span></span></span></span>",
@@ -574,7 +581,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -589,7 +596,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -708,7 +715,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -723,7 +730,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -765,7 +772,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Raisonnement par l'absurde",
-      "slug": "raisonnement-par-labsurde"
+      "slug": "raisonnement-par-labsurde",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -827,7 +835,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -842,7 +850,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -871,8 +879,9 @@
       },
       "content": [
         {
-          "kind": "html",
-          "html": "<p>Répondez à cet exercice sur <a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=9010\" target=\"_blank\" rel=\"noopener noreferrer\">Moodle</a>.</p>"
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=9010",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -894,8 +903,9 @@
       },
       "content": [
         {
-          "kind": "html",
-          "html": "<p>Répondez à cet exercice sur <a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=9011\" target=\"_blank\" rel=\"noopener noreferrer\">Moodle</a>.</p>"
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=9011",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -951,7 +961,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Les récurrences",
-      "slug": "les-récurrences"
+      "slug": "les-récurrences",
+      "sectionNumber": 4
     },
     {
       "kind": "html",
@@ -1032,7 +1043,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1047,7 +1058,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -1323,7 +1334,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1338,7 +1349,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -1378,7 +1389,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -1412,6 +1423,7 @@
           "kind": "layout",
           "layoutType": "tabs",
           "align": "center",
+          "footer": true,
           "items": [
             {
               "titleHtml": "Version 1",
@@ -1464,7 +1476,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -1508,7 +1520,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Une curiosité",
-      "slug": "une-curiosité"
+      "slug": "une-curiosité",
+      "sectionNumber": 5
     },
     {
       "kind": "html",
@@ -1524,7 +1537,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1539,7 +1552,7 @@
             "numbered": false,
             "collapsible": false,
             "collapsed": false,
-            "style": "draw"
+            "style": "light"
           },
           "content": [
             {
@@ -1582,32 +1595,43 @@
       ]
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Découvrez comment transformer un énoncé en démonstration : manier les quantificateurs, choisir entre preuve directe, contraposition ou contradiction, et construire une récurrence.</p>"
+    }
+  ],
   "tooltipDefs": {},
   "toc": [
     {
       "depth": 1,
       "text": "Raisonner avec les quantificateurs",
-      "id": "raisonner-avec-les-quantificateurs"
+      "id": "raisonner-avec-les-quantificateurs",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Implications et équivalences",
-      "id": "implications-et-équivalences"
+      "id": "implications-et-équivalences",
+      "sectionNumber": 2
     },
     {
       "depth": 1,
       "text": "Raisonnement par l'absurde",
-      "id": "raisonnement-par-labsurde"
+      "id": "raisonnement-par-labsurde",
+      "sectionNumber": 3
     },
     {
       "depth": 1,
       "text": "Les récurrences",
-      "id": "les-récurrences"
+      "id": "les-récurrences",
+      "sectionNumber": 4
     },
     {
       "depth": 1,
       "text": "Une curiosité",
-      "id": "une-curiosité"
+      "id": "une-curiosité",
+      "sectionNumber": 5
     }
   ],
   "figureModules": []

@@ -7,13 +7,14 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
     {
       "kind": "heading",
       "depth": 1,
       "text": "Programmer la Raspberry Pi Pico",
-      "slug": "programmer-la-raspberry-pi-pico"
+      "slug": "programmer-la-raspberry-pi-pico",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -146,7 +147,8 @@
     {
       "depth": 1,
       "text": "Programmer la Raspberry Pi Pico",
-      "id": "programmer-la-raspberry-pi-pico"
+      "id": "programmer-la-raspberry-pi-pico",
+      "sectionNumber": 1
     },
     {
       "depth": 2,

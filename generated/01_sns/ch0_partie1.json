@@ -7,7 +7,7 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
     {
       "kind": "html",
@@ -17,7 +17,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Étape 1 : préparer les montages",
-      "slug": "étape-1--préparer-les-montages"
+      "slug": "étape-1--préparer-les-montages",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -30,7 +31,8 @@
       "options": {
         "numbered": false,
         "collapsible": true,
-        "collapsed": false
+        "collapsed": false,
+        "style": "fill"
       },
       "content": [
         {
@@ -47,7 +49,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Étape 2 : créer une bibliothèque pour les LED",
-      "slug": "étape-2--créer-une-bibliothèque-pour-les-led"
+      "slug": "étape-2--créer-une-bibliothèque-pour-les-led",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -57,7 +60,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Étape 3 : réaliser le récepteur",
-      "slug": "étape-3--réaliser-le-récepteur"
+      "slug": "étape-3--réaliser-le-récepteur",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -67,7 +71,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Étape 4 : vérifier le prototype",
-      "slug": "étape-4--vérifier-le-prototype"
+      "slug": "étape-4--vérifier-le-prototype",
+      "sectionNumber": 4
     },
     {
       "kind": "html",
@@ -79,22 +84,26 @@
     {
       "depth": 1,
       "text": "Étape 1 : préparer les montages",
-      "id": "étape-1--préparer-les-montages"
+      "id": "étape-1--préparer-les-montages",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Étape 2 : créer une bibliothèque pour les LED",
-      "id": "étape-2--créer-une-bibliothèque-pour-les-led"
+      "id": "étape-2--créer-une-bibliothèque-pour-les-led",
+      "sectionNumber": 2
     },
     {
       "depth": 1,
       "text": "Étape 3 : réaliser le récepteur",
-      "id": "étape-3--réaliser-le-récepteur"
+      "id": "étape-3--réaliser-le-récepteur",
+      "sectionNumber": 3
     },
     {
       "depth": 1,
       "text": "Étape 4 : vérifier le prototype",
-      "id": "étape-4--vérifier-le-prototype"
+      "id": "étape-4--vérifier-le-prototype",
+      "sectionNumber": 4
     }
   ],
   "figureModules": []

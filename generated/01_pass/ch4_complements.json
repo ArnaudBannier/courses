@@ -7,13 +7,18 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Trigonométrie",
-      "slug": "trigonométrie"
+      "slug": "trigonométrie",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -586,7 +591,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Nombres complexes",
-      "slug": "nombres-complexes"
+      "slug": "nombres-complexes",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -1238,7 +1244,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -1375,17 +1381,25 @@
       ]
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Approfondissez la trigonométrie et les nombres complexes avec des exercices, puis découvrez comment les formules d'Euler permettent de simplifier et d'intégrer des polynômes trigonométriques.</p>"
+    }
+  ],
   "tooltipDefs": {},
   "toc": [
     {
       "depth": 1,
       "text": "Trigonométrie",
-      "id": "trigonométrie"
+      "id": "trigonométrie",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Nombres complexes",
-      "id": "nombres-complexes"
+      "id": "nombres-complexes",
+      "sectionNumber": 2
     },
     {
       "depth": 2,

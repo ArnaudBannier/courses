@@ -9,7 +9,7 @@
     "Nicolas Bodin",
     "Matthieu Le Berre"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
     {
       "kind": "html",
@@ -19,7 +19,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Définitions",
-      "slug": "définitions"
+      "slug": "définitions",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -139,7 +140,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -162,7 +163,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -290,7 +291,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Arbres binaires",
-      "slug": "arbres-binaires"
+      "slug": "arbres-binaires",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -351,7 +353,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -374,7 +376,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -432,12 +434,17 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Faire exercice : État de la mémoire sur Moodle.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4649\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Faire exercice : État de la mémoire sur Moodle.</p>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=4649",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -455,12 +462,17 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Commençons le développement de votre bibliothèque sur les arbres binaires.\nDéveloppez dans le fichier <code>bin_tree_int.c</code> les fonctions suivantes en vous inspirant de votre travail sur les listes.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">BinTreeInt<span class=\"token operator\">*</span> <span class=\"token function\">BinTreeInt_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">void</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">BinTreeIntNode<span class=\"token operator\">*</span> <span class=\"token function\">BinTreeInt_nodeCreate</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La fonction <code>create()</code> alloue une structure d’arbre et retourne un pointeur sur la mémoire ainsi allouée.\nLa fonction <code>nodeCreate()</code> alloue un nouveau noeud\nd’arbre ayant pour valeur le paramètre <code>value</code>.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4651\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Commençons le développement de votre bibliothèque sur les arbres binaires.\nDéveloppez dans le fichier <code>bin_tree_int.c</code> les fonctions suivantes en vous inspirant de votre travail sur les listes.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">BinTreeInt<span class=\"token operator\">*</span> <span class=\"token function\">BinTreeInt_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">void</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">BinTreeIntNode<span class=\"token operator\">*</span> <span class=\"token function\">BinTreeInt_nodeCreate</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La fonction <code>create()</code> alloue une structure d’arbre et retourne un pointeur sur la mémoire ainsi allouée.\nLa fonction <code>nodeCreate()</code> alloue un nouveau noeud\nd’arbre ayant pour valeur le paramètre <code>value</code>.</p>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=4651",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -472,7 +484,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Parcours",
-      "slug": "parcours"
+      "slug": "parcours",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -510,7 +523,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -552,7 +565,8 @@
       "options": {
         "numbered": true,
         "collapsible": true,
-        "collapsed": false
+        "collapsed": false,
+        "style": "light"
       },
       "content": [
         {
@@ -584,7 +598,8 @@
       "options": {
         "numbered": true,
         "collapsible": true,
-        "collapsed": false
+        "collapsed": false,
+        "style": "light"
       },
       "content": [
         {
@@ -607,12 +622,17 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Poursuivons le développement de votre bibliothèque sur les arbres binaires.\nCet exercice est dédié à l’affichage de l’arbre avec deux parcours différents.\nComme indiqué dans le cours, vous aurez besoin de\nmanipuler une pile et une file.\nUtilisez la bibliothèque fournie sur les listes et suivez les algorithmes donnés dans le cours pour implémenter les fonctions suivantes.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_breadthFirstPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_depthFirstPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La fonction <code>breadthFirstPrint()</code> réalisera un aprcours en largeur pour afficher les noeuds de l'arbre.\nLa fonction <code>depthFirstPrint()</code> affiche les noeuds lors d'un parcours en profondeur.</p><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4651\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Poursuivons le développement de votre bibliothèque sur les arbres binaires.\nCet exercice est dédié à l’affichage de l’arbre avec deux parcours différents.\nComme indiqué dans le cours, vous aurez besoin de\nmanipuler une pile et une file.\nUtilisez la bibliothèque fournie sur les listes et suivez les algorithmes donnés dans le cours pour implémenter les fonctions suivantes.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_breadthFirstPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_depthFirstPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La fonction <code>breadthFirstPrint()</code> réalisera un aprcours en largeur pour afficher les noeuds de l'arbre.\nLa fonction <code>depthFirstPrint()</code> affiche les noeuds lors d'un parcours en profondeur.</p>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=4651",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -639,7 +659,8 @@
       "options": {
         "numbered": true,
         "collapsible": true,
-        "collapsed": false
+        "collapsed": false,
+        "style": "light"
       },
       "content": [
         {
@@ -661,7 +682,8 @@
       "options": {
         "numbered": true,
         "collapsible": true,
-        "collapsed": false
+        "collapsed": false,
+        "style": "light"
       },
       "content": [
         {
@@ -683,7 +705,8 @@
       "options": {
         "numbered": true,
         "collapsible": true,
-        "collapsed": false
+        "collapsed": false,
+        "style": "light"
       },
       "content": [
         {
@@ -728,7 +751,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "rule"
+        "style": "light"
       },
       "content": [
         {
@@ -751,7 +774,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -795,7 +818,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -896,14 +919,25 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Terminons le développement de votre bibliothèque sur les arbres binaires.\nCette dernière partie consiste à implémenter les parcours récursifs présentés dans le cours pour afficher le contenu des arbres.\nCes fonctions ne sont utilisées que pour l’affichage, seul le principe du parcours sera réutilisé pour les algorithmes suivants.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_print</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_preOrderPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_inOrderPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_postOrderPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La première fonction <code>print()</code> affiche l'arbre de façon graphique sur le terminal.\nLa racine est sur la gauche, les noeuds à distance 1 sont à une tabulation etc.</p><p>Les trois autres fonctions affichent simplement les noeuds atteints dans l'ordre d'un parcours spécifique indiqué dans le nom de la fonction.</p><p>Vous complèterez également la fonction suivante réalisant la libération mémoire complète de l'arbre <code>tree</code> donné en paramètres.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_delete</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p><a href=\"https://learning.esiea.fr/mod/quiz/view.php?id=4651\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Terminons le développement de votre bibliothèque sur les arbres binaires.\nCette dernière partie consiste à implémenter les parcours récursifs présentés dans le cours pour afficher le contenu des arbres.\nCes fonctions ne sont utilisées que pour l’affichage, seul le principe du parcours sera réutilisé pour les algorithmes suivants.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_print</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_preOrderPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_inOrderPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_postOrderPrint</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>La première fonction <code>print()</code> affiche l'arbre de façon graphique sur le terminal.\nLa racine est sur la gauche, les noeuds à distance 1 sont à une tabulation etc.</p><p>Les trois autres fonctions affichent simplement les noeuds atteints dans l'ordre d'un parcours spécifique indiqué dans le nom de la fonction.</p><p>Vous complèterez également la fonction suivante réalisant la libération mémoire complète de l'arbre <code>tree</code> donné en paramètres.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">BinTreeInt_delete</span><span class=\"token punctuation\">(</span>BinTreeInt<span class=\"token operator\">*</span> tree<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/view.php?id=4651",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Explorez les arbres, des structures hiérarchiques qui offrent une alternative aux listes pour organiser et parcourir des données. Découvrez leur vocabulaire, leurs représentations et leurs principaux parcours.</p>"
     }
   ],
   "tooltipDefs": {},
@@ -911,17 +945,20 @@
     {
       "depth": 1,
       "text": "Définitions",
-      "id": "définitions"
+      "id": "définitions",
+      "sectionNumber": 1
     },
     {
       "depth": 1,
       "text": "Arbres binaires",
-      "id": "arbres-binaires"
+      "id": "arbres-binaires",
+      "sectionNumber": 2
     },
     {
       "depth": 1,
       "text": "Parcours",
-      "id": "parcours"
+      "id": "parcours",
+      "sectionNumber": 3
     },
     {
       "depth": 2,

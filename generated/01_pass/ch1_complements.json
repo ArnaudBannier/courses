@@ -7,8 +7,12 @@
     "Arnaud Bannier",
     "Nicolas Bodin"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
     {
       "kind": "block",
       "anchorId": "exercice-operations-1",
@@ -375,6 +379,12 @@
           ]
         }
       ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Mettez en pratique les opérations algébriques et les règles sur les puissances à travers une série d'exercices d'entraînement.</p>"
     }
   ],
   "tooltipDefs": {},

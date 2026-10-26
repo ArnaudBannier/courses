@@ -9,13 +9,18 @@
     "Nicolas Bodin",
     "Matthieu Le Berre"
   ],
-  "contentSchemaVersion": 3,
+  "contentSchemaVersion": 4,
   "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
     {
       "kind": "heading",
       "depth": 1,
       "text": "Introduction",
-      "slug": "introduction"
+      "slug": "introduction",
+      "sectionNumber": 1
     },
     {
       "kind": "html",
@@ -281,7 +286,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -312,8 +317,9 @@
           ]
         },
         {
-          "kind": "html",
-          "html": "<p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4627\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/edit.php?cmid=4627",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -331,12 +337,17 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>En vous inspirant du code qui permet l'affichage d'une liste, développez les deux fonctions suivantes.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">SList_getFirst</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">SList_getLast</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Ces deux fonctions prennent en paramètre un pointeur <code>list</code> sur un nœud de liste et retournent respectivement la valeur du premier nœud de liste et du dernier. La liste ne doit pas être modifiée, c'est-à-dire qu'aucun nœud ne doit être supprimé.</p><p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4627\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>En vous inspirant du code qui permet l'affichage d'une liste, développez les deux fonctions suivantes.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">SList_getFirst</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">SList_getLast</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Ces deux fonctions prennent en paramètre un pointeur <code>list</code> sur un nœud de liste et retournent respectivement la valeur du premier nœud de liste et du dernier. La liste ne doit pas être modifiée, c'est-à-dire qu'aucun nœud ne doit être supprimé.</p>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/edit.php?cmid=4627",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -348,7 +359,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Opérateurs d'ajout",
-      "slug": "opérateurs-dajout"
+      "slug": "opérateurs-dajout",
+      "sectionNumber": 2
     },
     {
       "kind": "html",
@@ -779,12 +791,17 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Implémentez les deux fonctions présentées ci-dessous, prenant en paramètres un pointeur <code>list</code> sur la tête de liste ainsi qu'un entier <code>value</code>.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">SListNode <span class=\"token operator\">*</span><span class=\"token function\">SList_insertFirst</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">SListNode <span class=\"token operator\">*</span><span class=\"token function\">SList_insertLast</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Ces fonctions doivent réaliser l'insertion en tête (respectivement en queue) de l'élément <code>value</code>. Afin que les modifications de la liste soient prises en compte, en particulier dans le cas où la liste est initialement vide, chacune de ces fonctions doit retourner un pointeur sur la tête de liste ainsi formée.</p><p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4627\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Implémentez les deux fonctions présentées ci-dessous, prenant en paramètres un pointeur <code>list</code> sur la tête de liste ainsi qu'un entier <code>value</code>.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">SListNode <span class=\"token operator\">*</span><span class=\"token function\">SList_insertFirst</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">SListNode <span class=\"token operator\">*</span><span class=\"token function\">SList_insertLast</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> value<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Ces fonctions doivent réaliser l'insertion en tête (respectivement en queue) de l'élément <code>value</code>. Afin que les modifications de la liste soient prises en compte, en particulier dans le cas où la liste est initialement vide, chacune de ces fonctions doit retourner un pointeur sur la tête de liste ainsi formée.</p>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/edit.php?cmid=4627",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -796,7 +813,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Suppression d'éléments",
-      "slug": "suppression-déléments"
+      "slug": "suppression-déléments",
+      "sectionNumber": 3
     },
     {
       "kind": "html",
@@ -832,12 +850,17 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Implémentez les deux fonctions présentées ci-dessous, prenant en paramètres un pointeur <code>list</code> sur la tête de liste ainsi qu'un pointeur sur entier <code>res</code>.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">SListNode <span class=\"token operator\">*</span><span class=\"token function\">SList_popFirst</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> <span class=\"token operator\">*</span>res<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">SListNode <span class=\"token operator\">*</span><span class=\"token function\">SList_popLast</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> <span class=\"token operator\">*</span>res<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Ces fonctions doivent réaliser le prélèvement du nœud en tête de liste (respectivement en queue) et retourner sa valeur par adresse dans le paramètre <code>res</code>. Afin que les modifications de la liste soient prises en compte, en particulier dans le cas où la liste est finalement vide, chacune de ces fonctions doit retourner un pointeur sur la tête de liste ainsi modifiée.</p><p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4627\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Implémentez les deux fonctions présentées ci-dessous, prenant en paramètres un pointeur <code>list</code> sur la tête de liste ainsi qu'un pointeur sur entier <code>res</code>.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">SListNode <span class=\"token operator\">*</span><span class=\"token function\">SList_popFirst</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> <span class=\"token operator\">*</span>res<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">SListNode <span class=\"token operator\">*</span><span class=\"token function\">SList_popLast</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> <span class=\"token operator\">*</span>res<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Ces fonctions doivent réaliser le prélèvement du nœud en tête de liste (respectivement en queue) et retourner sa valeur par adresse dans le paramètre <code>res</code>. Afin que les modifications de la liste soient prises en compte, en particulier dans le cas où la liste est finalement vide, chacune de ces fonctions doit retourner un pointeur sur la tête de liste ainsi modifiée.</p>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/edit.php?cmid=4627",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -855,12 +878,17 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
           "kind": "html",
-          "html": "<p>Implémentez la fonction présentée ci-dessous, prenant en paramètre un pointeur <code>list</code> sur la tête de liste et libérant la mémoire allouée par l'ensemble des maillons de la liste. Cette implémentation doit être récursive.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">SList_destroyRec</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p><a href=\"https://learning.esiea.fr/mod/vpl/view.php?id=4627\" target=\"_blank\" rel=\"noopener noreferrer\">Lien Moodle.</a></p>"
+          "html": "<p>Implémentez la fonction présentée ci-dessous, prenant en paramètre un pointeur <code>list</code> sur la tête de liste et libérant la mémoire allouée par l'ensemble des maillons de la liste. Cette implémentation doit être récursive.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">SList_destroyRec</span><span class=\"token punctuation\">(</span>SListNode <span class=\"token operator\">*</span>list<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+        },
+        {
+          "kind": "moodle",
+          "url": "https://learning.esiea.fr/mod/quiz/edit.php?cmid=4627",
+          "title": "Effectuer cet exercice sur Moodle"
         }
       ]
     },
@@ -872,7 +900,8 @@
       "kind": "heading",
       "depth": 1,
       "text": "Les différents types de listes",
-      "slug": "les-différents-types-de-listes"
+      "slug": "les-différents-types-de-listes",
+      "sectionNumber": 4
     },
     {
       "kind": "html",
@@ -924,7 +953,7 @@
         "numbered": true,
         "collapsible": true,
         "collapsed": false,
-        "style": "draw"
+        "style": "rule"
       },
       "content": [
         {
@@ -1105,12 +1134,19 @@
       ]
     }
   ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Découvrez les listes chaînées et leur fonctionnement à l'aide de pointeurs. Comparez-les aux tableaux et apprenez à parcourir, insérer et supprimer des éléments dans une structure dynamique.</p>"
+    }
+  ],
   "tooltipDefs": {},
   "toc": [
     {
       "depth": 1,
       "text": "Introduction",
-      "id": "introduction"
+      "id": "introduction",
+      "sectionNumber": 1
     },
     {
       "depth": 2,
@@ -1120,7 +1156,8 @@
     {
       "depth": 1,
       "text": "Opérateurs d'ajout",
-      "id": "opérateurs-dajout"
+      "id": "opérateurs-dajout",
+      "sectionNumber": 2
     },
     {
       "depth": 2,
@@ -1135,7 +1172,8 @@
     {
       "depth": 1,
       "text": "Suppression d'éléments",
-      "id": "suppression-déléments"
+      "id": "suppression-déléments",
+      "sectionNumber": 3
     },
     {
       "depth": 2,
@@ -1150,7 +1188,8 @@
     {
       "depth": 1,
       "text": "Les différents types de listes",
-      "id": "les-différents-types-de-listes"
+      "id": "les-différents-types-de-listes",
+      "sectionNumber": 4
     }
   ],
   "figureModules": []
