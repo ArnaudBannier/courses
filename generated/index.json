@@ -463,6 +463,28 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "01_algebra/ch4_polynomes_definitions.md",
+          "outputPath": "01_algebra/ch4_polynomes_definitions.json",
+          "title": "Construction des polynômes",
+          "navTitle": "Construction",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_algebra/ch4_polynomes_arithmetique.md",
+          "outputPath": "01_algebra/ch4_polynomes_arithmetique.json",
+          "title": "Arithmétique et factorisation",
+          "navTitle": "Arithmétique et factorisation",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -528,6 +550,34 @@
               "outputPath": "01_algebra/ch3_bijections.json",
               "title": "Injections, surjections et bijections",
               "navTitle": "Bijections",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "title": "4. Polynômes",
+          "chapters": [
+            {
+              "sourcePath": "01_algebra/ch4_polynomes_definitions.md",
+              "outputPath": "01_algebra/ch4_polynomes_definitions.json",
+              "title": "Construction des polynômes",
+              "navTitle": "Construction",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_algebra/ch4_polynomes_arithmetique.md",
+              "outputPath": "01_algebra/ch4_polynomes_arithmetique.json",
+              "title": "Arithmétique et factorisation",
+              "navTitle": "Arithmétique et factorisation",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",

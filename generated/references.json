@@ -750,6 +750,46 @@
       "outputPath": "01_algebra/ch3_bijections.json",
       "blocks": {}
     },
+    "alg1-polynomes": {
+      "outputPath": "01_algebra/ch4_polynomes_definitions.json",
+      "blocks": {
+        "prodPol": {
+          "num": "3",
+          "label": "Proposition 3",
+          "blockType": "proposition",
+          "kind": "Proposition"
+        }
+      }
+    },
+    "alg1-polynomes-arithmetique": {
+      "outputPath": "01_algebra/ch4_polynomes_arithmetique.json",
+      "blocks": {
+        "exo-polynomes-11": {
+          "num": "3",
+          "label": "Exercise 3",
+          "blockType": "exercise",
+          "kind": "Exercise"
+        },
+        "theoreme-alembert-gauss": {
+          "num": "2",
+          "label": "Theorem 2",
+          "blockType": "theorem",
+          "kind": "Theorem"
+        },
+        "definition-scinde": {
+          "num": "5",
+          "label": "Definition 5",
+          "blockType": "definition",
+          "kind": "Definition"
+        },
+        "theoreme-racines-rationnelles": {
+          "num": "3",
+          "label": "Theorem 3",
+          "blockType": "theorem",
+          "kind": "Theorem"
+        }
+      }
+    },
     "data-1-installation": {
       "outputPath": "01_ai_data/ch1_installation.json",
       "blocks": {}
@@ -893,8 +933,8 @@
           "kind": "Theorem"
         },
         "definition-scinde": {
-          "num": "1",
-          "label": "Definition 1",
+          "num": "2",
+          "label": "Definition 2",
           "blockType": "definition",
           "kind": "Definition"
         },
@@ -903,12 +943,6 @@
           "label": "Theorem 3",
           "blockType": "theorem",
           "kind": "Theorem"
-        },
-        "exercice-factorisation-polynomes-02": {
-          "num": "4",
-          "label": "Exercise 4",
-          "blockType": "exercise",
-          "kind": "Exercise"
         }
       }
     },
