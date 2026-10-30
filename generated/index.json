@@ -941,6 +941,28 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "03_algebra/ch5_espaces_euclidiens_definition.md",
+          "outputPath": "03_algebra/ch5_espaces_euclidiens_definition.json",
+          "title": "Produit scalaires et normes",
+          "navTitle": "Produit scalaires et normes",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "03_algebra/ch5_espaces_euclidiens_orthogonalite.md",
+          "outputPath": "03_algebra/ch5_espaces_euclidiens_orthogonalite.json",
+          "title": "Orthogonalité",
+          "navTitle": "Orthogonalité",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -1052,6 +1074,34 @@
               "Nicolas Bodin"
             ]
           }
+        },
+        {
+          "kind": "section",
+          "title": "5. Espaces euclidiens",
+          "chapters": [
+            {
+              "sourcePath": "03_algebra/ch5_espaces_euclidiens_definition.md",
+              "outputPath": "03_algebra/ch5_espaces_euclidiens_definition.json",
+              "title": "Produit scalaires et normes",
+              "navTitle": "Produit scalaires et normes",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "03_algebra/ch5_espaces_euclidiens_orthogonalite.md",
+              "outputPath": "03_algebra/ch5_espaces_euclidiens_orthogonalite.json",
+              "title": "Orthogonalité",
+              "navTitle": "Orthogonalité",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
         }
       ]
     },

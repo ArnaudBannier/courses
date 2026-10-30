@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "generatedAt": "2026-10-29T13:39:45.661Z",
+  "generatedAt": "2026-10-30T15:34:33.943Z",
   "sourceHashes": {
     "D:/Cours/Web/markdown-courses/content/courses.yaml": "4ed2d2e855b7914d7d66276cc83a28f7745efd92711140dcfa79068e88b9d7ff",
     "D:/Cours/Web/markdown-courses/content/01_ai_data/ch1_conventions.md": "793aea36e35f37cf7a091343f0afffdebad742ac1e0f0057563fa44aa1a343af",
@@ -42,13 +42,6 @@
     "D:/Cours/Web/markdown-courses/content/01_pass/ch4_complexes.md": "77e0cf696f4975ff8d608234d64a7f4c36320a095884de58fc0b698f78cf39d9",
     "D:/Cours/Web/markdown-courses/content/01_pass/ch4_trigonometrie.md": "a5f39541aa81a6fb693f59702fe7054af11622677a6aa6814882952b64371fcb",
     "D:/Cours/Web/markdown-courses/content/01_pass/_course.yaml": "e8d0b4742833fd704bae53217dd55f5bde0ffc632fc5aba4dd7c12af9d266126",
-    "D:/Cours/Web/markdown-courses/content/01_sns/ch0_description.md": "cb7edf732014bb5990f5a8d7348932bc3c198b44814769c73103fc2e8e06fcfd",
-    "D:/Cours/Web/markdown-courses/content/01_sns/ch0_partie1.md": "1db5c68a412adf8fdeb56fbac9c378b080c9dc29d5db30cc24d55aaf3855c9a2",
-    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_conventions.md": "fb097513b733db7f764ad73a98053c66df91320711f1bbaae8187d793bece3a0",
-    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_installation.md": "1e5ac98b4697fcaa6e16ae9fbb35a715d21e7f113fdae8ff1435a51cafc5f5f2",
-    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_premiers_pas.md": "92071a1e1f66d2afd5b15f9abbd87735d7b1f94b325920c289d2fe9357106427",
-    "D:/Cours/Web/markdown-courses/content/01_sns/todo.md": "915dc65ed8508d3845af5ae48e00de5d8b4e561a2548fb3fffd6c77daf09474f",
-    "D:/Cours/Web/markdown-courses/content/01_sns/_course.yaml": "216025fafd6f52215a6406a97a3cb4da2fe710beb6b5b642376a1f49f9ff8e17",
     "D:/Cours/Web/markdown-courses/content/01_programming/ch1_bases.md": "7d5bbc1ba7f3e6a229d202038fd6120c95709133377414107fe004be4d47989d",
     "D:/Cours/Web/markdown-courses/content/01_programming/ch2_instructions.md": "a290389f068607c9f6f2a840ae98563aa53e22a6dc29a4eb1e751a0b9177da48",
     "D:/Cours/Web/markdown-courses/content/01_programming/ch3_fonctions.md": "2b43fa300056b8d185576c76d69a8af1ecad1307c4d1783b0c3680517ad7563d",
@@ -74,14 +67,6 @@
     "D:/Cours/Web/markdown-courses/content/03_programming/ch6_abr.md": "d18f4916ae7b821401db0ec2aae4d62666ef1dce0af85eef83e3011bc87bc0b0",
     "D:/Cours/Web/markdown-courses/content/03_programming/ch7_dictionnaires.md": "8e473f9af6647eeaf4215188b40cc42febc66bf8be2cfa1fcf5e729c7e5d8712",
     "D:/Cours/Web/markdown-courses/content/03_programming/_course.yaml": "9ef4638371fd3d5e5873df823a9ec2a604f235f395dc45d9400da0679d9da27e",
-    "D:/Cours/Web/markdown-courses/content/04_algebra/ch1_relations.md": "1353c828826da12a8486d8ff05d5bbe1f0b6ada67dbe4cd06af67b9cd312c108",
-    "D:/Cours/Web/markdown-courses/content/04_algebra/ch2_groupes.md": "30f29bcb362420a4ff9d77fa508db9f07418fe8d8ecfdb36206f79990b94fd2d",
-    "D:/Cours/Web/markdown-courses/content/04_algebra/ch3_sous_groupes.md": "dc97a77af4349b9bfa9c1eeed3a5e93302f93957e8b09ae1d419cef8fc6ff9d0",
-    "D:/Cours/Web/markdown-courses/content/04_algebra/ch4_constructions.md": "2438747dc512b84f34456cba4acc5de5f3c51ced9b2f5e148f35a5d4eeb4deeb",
-    "D:/Cours/Web/markdown-courses/content/04_algebra/ch5_groupe_symetrique.md": "53c86a3f1c13b4b920f2a914c05b372ea36cfc25416f75fc0250f73553d2408d",
-    "D:/Cours/Web/markdown-courses/content/04_algebra/ch6_anneaux.md": "107bc8fb3c41f37b256106ed18452d20417cdc286cc6729d271bfc523aa2a001",
-    "D:/Cours/Web/markdown-courses/content/04_algebra/ch7_corps_finis.md": "da114d0d88c110dfef7ed1a2206fb9172f026525c33f00b37768487c082a7c9c",
-    "D:/Cours/Web/markdown-courses/content/04_algebra/_course.yaml": "3f8e5a39f9017bda9b1f89c61613590001f4351ff45430680cc22a9988517979",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch1_applications_lineaires.md": "cf94b00e021cf21cb1e8948b6d97f459646b20ddd21d07b2e9a7ec0c7dbb7108",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch1_complements.md": "f1fb85a0867593ea8ae435bc0c78069b2d4596deda099093bf7f83eff54c9b81",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch1_coordonnees.md": "f55db0849b3d3ba2d9f8e766db8057810f6c5fdcc16b46354d0a5b3433b63426",
@@ -91,11 +76,27 @@
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch3_reduction_pratique.md": "7d90752b2b1725369469f4653feddd420ad81ea4df3d469e56a2ea0fce4df0a2",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch3_reduction_theorie.md": "1a5c7dc5b770a73677ddca6a88cbdcb1bc0ccf3036fb5eb3e2264dcd0ec43bc7",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch4_transformations_geometriques.md": "00de3446dd094cdc4af422dc26c0e213c24b16edcd31d4b8796e27109f967da6",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens.md": "997171f4a4121dd68734a4ae881dffb804bf86e836fd087ab95f5281238cb6be",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md": "c518a7f8f7cd2a8a8e89f09cd4e55a9421bf82650ea6862e7a2a51613db41721",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md": "c5178621e4fcf21518faef835e362a80abb53682fd872354c7d90e4e8217b6de",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch6_espace_projectif.md": "d127b0f7c7427c90c102e4d3c2cf7b108b482cda228389cfb031e2e3ce4cabc4",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch6_pipeline_3d.md": "f065b5a753b99e4d1cdefa7f9ee771d938a9c753be4927dbfd505a6d78179f38",
     "D:/Cours/Web/markdown-courses/content/03_algebra/ch6_rendu_graphique.md": "6f0e06fc719e3f4dd4194cc9871007d1acd0e6c04ebbe85e45cc2e2c23c24f61",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/_course.yaml": "17fac6c51864c2739d8d8068e53cb292a2d1f2026a17d9e9dbcd7214c668aed7",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/_course.yaml": "0b4c613d81a7c64fee16fd5fdb6a91b85f28326878c28a306de4cc8072a2df01",
+    "D:/Cours/Web/markdown-courses/content/01_sns/ch0_description.md": "cb7edf732014bb5990f5a8d7348932bc3c198b44814769c73103fc2e8e06fcfd",
+    "D:/Cours/Web/markdown-courses/content/01_sns/ch0_partie1.md": "1db5c68a412adf8fdeb56fbac9c378b080c9dc29d5db30cc24d55aaf3855c9a2",
+    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_conventions.md": "fb097513b733db7f764ad73a98053c66df91320711f1bbaae8187d793bece3a0",
+    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_installation.md": "1e5ac98b4697fcaa6e16ae9fbb35a715d21e7f113fdae8ff1435a51cafc5f5f2",
+    "D:/Cours/Web/markdown-courses/content/01_sns/ch1_premiers_pas.md": "92071a1e1f66d2afd5b15f9abbd87735d7b1f94b325920c289d2fe9357106427",
+    "D:/Cours/Web/markdown-courses/content/01_sns/todo.md": "915dc65ed8508d3845af5ae48e00de5d8b4e561a2548fb3fffd6c77daf09474f",
+    "D:/Cours/Web/markdown-courses/content/01_sns/_course.yaml": "216025fafd6f52215a6406a97a3cb4da2fe710beb6b5b642376a1f49f9ff8e17",
+    "D:/Cours/Web/markdown-courses/content/04_algebra/ch1_relations.md": "1353c828826da12a8486d8ff05d5bbe1f0b6ada67dbe4cd06af67b9cd312c108",
+    "D:/Cours/Web/markdown-courses/content/04_algebra/ch2_groupes.md": "30f29bcb362420a4ff9d77fa508db9f07418fe8d8ecfdb36206f79990b94fd2d",
+    "D:/Cours/Web/markdown-courses/content/04_algebra/ch3_sous_groupes.md": "dc97a77af4349b9bfa9c1eeed3a5e93302f93957e8b09ae1d419cef8fc6ff9d0",
+    "D:/Cours/Web/markdown-courses/content/04_algebra/ch4_constructions.md": "2438747dc512b84f34456cba4acc5de5f3c51ced9b2f5e148f35a5d4eeb4deeb",
+    "D:/Cours/Web/markdown-courses/content/04_algebra/ch5_groupe_symetrique.md": "53c86a3f1c13b4b920f2a914c05b372ea36cfc25416f75fc0250f73553d2408d",
+    "D:/Cours/Web/markdown-courses/content/04_algebra/ch6_anneaux.md": "107bc8fb3c41f37b256106ed18452d20417cdc286cc6729d271bfc523aa2a001",
+    "D:/Cours/Web/markdown-courses/content/04_algebra/ch7_corps_finis.md": "da114d0d88c110dfef7ed1a2206fb9172f026525c33f00b37768487c082a7c9c",
+    "D:/Cours/Web/markdown-courses/content/04_algebra/_course.yaml": "3f8e5a39f9017bda9b1f89c61613590001f4351ff45430680cc22a9988517979",
     "D:/Cours/Web/markdown-courses/content/test/algorithm.md": "272614ffac7602d6bd03839aa4cce74fdcca7a4b199633d97fa6f32dc7ada11d",
     "D:/Cours/Web/markdown-courses/content/test/block.md": "c56e267430cf55ab26da3757f79debcb683e5eb9752b573f870452d73545a90c",
     "D:/Cours/Web/markdown-courses/content/test/block_and_layout.md": "5a9d0cce9a86ba0e6e2ab745b606f87eb6b6883e21d4be60a5444cf0b412d3fd",
@@ -313,63 +314,29 @@
     "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_4/synthese_2.md": "213e4b13faf4e9d82c3d54efa70726985d29d4664daa6c1d8c957b2188edbd4f",
     "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_4/synthese_4.md": "20a709d6bede2ae373af638fbd8d6183319a16b609147a5e30ab92381c3e25d3",
     "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_4/synthese_5.md": "39f431364a9c6269da6ef09317bbb11c6dc832ada327dd39960cb89586a88b77",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/endo_ortho_1.md": "51ab9af45e4a157662cbed90917942fd382aeace29854e6094b6d30e24d6fed5",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/endo_ortho_2.md": "3af2c21175f146560a97381d56110e41ae2324d29ca790f75c565b3e77b2fec3",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/endo_ortho_3.md": "78393e7bb26d958a468a8a70e1300e5b90d475099302f44f94e65a742026b4c7",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/forme_bilineaire_1.md": "033ae4be67f1eef26d2a38ed1a7eba078606f0c8427e5d554850bd75bb278354",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/gram_schmidt_1.md": "99b129a930d4a2b86626cc6ab2840dde98f9918806dd6a5cbcd6ecd8d086c064",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/gram_schmidt_2.md": "f61bc657d691cdac42b9a7755e211995013a1d88dacca4346fd44f5d9c2aa85d",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/intro_1.md": "d6f7bff18ff0716f5509751c8c3a6ab251fe378211a80b0b48ef423674347e2f",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_1.md": "c5bccbb051c081c7030f6f0b98a630a4c7128d4076e26053eb9df75e174a0115",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_2.md": "9f3948d6007a46ef5f632659fecb261d2ccfae8f022e8fd930abc548d4e6d671",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_3.md": "c18d36f031aeb87e42f2f966a7b559aa2d1f5e4b687ef39769b053d933300270",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_4.md": "3287aa1f721a6eceecded8c03dd54196fadb4b5429d7a39506ebc498845e612f",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_1.md": "3ff73c429bde0a68344dbb2e40e7a808f0a8708c67db63b810972633e806b648",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_2.md": "51511ba00600db34a7e8a5c36cf27fd45d64369a58efdbeaa27c02c09c0099b1",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_3.md": "6e2cb690e9bf346ade13c4b69ef7728c44345485b8d45ccd72ec6027b32d6067",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_4.md": "7774c6d7ed0d0be1bac4e17770668af495b64765a060a501d9d7ff90ab4d385c",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_5.md": "08435dfc7e5b7527b739d22da2f49073b102b52a481121e63e34c58d051bab71",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_6.md": "c5407e6c4b178b40c6fc4c2e589aead018d0b6bdae48ebfe21debdb46e5c2288",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_7.md": "23572b84f2762027f6ba432e6dccc521e902113f941510b7247e258a19ad23de",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_1.md": "5744c439d21c60065e0534ea08daba88aa2d00d0242d37f7339e5616aabf5568",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_2.md": "86e1d327d6e706b3a69040d621176259b06266c64416481f95d57ce0a9cee02d",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_3.md": "31d595418c91106d834f6c27de7f65ad2ccfe7fb15a1364a0aeb7a07042789ab",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_4.md": "3014bd57f74cf777c5efd18de463394be3b9dcccd8452af59c0120b03057d691",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_5.md": "666f74e5adf3b1ed35417947de1cf0c1bfedf7581c4e3100f9028061eb7a1be5",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/produit_scalaire_1.md": "06c53819422bddf340caa86bf1940e08766f014bce3ae65d33c011465b431eed",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/produit_scalaire_2.md": "15337140666ed6354cc656d6f2ed0a9ffefb0066891959161f730a222839bc2a",
-    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/produit_scalaire_3.md": "a0b73cb2c5a18036c02d786e4f8222c607231fb9aaaf4e0fbe6833789f986b27",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/endo_ortho_3.md": "3450f9e2ca109616b5b8539dd36fcb70cd2262e6a7a06902b013c30d02e98af8",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/forme_bilineaire_1.md": "57dc3bd82363af1b0653047349e58aa0ad6e9b4344daa97bbed7c2d5e29cda25",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_2.md": "0e8c40331b7e5464458d80f22ff385f3b82f82d5072d50dbe878bb28204c82b7",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_3.md": "b48c211fecd81ea692dbbd09b862682081515ff52683c40c025b53c0c602c026",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_4.md": "37ec23cc8b1c21e336028398c206074166bed45a2d2e9e56bdbe92a29f1208fa",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/moodle_gram_schmidt_1.md": "77406f1f47d871e21956cff98f180b40e47c1aac077a86d50aac63a4158d67c3",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/moodle_gram_schmidt_2.md": "17b25b4b9025d3aa465a1d157fba524466b4b2d3825686b63050a149c8abbdeb",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/moodle_gram_schmidt_3.md": "58bc1169ab1d1c84d4c03710bf501e90f1ca7565dd39b69348e7f8c20cdc7be2",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_5.md": "29cfc3d3c38243ac62099cc5d5baf88e4078089ab972fa1d4c6863e6cbab3f40",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_6.md": "42ddc4a9c7941fb411f4a0a92107c1366044388e6a0ef68d12a76326ff60f4b7",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_7.md": "504aa93fdbac5867b597f55b9af5ff8436645a3171a1fc36f744106b4ee10144",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_1.md": "a5fed9bbdfff4c92b40b1e18bb7a5765404e1cdbb7a863fe53507beb0a074ec2",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_2.md": "78d4f201965509c9c37fd05a031452168473d9759e4df84162cb5ab288e44b17",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_3.md": "5a422688816b8929c2efee831361714774c8f8998392e84950bae8ec439b3fc5",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_4.md": "d9b7d14874433aa4b17c77b11ecfca0e8394358550537d02d144c5eb63c52c46",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_5.md": "510b73e6c56734ff7bec91ba50b1e21c1688ac9c21e0f397c7d257f73a08c64b",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/produit_scalaire_2.md": "730e38364e3d4597d5d2dd05e48c9197363b21ce8943cd2a07b44f63e0bc6192",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/produit_scalaire_3.md": "bb09c96752d790856ec5ebc82036a2f325710401a5b83397dfc0bf56e0117715",
     "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_6/compatibilite_automorphismes.md": "d33a0a839e076bf00dd15062293cc58bc879c55ddc6976402e5b295259223207",
     "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_6/relation_colinearite.md": "5a6bd6b3a31db5f0a995f7ded607b1207c7bdf7c8e600b1aea0e8671e42ece5e",
     "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_6/scene_2d_1.md": "2d00f0e93d0db6877896a3e814b0f03121be9ff607599d84158d48548a1ddd62",
     "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_6/scene_2d_2.md": "fa650de2f43386f48061fe6d407212294bdd3a992ee42fe90acad7fab441f600",
     "D:/Cours/Web/markdown-courses/content/test/imports/example.md": "42d7a04541259576c05a1477e0310da7c76e9bcf2cda0fcbd2d50254477782c8",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/complements/recurrence_4.md": "6bed927df65cff39ac4dcdbba28e80cda403d061a00928566ed34d9b5ff4a4e6",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/complements/table_2.md": "c65cb1437c5e6bc4f7e9db67f7225218148f9af8ebbb2fea81690aa1fe8ec852",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/connecteurs.md": "a841085f89836311004fd931e31d825e623f67f8e0632e16521b28e1fee83072",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/jo_po_colas.md": "4f4b2efb60d7e3879a51fdc5a9351967f11b424062d079834347c67db4a1a3dd",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/moodle_qcm_quantificateurs.md": "226d44cce2a91ef3da12eae7ff8ee04bd0d919d343a292d6f2ead30a8c330fe5",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/moodle_qcm_simplifications.md": "ab1b1c05fd20a3b81faef7af3bc2b9e0c62ba25530ca3c5ae4a84510690b0ac0",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/moodle_table_verite.md": "c848acd6e69d2c60858024c4170249eff013846440c16c608dcfc71cc2c3a5b4",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/negation_1.md": "623d3007b2f86b79f3b907b2e4140a7b656e46384b0cbd83a143402f6ca7d8d2",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/negation_2.md": "7dc8dcc15d93fa74f6770c59985674b1de3047c51e536b5b99237b7c5633ed15",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/quantificateurs_1.md": "7876395ff9a270f421d4bbef22bfb0d9d9787d1548e6ebf199cf472707c4ee83",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/quantificateurs_2.md": "2b158ae7637b4e484fa6e03545fda531a1bc0d91fb984164ea30eddc5213590d",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/quantificateurs_3.md": "9b19386ccc48b6680bb5ebd087243011ddae615b095480eb6f0bdc60a8b27609",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/table_1.md": "9bdf52e2b9c733938e2274960f5f5e67a00c3d044d6d58a379c750e9055d93f7",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/absurde_1.md": "6b4c988f6ca6c99a002ad5817c3654c9a7941b9b76ba88ef03361dbe50366094",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/contraposition_1.md": "8535c492bb9d7077295c70a2fb4af9862507c4d8e72cd00b594d634d3dbfce2a",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/disjonction_1.md": "f634e65786fdc625a768d944b7c05bdb728c6cc8089f89f6750035f24ef93f44",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/disjonction_2.md": "0813f8243f46a0936daafce60d16fc4d0212a9d59725a404f5cf60aa29b21df6",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/moodle_rearrangement_1.md": "b66fe011222086422726c86e2117865841fb0305bb789bdd5a64169c37ba6d90",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/moodle_rearrangement_2.md": "bd7f3e483b8a2c691cc444f79712421a01c664cf1c73ed42c1ccabb28772707b",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/preuve_directe_1.md": "a69aa7953937bf19169702161a0c28cea3c895d34e44fe5e8ee5c70670f072e8",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/preuve_directe_2.md": "a1166bde2a360df9726ad59c2c9b57d7e6c497598d1e195d684d3428d588f49b",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_1.md": "67ced13fe1d02d1a1e159368f44a4885e6f23ffda2b322a5cb952ae6caf43e81",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_2.md": "66e3300ca03ff02180920a7f7b7eb1fd5947a89f45cc3699a52bbb3e6b08c40f",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_3.md": "ee2136c2a8051a89fc6ab19293efe1aab8b32e0b18539e47c278bd6f7f026556",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_5.md": "7635959ff109908913c7892309f940954b310cebf1588c35edfccea55e84c2d3",
-    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_6.md": "78e8f729a4edfa8ec8614729fd730e0a78497298b21b80a7253a1208a712314f",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/applications/analyse_demonstrations_moodle.md": "adda90104e69630acf36c9c9a1e331366eed487a1ab9b62d0b0b2641e92d57d2",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/applications/antecedents.md": "f260d0d297baef6e7250ca121e8a87409100b98dd48eb4625828e6ae201d56f9",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/applications/ca_commute_preuve.md": "06e105f2bd7fba6dd4893057034ade5933a05cea2bc4d2dcb20e9b0c48ab822a",
@@ -397,6 +364,32 @@
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_rearrangement_1.md": "ca77c7712981fc9ae2d3634292edfe0e771bf9d7f1fca692baaa8c3e51d5d9c1",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/moodle_rearrangement_2.md": "8d5b4e5db3c486a5f444653425d8290fded49e47e300a772b37c6da5b4d83ef2",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_3/bijections/questions_cours_injection_surjection.md": "0127c60d05a0d643805bf22baba06187229821d3ce1ec97948b4a5e4e072f859",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/complements/recurrence_4.md": "6bed927df65cff39ac4dcdbba28e80cda403d061a00928566ed34d9b5ff4a4e6",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/complements/table_2.md": "c65cb1437c5e6bc4f7e9db67f7225218148f9af8ebbb2fea81690aa1fe8ec852",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/connecteurs.md": "a841085f89836311004fd931e31d825e623f67f8e0632e16521b28e1fee83072",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/jo_po_colas.md": "4f4b2efb60d7e3879a51fdc5a9351967f11b424062d079834347c67db4a1a3dd",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/moodle_qcm_quantificateurs.md": "226d44cce2a91ef3da12eae7ff8ee04bd0d919d343a292d6f2ead30a8c330fe5",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/moodle_qcm_simplifications.md": "ab1b1c05fd20a3b81faef7af3bc2b9e0c62ba25530ca3c5ae4a84510690b0ac0",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/moodle_table_verite.md": "c848acd6e69d2c60858024c4170249eff013846440c16c608dcfc71cc2c3a5b4",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/negation_1.md": "623d3007b2f86b79f3b907b2e4140a7b656e46384b0cbd83a143402f6ca7d8d2",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/negation_2.md": "7dc8dcc15d93fa74f6770c59985674b1de3047c51e536b5b99237b7c5633ed15",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/quantificateurs_1.md": "7876395ff9a270f421d4bbef22bfb0d9d9787d1548e6ebf199cf472707c4ee83",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/quantificateurs_2.md": "2b158ae7637b4e484fa6e03545fda531a1bc0d91fb984164ea30eddc5213590d",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/quantificateurs_3.md": "9b19386ccc48b6680bb5ebd087243011ddae615b095480eb6f0bdc60a8b27609",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/logique/table_1.md": "9bdf52e2b9c733938e2274960f5f5e67a00c3d044d6d58a379c750e9055d93f7",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/absurde_1.md": "6b4c988f6ca6c99a002ad5817c3654c9a7941b9b76ba88ef03361dbe50366094",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/contraposition_1.md": "8535c492bb9d7077295c70a2fb4af9862507c4d8e72cd00b594d634d3dbfce2a",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/disjonction_1.md": "f634e65786fdc625a768d944b7c05bdb728c6cc8089f89f6750035f24ef93f44",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/disjonction_2.md": "0813f8243f46a0936daafce60d16fc4d0212a9d59725a404f5cf60aa29b21df6",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/moodle_rearrangement_1.md": "b66fe011222086422726c86e2117865841fb0305bb789bdd5a64169c37ba6d90",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/moodle_rearrangement_2.md": "bd7f3e483b8a2c691cc444f79712421a01c664cf1c73ed42c1ccabb28772707b",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/preuve_directe_1.md": "a69aa7953937bf19169702161a0c28cea3c895d34e44fe5e8ee5c70670f072e8",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/preuve_directe_2.md": "a1166bde2a360df9726ad59c2c9b57d7e6c497598d1e195d684d3428d588f49b",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_1.md": "67ced13fe1d02d1a1e159368f44a4885e6f23ffda2b322a5cb952ae6caf43e81",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_2.md": "66e3300ca03ff02180920a7f7b7eb1fd5947a89f45cc3699a52bbb3e6b08c40f",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_3.md": "ee2136c2a8051a89fc6ab19293efe1aab8b32e0b18539e47c278bd6f7f026556",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_5.md": "7635959ff109908913c7892309f940954b310cebf1588c35edfccea55e84c2d3",
+    "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_1/raisonnement/recurrence_6.md": "78e8f729a4edfa8ec8614729fd730e0a78497298b21b80a7253a1208a712314f",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/appartenance_1.md": "10965ec10ea2f473ca88be86b8ea9c019328a656e5557697e57e7fc32e0214d8",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/appartenance_2.md": "95048f1cdd95daf12d17f5387756779af51a71479f39762aecdb2483991a83d5",
     "D:/Cours/Web/markdown-courses/content/01_algebra/exercises_2/complements/appartenance_4.md": "74e5f1a3dea2a59976ee68306bdb8bdefb503c770fed2054cdd4a77fdc58b6d1",
@@ -515,6 +508,16 @@
     "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_4/complement/symetrie_2.md": "713f097e7f9e3a596edf8c79a7c1b1128ea50e1dfa71359878605445f1d9f66d",
     "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_4/complement/synthese_1.md": "2f8f54f64be3eccbd7d741ca9fe6f6e49e3d759ac719fe2ca25684a3f83cbd8d",
     "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_4/complement/synthese_3.md": "47f189d578c0429dc390ffba4214ffa6bbf297d6039ed649a0ba2f2eab06a8fb",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/complement/endo_ortho_1.md": "51ab9af45e4a157662cbed90917942fd382aeace29854e6094b6d30e24d6fed5",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/complement/endo_ortho_2.md": "3af2c21175f146560a97381d56110e41ae2324d29ca790f75c565b3e77b2fec3",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/complement/gram_schmidt_1.md": "99b129a930d4a2b86626cc6ab2840dde98f9918806dd6a5cbcd6ecd8d086c064",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/complement/intro_1.md": "d6f7bff18ff0716f5509751c8c3a6ab251fe378211a80b0b48ef423674347e2f",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/complement/matrice_endo_ortho_1.md": "c5bccbb051c081c7030f6f0b98a630a4c7128d4076e26053eb9df75e174a0115",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/complement/norme_1.md": "3ff73c429bde0a68344dbb2e40e7a808f0a8708c67db63b810972633e806b648",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/complement/norme_2.md": "51511ba00600db34a7e8a5c36cf27fd45d64369a58efdbeaa27c02c09c0099b1",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/complement/norme_3.md": "6e2cb690e9bf346ade13c4b69ef7728c44345485b8d45ccd72ec6027b32d6067",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/complement/norme_4.md": "7774c6d7ed0d0be1bac4e17770668af495b64765a060a501d9d7ff90ab4d385c",
+    "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/complement/produit_scalaire_1.md": "06c53819422bddf340caa86bf1940e08766f014bce3ae65d33c011465b431eed",
     "D:/Cours/Web/markdown-courses/figures/figure-base.ts": "2986a8d66d1b00c711beb92d496e383b6a080b05be26576a482f85208819e21e",
     "D:/Cours/Web/markdown-courses/figures/test/figure.html": "08d4c6e98773c9bcc43c66a48bf1d7570484bb07965a210cad8b8003fa1b079a",
     "D:/Cours/Web/markdown-courses/figures/test/test-figure.ts": "39801cacd6b2f8ba477468fa91c114ee438a4daeafea8b1a5ab903fcafba84f3",
@@ -579,6 +582,8 @@
     "03_algebra/ch3_reduction_pratique.json",
     "03_algebra/ch3_reduction_theorie.json",
     "03_algebra/ch4_transformations_geometriques.json",
+    "03_algebra/ch5_espaces_euclidiens_definition.json",
+    "03_algebra/ch5_espaces_euclidiens_orthogonalite.json",
     "03_programming/ch1_revisions.json",
     "03_programming/ch1_tp.json",
     "03_programming/ch2_types_abstraits.json",
@@ -2644,6 +2649,98 @@
               }
             },
             "courseSlug": "03_algebra"
+          },
+          {
+            "absoluteSourcePath": "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "light"
+              },
+              "remark": {
+                "style": "light"
+              },
+              "proof": {
+                "numbered": false,
+                "style": "light"
+              },
+              "exercise": {
+                "style": "rule"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "fill"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              },
+              "warning": {
+                "style": "fill"
+              },
+              "algorithm": {
+                "style": "light"
+              }
+            },
+            "courseSlug": "03_algebra"
+          },
+          {
+            "absoluteSourcePath": "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "light"
+              },
+              "remark": {
+                "style": "light"
+              },
+              "proof": {
+                "numbered": false,
+                "style": "light"
+              },
+              "exercise": {
+                "style": "rule"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "fill"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              },
+              "warning": {
+                "style": "fill"
+              },
+              "algorithm": {
+                "style": "light"
+              }
+            },
+            "courseSlug": "03_algebra"
           }
         ],
         "navigation": [
@@ -2677,8 +2774,12 @@
             "absoluteSourcePath": "D:/Cours/Web/markdown-courses/content/03_algebra/ch4_transformations_geometriques.md"
           },
           {
-            "kind": "chapter",
-            "absoluteSourcePath": "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens.md"
+            "kind": "section",
+            "title": "5. Espaces euclidiens",
+            "chapterSourcePaths": [
+              "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md",
+              "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+            ]
           },
           {
             "kind": "section",
@@ -4865,6 +4966,98 @@
       },
       {
         "absoluteSourcePath": "D:/Cours/Web/markdown-courses/content/03_algebra/ch4_transformations_geometriques.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "light"
+          },
+          "remark": {
+            "style": "light"
+          },
+          "proof": {
+            "numbered": false,
+            "style": "light"
+          },
+          "exercise": {
+            "style": "rule"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "fill"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          },
+          "warning": {
+            "style": "fill"
+          },
+          "algorithm": {
+            "style": "light"
+          }
+        },
+        "courseSlug": "03_algebra"
+      },
+      {
+        "absoluteSourcePath": "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "light"
+          },
+          "remark": {
+            "style": "light"
+          },
+          "proof": {
+            "numbered": false,
+            "style": "light"
+          },
+          "exercise": {
+            "style": "rule"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "fill"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          },
+          "warning": {
+            "style": "fill"
+          },
+          "algorithm": {
+            "style": "light"
+          }
+        },
+        "courseSlug": "03_algebra"
+      },
+      {
+        "absoluteSourcePath": "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md",
         "courseBlockDefaults": {
           "example": {
             "style": "light"
@@ -7120,6 +7313,46 @@
         ]
       },
       {
+        "outputPath": "03_algebra/ch5_espaces_euclidiens_definition.json",
+        "pageId": "alg3-espaces-euclidiens-definition",
+        "blockRefs": [],
+        "dependencies": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/forme_bilineaire_1.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/produit_scalaire_3.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/produit_scalaire_2.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_7.md",
+          "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_d.svg",
+          "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_1_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_1_d.svg",
+          "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_2_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_2_d.svg",
+          "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_3_l.svg",
+          "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_3_d.svg",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_5.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_6.md"
+        ]
+      },
+      {
+        "outputPath": "03_algebra/ch5_espaces_euclidiens_orthogonalite.json",
+        "pageId": "alg3-espaces-euclidiens-orthogonalite",
+        "blockRefs": [],
+        "dependencies": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_2.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_3.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_4.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_1.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_5.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/moodle_gram_schmidt_1.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/moodle_gram_schmidt_2.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/moodle_gram_schmidt_3.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/endo_ortho_3.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_3.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_4.md",
+          "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_2.md"
+        ]
+      },
+      {
         "outputPath": "03_programming/ch1_revisions.json",
         "pageId": "prog3-revisions",
         "blockRefs": [],
@@ -8574,6 +8807,84 @@
         ],
         "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_4/synthese_4.md": [
           "D:/Cours/Web/markdown-courses/content/03_algebra/ch4_transformations_geometriques.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/forme_bilineaire_1.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/produit_scalaire_3.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/produit_scalaire_2.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_7.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_1_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_1_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_2_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_2_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_3_l.svg": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/assets/03_algebra/ch5/cercle_unite_3_d.svg": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_5.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/norme_6.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_definition.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_2.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_3.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_4.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_1.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/orthogonal_5.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/moodle_gram_schmidt_1.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/moodle_gram_schmidt_2.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/moodle_gram_schmidt_3.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/endo_ortho_3.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_3.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_4.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
+        ],
+        "D:/Cours/Web/markdown-courses/content/03_algebra/exercises_5/matrice_endo_ortho_2.md": [
+          "D:/Cours/Web/markdown-courses/content/03_algebra/ch5_espaces_euclidiens_orthogonalite.md"
         ],
         "D:/Cours/Web/markdown-courses/content/03_programming/exercises_1/2023_MDF4_Poubelles_2.md": [
           "D:/Cours/Web/markdown-courses/content/03_programming/ch1_tp.md"

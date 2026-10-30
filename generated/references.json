@@ -1165,6 +1165,14 @@
         }
       }
     },
+    "alg3-espaces-euclidiens-definition": {
+      "outputPath": "03_algebra/ch5_espaces_euclidiens_definition.json",
+      "blocks": {}
+    },
+    "alg3-espaces-euclidiens-orthogonalite": {
+      "outputPath": "03_algebra/ch5_espaces_euclidiens_orthogonalite.json",
+      "blocks": {}
+    },
     "prog3-revisions": {
       "outputPath": "03_programming/ch1_revisions.json",
       "blocks": {}
