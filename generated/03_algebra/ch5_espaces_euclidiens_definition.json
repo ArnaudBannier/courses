@@ -1160,7 +1160,7 @@
   "brief": [
     {
       "kind": "html",
-      "html": "<p>Généralisez l'orthogonalité aux espaces vectoriels réels de dimension quelconque grâce au produit scalaire et à la norme. Découvrez les outils géométriques qui en découlent, des projections aux bases orthonormées.</p>"
+      "html": "<p>Découvrez comment définir un produit scalaire sur un espace vectoriel réel et comment celui-ci induit une norme euclidienne. Vous généraliserez ainsi les notions de longueur et de distance à des espaces de dimension quelconque.</p>"
     }
   ],
   "tooltipDefs": {

@@ -2814,7 +2814,7 @@
   "brief": [
     {
       "kind": "html",
-      "html": "<p>Généralisez l'orthogonalité aux espaces vectoriels réels de dimension quelconque grâce au produit scalaire et à la norme. Découvrez les outils géométriques qui en découlent, des projections aux bases orthonormées.</p>"
+      "html": "<p>Étudiez l'orthogonalité dans les espaces euclidiens : familles et sous-espaces orthogonaux, orthonormalisation par l'algorithme de Gram-Schmidt et endomorphismes orthogonaux.</p>"
     }
   ],
   "tooltipDefs": {
