@@ -1,0 +1,741 @@
+{
+  "sourcePath": "01_ai_data/ch2_donnees_operations.md",
+  "title": "Programmation orientée données et opérations",
+  "navTitle": "Données et opérations",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Une structure permet de regrouper les informations qui décrivent une même entité. Lorsqu'un programme manipule plusieurs entités de ce type, il est utile de définir aussi les opérations qui permettent de les créer, de les modifier et de consulter leur état.</p>\n<p>Nous allons prendre l'exemple d'un chronomètre représenté par une structure <code>Timer</code>. Un chronomètre doit mémoriser le temps écoulé et indiquer s'il est en cours de fonctionnement. Les opérations associées permettent de le démarrer, de l'arrêter, de mettre à jour son temps et de consulter ce temps.</p>\n<p>Commencez par ajouter les fichiers suivants à votre projet <code>s1_1_cmake</code>.\nLe code qu'ils contiennent utilise plusieurs concepts que vous ne connaissez pas encore : ne paniquez pas, nous allons tout expliquer dans la suite de ce cours.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Modification du projet",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pensez à modifier le bon <code>CMakeLists.txt</code> pour pouvoir les compiler.</p>"
+        },
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "footer": true,
+          "items": [
+            {
+              "titleHtml": "timer.h",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">pragma</span> <span class=\"token expression\">once</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"settings.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Structure représentant un chronomètre.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">Timer</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Temps écoulé en secondes.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">float</span> elapsedTime<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Indique si le chronomètre est en cours d'exécution.</span>\n</span><span class=\"code-line\">    bool isRunning<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> Timer<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Crée un chronomètre et l'initialise à zéro.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @return Le chronomètre créé.</span>\n</span><span class=\"code-line\">Timer<span class=\"token operator\">*</span> <span class=\"token function\">Timer_create</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Détruit un chronomètre.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self Le chronomètre à détruire.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_destroy</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Démarre le chronomètre.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self Le chronomètre à démarrer.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_start</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Arrête le chronomètre.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self Le chronomètre à arrêter.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_stop</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Met à jour le chronomètre avec le temps écoulé depuis la dernière mise à jour.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self Le chronomètre à mettre à jour.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param deltaTime Le temps écoulé depuis la dernière mise à jour, en secondes.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_update</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token keyword\">float</span> deltaTime<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Renvoie le temps écoulé depuis le démarrage du chronomètre.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self Le chronomètre.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @return Le temps écoulé en secondes.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">float</span> <span class=\"token function\">Timer_getElapsedTime</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">const</span> Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "timer.c",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"timer.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">Timer<span class=\"token operator\">*</span> <span class=\"token function\">Timer_create</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Timer<span class=\"token operator\">*</span> self <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>Timer<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">ASSERT_NEW</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>elapsedTime <span class=\"token operator\">=</span> <span class=\"token number\">0.0f</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>isRunning <span class=\"token operator\">=</span> false<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> self<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_destroy</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span>self<span class=\"token punctuation\">)</span> <span class=\"token keyword\">return</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">free</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_start</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>self <span class=\"token operator\">&#x26;&#x26;</span> <span class=\"token string\">\"self must not be NULL\"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>isRunning <span class=\"token operator\">=</span> true<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_stop</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>self <span class=\"token operator\">&#x26;&#x26;</span> <span class=\"token string\">\"self must not be NULL\"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>isRunning <span class=\"token operator\">=</span> false<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_update</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token keyword\">float</span> deltaTime<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>self <span class=\"token operator\">&#x26;&#x26;</span> <span class=\"token string\">\"self must not be NULL\"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>self<span class=\"token operator\">-></span>isRunning<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        self<span class=\"token operator\">-></span>elapsedTime <span class=\"token operator\">+=</span> deltaTime<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">float</span> <span class=\"token function\">Timer_getElapsedTime</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">const</span> Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>self <span class=\"token operator\">&#x26;&#x26;</span> <span class=\"token string\">\"self must not be NULL\"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> self<span class=\"token operator\">-></span>elapsedTime<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span></code></pre>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "Projet",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">s1_1_cmake/\n</span><span class=\"code-line\">├── application/\n</span><span class=\"code-line\">|   ├── CMakeLists.txt\n</span><span class=\"code-line\">|   └── src/\n</span><span class=\"code-line\">|       ├── main.c\n</span><span class=\"code-line\">|       ├── settings.h\n</span><span class=\"code-line\">|       ├── timer.c\n</span><span class=\"code-line\">|       ├── timer.h\n</span><span class=\"code-line\">|       ├── vec2.c\n</span><span class=\"code-line\">|       └── vec2.h\n</span><span class=\"code-line\">├── .editorconfig\n</span><span class=\"code-line\">├── .gitignore\n</span><span class=\"code-line\">├── CMakeLists.txt\n</span><span class=\"code-line\">├── CMakePresets.json\n</span><span class=\"code-line\">└── README.md\n</span></code></pre>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>La structure <code>Timer</code> rassemble les données qui décrivent un chronomètre : <code>elapsedTime</code> contient le temps écoulé et <code>isRunning</code> indique s'il fonctionne. Un <code>Timer</code> est une instance de ce type, avec ses propres valeurs pour ces deux champs.</p>\n<p>Ces fichiers définissent aussi les fonctions associées à <code>Timer</code>. Leur nom commence par le nom du type, suivi d'un underscore : <code>Timer_start</code>, <code>Timer_stop</code>, etc. Cette convention aide à repérer les opérations qui concernent un même type. La déclaration des champs et les prototypes sont réunis dans le fichier <code>.h</code>, tandis que le code des fonctions se trouve dans le fichier <code>.c</code>.</p>\n<p>La plupart de ces fonctions reçoivent un <code>Timer* self</code> en premier paramètre. Ce type <code>Timer*</code> est un <span class=\"md-emph\"><strong>pointeur</strong></span> : c'est la notion centrale de ce chapitre. Nous commençons par la définir, puis nous verrons à quoi elle sert pour nos opérations.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Les pointeurs",
+      "slug": "les-pointeurs",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>En C, lorsqu'une structure est passée à une fonction comme argument, sa valeur est copiée. Modifier le paramètre ne modifierait donc pas l'instance détenue par le code appelant. Pour qu'une opération puisse modifier le chronomètre d'origine, elle doit savoir où il est stocké en mémoire.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Définition",
+      "slug": "définition"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Comme nous insisterons beaucoup sur cette notion dans vos cours de programmation, voici une définition que vous retiendrez toute votre vie.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Pointeur",
+      "displayLabel": "Definition 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Un <span class=\"md-emph\"><strong>pointeur</strong></span> est une variable qui contient une adresse.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour déclarer un pointeur, il est nécessaire de préciser le type de données que l'on va trouver à l'adresse désignée par le pointeur. Le symbole <code>*</code> est utilisé pour différencier un pointeur d'une variable classique.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">// Déclaration d'une variable</span>\n</span><span class=\"code-line\">type variableName<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">// Déclaration d'un pointeur</span>\n</span><span class=\"code-line\">type<span class=\"token operator\">*</span> pointerName<span class=\"token punctuation\">;</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Adresse et déréférencement",
+      "slug": "adresse-et-déréférencement"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Comme un pointeur contient une adresse, si l'on passe un pointeur à une fonction, on copie une adresse mémoire. Cela permet ensuite à la fonction d'accéder à cette adresse, et donc de modifier des zones mémoires qui sont externes à ses variables locales.\nToute variable est stockée quelque part en mémoire, et cet emplacement a une adresse. Vous vous êtes sûrement demandé pourquoi il ne fallait surtout pas oublier le symbole <code>&#x26;</code> devant les variables données à <code>scanf</code> : il permet justement de récupérer l'adresse d'une variable.</p>\n<p>Une fois que l'on dispose d'un pointeur vers une zone mémoire valide, on peut y accéder à l'aide du symbole <code>*</code> en le plaçant juste avant le nom du pointeur. Cette opération est appelée <span class=\"md-emph\"><strong>déréférencement</strong></span>.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">// Déclaration d'une variable</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> a <span class=\"token operator\">=</span> <span class=\"token number\">3</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> b <span class=\"token operator\">=</span> <span class=\"token number\">7</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">// Déclaration d'un pointeur vers cette variable</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span><span class=\"token operator\">*</span> ptrA <span class=\"token operator\">=</span> <span class=\"token operator\">&#x26;</span>a<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">// Déréférencement en lecture</span>\n</span><span class=\"code-line\">b <span class=\"token operator\">=</span> <span class=\"token operator\">*</span>ptrA<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token comment\">// a = 3</span>\n</span><span class=\"code-line\"><span class=\"token comment\">// b = 3</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">// Déréférencement en écriture</span>\n</span><span class=\"code-line\"><span class=\"token operator\">*</span>ptrA <span class=\"token operator\">=</span> <span class=\"token number\">10</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token comment\">// a = 10</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Le pointeur NULL",
+      "slug": "le-pointeur-null"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Lorsque l'on déclare un pointeur sans savoir quelle adresse lui donner, il ne faut pas le laisser non initialisé : il contiendrait une adresse quelconque, héritée de ce qui se trouvait auparavant en mémoire. On l'initialise alors à <code>NULL</code>, la convention pour un pointeur qui ne pointe vers rien. On peut ensuite tester sa validité avant de l'utiliser.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">// Un pointeur qui ne pointe encore vers rien</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span><span class=\"token operator\">*</span> ptr <span class=\"token operator\">=</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>ptr <span class=\"token operator\">==</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// Le pointeur n'est pas valide, on ne peut pas le déréférencer.</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Déréférencer un pointeur <code>NULL</code> provoque un plantage immédiat du programme. C'est une bonne chose : l'erreur est détectée tout de suite, à l'endroit exact où elle se produit, ce qui rend le débogage facile. Si l'on lisait ou écrivait à une adresse invalide mais non nulle, le comportement serait imprévisible : effets aléatoires, difficilement reproductibles, et plantage possible plus tard, sur une instruction parfaitement valide. Ce genre de bogue est un enfer à identifier. Nous retrouverons cette idée avec les assertions, qui vérifient justement qu'un pointeur n'est pas <code>NULL</code>.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Passage par adresse",
+      "slug": "passage-par-adresse"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Par défaut, un argument est passé <span class=\"md-emph\"><strong>par valeur</strong></span> : sa valeur est copiée dans le paramètre de la fonction. Ce principe s'applique aussi aux structures : modifier le paramètre ne modifie pas l'instance détenue par le code appelant, et les modifications disparaissent quand la fonction se termine. Cette fonction qui tente d'échanger deux entiers ne fonctionne donc pas :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">swapByValue</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> a<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> b<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> temp <span class=\"token operator\">=</span> a<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    a <span class=\"token operator\">=</span> b<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    b <span class=\"token operator\">=</span> temp<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Ici, <code>a</code> et <code>b</code> sont des copies des valeurs de l'appelant : seules ces copies sont échangées. Pour agir sur les variables de l'appelant, on passe leurs adresses : c'est le <span class=\"md-emph\"><strong>passage par adresse</strong></span>. Les paramètres sont alors des pointeurs, et la fonction modifie les variables d'origine par déréférencement.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">swap</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span><span class=\"token operator\">*</span> a<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span><span class=\"token operator\">*</span> b<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> temp <span class=\"token operator\">=</span> <span class=\"token operator\">*</span>a<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token operator\">*</span>a <span class=\"token operator\">=</span> <span class=\"token operator\">*</span>b<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token operator\">*</span>b <span class=\"token operator\">=</span> temp<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Dans ce cas, la fonction copie toujours ses arguments, mais comme il s'agit ici de pointeurs, elle copie des adresses. L'instruction <code>int temp = *a;</code> lit la valeur située à l'adresse <code>a</code>, puis <code>*a = *b;</code> et <code>*b = temp;</code> écrivent dans les variables d'origine. Dans le <code>main()</code>, on obtient ces adresses avec l'opérateur <code>&#x26;</code> :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">main</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> argc<span class=\"token punctuation\">,</span> <span class=\"token keyword\">char</span><span class=\"token operator\">*</span><span class=\"token operator\">*</span> argv<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> x <span class=\"token operator\">=</span> <span class=\"token number\">3</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> y <span class=\"token operator\">=</span> <span class=\"token number\">7</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token function\">swap</span><span class=\"token punctuation\">(</span><span class=\"token operator\">&#x26;</span>x<span class=\"token punctuation\">,</span> <span class=\"token operator\">&#x26;</span>y<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// x = 7</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// y = 3</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> EXIT_SUCCESS<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Les valeurs de <code>x</code> et <code>y</code> sont bien échangées. Une fonction peut donc modifier directement des variables du <code>main()</code> à condition de recevoir leurs adresses. C'est exactement ce que fait <code>scanf(\"%d\", &#x26;value)</code> : la fonction reçoit l'adresse de <code>value</code> pour pouvoir y écrire le résultat.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Pointeur vers une structure",
+      "slug": "pointeur-vers-une-structure"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Revenons maintenant à notre <code>Timer</code>. Pour qu'une opération puisse modifier le chronomètre d'origine, elle reçoit un pointeur vers celui-ci plutôt qu'une copie.</p>\n<p>Dans <code>Timer_start</code>, <code>Timer_stop</code> et <code>Timer_update</code>, le premier paramètre est <code>Timer* self</code>. L'étoile indique que <code>self</code> est un pointeur vers un <code>Timer</code>, c'est-à-dire qu'il contient son adresse. Le nom <code>self</code> est une convention : il désigne l'instance sur laquelle l'opération agit, mais ce n'est pas un mot-clé du langage C.</p>\n<p>Comme <code>self</code> est un pointeur, <code>*self</code> désigne la structure pointée, c'est-à-dire le <code>Timer</code> de l'appelant. Pour lire ou modifier l'un de ses champs, on devrait donc écrire <code>(*self).isRunning</code> : les parenthèses sont nécessaires, car l'opérateur <code>.</code> est prioritaire sur <code>*</code>.</p>\n<p>Comme il est très fréquent de manipuler des pointeurs vers des structures et d'en lire ou modifier les champs, le C propose le raccourci <code>-></code>.\nAinsi la fonction <code>Timer_start</code> peut être implémentée de deux façons.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Timer_start</span><span class=\"token punctuation\">(</span>Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// Option 1</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">(</span><span class=\"token operator\">*</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">.</span>isRunning <span class=\"token operator\">=</span> true<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">// Option 2 (à préférer)</span>\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>isRunning <span class=\"token operator\">=</span> true<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>L'instruction <code>self->isRunning = true;</code> est équivalente à <code>(*self).isRunning = true;</code> : elle modifie le champ <code>isRunning</code> du chronomètre pointé. On utilise <code>.</code> lorsque l'on dispose directement d'une structure, et <code>-></code> lorsque l'on dispose d'un pointeur vers celle-ci.</p>\n<p>Dans un projet plus complet, les structures contiennent des pointeurs vers d'autres structures. Admirez comme la syntaxe <code>-></code> rend le code plus lisible :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">// Option 1</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">(</span><span class=\"token operator\">*</span><span class=\"token punctuation\">(</span><span class=\"token operator\">*</span><span class=\"token punctuation\">(</span><span class=\"token operator\">*</span>task<span class=\"token punctuation\">)</span><span class=\"token punctuation\">.</span>robot<span class=\"token punctuation\">)</span><span class=\"token punctuation\">.</span>motorL<span class=\"token punctuation\">)</span><span class=\"token punctuation\">.</span>power <span class=\"token operator\">=</span> <span class=\"token number\">100</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">// Option 2 (à préférer)</span>\n</span><span class=\"code-line\">task<span class=\"token operator\">-></span>robot<span class=\"token operator\">-></span>motorL<span class=\"token operator\">-></span>power <span class=\"token operator\">=</span> <span class=\"token number\">100</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Dans ce projet, un pointeur vers une structure valide sera toujours obtenu grâce à la fonction <code>create</code> associée au type. Nous n'aurons donc pas à utiliser le symbole <code>&#x26;</code> pour passer nos structures aux fonctions : il suffira de leur transmettre le pointeur renvoyé par <code>create</code>, comme nous allons le voir dans la section suivante.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "abstract",
+      "titleHtml": "Récapitulatif",
+      "displayLabel": "Abstract",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Un paramètre passé par valeur est une copie : la fonction ne peut pas modifier la variable de l'appelant."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Un pointeur est une variable qui contient une adresse ; on le déclare avec <code>type* nom</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Pour modifier une instance, une fonction reçoit un pointeur vers celle-ci, par convention nommé <code>self</code>."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "html",
+          "html": "<table>\n<thead>\n<tr>\n<th>Opérateur</th>\n<th>Exemple</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>&#x26;</code> : Donne l'adresse d'une variable</td>\n<td><code>int* ptrA = &#x26;a;</code></td>\n</tr>\n<tr>\n<td><code>*</code> : Déréférence un pointeur (lecture ou écriture)</td>\n<td><code>*ptrA = 10;</code></td>\n</tr>\n<tr>\n<td><code>.</code> : Accède à un champ d'une structure</td>\n<td><code>timer.isRunning = true;</code></td>\n</tr>\n<tr>\n<td><code>-></code> : Accède à un champ via un pointeur</td>\n<td><code>self->isRunning = true;</code></td>\n</tr>\n</tbody>\n</table>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Créer et détruire une instance",
+      "slug": "créer-et-détruire-une-instance",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Allocation dynamique",
+      "slug": "allocation-dynamique"
+    },
+    {
+      "kind": "html",
+      "html": "<p>La fonction <code>Timer_create</code> réserve dynamiquement la mémoire nécessaire à un chronomètre et renvoie un <code>Timer*</code> vers cette instance. Contrairement à une variable locale, qui disparaît à la fin de la fonction où elle est déclarée, une zone allouée dynamiquement reste valide tant qu'on ne la libère pas : sa durée de vie est gérée explicitement. C'est ce qui permet de créer un objet dans une fonction et de le réutiliser dans une autre.</p>\n<p>Dans <code>Timer_create</code>, <code>calloc</code> réserve la mémoire et l'initialise à zéro, ce qui donne au chronomètre un état initial cohérent : il est arrêté et son temps écoulé vaut <code>0</code>. La macro <code>ASSERT_NEW</code>, utilisée juste après l'appel, vérifie que l'allocation a réussi avant que le code n'utilise le pointeur.</p>\n<p>Vous étudierez les fonctions d'allocation dynamique au semestre 2. Pour l'instant, ces fonctions vous sont données : retenez simplement que <code>Timer_create</code> fournit une instance prête à l'emploi et que <code>Timer_destroy</code> la libère.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Détruire une instance",
+      "slug": "détruire-une-instance"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Une zone allouée dynamiquement n'est jamais libérée automatiquement : c'est à vous de le faire. Pour chaque appel à <code>create</code>, il doit donc y avoir un appel à <code>destroy</code> quand l'instance n'est plus utilisée. Si on l'oublie, la mémoire n'est jamais rendue au système : c'est une <span class=\"md-emph\"><strong>fuite mémoire</strong></span>, qui devient problématique pour un programme qui tourne longtemps, comme un robot ou un jeu.</p>\n<p>Une fois détruite, une instance ne doit plus être utilisée : son pointeur contient toujours l'ancienne adresse, mais la mémoire correspondante n'est plus à nous. Pour éviter ce piège, il est conseillé de réaffecter <code>NULL</code> au pointeur juste après <code>destroy</code>.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">Timer<span class=\"token operator\">*</span> timer <span class=\"token operator\">=</span> <span class=\"token function\">Timer_create</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token comment\">// ... utilisation du chronomètre ...</span>\n</span><span class=\"code-line\"><span class=\"token function\">Timer_destroy</span><span class=\"token punctuation\">(</span>timer<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">timer <span class=\"token operator\">=</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Une organisation inspirée de la POO",
+      "slug": "une-organisation-inspirée-de-la-poo"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Associer une structure à des fonctions qui agissent sur ses instances rappelle la programmation orientée objet (POO) : les données et les opérations sont liées, <code>Timer_create</code> et <code>Timer_destroy</code> jouent un rôle proche de celui d'un constructeur et d'un destructeur, et le paramètre <code>self</code> représente l'instance concernée.</p>\n<p>Il faut toutefois garder à l'esprit qu'en C, une fonction n'est pas une méthode attachée à une structure. L'appel s'écrit <code>Timer_start(timer)</code> plutôt que <code>timer.start()</code>. De plus, la structure <code>Timer</code> expose ses champs : le langage ne les protège pas comme le ferait l'encapsulation d'une classe. Nous adoptons donc seulement la convention : un type, ses données et les fonctions associées.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Utiliser un Timer",
+      "slug": "utiliser-un-timer",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Voyons comment se servir d'un <code>Timer</code>. Il peut mesurer une durée sur le robot, par exemple pour arrêter un moteur après trois secondes, ou dans un jeu, pour limiter le temps d'une manche. Le principe est le même : on crée le chronomètre, on le démarre, puis on le met à jour à chaque tour de boucle en lui donnant le temps écoulé depuis le tour précédent (<code>deltaTime</code>, en secondes).</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"settings.h\"</span></span>\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"timer.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">main</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> argc<span class=\"token punctuation\">,</span> <span class=\"token keyword\">char</span><span class=\"token operator\">*</span><span class=\"token operator\">*</span> argv<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Timer<span class=\"token operator\">*</span> timer <span class=\"token operator\">=</span> <span class=\"token function\">Timer_create</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">float</span> deltaTime <span class=\"token operator\">=</span> <span class=\"token number\">0.25f</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token function\">Timer_start</span><span class=\"token punctuation\">(</span>timer<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">while</span> <span class=\"token punctuation\">(</span><span class=\"token function\">Timer_getElapsedTime</span><span class=\"token punctuation\">(</span>timer<span class=\"token punctuation\">)</span> <span class=\"token operator\">&#x3C;</span> <span class=\"token number\">3.0f</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token comment\">// Une itération simule 0,25 seconde</span>\n</span><span class=\"code-line\">        <span class=\"token function\">Timer_update</span><span class=\"token punctuation\">(</span>timer<span class=\"token punctuation\">,</span> deltaTime<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token function\">Timer_stop</span><span class=\"token punctuation\">(</span>timer<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"Temps : %.2f s\\n\"</span><span class=\"token punctuation\">,</span> <span class=\"token function\">Timer_getElapsedTime</span><span class=\"token punctuation\">(</span>timer<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token function\">Timer_destroy</span><span class=\"token punctuation\">(</span>timer<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    timer <span class=\"token operator\">=</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> EXIT_SUCCESS<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Les fonctions de modification et de consultation reçoivent directement <code>timer</code>, car il s'agit déjà d'un pointeur. Il ne faut pas écrire <code>&#x26;timer</code> dans ces appels : cela donnerait l'adresse de la variable pointeur, et non le pointeur vers le chronomètre.</p>\n<p>Dans un vrai programme, <code>deltaTime</code> n'est pas une constante : il est mesuré à chaque tour de boucle, par exemple avec <code>millis()</code> sur la Pico, et la boucle effectue d'autres tâches. Plusieurs chronomètres indépendants peuvent coexister, chacun avec son propre état :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">Timer<span class=\"token operator\">*</span> timer1 <span class=\"token operator\">=</span> <span class=\"token function\">Timer_create</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">Timer<span class=\"token operator\">*</span> timer2 <span class=\"token operator\">=</span> <span class=\"token function\">Timer_create</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token function\">Timer_start</span><span class=\"token punctuation\">(</span>timer1<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token function\">Timer_start</span><span class=\"token punctuation\">(</span>timer2<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">while</span> <span class=\"token punctuation\">(</span><span class=\"token function\">Timer_getElapsedTime</span><span class=\"token punctuation\">(</span>timer1<span class=\"token punctuation\">)</span> <span class=\"token operator\">&#x3C;</span> <span class=\"token number\">3.0f</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">Timer_update</span><span class=\"token punctuation\">(</span>timer1<span class=\"token punctuation\">,</span> <span class=\"token number\">0.5f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">Timer_update</span><span class=\"token punctuation\">(</span>timer2<span class=\"token punctuation\">,</span> <span class=\"token number\">0.5f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token function\">Timer_stop</span><span class=\"token punctuation\">(</span>timer2<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">while</span> <span class=\"token punctuation\">(</span><span class=\"token function\">Timer_getElapsedTime</span><span class=\"token punctuation\">(</span>timer1<span class=\"token punctuation\">)</span> <span class=\"token operator\">&#x3C;</span> <span class=\"token number\">6.0f</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">Timer_update</span><span class=\"token punctuation\">(</span>timer1<span class=\"token punctuation\">,</span> <span class=\"token number\">0.25f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">Timer_update</span><span class=\"token punctuation\">(</span>timer2<span class=\"token punctuation\">,</span> <span class=\"token number\">0.25f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token function\">Timer_getElapsedTime</span><span class=\"token punctuation\">(</span>timer1<span class=\"token punctuation\">)</span> <span class=\"token operator\">>=</span> <span class=\"token number\">4.f</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token function\">Timer_start</span><span class=\"token punctuation\">(</span>timer2<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"Temps 1 : %.2f s\\n\"</span><span class=\"token punctuation\">,</span> <span class=\"token function\">Timer_getElapsedTime</span><span class=\"token punctuation\">(</span>timer1<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"Temps 2 : %.2f s\\n\"</span><span class=\"token punctuation\">,</span> <span class=\"token function\">Timer_getElapsedTime</span><span class=\"token punctuation\">(</span>timer2<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token function\">Timer_destroy</span><span class=\"token punctuation\">(</span>timer1<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token function\">Timer_destroy</span><span class=\"token punctuation\">(</span>timer2<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">timer1 <span class=\"token operator\">=</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">timer2 <span class=\"token operator\">=</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Utiliser un Timer",
+      "displayLabel": "Exercise 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Devinez la sortie du code précédent puis exécutez-le pour vérifier votre réponse.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Compléments et bonnes pratiques",
+      "slug": "compléments-et-bonnes-pratiques",
+      "sectionNumber": 4
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Préconditions",
+      "slug": "préconditions"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les fonctions <code>Timer_start</code>, <code>Timer_stop</code>, <code>Timer_update</code> et <code>Timer_getElapsedTime</code> attendent un pointeur valide : passer <code>NULL</code> est une erreur de programmation. Plutôt que de laisser le programme planter plus loin, ou pire, de continuer avec un comportement imprévisible, elles commencent par vérifier cette hypothèse avec une <span class=\"md-emph\"><strong>assertion</strong></span> :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>self <span class=\"token operator\">&#x26;&#x26;</span> <span class=\"token string\">\"self must not be NULL\"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>La macro <code>assert</code> reçoit une condition qui doit être vraie. Ici, l'expression <code>self</code> est vraie lorsque le pointeur n'est pas <code>NULL</code>. Si la condition est fausse, le programme s'arrête immédiatement en affichant la condition qui a échoué ainsi que le fichier et la ligne concernés. Le texte placé après <code>&#x26;&#x26;</code> n'a aucun effet sur le test : c'est un message qui s'affiche avec l'assertion et qui explique ce qui est attendu. On exprime ainsi une <span class=\"md-emph\"><strong>précondition</strong></span>, c'est-à-dire ce que l'appelant doit garantir pour que la fonction puisse s'exécuter correctement.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Provoquer une assertion",
+      "displayLabel": "Exercise 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Dans votre projet, remplacez le contenu de <code>main.c</code> par le code suivant. Compilez et exécutez le programme en configuration <strong>Debug</strong>.</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"settings.h\"</span></span>\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"timer.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">main</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> argc<span class=\"token punctuation\">,</span> <span class=\"token keyword\">char</span><span class=\"token operator\">*</span><span class=\"token operator\">*</span> argv<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Timer<span class=\"token operator\">*</span> timer <span class=\"token operator\">=</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">Timer_start</span><span class=\"token punctuation\">(</span>timer<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> EXIT_SUCCESS<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre><p>La console affiche :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">Assertion failed: self &#x26;&#x26; \"self must not be NULL\"\n</span></code></pre><p>suivi du fichier et de la ligne concernés. Une fenêtre d'erreur s'ouvre, et si vous cliquez sur « Recommencer », vous pourrez déboguer le programme.</p><p>Si la <strong>Pile des appels</strong> et les <strong>Variables locales</strong> ne sont pas visibles dans l'interface de Visual Studio, allez dans l'onglet <strong>Déboguer</strong>, puis <strong>Fenêtres</strong>, et ajoutez-les : elles sont indispensables. Servez-vous des variables locales pour constater que <code>self</code> vaut <code>NULL</code>, et utilisez la pile des appels pour retrouver la ligne de la fonction appelante (le <code>main()</code>).</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Mot-clé const",
+      "slug": "mot-clé-const"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les fonctions <code>Timer_start</code>, <code>Timer_stop</code> et <code>Timer_update</code> modifient l'état du chronomètre. À l'inverse, <code>Timer_getElapsedTime</code> ne fait que lire le temps écoulé et n'effectue aucune modification. Cette distinction se lit sur son prototype qui est légèrement différent :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">float</span> <span class=\"token function\">Timer_getElapsedTime</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">const</span> Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Le mot-clé <code>const</code> placé devant <code>Timer*</code> indique que la fonction s'interdit de modifier le <code>Timer</code> pointé par <code>self</code>. Dans le corps de la fonction, on peut lire <code>self->elapsedTime</code>, mais toute tentative de modification est refusée par le compilateur :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">float</span> <span class=\"token function\">Timer_getElapsedTime</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">const</span> Timer<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// Erreur de compilation : self pointe vers un Timer constant.</span>\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>elapsedTime <span class=\"token operator\">=</span> <span class=\"token number\">0.0f</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> self<span class=\"token operator\">-></span>elapsedTime<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Ce mot-clé est utile pour trois raisons :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "il documente l'intention : en lisant le prototype, on sait immédiatement que la fonction ne modifie pas l'instance ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "il protège contre les erreurs : une modification accidentelle, par exemple une faute de frappe qui remplace <code>==</code> par <code>=</code>, est détectée à la compilation plutôt qu'à l'exécution ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "il fait partie de la spécification : l'appelant a la garantie que son chronomètre ne sera pas modifié par cet appel."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Nous adopterons donc la règle suivante : une fonction qui ne fait que consulter une instance reçoit un <code>const Type* self</code>, et une fonction qui peut la modifier reçoit un <code>Type* self</code>.</p>\n<p><code>const</code> ne signifie pas que le chronomètre est immuable dans tout le programme. Une autre fonction qui reçoit un <code>Timer*</code> peut toujours le modifier. Le <code>const</code> garantit seulement que la fonction qui le déclare ne modifie pas l'instance à travers son pointeur <code>self</code>. On peut en revanche passer un <code>Timer*</code> à une fonction qui attend un <code>const Timer*</code>, mais l'inverse est refusé par le compilateur.</p>\n<p>On peut se demander pourquoi se compliquer la vie avec un pointeur constant, alors qu'il suffirait de passer la structure elle-même : la fonction travaillerait sur une copie et ne pourrait pas modifier l'original. Il y a deux raisons de préférer <code>const Timer*</code>.</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>La cohérence des prototypes.</strong> Toutes les fonctions <code>Timer_xxx</code> prennent un pointeur vers un <code>Timer</code> comme premier argument. C'est plus simple à retenir et cela évite de consulter la documentation, ou de se tromper, pour savoir comment appeler chaque fonction."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>Le coût de la copie.</strong> La taille d'une structure est au moins égale à la somme de celles de ses champs. Une structure peut donc facilement atteindre plusieurs centaines d'octets. Un pointeur occupe seulement 8 octets sur la plupart des architectures modernes. Passer un pointeur est donc presque gratuit, alors que copier une structure peut être coûteux, d'autant plus si la fonction est appelée très souvent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Ce n'est cependant pas une règle absolue. Les fonctions de la structure <code>Vec2</code> ne prenaient pas de pointeur, et c'était plus efficace ainsi. L'argument du coût de la copie ne s'applique pas puisqu'un <code>Vec2</code> est composé de deux <code>float</code>, donc de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>2</mn><mo>×</mo><mn>4</mn></mrow><annotation encoding=\"application/x-tex\">2 \\times 4</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.7278em;vertical-align:-0.0833em;\"></span><span class=\"mord\">2</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">×</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">4</span></span></span></span> octets.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Limites des assertions",
+      "slug": "limites-des-assertions"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Une assertion sert à vérifier une hypothèse du programme, c'est-à-dire à détecter une erreur de programmation. Ce n'est pas un moyen de valider des données fournies par une personne ou un fichier. De plus, les assertions sont désactivées en configuration <strong>Release</strong> (macro <code>NDEBUG</code>) : le code ne doit donc jamais en dépendre pour fonctionner correctement, et c'est à l'appelant de respecter les préconditions.</p>\n<p>Le contrôle réalisé par <code>ASSERT_NEW(self)</code> dans <code>Timer_create</code> est différent : il vérifie que l'allocation a obtenu la mémoire dont elle a besoin, et non que l'appelant a respecté une précondition.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Récapitulatif des bonnes pratiques",
+      "slug": "récapitulatif-des-bonnes-pratiques"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "abstract",
+      "titleHtml": "Bonnes pratiques",
+      "displayLabel": "Abstract",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Une fonction qui reçoit un pointeur vérifie qu'il n'est pas <code>NULL</code> avec <code>assert</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Une fonction qui ne modifie pas l'instance reçoit un <code>const Type* self</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Chaque <code>create</code> est suivi, en fin d'utilisation, d'un <code>destroy</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Un pointeur détruit n'est plus utilisé ; on le remet à <code>NULL</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "On ne passe pas <code>&#x26;</code> pour nos structures : on transmet le pointeur renvoyé par <code>create</code>."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Bilan",
+      "displayLabel": "Exercise 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Relisez les fichiers <code>timer.h</code> et <code>timer.c</code> et vérifiez que vous les comprenez complètement.\nÉcrivez ensuite un exemple dans le <code>main()</code> pour vous assurer que vous savez utiliser un <code>Timer</code>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Bilan",
+      "slug": "bilan",
+      "sectionNumber": 5
+    },
+    {
+      "kind": "html",
+      "html": "<p>En C, les pointeurs permettent de manipuler des données à partir de leur adresse mémoire. Ils sont notamment utilisés pour transmettre une structure à une fonction afin qu'elle puisse modifier l'instance d'origine.</p>\n<p>À travers l'exemple du chronomètre <code>Timer</code>, vous découvrez comment organiser un type autour de ses données et des fonctions qui permettent de créer, de modifier et de consulter ses instances. Vous abordez également l'allocation dynamique, la libération de la mémoire, les assertions et le mot-clé <code>const</code>, qui permet de préciser si une fonction peut modifier une instance.</p>\n<p>Ces concepts constituent des outils essentiels pour comprendre et concevoir des programmes C organisés autour de types de données.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "typeName": "Je sais faire",
+      "displayLabel": "Je sais faire",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Définir ce qu'est un pointeur."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Comprendre le rôle des opérateurs <code>&#x26;</code> et <code>*</code>, ainsi que la différence entre une adresse et la valeur située à cette adresse."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Expliquer la différence entre le passage par valeur et le passage par adresse."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Comprendre comment une fonction peut modifier une variable ou une structure appartenant au code appelant."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Distinguer l'accès à un champ avec <code>.</code> de l'accès à un champ via un pointeur avec <code>-></code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Comprendre le rôle de <code>NULL</code> et pourquoi il ne faut pas déréférencer un pointeur invalide."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Expliquer le rôle des fonctions <code>create</code> et <code>destroy</code> dans la gestion d'une instance."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Distinguer une fonction qui modifie une instance (<code>Type*</code>) d'une fonction qui se contente de la consulter (`const Type*)."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Expliquer le rôle d'une assertion."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Comprendre les limites des assertions, notamment leur désactivation en configuration Release."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Lire les fichiers <code>timer.h</code> et <code>timer.c</code>, expliquer le rôle de leurs fonctions et suivre leur utilisation dans un <code>main()</code>."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Apprenez à organiser un programme C autour d'un type de données et des fonctions qui le créent, le consultent et le modifient. Vous découvrirez au passage les pointeurs, le passage par adresse, le mot clé const, les assertions et l'allocation dynamique.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Les pointeurs",
+      "id": "les-pointeurs",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 2,
+      "text": "Définition",
+      "id": "définition"
+    },
+    {
+      "depth": 2,
+      "text": "Adresse et déréférencement",
+      "id": "adresse-et-déréférencement"
+    },
+    {
+      "depth": 2,
+      "text": "Le pointeur NULL",
+      "id": "le-pointeur-null"
+    },
+    {
+      "depth": 2,
+      "text": "Passage par adresse",
+      "id": "passage-par-adresse"
+    },
+    {
+      "depth": 2,
+      "text": "Pointeur vers une structure",
+      "id": "pointeur-vers-une-structure"
+    },
+    {
+      "depth": 1,
+      "text": "Créer et détruire une instance",
+      "id": "créer-et-détruire-une-instance",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 2,
+      "text": "Allocation dynamique",
+      "id": "allocation-dynamique"
+    },
+    {
+      "depth": 2,
+      "text": "Détruire une instance",
+      "id": "détruire-une-instance"
+    },
+    {
+      "depth": 2,
+      "text": "Une organisation inspirée de la POO",
+      "id": "une-organisation-inspirée-de-la-poo"
+    },
+    {
+      "depth": 1,
+      "text": "Utiliser un Timer",
+      "id": "utiliser-un-timer",
+      "sectionNumber": 3
+    },
+    {
+      "depth": 1,
+      "text": "Compléments et bonnes pratiques",
+      "id": "compléments-et-bonnes-pratiques",
+      "sectionNumber": 4
+    },
+    {
+      "depth": 2,
+      "text": "Préconditions",
+      "id": "préconditions"
+    },
+    {
+      "depth": 2,
+      "text": "Mot-clé const",
+      "id": "mot-clé-const"
+    },
+    {
+      "depth": 2,
+      "text": "Limites des assertions",
+      "id": "limites-des-assertions"
+    },
+    {
+      "depth": 2,
+      "text": "Récapitulatif des bonnes pratiques",
+      "id": "récapitulatif-des-bonnes-pratiques"
+    },
+    {
+      "depth": 1,
+      "text": "Bilan",
+      "id": "bilan",
+      "sectionNumber": 5
+    }
+  ],
+  "figureModules": []
+}

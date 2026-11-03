@@ -1,0 +1,527 @@
+{
+  "sourcePath": "01_ai_data/ch2_kakapo.md",
+  "title": "Le problème du Kakapo",
+  "navTitle": "Pratique",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Pour mettre en pratique les notions du chapitre sur les données et les opérations (pointeurs, <code>create</code>/<code>destroy</code>, <code>const</code>, assertions), nous allons résoudre le problème suivant.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Le kakapo et les fruits de rimu",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Po, le kakapo, voit des fruits de rimu, dont il est friand, tomber les uns après les autres autour de lui. Il veut bien sûr aller les manger, mais il n'a pas nécessairement assez d'énergie pour cela.</p>"
+        },
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "S'il se déplace de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span> mètres, cela lui coûte <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding=\"application/x-tex\">n^2</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\"><span class=\"mord mathnormal\">n</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span></span></span></span> unités d'énergie."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Quand il n'a plus d'énergie, il ne bouge plus et s'endort, même s'il est arrivé au fruit tant convoité."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "S'il atteint un fruit avec de l'énergie, il le mange et regagne 10 unités d'énergie."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "html",
+          "html": "<p>Lorsqu'on donne dans l'ordre les positions des fruits, le but est de savoir s'il peut tous les manger et, sinon, combien il en a mangé avant de tomber de fatigue.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "example",
+      "titleHtml": "Instance du problème",
+      "displayLabel": "Example 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "light"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>On suppose que Po commence à la position <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>0</mn><mo separator=\"true\">,</mo><mn>0</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(0,0)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">0</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">0</span><span class=\"mclose\">)</span></span></span></span> avec <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>20</mn></mrow><annotation encoding=\"application/x-tex\">20</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">20</span></span></span></span> unités d'énergie.</p>"
+        },
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<strong>Un premier fruit tombe en position <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>2</mn><mo separator=\"true\">,</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(2,1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">2</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span>.</strong><br>\nComme Po est en position <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>0</mn><mo separator=\"true\">,</mo><mn>0</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(0,0)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">0</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">0</span><span class=\"mclose\">)</span></span></span></span>, il doit suivre le vecteur de déplacement <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>2</mn><mo separator=\"true\">,</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(2,1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">2</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span> qui lui coûte <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mn>2</mn><mn>2</mn></msup><mo>+</mo><msup><mn>1</mn><mn>2</mn></msup><mo>=</mo><mn>5</mn></mrow><annotation encoding=\"application/x-tex\">2^2 + 1^2 = 5</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\"><span class=\"mord\">2</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\"><span class=\"mord\">1</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">5</span></span></span></span> unités d'énergie. Il arrive au fruit avec <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>20</mn><mo>−</mo><mn>5</mn><mo>=</mo><mn>15</mn></mrow><annotation encoding=\"application/x-tex\">20 - 5 = 15</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.7278em;vertical-align:-0.0833em;\"></span><span class=\"mord\">20</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">5</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">15</span></span></span></span> unités. Comme il n'est pas épuisé, il le mange et atteint <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>15</mn><mo>+</mo><mn>10</mn><mo>=</mo><mn>25</mn></mrow><annotation encoding=\"application/x-tex\">15 + 10 = 25</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.7278em;vertical-align:-0.0833em;\"></span><span class=\"mord\">15</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">10</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">25</span></span></span></span> unités."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<strong>Un second fruit tombe en position <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>4</mn><mo separator=\"true\">,</mo><mn>3</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(4,3)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">4</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">3</span><span class=\"mclose\">)</span></span></span></span>.</strong><br>\nPo effectue le déplacement <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>4</mn><mo separator=\"true\">,</mo><mn>3</mn><mo stretchy=\"false\">)</mo><mo>−</mo><mo stretchy=\"false\">(</mo><mn>2</mn><mo separator=\"true\">,</mo><mn>1</mn><mo stretchy=\"false\">)</mo><mo>=</mo><mo stretchy=\"false\">(</mo><mn>2</mn><mo separator=\"true\">,</mo><mn>2</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(4,3) - (2,1) = (2,2)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">4</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">3</span><span class=\"mclose\">)</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">2</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">1</span><span class=\"mclose\">)</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">2</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">2</span><span class=\"mclose\">)</span></span></span></span> qui lui coûte <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mn>2</mn><mn>2</mn></msup><mo>+</mo><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mn>8</mn></mrow><annotation encoding=\"application/x-tex\">2^2 + 2^2 = 8</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8974em;vertical-align:-0.0833em;\"></span><span class=\"mord\"><span class=\"mord\">2</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\"><span class=\"mord\">2</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">8</span></span></span></span> unités. Il atteint le fruit avec <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>25</mn><mo>−</mo><mn>8</mn><mo>=</mo><mn>17</mn></mrow><annotation encoding=\"application/x-tex\">25 - 8 = 17</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.7278em;vertical-align:-0.0833em;\"></span><span class=\"mord\">25</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">8</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">17</span></span></span></span> unités. Il le mange et remonte à <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>27</mn></mrow><annotation encoding=\"application/x-tex\">27</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">27</span></span></span></span> unités."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<strong>Un troisième fruit tombe en position <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>3</mn><mo separator=\"true\">,</mo><mo>−</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(3,-1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">3</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">−</span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span>.</strong><br>\nIl effectue le déplacement <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>3</mn><mo separator=\"true\">,</mo><mo>−</mo><mn>1</mn><mo stretchy=\"false\">)</mo><mo>−</mo><mo stretchy=\"false\">(</mo><mn>4</mn><mo separator=\"true\">,</mo><mn>3</mn><mo stretchy=\"false\">)</mo><mo>=</mo><mo stretchy=\"false\">(</mo><mo>−</mo><mn>1</mn><mo separator=\"true\">,</mo><mo>−</mo><mn>4</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(3,-1) - (4,3) = (-1,-4)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">3</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">−</span><span class=\"mord\">1</span><span class=\"mclose\">)</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">4</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">3</span><span class=\"mclose\">)</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">−</span><span class=\"mord\">1</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">−</span><span class=\"mord\">4</span><span class=\"mclose\">)</span></span></span></span> qui consomme <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mo>−</mo><mn>1</mn><msup><mo stretchy=\"false\">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy=\"false\">(</mo><mo>−</mo><mn>4</mn><msup><mo stretchy=\"false\">)</mo><mn>2</mn></msup><mo>=</mo><mn>17</mn></mrow><annotation encoding=\"application/x-tex\">(-1)^2 + (-4)^2 = 17</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1.0641em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">−</span><span class=\"mord\">1</span><span class=\"mclose\"><span class=\"mclose\">)</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1.0641em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">−</span><span class=\"mord\">4</span><span class=\"mclose\"><span class=\"mclose\">)</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">17</span></span></span></span> unités. Il atteint le fruit avec <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>27</mn><mo>−</mo><mn>17</mn><mo>=</mo><mn>10</mn></mrow><annotation encoding=\"application/x-tex\">27 - 17 = 10</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.7278em;vertical-align:-0.0833em;\"></span><span class=\"mord\">27</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">17</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">10</span></span></span></span> unités, le mange, puis remonte à <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>20</mn></mrow><annotation encoding=\"application/x-tex\">20</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">20</span></span></span></span> unités."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<strong>Un dernier fruit tombe en <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mo>−</mo><mn>1</mn><mo separator=\"true\">,</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(-1,1)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">−</span><span class=\"mord\">1</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">1</span><span class=\"mclose\">)</span></span></span></span>.</strong><br>\nLe déplacement <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mo>−</mo><mn>1</mn><mo separator=\"true\">,</mo><mn>1</mn><mo stretchy=\"false\">)</mo><mo>−</mo><mo stretchy=\"false\">(</mo><mn>3</mn><mo separator=\"true\">,</mo><mo>−</mo><mn>1</mn><mo stretchy=\"false\">)</mo><mo>=</mo><mo stretchy=\"false\">(</mo><mo>−</mo><mn>4</mn><mo separator=\"true\">,</mo><mn>2</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(-1,1) - (3,-1) = (-4,2)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">−</span><span class=\"mord\">1</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">1</span><span class=\"mclose\">)</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">3</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">−</span><span class=\"mord\">1</span><span class=\"mclose\">)</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">−</span><span class=\"mord\">4</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">2</span><span class=\"mclose\">)</span></span></span></span> coûte <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mo>−</mo><mn>4</mn><msup><mo stretchy=\"false\">)</mo><mn>2</mn></msup><mo>+</mo><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mn>20</mn></mrow><annotation encoding=\"application/x-tex\">(-4)^2 + 2^2 = 20</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1.0641em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">−</span><span class=\"mord\">4</span><span class=\"mclose\"><span class=\"mclose\">)</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">+</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\"><span class=\"mord\">2</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">20</span></span></span></span> unités. Il atteint le fruit sans aucune énergie. Il s'endort sans le manger."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "html",
+          "html": "<p>Po a donc mangé 3 fruits sur 4.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Implémentation du type Kakapo",
+      "slug": "implémentation-du-type-kakapo",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>Nous allons représenter le kakapo avec une structure <code>Kakapo</code>. Sa position est un <code>Vec2</code>, comme ceux que vous avez définis dans le chapitre sur les structures. Le fichier <code>kakapo.h</code> décrit le type et les opérations disponibles ; lisez-le attentivement, car cette documentation constitue la spécification de votre implémentation.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Modification du projet",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Ajoutez les fichiers <code>kakapo.h</code> et <code>kakapo.c</code> dans le dossier <code>application/src</code>, puis inscrivez-les dans la liste de <code>target_sources</code>.</p>"
+        },
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "footer": true,
+          "items": [
+            {
+              "titleHtml": "kakapo.h",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">pragma</span> <span class=\"token expression\">once</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"settings.h\"</span></span>\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"vec2.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Structure représentant un Kakapo.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">Kakapo</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Position du Kakapo.</span>\n</span><span class=\"code-line\">    Vec2 position<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Énergie du Kakapo.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">float</span> energy<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Nombre de fruits de Rimu ramassés par le Kakapo.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> rimuFruitCount<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Indique si le Kakapo est épuisé.</span>\n</span><span class=\"code-line\">    bool isExhausted<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> Kakapo<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Crée un Kakapo avec une position et une énergie initiales.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param position La position initiale du Kakapo.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param energy L'énergie initiale du Kakapo.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @return Le Kakapo créé.</span>\n</span><span class=\"code-line\">Kakapo<span class=\"token operator\">*</span> <span class=\"token function\">Kakapo_create</span><span class=\"token punctuation\">(</span>Vec2 position<span class=\"token punctuation\">,</span> <span class=\"token keyword\">float</span> energy<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Détruit un Kakapo.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self Le Kakapo à détruire.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Kakapo_destroy</span><span class=\"token punctuation\">(</span>Kakapo<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Déplace le Kakapo d'un certain déplacement et consomme de l'énergie.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// Si le Kakapo est épuisé, il ne peut pas se déplacer.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// S'il n'a plus d'énergie après le déplacement, il devient épuisé.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self Le Kakapo.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param displacement Le vecteur de déplacement.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Kakapo_move</span><span class=\"token punctuation\">(</span>Kakapo<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> Vec2 displacement<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Ramasse un fruit de Rimu pour le Kakapo.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// Si le Kakapo est épuisé, il ne peut pas ramasser de fruit.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// S'il ramasse un fruit, son énergie augmente de 10.0f unités.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self Le Kakapo.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Kakapo_pickRimuFruit</span><span class=\"token punctuation\">(</span>Kakapo<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Vérifie si le Kakapo est épuisé.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self Le Kakapo.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @return true si le Kakapo est épuisé, false sinon.</span>\n</span><span class=\"code-line\">bool <span class=\"token function\">Kakapo_isExhausted</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">const</span> Kakapo<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span></code></pre>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "kakapo.c",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"kakapo.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">Kakapo<span class=\"token operator\">*</span> <span class=\"token function\">Kakapo_create</span><span class=\"token punctuation\">(</span>Vec2 position<span class=\"token punctuation\">,</span> <span class=\"token keyword\">float</span> energy<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Kakapo<span class=\"token operator\">*</span> self <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>Kakapo<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>Kakapo<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">ASSERT_NEW</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>position <span class=\"token operator\">=</span> position<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>energy <span class=\"token operator\">=</span> energy<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>isExhausted <span class=\"token operator\">=</span> false<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>rimuFruitCount <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> self<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Kakapo_destroy</span><span class=\"token punctuation\">(</span>Kakapo<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span>self<span class=\"token punctuation\">)</span> <span class=\"token keyword\">return</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">free</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Kakapo_move</span><span class=\"token punctuation\">(</span>Kakapo<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> Vec2 displacement<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Kakapo_pickRimuFruit</span><span class=\"token punctuation\">(</span>Kakapo<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">bool <span class=\"token function\">Kakapo_isExhausted</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">const</span> Kakapo<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "Projet",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">s1_1_cmake/\n</span><span class=\"code-line\">├── application/\n</span><span class=\"code-line\">|   ├── CMakeLists.txt\n</span><span class=\"code-line\">|   └── src/\n</span><span class=\"code-line\">|       ├── kakapo.c\n</span><span class=\"code-line\">|       ├── kakapo.h\n</span><span class=\"code-line\">|       ├── main.c\n</span><span class=\"code-line\">|       ├── settings.h\n</span><span class=\"code-line\">|       ├── timer.c\n</span><span class=\"code-line\">|       ├── timer.h\n</span><span class=\"code-line\">|       ├── vec2.c\n</span><span class=\"code-line\">|       └── vec2.h\n</span><span class=\"code-line\">├── .editorconfig\n</span><span class=\"code-line\">├── .gitignore\n</span><span class=\"code-line\">├── CMakeLists.txt\n</span><span class=\"code-line\">├── CMakePresets.json\n</span><span class=\"code-line\">└── README.md\n</span></code></pre>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Implémenter Kakapo",
+      "displayLabel": "Exercise 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Complétez les fonctions marquées <code>TODO</code> dans <code>kakapo.c</code> en respectant leur documentation :</p>"
+        },
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<code>Kakapo_move</code> ajoute le déplacement à la position du kakapo et retire à son énergie le carré de la longueur du déplacement. Il devient épuisé si son énergie est inférieure ou égale à zéro. Un kakapo déjà épuisé ne bouge pas."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<code>Kakapo_pickRimuFruit</code> incrémente le nombre de fruits mangés et ajoute 10 unités d'énergie, sauf si le kakapo est épuisé."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<code>Kakapo_isExhausted</code> indique si le kakapo est épuisé."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "html",
+          "html": "<p>Utilisez les fonctions de <code>Vec2</code> que vous avez écrites. Comme pour <code>Timer</code>, les fonctions qui reçoivent un <code>Kakapo*</code> doivent vérifier avec <code>assert</code> que <code>self</code> n'est pas <code>NULL</code>. Pensez à supprimer les <code>assert(false);</code> qui servent seulement de marqueurs.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Résolution du problème",
+      "slug": "résolution-du-problème",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>Il reste à utiliser votre structure pour résoudre le problème. Le programme principal lit la position et l'énergie initiales du kakapo, puis le nombre de fruits et leurs positions dans l'ordre. Comme nous n'avons pas encore vu les tableaux, le programme ne mémorise pas les fruits : il traite chacun dès qu'il est lu.</p>\n<p>Pour chaque fruit, le déplacement à effectuer est la différence entre la position du fruit et la position actuelle du kakapo. Le kakapo se déplace, puis, s'il n'est pas épuisé, il ramasse le fruit.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Les fruits de rimu",
+      "displayLabel": "Exercise 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Écrivez un programme principal dans <code>main.c</code> qui demande avec des appels à <code>scanf</code> les éléments suivants :</p>"
+        },
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "la position de Po le kakapo et son énergie initiale ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "le nombre <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span> de fruits ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "pour chacun des <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>n</mi></mrow><annotation encoding=\"application/x-tex\">n</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4306em;\"></span><span class=\"mord mathnormal\">n</span></span></span></span> fruits : deux nombres flottants représentant les coordonnées de sa position."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "html",
+          "html": "<p>Le programme affiche ensuite le nombre de fruits que le kakapo a pu manger.</p><p>Voici un exemple d'exécution. Les trois premiers fruits sont mangés, mais le kakapo s'épuise en allant vers le quatrième.</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">Position initiale : 0 0\n</span><span class=\"code-line\">Energie initiale : 20\n</span><span class=\"code-line\">Nombre de fruits : 4\n</span><span class=\"code-line\">Position du fruit 1 : 2 1\n</span><span class=\"code-line\">Position du fruit 2 : 4 3\n</span><span class=\"code-line\">Position du fruit 3 : 3 -1\n</span><span class=\"code-line\">Position du fruit 4 : -1 1\n</span><span class=\"code-line\">Po a mangé 3 fruit(s) sur 4.\n</span></code></pre><p>Testez aussi votre programme avec une séquence que Po peut terminer. Dans tous les cas, pensez à appeler <code>Kakapo_destroy</code> lorsque vous avez fini d'utiliser le kakapo.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Tests",
+      "displayLabel": "Exercise 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Préparez plusieurs exemples d'instances du problème, que vous résoudrez d'abord à la main, puis avec votre code. Pensez aux cas limites : aucun fruit, un fruit à la position du kakapo, une énergie initiale nulle, ou une énergie qui tombe exactement à zéro.</p><p>Écrivez ensuite plusieurs fonctions de test. N'oubliez pas de détruire chaque kakapo créé dans un test.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Bilan",
+      "slug": "bilan",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans ce chapitre, vous avez appris à organiser un programme C autour de types de données et des opérations qui leur sont associées. À travers les exemples de <code>Vec2</code>, <code>Timer</code> et <code>Kakapo</code>, vous avez découvert comment définir une structure, déclarer et implémenter ses fonctions, documenter leur comportement et utiliser les instances dans un programme.</p>\n<p>Vous avez également abordé les pointeurs, le passage par adresse, la gestion de la durée de vie des instances, le mot-clé <code>const</code> et les assertions. Le problème du kakapo vous a permis de mobiliser ces notions pour résoudre un exercice concret, puis de vérifier votre solution à l'aide de tests.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "typeName": "Je sais faire",
+      "displayLabel": "Je sais faire",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Définir une structure en C, l'initialiser et manipuler ses champs."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Organiser un type et ses fonctions associées dans des fichiers <code>.h</code> et <code>.c</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Documenter les structures et les fonctions avec Doxygen."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Ajouter de nouveaux fichiers à un projet CMake et compiler le projet."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Lire la documentation d'un type et implémenter ses fonctions conformément à leur spécification."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Expliquer la différence entre le passage par valeur et le passage par adresse."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Utiliser les pointeurs et les opérateurs <code>&#x26;</code>, <code>*</code>, <code>.</code> et <code>-></code> pour accéder aux données et les modifier."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Comprendre le rôle de <code>NULL</code> et utiliser les assertions pour détecter certaines erreurs de programmation."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Comprendre le rôle des fonctions <code>create</code> et <code>destroy</code> et gérer correctement la durée de vie d'une instance."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Distinguer les fonctions qui modifient une instance de celles qui se contentent de la consulter, notamment grâce à <code>const</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Utiliser plusieurs types et leurs fonctions associées pour construire un programme répondant à un problème donné."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Tester une implémentation avec des exemples dont le résultat est connu et vérifier les cas limites."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Mettez en pratique les notions du chapitre précédent : complétez les opérations d'un type Kakapo, puis utilisez-le pour résoudre un petit problème.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Implémentation du type Kakapo",
+      "id": "implémentation-du-type-kakapo",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 1,
+      "text": "Résolution du problème",
+      "id": "résolution-du-problème",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 1,
+      "text": "Bilan",
+      "id": "bilan",
+      "sectionNumber": 3
+    }
+  ],
+  "figureModules": []
+}

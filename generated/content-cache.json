@@ -1,19 +1,31 @@
 {
   "version": 5,
-  "generatedAt": "2026-11-03T15:14:26.081Z",
+  "generatedAt": "2026-11-03T16:43:25.624Z",
   "sourceHashes": {
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/courses.yaml": "4ed2d2e855b7914d7d66276cc83a28f7745efd92711140dcfa79068e88b9d7ff",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch1_conventions.md": "793aea36e35f37cf7a091343f0afffdebad742ac1e0f0057563fa44aa1a343af",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch1_installation.md": "8e35ed9fe044800ba2ff24d7cb8765b20e7966c5c73b9159bcb5176fe8a5ed78",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch1_pico.md": "53e3dfa94d0a57f3da7d0fc3ec608a4dc0814fa0ae0a4e97144fc86a49a491ea",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch1_radio.md": "6fec00fd103bce21c4f4461838b89965b05636a4a94a61dba8d646b6c51511f1",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_cmake_vs.md": "3880ff74255b399b4c4309e75fcd2f0296d051b2b07d07c8e0162b299e594d8b",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_donnees_operations.md": "1db6853b7afc964fe919b3684ddc476797a3f9393ac960aa8300b8dc36ffd55d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_kakapo.md": "d79ba0bdd286621bc7e25109065d0d4f04b0299f6153fb094ac1435c0e28b8d6",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_structures.md": "fe64c1df6496a04d6d6cd7005f7099d4b144cd2504634d96543412860d499427",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_cmake_vs.md": "fbdf92771cff2ee81e6b6f5f934ad93b0fed2f03cd945522519d4945f0e16ceb",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_donnees_operations.md": "9f5aec723c1ca0de5ae668ca76e2c3788d0cedc9db8319d15ba61b5fbbd1d2ef",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_kakapo.md": "853b2f9610af7e0f040b1a75d10a9a6d33ee1559f38536e018460c0941d3ac41",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_structures.md": "1bf7faca671bbde5f15a953315fd2946cb47aeb933476efdc4e1184e0816214f",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/chx_planning.md": "519bf7919e22d9304af4ada88ba837290c6362be000bbebf1d28ca74a564b37b",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/todo.md": "9daf921235c0025f43c0e8ebd358dd0892531f5788a9ee6a53d95c3aa30195d1",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/_course.yaml": "2d9981aad07bf582d03530518a57c7de32a1f0461caa07c0ffc0bcea5f80230a",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch1_logique.md": "f42a6a0376491fa8d699b1020f158539a35995a081639f8221de21967f27dbd4",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch1_raisonnements.md": "5ad59e8f1067185391a10fcfb71ae0c52e013402259593475684cf76f55c581d",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch2_ensembles.md": "2ecfdc6dcc9843f6a6d3d7fb45379c7fb6cf7faff871f2ef072cff54ae344485",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch3_applications.md": "776f287016b888c800582e619caa191b93ffdffd226c496888b2871216bf5c15",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch3_bijections.md": "db1fc1813c074ef9d885f17d81f89b93e647d9c856c83391ed722f8ee4ae5f83",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch4_polynomes_arithmetique.md": "1ec05ee3998396cc98cb049fbe724dd06199312e8bdb81862ffce4185e6da98a",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch4_polynomes_definitions.md": "9ff40f69c66d3548a47801528bcbbe271a661f8e3f4d92a40fb26b63f181c34f",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch5_cartes_magiques.md": "1e9e219fcaa7ab863e4d98b9fa93a881c00b383ecc8e156336284bcf979af7a6",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch5_complements.md": "0753477b4b5c9ab7f3f6ec98181a7dd4ba6aef44f43622d44ca10ae3aacbdabc",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch5_divisibilite.md": "daf941f13d142f6cff171dcebf7f07cf3c4ad65a52febf4a420ad9720717cc59",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch6_congruences.md": "b360fb1e5ee0a55de1c1c700ec7dffdaadbe1cc8f6183ac87db1d3bd6ae5019b",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/_course.yaml": "0721c9488144c162b0865e45eac94252c207e76c119ff00c4027ea6f57d87e62",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_programming/ch1_bases.md": "7d5bbc1ba7f3e6a229d202038fd6120c95709133377414107fe004be4d47989d",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_programming/ch2_instructions.md": "a290389f068607c9f6f2a840ae98563aa53e22a6dc29a4eb1e751a0b9177da48",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_programming/ch3_fonctions.md": "2b43fa300056b8d185576c76d69a8af1ecad1307c4d1783b0c3680517ad7563d",
@@ -21,13 +33,6 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_programming/ch5_tableaux.md": "8051febca313c70c2bb72cbc97ea089ddf2bae52863380833ea7f7876972d25f",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_programming/ch6_tableaux_theorie.md": "9802d7668a206894f1bc109442b511b3b21ab83e68a14bcbc7e9e629bf9b53ce",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_programming/_course.yaml": "e1646ffe9be2d6c8587dcc809c0d169c0c74f38d9a96680a17e4e4ea6935339a",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/ch0_description.md": "cb7edf732014bb5990f5a8d7348932bc3c198b44814769c73103fc2e8e06fcfd",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/ch0_partie1.md": "1db5c68a412adf8fdeb56fbac9c378b080c9dc29d5db30cc24d55aaf3855c9a2",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/ch1_conventions.md": "fb097513b733db7f764ad73a98053c66df91320711f1bbaae8187d793bece3a0",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/ch1_installation.md": "1e5ac98b4697fcaa6e16ae9fbb35a715d21e7f113fdae8ff1435a51cafc5f5f2",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/ch1_premiers_pas.md": "92071a1e1f66d2afd5b15f9abbd87735d7b1f94b325920c289d2fe9357106427",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/todo.md": "915dc65ed8508d3845af5ae48e00de5d8b4e561a2548fb3fffd6c77daf09474f",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/_course.yaml": "216025fafd6f52215a6406a97a3cb4da2fe710beb6b5b642376a1f49f9ff8e17",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/ch1_calcul.md": "5bf09ca2c04c0f3015e16abd230a70dc2025e73314c9d86348736e9709c897ee",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/ch1_complements.md": "7129266c9696aaaa11a7b9c8cfd861fb3898b49bdc34b051410861505995bcfe",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/ch1_ensembles.md": "4bbb06379ecb0cac3a9edb675a2ce59cb66f10bf68b8013cf4c39980ad9710a8",
@@ -53,18 +58,14 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/02_algebra/ch6_espaces_vectoriels.md": "c9f0d9a88bb57826e77f86b00f5d8aa1777bc7e68d68fa2d84310b6336b96f54",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/02_algebra/ch7_coordonnees.md": "305696cc6eb6ce565586dea3977022592d4b9eb99f13064867ce6727fe9ceca5",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/02_algebra/_course.yaml": "3ef5212c1b49ab996e9ef0f7bd7c49ee723bc53929421a5417caa4d8d6a3f212",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch1_logique.md": "f42a6a0376491fa8d699b1020f158539a35995a081639f8221de21967f27dbd4",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch1_raisonnements.md": "5ad59e8f1067185391a10fcfb71ae0c52e013402259593475684cf76f55c581d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch2_ensembles.md": "2ecfdc6dcc9843f6a6d3d7fb45379c7fb6cf7faff871f2ef072cff54ae344485",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch3_applications.md": "776f287016b888c800582e619caa191b93ffdffd226c496888b2871216bf5c15",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch3_bijections.md": "db1fc1813c074ef9d885f17d81f89b93e647d9c856c83391ed722f8ee4ae5f83",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch4_polynomes_arithmetique.md": "1ec05ee3998396cc98cb049fbe724dd06199312e8bdb81862ffce4185e6da98a",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch4_polynomes_definitions.md": "9ff40f69c66d3548a47801528bcbbe271a661f8e3f4d92a40fb26b63f181c34f",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch5_cartes_magiques.md": "1e9e219fcaa7ab863e4d98b9fa93a881c00b383ecc8e156336284bcf979af7a6",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch5_complements.md": "0753477b4b5c9ab7f3f6ec98181a7dd4ba6aef44f43622d44ca10ae3aacbdabc",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch5_divisibilite.md": "daf941f13d142f6cff171dcebf7f07cf3c4ad65a52febf4a420ad9720717cc59",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/ch6_congruences.md": "b360fb1e5ee0a55de1c1c700ec7dffdaadbe1cc8f6183ac87db1d3bd6ae5019b",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/_course.yaml": "0721c9488144c162b0865e45eac94252c207e76c119ff00c4027ea6f57d87e62",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch1_relations.md": "1353c828826da12a8486d8ff05d5bbe1f0b6ada67dbe4cd06af67b9cd312c108",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch2_groupes.md": "30f29bcb362420a4ff9d77fa508db9f07418fe8d8ecfdb36206f79990b94fd2d",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch3_sous_groupes.md": "dc97a77af4349b9bfa9c1eeed3a5e93302f93957e8b09ae1d419cef8fc6ff9d0",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch4_constructions.md": "2438747dc512b84f34456cba4acc5de5f3c51ced9b2f5e148f35a5d4eeb4deeb",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch5_groupe_symetrique.md": "53c86a3f1c13b4b920f2a914c05b372ea36cfc25416f75fc0250f73553d2408d",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch6_anneaux.md": "107bc8fb3c41f37b256106ed18452d20417cdc286cc6729d271bfc523aa2a001",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch7_corps_finis.md": "da114d0d88c110dfef7ed1a2206fb9172f026525c33f00b37768487c082a7c9c",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/_course.yaml": "3f8e5a39f9017bda9b1f89c61613590001f4351ff45430680cc22a9988517979",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/ch1_applications_lineaires.md": "cf94b00e021cf21cb1e8948b6d97f459646b20ddd21d07b2e9a7ec0c7dbb7108",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/ch1_complements.md": "f1fb85a0867593ea8ae435bc0c78069b2d4596deda099093bf7f83eff54c9b81",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/ch1_coordonnees.md": "f55db0849b3d3ba2d9f8e766db8057810f6c5fdcc16b46354d0a5b3433b63426",
@@ -80,24 +81,13 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/ch6_pipeline_3d.md": "f065b5a753b99e4d1cdefa7f9ee771d938a9c753be4927dbfd505a6d78179f38",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/ch6_rendu_graphique.md": "6f0e06fc719e3f4dd4194cc9871007d1acd0e6c04ebbe85e45cc2e2c23c24f61",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/_course.yaml": "0b4c613d81a7c64fee16fd5fdb6a91b85f28326878c28a306de4cc8072a2df01",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch1_relations.md": "1353c828826da12a8486d8ff05d5bbe1f0b6ada67dbe4cd06af67b9cd312c108",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch2_groupes.md": "30f29bcb362420a4ff9d77fa508db9f07418fe8d8ecfdb36206f79990b94fd2d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch3_sous_groupes.md": "dc97a77af4349b9bfa9c1eeed3a5e93302f93957e8b09ae1d419cef8fc6ff9d0",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch4_constructions.md": "2438747dc512b84f34456cba4acc5de5f3c51ced9b2f5e148f35a5d4eeb4deeb",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch5_groupe_symetrique.md": "53c86a3f1c13b4b920f2a914c05b372ea36cfc25416f75fc0250f73553d2408d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch6_anneaux.md": "107bc8fb3c41f37b256106ed18452d20417cdc286cc6729d271bfc523aa2a001",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/ch7_corps_finis.md": "da114d0d88c110dfef7ed1a2206fb9172f026525c33f00b37768487c082a7c9c",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/04_algebra/_course.yaml": "3f8e5a39f9017bda9b1f89c61613590001f4351ff45430680cc22a9988517979",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch1_revisions.md": "6f3ab9727823a1df4a5d82e686e54fd7f2b58c3733ec3583565d408d3b853093",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch1_tp.md": "e02ad2964bd171564e345e3df2ef2896e8f094ae448c95d30e953eda0660074b",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch2_tp.md": "bb02c4bbc845c8ec49812b60ede7631b1864e3f270e288157d14e20abd019d06",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch2_types_abstraits.md": "10a9c1d86066873be6a9caed890e3e960c674c23376428230ca22fbfd2da2a90",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch3_listes.md": "fbcca232f8afd305a0101fec7503feed145ab3ecc7cc42df4e76a2cdfbf179fc",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch4_listes_avancees.md": "900d5df14c203e283331e7ae679b0c46453f0040b36e87615b487cb25410421a",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch5_arbres.md": "aed2f7b2c44d2d6a909028a7ce8f188d597aed8cd2346feea139b598489961b1",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch6_abr.md": "d18f4916ae7b821401db0ec2aae4d62666ef1dce0af85eef83e3011bc87bc0b0",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch7_dictionnaires.md": "8e473f9af6647eeaf4215188b40cc42febc66bf8be2cfa1fcf5e729c7e5d8712",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/_course.yaml": "9ef4638371fd3d5e5873df823a9ec2a604f235f395dc45d9400da0679d9da27e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/ch0_description.md": "cb7edf732014bb5990f5a8d7348932bc3c198b44814769c73103fc2e8e06fcfd",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/ch0_partie1.md": "1db5c68a412adf8fdeb56fbac9c378b080c9dc29d5db30cc24d55aaf3855c9a2",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/ch1_conventions.md": "fb097513b733db7f764ad73a98053c66df91320711f1bbaae8187d793bece3a0",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/ch1_installation.md": "1e5ac98b4697fcaa6e16ae9fbb35a715d21e7f113fdae8ff1435a51cafc5f5f2",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/ch1_premiers_pas.md": "92071a1e1f66d2afd5b15f9abbd87735d7b1f94b325920c289d2fe9357106427",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/todo.md": "915dc65ed8508d3845af5ae48e00de5d8b4e561a2548fb3fffd6c77daf09474f",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/_course.yaml": "216025fafd6f52215a6406a97a3cb4da2fe710beb6b5b642376a1f49f9ff8e17",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/test/algorithm.md": "272614ffac7602d6bd03839aa4cce74fdcca7a4b199633d97fa6f32dc7ada11d",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/test/block.md": "c56e267430cf55ab26da3757f79debcb683e5eb9752b573f870452d73545a90c",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/test/block_and_layout.md": "5a9d0cce9a86ba0e6e2ab745b606f87eb6b6883e21d4be60a5444cf0b412d3fd",
@@ -111,6 +101,79 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/test/todo_bannier.md": "9f3fd350fdf43d2a01e624e382f076e1429462d3a88341d3222ea8eb00a53bc4",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/test/todo_bodin.md": "5c6f793f4e87c0b80c55acbc018cf9c09af680804cdb3ea1a871acc6d7ca17a9",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/test/_course.yaml": "4fe7470eda1a782a5b7f2c45f96b0ebb07fc9688ccccab13010015caef0d9059",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch1_revisions.md": "6f3ab9727823a1df4a5d82e686e54fd7f2b58c3733ec3583565d408d3b853093",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch1_tp.md": "e02ad2964bd171564e345e3df2ef2896e8f094ae448c95d30e953eda0660074b",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch2_tp.md": "bb02c4bbc845c8ec49812b60ede7631b1864e3f270e288157d14e20abd019d06",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch2_types_abstraits.md": "10a9c1d86066873be6a9caed890e3e960c674c23376428230ca22fbfd2da2a90",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch3_listes.md": "fbcca232f8afd305a0101fec7503feed145ab3ecc7cc42df4e76a2cdfbf179fc",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch4_listes_avancees.md": "900d5df14c203e283331e7ae679b0c46453f0040b36e87615b487cb25410421a",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch5_arbres.md": "aed2f7b2c44d2d6a909028a7ce8f188d597aed8cd2346feea139b598489961b1",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch6_abr.md": "d18f4916ae7b821401db0ec2aae4d62666ef1dce0af85eef83e3011bc87bc0b0",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/ch7_dictionnaires.md": "8e473f9af6647eeaf4215188b40cc42febc66bf8be2cfa1fcf5e729c7e5d8712",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/_course.yaml": "9ef4638371fd3d5e5873df823a9ec2a604f235f395dc45d9400da0679d9da27e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/appartenance_3.md": "0f27dbe13f2c3f71878824726c886fdd2918857a889dc8f6c296f47914039acb",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/appartenance_5.md": "bc321484e565509a389d48fe767610492bd3061bd5f8d159deb78fba9bf1e776",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/difference_1.md": "6b83be235fbb49eef7e0772ad768b7dda0bdfd665e7676ce2ef83f048f04ca68",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/diffsym_1.md": "5d300758560ff652b0d9f56003f46294db905175eb8943bf26b296d70b0e9308",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/ecriture_1.md": "9f2746d1854ad3e75c90669d8393b5b9d6024e2656696d8a3c2987adf3cc78e8",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/ecriture_2.md": "3bfa2f014417446fa38d0dda35f417480503bfa8942b46d64e7ebaee7f3f5395",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/ens_parties_1.md": "0d3597901fc50eb82ece412606626ef357b803012a6a8e3139e864354afeb96a",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/moodle_qcm_appartenance.md": "b71e70ad71e1cde6cd9a8362158405b1b5a0c211cc039a1ffa354a2be25b2346",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/moodle_qcm_ext_comp.md": "8af6244198eae87dce6d54e70c10be6564c550d1ffee8ab7ed383a293372c65d",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/moodle_rearrangement.md": "dcb6e1a3281ef0c2fc01bad16ab8d8b2f2615571e7cb560e9b71e56158e1bd34",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/moodle_venn.md": "67644c429a44839b6e1f0e2308aaf780c5a15ec11db05c5692ea27b616b6ce14",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/preuve_inc_1.md": "06b4b731ba6e3ce7a1e44cad17c8e2298c8047646240b9db12247f95bccf88a4",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/preuve_inc_2.md": "c651c6bf74024d882ee1217e1cb2baff81375bee9ee13ef223a434b9d76f41ec",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/prod_cart_1.md": "e7caa898ee4947e18fe455e7a2c40f1ea053b7b0816813fd943ef17aa258e9d9",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/prod_cart_2.md": "de1f7246b9c3db46d6b1163861e47354d64e491e289e9945b683b5d59ebab8a7",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/union_inter.md": "9baa491ac4a5135bbec0d8b290256233cc728f37778bc94fa1c4899507d8c887",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/venn_1.md": "c36c0362e4eb7386dbc999ae90bcd81884eb4402f49f09b3b47c512e81b23e04",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/venn_2.md": "55cef60cc1ce21d6ef64781754c84533634dd8153aeedbe18eff1f28db062777",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/venn_3.md": "15c1c57e2fabab7aaeb7a32531ab74151b988aeea13476da5ee92a6fff59808d",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/factorisation_polynomes.md": "7c12dc05c36ba2d0f93a4b5c3281834971727e51424b8de263713367f7bb1046",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/moodle_div_euc.md": "e862dbdb6ba905b154e283fc6404229576de672bed5de415719862fcadd2880b",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/moodle_factorisation.md": "78d30a5f807ef1846d42a816cacfdad908298fef30d1ec57d8493c523b343e78",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/moodle_mult_racines.md": "4668c0a019202f492251753c8cb413e78952a013066b64957357651ad73feaae",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_01.md": "176869e26041962348c6c28760277bc35d406bed9566be366959259ba8375b6e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_02.md": "f57192c66e53070a60960d1faba0ce064022e8c00083f79065fba6f4dd5f466f",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_03.md": "012343827a737bb9dbf2d8dcb7386636560268d8710cc5b7be8c9140edeb92fb",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_04.md": "c22cc32a07a30aecf67cedf011d4d0d0d22e50131623d2742694bd9ed25e9693",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_05.md": "edcf85807d11819f8a51d7c7e41ccb745955082cdea3e819dbcb0b372060b2f0",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_06.md": "4d066195d45f323b2fd7b704f8c903cb01487812adde6a1f95974297e8534248",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_07.md": "04603f199d6a0fac5a6fe74d757db8f0479dc13cfbf8e7a244fa86ec0e8bba5a",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_08.md": "bba8ab2883a26c232499d6d3bd12975c39cf69f612e3c894b3536f9b9bad2586",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_11.md": "e20771e49def599d710913903d3be9c3e32801b036062c831bfbbd9b6d9b8f5c",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_12.md": "a0131b0f56d2a2a4c55c49792cd420447c459d14eae7954476a015f7f8de95b7",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_13.md": "ad2da4ef5490268f547d2054523e4dabbe6bdc494a4d897b0d6515d680736108",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/ensembles_1.md": "1ec68d09a0dee3692a967f84734dbc73cfef68afc40bdbf8c78bffd07fe1db1b",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/ensembles_2.md": "ac73d855e23d4021108cc486f88468c16bcd329802fa95ca529ebec148daf4cd",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/ensembles_3.md": "85b6687220487ccb6402392abe0458437e6bc21ab566bf534a151a85a6c77f02",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/inegalites_1.md": "47361d7e85aeb806207328f98736cfa00a2f4b9dedb20258dc1d1e21c0fdc904",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/moodle_fraction_de_fraction.md": "4e427bb1b9efb7d3f926d18de6f8b71bf7dc335e8a51196c0585d01c0472c592",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/moodle_fraction_puissance_1.md": "28be63c948fe97ab005111377298a3d0b6f8d7a730337b9ecdd91621a78ebc82",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/moodle_fraction_puissance_2.md": "feed44814664ae44fec7cc101aea88efa50bbb3a2cb82ea1ced87b29eb88f6f3",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/moodle_racines.md": "f65dd94de8397dc53a7fea86f427fe627f97251c79d73bc049581d5e3676b042",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/operations_1.md": "71f72bcf6ca0f48c93a04e0a00758e838dc9d55f76480eb4dc2c21186511629e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/operations_2.md": "befbdf7e64137c74d6897eb551286acd72bb13f97fd74b8b01d5810afe2dde61",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/operations_3.md": "ad2f15d58d9828ab107851b6ce9f5f301309f9cc71d3fce6e8aaad9374345b7a",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/operations_4.md": "524e75e46d6df2e3430fcbbd76e785cddc833f5632b7ed79ed56f7fdf186cb0e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/puissances_1.md": "83da5905bdf47a40f1ff75b269444311d5540430e9ef6418b1111a83263e50bd",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/puissances_2.md": "bf8752a068ce5ba972b3739a31e8627b02d93463bebba36d8a00927ebb56a504",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/puissances_3.md": "5c9b2138176671b791ea251c4caacc950033567b1b36a9f963c84dd419e1face",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/conversion.md": "65f367d473edc3111e55a047424ec8da9cd54791f739f72ae375434cd4757475",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/des_plus_et_des_moins.md": "a6ef66a8dd5410849287594ee354177ea70506175433f0e3bd73ac68736f659f",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/de_l_ordre.md": "7ee0f8dad41d9a9b6659f927509ce16553403f099e0903999901d872866e80f3",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/doublons_la_mise.md": "85ac8df905952ee8f605e8a79d9f902eee00d96b8893a6fd48b18b388473f745",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/multiples_a_tout_va.md": "1c7f9c5be66aac51318714bc27bb80ed1e9a14dea116de3c9b0aa05c4faa6538",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/preuve_division_euclidienne.md": "148fe7bac805b4c5c49d4c14920a8d80a8c83a427c43497a63aa9ff7f6a278bb",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/retour_au_primaire.md": "73ca086a012fb8de1c2e35e3dcb9d37f0f7ccf9d6b37eb54a6cc25e330732a70",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/sommes_de_multiples.md": "5bf3aa879b3fc15ab88baa5055e804ae2123e2eac9e6bcb21409fab17fde5aad",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/criteres_de_divisibilite.md": "3454fa006605ec7f5bdd9b1d988e7dd2222ce4efabaaf108662001587d1bba71",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/criteres_de_divisibilite_graphiques.md": "b28ea2d70af3613661f1bb9166e64469e005a215af3d3751692675cc7840ee4e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/manipulation_des_congruences.md": "4aa2cae7415cb2eb662eb6265c047e4ecd91111b5e600b4b6dab2484c9b53000",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/on_finit_les_restes.md": "e3fbee6c7cd0a69b52d92603f653c30ab42378e07b26ff0f83374747abdecf30",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/simpson_horror_show_vi.md": "048a1e1faaaa7e5682138984aa8d58877630ef84c3684708c5cabd6dfe659fa7",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/tous_les_cas.md": "d00ab1c342cdce3ecd4e528ede3cf776b319019fc8a150687fad181d6025d460",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_2/factorielle_1.md": "3ca1e772bfc1c1f3f02b79e019a05b7e51cae132528866430c7b4ff4c67eee69",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_2/factorielle_2.md": "d5259b55182954614b77b1d9399e7c14a6d2b679dcb43503f821686ddb99c3c1",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_2/factorielle_3.md": "8441cc7be5a90431fcc9d523b8a733865bdf73e90870586619aebcb2cfda2a97",
@@ -136,21 +199,33 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_2/polynomes_3.md": "887b22f0ffceaa8fbd27201c06f2f656316ebf00f079c3efa9d452cadcfac56c",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_2/val_abs_1.md": "c052599f40d5c253be4ea27f2360448d6e61b855ff4e9c9982c02f347b1a2dfd",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_2/val_abs_2.md": "e1661fb0cb7a5a7a07e67f896227f3ef7ad66856b7d1edd584c7dfdc32637374",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/ensembles_1.md": "1ec68d09a0dee3692a967f84734dbc73cfef68afc40bdbf8c78bffd07fe1db1b",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/ensembles_2.md": "ac73d855e23d4021108cc486f88468c16bcd329802fa95ca529ebec148daf4cd",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/ensembles_3.md": "85b6687220487ccb6402392abe0458437e6bc21ab566bf534a151a85a6c77f02",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/inegalites_1.md": "47361d7e85aeb806207328f98736cfa00a2f4b9dedb20258dc1d1e21c0fdc904",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/moodle_fraction_de_fraction.md": "4e427bb1b9efb7d3f926d18de6f8b71bf7dc335e8a51196c0585d01c0472c592",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/moodle_fraction_puissance_1.md": "28be63c948fe97ab005111377298a3d0b6f8d7a730337b9ecdd91621a78ebc82",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/moodle_fraction_puissance_2.md": "feed44814664ae44fec7cc101aea88efa50bbb3a2cb82ea1ced87b29eb88f6f3",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/moodle_racines.md": "f65dd94de8397dc53a7fea86f427fe627f97251c79d73bc049581d5e3676b042",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/operations_1.md": "71f72bcf6ca0f48c93a04e0a00758e838dc9d55f76480eb4dc2c21186511629e",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/operations_2.md": "befbdf7e64137c74d6897eb551286acd72bb13f97fd74b8b01d5810afe2dde61",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/operations_3.md": "ad2f15d58d9828ab107851b6ce9f5f301309f9cc71d3fce6e8aaad9374345b7a",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/operations_4.md": "524e75e46d6df2e3430fcbbd76e785cddc833f5632b7ed79ed56f7fdf186cb0e",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/puissances_1.md": "83da5905bdf47a40f1ff75b269444311d5540430e9ef6418b1111a83263e50bd",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/puissances_2.md": "bf8752a068ce5ba972b3739a31e8627b02d93463bebba36d8a00927ebb56a504",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/puissances_3.md": "5c9b2138176671b791ea251c4caacc950033567b1b36a9f963c84dd419e1face",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/conjugue_1.md": "54a2e893507ddb55054514062fd0d9e74d5c29d374bb7ba57c60ebdee0755b07",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/fonctions_trigo_1.md": "635d18cf89d932a64e0b028a123801bba6fbbce608d90b66a7ee0af21fd70e89",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/fonctions_trigo_2.md": "98d94952765397bccf2d948cb55c333679932b441ceec1373ed1788285dc644e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/fonctions_trigo_3.md": "0c52705ae59318c88b3d9f81e0040a48bfa4211f2d21740d4917a3b75cb372ba",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/fonctions_trigo_4.md": "e8e35e0e3698fae6962050886dcb4aeb4198a36864987f9f1276677b921b8911",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/fonctions_trigo_5.md": "4af6f26a52d1e3b83bf29dcfcfe1889a5cad79c959ea6199d0ee612e5c813a21",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_algebrique_1.md": "e5ee431ce9f13a910ba8b4cca93983a757e7eb266694cd06ed234508ff031d9c",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_algebrique_2.md": "32e80d668f676b10321c3f6402738c54c76e4ff969e3307a1fe41b3a5aa52ae1",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_algebrique_3.md": "18eb73d06bb99c3845263d33c939b13d0b9bff5dc6e520fe02891319c927e269",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_algebrique_4.md": "2b4972d9ac88e19c0582fecb7baee9a1f9ad23ce95bdaadb9620a5c452bf4e05",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_expo_1.md": "da0da53a6e83cc0c377c4a181bef1692dd3033310bf2fb62c6c3510861a0b06f",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_expo_2.md": "a8ca451a6c0553fdff8bb75d556197209d8e837ecf9db3f09f950715a11c6127",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_expo_3.md": "e39146220912c3b6cd583116c07dfbbe7cdf7c2f8fc9355e2080ba084ffcd37e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_trigo_1.md": "c3d72e6622b7fb1d88eb61a3c20babfe2d891120c8f49a2f82b43c09383a7cc3",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_trigo_2.md": "01d1bafee7aee14db1c5362051286675e564185aa26edabb371e175b42907333",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_trigo_3.md": "766fc8f3d29de20bd9361b1911299e77443701d60dd9bf6d7d93ebd1423dfb22",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/formules_trigo_1.md": "0191c94abf50051b8b9f192b2b683bb4bc8173f1b5e9df808d42b1c96be77513",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/formules_trigo_2.md": "dcc8a62bcdaa5f1d515154f7723fc70b23bb5c2d0e7724ecd601eba54123ca12",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/formules_trigo_3.md": "0a4e350972905ade85d79dfca55b239cc8cf6abb8bb8b8a06d2a544953deee3e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/linearisation_1.md": "9089d143900aff7c116a12d70242b722c7672d303449a05589e2d90e87ebd85d",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/modules_1.md": "a0b2a785549048a7b853163c2ca8eff9e6b6a8093b050eebb4d39927f606ebeb",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/modules_2.md": "2fd132ec56fb80f2aa29377593a080e90f0b21e222f4647ca4c953e68e5ea319",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/moodle_angle_sin_cos.md": "71bace002243beb242c50453dbc1ec2bbdad58a23d793322688df9ebc19d3a00",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/moodle_forme_alg.md": "90b15890efe570587d9740e3d269726683243094ad3b2f70ea373dc32bbfb8ef",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/moodle_forme_exp.md": "22b44297aa9207a45e3b5fe57881fe8cb61a41702fb5e0643de28762e51cdee4",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/moodle_somme_sin_cos_1.md": "179b09484440b695733746392519937eb917816ae67df6c20b335a1b365150ae",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/moodle_somme_sin_cos_2.md": "aabb780908617164ff9b9214e690f6ada0599bcd93dccedc97fbff93ce6caea8",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_3/application_1.md": "8c45d8310cc195e01c06c46b5aa18bc5ed645ad9867bdab312a6a0167c3cac3b",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_3/application_2.md": "31a039a2567aa87fa0b283d60d95fcb4fe0359439f2327ea779b24d1b7139eaf",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_3/application_3.md": "8fd41fa4f07d06093b5ff0842c94edd0066d6d8ad86d12e2ee613fc52de1e22d",
@@ -190,81 +265,6 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_3/simplifications_1.md": "ff0afae1a7d972824c2827e67eaee950fbbcad018496930c49371fade090af53",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_3/simplifications_2.md": "bef1f0d22cc82a72adfcd76421b65533b0381f9f4c3eddcceaf0b0530b323126",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_3/simplification_1.md": "c36d016a8539b62e71ac371b2503d4a78a646649d98057f2da05b25b0092b81e",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/conjugue_1.md": "54a2e893507ddb55054514062fd0d9e74d5c29d374bb7ba57c60ebdee0755b07",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/fonctions_trigo_1.md": "635d18cf89d932a64e0b028a123801bba6fbbce608d90b66a7ee0af21fd70e89",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/fonctions_trigo_2.md": "98d94952765397bccf2d948cb55c333679932b441ceec1373ed1788285dc644e",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/fonctions_trigo_3.md": "0c52705ae59318c88b3d9f81e0040a48bfa4211f2d21740d4917a3b75cb372ba",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/fonctions_trigo_4.md": "e8e35e0e3698fae6962050886dcb4aeb4198a36864987f9f1276677b921b8911",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/fonctions_trigo_5.md": "4af6f26a52d1e3b83bf29dcfcfe1889a5cad79c959ea6199d0ee612e5c813a21",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_algebrique_1.md": "e5ee431ce9f13a910ba8b4cca93983a757e7eb266694cd06ed234508ff031d9c",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_algebrique_2.md": "32e80d668f676b10321c3f6402738c54c76e4ff969e3307a1fe41b3a5aa52ae1",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_algebrique_3.md": "18eb73d06bb99c3845263d33c939b13d0b9bff5dc6e520fe02891319c927e269",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_algebrique_4.md": "2b4972d9ac88e19c0582fecb7baee9a1f9ad23ce95bdaadb9620a5c452bf4e05",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_expo_1.md": "da0da53a6e83cc0c377c4a181bef1692dd3033310bf2fb62c6c3510861a0b06f",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_expo_2.md": "a8ca451a6c0553fdff8bb75d556197209d8e837ecf9db3f09f950715a11c6127",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_expo_3.md": "e39146220912c3b6cd583116c07dfbbe7cdf7c2f8fc9355e2080ba084ffcd37e",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_trigo_1.md": "c3d72e6622b7fb1d88eb61a3c20babfe2d891120c8f49a2f82b43c09383a7cc3",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_trigo_2.md": "01d1bafee7aee14db1c5362051286675e564185aa26edabb371e175b42907333",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/forme_trigo_3.md": "766fc8f3d29de20bd9361b1911299e77443701d60dd9bf6d7d93ebd1423dfb22",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/formules_trigo_1.md": "0191c94abf50051b8b9f192b2b683bb4bc8173f1b5e9df808d42b1c96be77513",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/formules_trigo_2.md": "dcc8a62bcdaa5f1d515154f7723fc70b23bb5c2d0e7724ecd601eba54123ca12",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/formules_trigo_3.md": "0a4e350972905ade85d79dfca55b239cc8cf6abb8bb8b8a06d2a544953deee3e",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/linearisation_1.md": "9089d143900aff7c116a12d70242b722c7672d303449a05589e2d90e87ebd85d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/modules_1.md": "a0b2a785549048a7b853163c2ca8eff9e6b6a8093b050eebb4d39927f606ebeb",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/modules_2.md": "2fd132ec56fb80f2aa29377593a080e90f0b21e222f4647ca4c953e68e5ea319",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/moodle_angle_sin_cos.md": "71bace002243beb242c50453dbc1ec2bbdad58a23d793322688df9ebc19d3a00",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/moodle_forme_alg.md": "90b15890efe570587d9740e3d269726683243094ad3b2f70ea373dc32bbfb8ef",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/moodle_forme_exp.md": "22b44297aa9207a45e3b5fe57881fe8cb61a41702fb5e0643de28762e51cdee4",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/moodle_somme_sin_cos_1.md": "179b09484440b695733746392519937eb917816ae67df6c20b335a1b365150ae",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_4/moodle_somme_sin_cos_2.md": "aabb780908617164ff9b9214e690f6ada0599bcd93dccedc97fbff93ce6caea8",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/appartenance_3.md": "0f27dbe13f2c3f71878824726c886fdd2918857a889dc8f6c296f47914039acb",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/appartenance_5.md": "bc321484e565509a389d48fe767610492bd3061bd5f8d159deb78fba9bf1e776",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/difference_1.md": "6b83be235fbb49eef7e0772ad768b7dda0bdfd665e7676ce2ef83f048f04ca68",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/diffsym_1.md": "5d300758560ff652b0d9f56003f46294db905175eb8943bf26b296d70b0e9308",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/ecriture_1.md": "9f2746d1854ad3e75c90669d8393b5b9d6024e2656696d8a3c2987adf3cc78e8",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/ecriture_2.md": "3bfa2f014417446fa38d0dda35f417480503bfa8942b46d64e7ebaee7f3f5395",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/ens_parties_1.md": "0d3597901fc50eb82ece412606626ef357b803012a6a8e3139e864354afeb96a",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/moodle_qcm_appartenance.md": "b71e70ad71e1cde6cd9a8362158405b1b5a0c211cc039a1ffa354a2be25b2346",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/moodle_qcm_ext_comp.md": "8af6244198eae87dce6d54e70c10be6564c550d1ffee8ab7ed383a293372c65d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/moodle_rearrangement.md": "dcb6e1a3281ef0c2fc01bad16ab8d8b2f2615571e7cb560e9b71e56158e1bd34",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/moodle_venn.md": "67644c429a44839b6e1f0e2308aaf780c5a15ec11db05c5692ea27b616b6ce14",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/preuve_inc_1.md": "06b4b731ba6e3ce7a1e44cad17c8e2298c8047646240b9db12247f95bccf88a4",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/preuve_inc_2.md": "c651c6bf74024d882ee1217e1cb2baff81375bee9ee13ef223a434b9d76f41ec",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/prod_cart_1.md": "e7caa898ee4947e18fe455e7a2c40f1ea053b7b0816813fd943ef17aa258e9d9",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/prod_cart_2.md": "de1f7246b9c3db46d6b1163861e47354d64e491e289e9945b683b5d59ebab8a7",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/union_inter.md": "9baa491ac4a5135bbec0d8b290256233cc728f37778bc94fa1c4899507d8c887",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/venn_1.md": "c36c0362e4eb7386dbc999ae90bcd81884eb4402f49f09b3b47c512e81b23e04",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/venn_2.md": "55cef60cc1ce21d6ef64781754c84533634dd8153aeedbe18eff1f28db062777",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/venn_3.md": "15c1c57e2fabab7aaeb7a32531ab74151b988aeea13476da5ee92a6fff59808d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/factorisation_polynomes.md": "7c12dc05c36ba2d0f93a4b5c3281834971727e51424b8de263713367f7bb1046",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/moodle_div_euc.md": "e862dbdb6ba905b154e283fc6404229576de672bed5de415719862fcadd2880b",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/moodle_factorisation.md": "78d30a5f807ef1846d42a816cacfdad908298fef30d1ec57d8493c523b343e78",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/moodle_mult_racines.md": "4668c0a019202f492251753c8cb413e78952a013066b64957357651ad73feaae",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_01.md": "176869e26041962348c6c28760277bc35d406bed9566be366959259ba8375b6e",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_02.md": "f57192c66e53070a60960d1faba0ce064022e8c00083f79065fba6f4dd5f466f",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_03.md": "012343827a737bb9dbf2d8dcb7386636560268d8710cc5b7be8c9140edeb92fb",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_04.md": "c22cc32a07a30aecf67cedf011d4d0d0d22e50131623d2742694bd9ed25e9693",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_05.md": "edcf85807d11819f8a51d7c7e41ccb745955082cdea3e819dbcb0b372060b2f0",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_06.md": "4d066195d45f323b2fd7b704f8c903cb01487812adde6a1f95974297e8534248",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_07.md": "04603f199d6a0fac5a6fe74d757db8f0479dc13cfbf8e7a244fa86ec0e8bba5a",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_08.md": "bba8ab2883a26c232499d6d3bd12975c39cf69f612e3c894b3536f9b9bad2586",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_11.md": "e20771e49def599d710913903d3be9c3e32801b036062c831bfbbd9b6d9b8f5c",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_12.md": "a0131b0f56d2a2a4c55c49792cd420447c459d14eae7954476a015f7f8de95b7",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/polynomes_13.md": "ad2da4ef5490268f547d2054523e4dabbe6bdc494a4d897b0d6515d680736108",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/conversion.md": "65f367d473edc3111e55a047424ec8da9cd54791f739f72ae375434cd4757475",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/des_plus_et_des_moins.md": "a6ef66a8dd5410849287594ee354177ea70506175433f0e3bd73ac68736f659f",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/de_l_ordre.md": "7ee0f8dad41d9a9b6659f927509ce16553403f099e0903999901d872866e80f3",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/doublons_la_mise.md": "85ac8df905952ee8f605e8a79d9f902eee00d96b8893a6fd48b18b388473f745",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/multiples_a_tout_va.md": "1c7f9c5be66aac51318714bc27bb80ed1e9a14dea116de3c9b0aa05c4faa6538",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/preuve_division_euclidienne.md": "148fe7bac805b4c5c49d4c14920a8d80a8c83a427c43497a63aa9ff7f6a278bb",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/retour_au_primaire.md": "73ca086a012fb8de1c2e35e3dcb9d37f0f7ccf9d6b37eb54a6cc25e330732a70",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_5/sommes_de_multiples.md": "5bf3aa879b3fc15ab88baa5055e804ae2123e2eac9e6bcb21409fab17fde5aad",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/criteres_de_divisibilite.md": "3454fa006605ec7f5bdd9b1d988e7dd2222ce4efabaaf108662001587d1bba71",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/criteres_de_divisibilite_graphiques.md": "b28ea2d70af3613661f1bb9166e64469e005a215af3d3751692675cc7840ee4e",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/manipulation_des_congruences.md": "4aa2cae7415cb2eb662eb6265c047e4ecd91111b5e600b4b6dab2484c9b53000",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/on_finit_les_restes.md": "e3fbee6c7cd0a69b52d92603f653c30ab42378e07b26ff0f83374747abdecf30",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/simpson_horror_show_vi.md": "048a1e1faaaa7e5682138984aa8d58877630ef84c3684708c5cabd6dfe659fa7",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_6/tous_les_cas.md": "d00ab1c342cdce3ecd4e528ede3cf776b319019fc8a150687fad181d6025d460",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/comatrice_inverse.md": "c32b7a306eba3e3394bebe1192e9db391d48d115e21dc70bf312e63fc15722fb",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/factorisation_polynomes.md": "7c12dc05c36ba2d0f93a4b5c3281834971727e51424b8de263713367f7bb1046",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/moodle_comatrice.md": "bf7b9b3a84e0174bbce68b35e5dc20ab159c44cb61607a2722b265c123885c03",
@@ -278,16 +278,6 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/moodle_factorisation.md": "6b04f63ccb5028ded333b306ddaad253b45d78a4c6721dc0cd112502c1c959bb",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/moodle_mult_racines.md": "133a63fc813f9b4a2b3965bfe1fe4c2a6e7ceb99e10f110d06532257a7b10903",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/preuve_racine_rationnelle.md": "38ff07c65695c2325e9f011f39b82c8536d75ff9e714ca3d886f652033ebf145",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/affinite_1.md": "41a95e977b754e14f04efce2e0bd82be6e1089790900ff877bf3d6bf7b6d6e66",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/homothetie_1.md": "35009637d366ea91e82fe0c45257be003eaa6ffb5d89ef0ff274f4161ee34305",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/moodle_affinite.md": "a81fc0cda05287ff22f1c81a273cac05969e2f8fb0b64fb8159386e322bee997",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/moodle_projection.md": "276098e885aee0e8ab6d841c1bbc3039e37243d04593c586be51323f1e8e11d5",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/moodle_symetrie.md": "4007a27b7e2d87b108d1eed076d189730aad000477a0145d370d7612b3d2f6ab",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/projecteur_1.md": "a1266380b58e838222c4e57870b9509fa549f181ee1c3d6aa8ca178eea92346e",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/projecteur_2.md": "b112e787e1a665f10781d19d0122b91c0c9c6fec1df43bcdfc9c9bed8cb20207",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/synthese_2.md": "213e4b13faf4e9d82c3d54efa70726985d29d4664daa6c1d8c957b2188edbd4f",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/synthese_4.md": "20a709d6bede2ae373af638fbd8d6183319a16b609147a5e30ab92381c3e25d3",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/synthese_5.md": "39f431364a9c6269da6ef09317bbb11c6dc832ada327dd39960cb89586a88b77",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_5/endo_ortho_3.md": "3450f9e2ca109616b5b8539dd36fcb70cd2262e6a7a06902b013c30d02e98af8",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_5/forme_bilineaire_1.md": "57dc3bd82363af1b0653047349e58aa0ad6e9b4344daa97bbed7c2d5e29cda25",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_5/matrice_endo_ortho_2.md": "0e8c40331b7e5464458d80f22ff385f3b82f82d5072d50dbe878bb28204c82b7",
@@ -310,6 +300,23 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_6/relation_colinearite.md": "5a6bd6b3a31db5f0a995f7ded607b1207c7bdf7c8e600b1aea0e8671e42ece5e",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_6/scene_2d_1.md": "2d00f0e93d0db6877896a3e814b0f03121be9ff607599d84158d48548a1ddd62",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_6/scene_2d_2.md": "fa650de2f43386f48061fe6d407212294bdd3a992ee42fe90acad7fab441f600",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/affinite_1.md": "41a95e977b754e14f04efce2e0bd82be6e1089790900ff877bf3d6bf7b6d6e66",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/homothetie_1.md": "35009637d366ea91e82fe0c45257be003eaa6ffb5d89ef0ff274f4161ee34305",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/moodle_affinite.md": "a81fc0cda05287ff22f1c81a273cac05969e2f8fb0b64fb8159386e322bee997",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/moodle_projection.md": "276098e885aee0e8ab6d841c1bbc3039e37243d04593c586be51323f1e8e11d5",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/moodle_symetrie.md": "4007a27b7e2d87b108d1eed076d189730aad000477a0145d370d7612b3d2f6ab",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/projecteur_1.md": "a1266380b58e838222c4e57870b9509fa549f181ee1c3d6aa8ca178eea92346e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/projecteur_2.md": "b112e787e1a665f10781d19d0122b91c0c9c6fec1df43bcdfc9c9bed8cb20207",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/synthese_2.md": "213e4b13faf4e9d82c3d54efa70726985d29d4664daa6c1d8c957b2188edbd4f",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/synthese_4.md": "20a709d6bede2ae373af638fbd8d6183319a16b609147a5e30ab92381c3e25d3",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_4/synthese_5.md": "39f431364a9c6269da6ef09317bbb11c6dc832ada327dd39960cb89586a88b77",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/test/imports/example.md": "42d7a04541259576c05a1477e0310da7c76e9bcf2cda0fcbd2d50254477782c8",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/List_Complexite.md": "0a51b452315d822ed620040a87424fc5451074bea45b514e677701e299cab3c7",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/SList_destroy.md": "79fe8f10c9d0a0727dbd6612ddaf025c83d1c32b231e62bf14dc98b4c76ca4c1",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/SList_get.md": "c09c17facd5edc7560f0d051b19eb05f55fd8b9af4bbc02ad3fc641d36eff8cf",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/SList_insert.md": "df6de76b7971748e138934f9b1dbba7564e8c9876d2b6debddb76216a8d74e38",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/SList_pop.md": "befb435ee3feb26094f9e96b3fc71e94d54bdddcb25de104b6c3431bf143571b",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/SList_print.md": "8ea0df96cd2791d1763e17c28239f329f148207ea8d412ac034f8ce76593ebde",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_1/2021_LaPoste_3.md": "37966533eb8f89f73b20bffa90aaee73974153f4b9a426a3419671d07c4bbee5",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_1/2022_TechChallenger_2_2.md": "d62e4a1dda6acff5addc94aaa1a2c9b651710f1bbdc7ab4f958f8dd61d46f614",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_1/2022_TechChallenger_2_3.md": "e2bf079430539e1500a4b9c28af839b46430f14b6f1c7405a9e663f1e2f121a3",
@@ -319,12 +326,6 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_2/maitre_crepier.md": "2d6f55e5227bee1769d087efd82043685dc21abe7d88dda6fcb8202a9da2707f",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_2/pizzas_espace.md": "f49608da92c4a5df07e159c3c6cd9771db3092db64d15fc95013700b9a7e99b0",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_2/potoo_coin.md": "cce4fbcb96c6261e28f1f39d308497ac0490b99afa66d0ee99282f3ab3f64f80",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/List_Complexite.md": "0a51b452315d822ed620040a87424fc5451074bea45b514e677701e299cab3c7",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/SList_destroy.md": "79fe8f10c9d0a0727dbd6612ddaf025c83d1c32b231e62bf14dc98b4c76ca4c1",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/SList_get.md": "c09c17facd5edc7560f0d051b19eb05f55fd8b9af4bbc02ad3fc641d36eff8cf",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/SList_insert.md": "df6de76b7971748e138934f9b1dbba7564e8c9876d2b6debddb76216a8d74e38",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/SList_pop.md": "befb435ee3feb26094f9e96b3fc71e94d54bdddcb25de104b6c3431bf143571b",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_3/SList_print.md": "8ea0df96cd2791d1763e17c28239f329f148207ea8d412ac034f8ce76593ebde",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_4/ListInt_def.md": "377d9295a41f1e8f435e12b3171d6fe3580cea387678574412e2753810ae7672",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_4/ListInt_get.md": "76629dd20715451ec39a1578d441b9a9aa287e0e97868a0a2c509bc68b42071c",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_4/ListInt_iterator.md": "8befb6d994926cb1e17ffc4d26e92e62134b95342329fe6d403b8deecfe1a539",
@@ -338,12 +339,35 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_5/th_heap_analysis.md": "bc17d9cb609d2365639bcb530f06d748d8304db28cb9706108bddfe22f618f22",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_5/th_memory_state.md": "edb620fbc1c4040dff8615ca1c3e8b04e0f7e5272cc8050d36a069e27818dd55",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_programming/exercises_5/th_tree_or_not.md": "0c6f0a58f34803e70e57d6eca4d9783d1152ea60dffae79c4e9abaa19adaa4a7",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/test/imports/example.md": "42d7a04541259576c05a1477e0310da7c76e9bcf2cda0fcbd2d50254477782c8",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/linear_alg/moodle_syst_2x2.md": "6804c91009016ffb818af9dfc4333f6bb082e1d7bd7af3202ee5f70af7122e3b",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/linear_alg/moodle_syst_2x3_infini.md": "e5b8fbd7268231683d6503172679f803494a0a7ff7c5566e20a8226940ee3717",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/linear_alg/moodle_syst_2x4_infini.md": "01862d44172fabc8c8c3b80a185c9a244699abc3a183b62ed7eada4c7cdc0c93",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/linear_alg/moodle_syst_3x3.md": "a96a91b16beaea30cf2a15c6d94d39efa240285593586503f1e65d02687b852a",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/linear_alg/moodle_syst_3x4_infini.md": "8d3e1eed7cc43839c05a9cd29514a435932bf42f45e819255f7318454e135448",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/analyse_demonstrations_moodle.md": "4abf865316a962389a135c514547204b03080a70810c9220d6944764813be5d6",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/antecedents.md": "445f673d52f861936b900ad7e213df8d5104a5931b33b0b1fb0682816a8a7d53",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/ca_commute_preuve.md": "27d67d83fc933667b03fc9da3429948778c5b1e925d773bb227c78d28e042840",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/ca_commute_questions.md": "25208fb8742b7bcb06cf4ecad19f30e8ca97a432467106f451ca3e2aec16e662",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/egalite_applications.md": "5c8635fd301b2d7d88c91e4891c86f1fd1f171e4037021fbcbd6ec3682389cbc",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/ensemble_applications.md": "a555eb7c05a66c2e2caaaa8fe825823512d49f84d9e95b7c921d418277d72859",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/fonctions_indicatrices.md": "6c98878af4a44e5f0324934ee3ae4e2f6349e387d8b8cc9673e7ee59c1f7b459",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/graphique_app.md": "0daa4809c7ca4fe9c9c84994f80ac6a279c8d9ff5366450e8d214f0510d6ed63",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/images_directe_reciproque.md": "4966b71916d4e4436e512d39affb022969fa698665a853d0267e628e128bd529",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/images_et_antecedents.md": "2b06ede3e79f048e9dd82f46a1bd824520903c1bbb3d32343b87ad1e125a1e4a",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/moodle_composition_1.md": "34958c92494ad6fb305a388ea62cab202983a0fc504dab5fd20267d1023342b5",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/moodle_composition_2.md": "aabf246b4174ccb486fd808c741405fc2e21dbc20325d654bdbfcb73e0ad020f",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/moodle_image_directe.md": "a8349196206727ddf2c616052d6383fd7700510b380b50eda8fd32f64419d392",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/moodle_rearrangement.md": "a3387a96f624ca4337384d7b6bedb01fb887a54c3471839c3b1cf3b64114644d",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/questions_cours_image_directe_reciproque.md": "daef645966d60f5083972684a7bfbc49fef2735f3c29a3eb524ab4c055da43f0",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/bijective.md": "330c68d705c2f09bfd219b0651c95101418a1d5033399e3303ed527b68f27d33",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/composee_bijective.md": "53acdcb350c8e00643faabaf1080f707a73476cea47df4183e8772caeb2fb702",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/contre_exemples.md": "43885503f83180e3e533153809975fba74359eb18d6c592b142fd3caa74973c5",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/graphique_inj_surj.md": "1e81a491fcf409bf54e01d56c78b2792334d86498e965ba920fbb817f150323e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/groupe_perm_1.md": "71cf22c62b8a805f32a0a57d98ea68e55e8555e0d00bbf66f7ee99862dc778c0",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/groupe_perm_2.md": "66ce25e9749af0d211312cfdfaf3b7edd7cdc802f069c1183a6d8ba0c58021d6",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/injective_surjective.md": "3598b0f7549270efcbedae90040fcb1385967f7916539a3e9866221e2364cd1d",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/moodle_bijection_r2.md": "63d8b8af76d5ffe6cbc7217e453ebcacd591e58568e5a7506fa3e953cbf0036e",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/moodle_bijection_r3.md": "84c1a2442778fc13e5e7d9b9f4d83883306130a5a5296dd83f7e6e1973970b9d",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/moodle_rearrangement_1.md": "ca77c7712981fc9ae2d3634292edfe0e771bf9d7f1fca692baaa8c3e51d5d9c1",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/moodle_rearrangement_2.md": "8d5b4e5db3c486a5f444653425d8290fded49e47e300a772b37c6da5b4d83ef2",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/questions_cours_injection_surjection.md": "53b2c1d45ed3601ffa159bae8806727ade7af40210edab9ad16f0ac74dd3a375",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/complements/recurrence_4.md": "81ca8242209e20677f807e0ed1ce48fef6bc53fd39073d96b469c4b05fded9b7",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/complements/table_2.md": "c65cb1437c5e6bc4f7e9db67f7225218148f9af8ebbb2fea81690aa1fe8ec852",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/complements/appartenance_1.md": "1266fc34cc048042fe4338d899ef622dbc8bae8b2bbae0b853888f1169ae6f9b",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/complements/appartenance_2.md": "4640bc003ace913c61c5b224d4a66be13e92f870717fb4c66f6993b69f6579d1",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/complements/appartenance_4.md": "98047fd6d184fb44c1c934202453d8c64946ad9ad0a25f3de2feb289a8a7ea7f",
@@ -352,8 +376,6 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/complements/ens_parties_2.md": "fdccc7fe0a595311a862e9193f8c29025d783bd916d9343b8a7062e9e5485671",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/complements/preuve_inc_3.md": "926ed9a01d04af0e7a84192ff24a8ce13da6a4ac34b0ec2196188ff01c61864f",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_2/complements/prod_cart_3.md": "4bddfa4b641a0394b4f9994fc823a98e97f2216666b9e74e53ace06cf14a4e67",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/complements/recurrence_4.md": "81ca8242209e20677f807e0ed1ce48fef6bc53fd39073d96b469c4b05fded9b7",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/complements/table_2.md": "c65cb1437c5e6bc4f7e9db67f7225218148f9af8ebbb2fea81690aa1fe8ec852",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/raisonnement/absurde_1.md": "6b4c988f6ca6c99a002ad5817c3654c9a7941b9b76ba88ef03361dbe50366094",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/raisonnement/contraposition_1.md": "8535c492bb9d7077295c70a2fb4af9862507c4d8e72cd00b594d634d3dbfce2a",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/raisonnement/disjonction_1.md": "f634e65786fdc625a768d944b7c05bdb728c6cc8089f89f6750035f24ef93f44",
@@ -372,28 +394,11 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/complement/polynomes_10.md": "2faafab87ea7744f4e0168e6b60a88788f7220c814f071fcdb5ef74046b4b266",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/complement/polynomes_14.md": "25a9c5deb819e9b8118bc0506560abcbf9e643227cc2566fdc5d1988281e83e8",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_4/complement/polynomes_15.md": "24b3a2e2b4b2aba11721dc3b9fe7fe53dc8c350dcb99821deba8611a1b13f865",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/definition_appli_lin_1.md": "7d4f61a91237bbb9ff5c968ded544d1ef6171b81b472cbb64df35d10386c71b2",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_app_rp_vers_rq.md": "0398aef4df77edbed41876f692a0955d6ed417f4dcd64c48532944c09696b5e2",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_compo_endo_r2.md": "b5f6da0f979d89af92de9039d2bd22ed2b4d94cc4f71988512fc181f1f49b879",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_compo_endo_r3.md": "cc47fa13cb25a12135438d2339b343068efece6c6b4d34c23c79850d5277294b",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_image.md": "b8f6b13a6ee0a73d29585c286e9184b2f44e02041d6bbd3d9854134596638d50",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_inverse.md": "37c5d923e51b7360c8a58641b3c0359698a01507cce7b2accc29ce3c43722517",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_noyau.md": "7cb201fd96adf8540de8eac9cdf5a95f5e48c8e58d8433aa820878eed61e633d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/plus_loin_02.md": "990ef416c54df5dd95e04cf083ce55a62b7d9a90558a0fdd029ebd6a4b24342a",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/chgt_base_2.md": "3546590ebfcd982515a31e0b8628c2b1be1611f97fe47891f20406012f514312",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/coord_4.md": "96721ffa0dec7a9c9cf05e5a9f048237dcf02c56eca54b34f97bd7ebd89d7f44",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/imker_1.md": "1756276122ace35902caab2319c3712c02f7dbd9cb9ddc3aacc9b27770ba6b26",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_app_lin_r3.md": "c3f0a0f5b1078deba1711966f9f6f10c6a88ecbbd5365d28f9967e1b3c689ef3",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_app_lin_rx_vers_r2.md": "67949d279fec9bd99e922acc7c32e4203b937baddce49107134503e2771b34b3",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_app_lin_rx_vers_rx.md": "7be9733dbd4b20489c13f865b7588c5931380f666d7d025c16fcd7990711c9a4",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_coord_r3_1.md": "8bf003d7d8d22b7013d1d76447067e3229e146f480fc02e975ed81176c2c73ca",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_coord_r3_2.md": "34dfee0d11cb7e149b788803f0f5c7ffe6ca08dfff61c86ddacebe4ece8108b9",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_coord_rx_1.md": "1314f33730406d9a14b36da576933ed5fe2eaf3a39ae7a4daf522127d516ffba",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_coord_rx_2.md": "ac7360f91763d83f96a9b86cdd0ebce5c317bb9ee0aaf9beecc39b10ee41e808",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_passage_1.md": "17fd257d760eadd1b1a8f26cf8439b4b0e5511c268ff86b960b15e8f2df0865d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_passage_2.md": "36d9e622a4c7891eeb761dc34b15d03e4cdb44b6660d8c3149b86ca83eef49b9",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_passage_3.md": "ac24de81be0f0744efcbe9b77473502974a9d73a233f7cf22edd94f0c61cfd13",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/synthese_1.md": "1309ae67c0bbc0eda514cfa4ea3eb533b0bf6003697d760659a02cd729854ad8",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/linear_alg/moodle_syst_2x2.md": "6804c91009016ffb818af9dfc4333f6bb082e1d7bd7af3202ee5f70af7122e3b",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/linear_alg/moodle_syst_2x3_infini.md": "e5b8fbd7268231683d6503172679f803494a0a7ff7c5566e20a8226940ee3717",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/linear_alg/moodle_syst_2x4_infini.md": "01862d44172fabc8c8c3b80a185c9a244699abc3a183b62ed7eada4c7cdc0c93",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/linear_alg/moodle_syst_3x3.md": "a96a91b16beaea30cf2a15c6d94d39efa240285593586503f1e65d02687b852a",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_pass/exercises_1/linear_alg/moodle_syst_3x4_infini.md": "8d3e1eed7cc43839c05a9cd29514a435932bf42f45e819255f7318454e135448",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/logique/connecteurs.md": "604b143ea258e6a790e63b0bdf4d2fc29aaac2e47394f86aa4c8fba85cbc56dc",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/logique/jo_po_colas.md": "4f4b2efb60d7e3879a51fdc5a9351967f11b424062d079834347c67db4a1a3dd",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/logique/moodle_qcm_quantificateurs.md": "226d44cce2a91ef3da12eae7ff8ee04bd0d919d343a292d6f2ead30a8c330fe5",
@@ -405,10 +410,6 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/logique/quantificateurs_2.md": "2b158ae7637b4e484fa6e03545fda531a1bc0d91fb984164ea30eddc5213590d",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/logique/quantificateurs_3.md": "9b19386ccc48b6680bb5ebd087243011ddae615b095480eb6f0bdc60a8b27609",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_1/logique/table_1.md": "9bdf52e2b9c733938e2274960f5f5e67a00c3d044d6d58a379c750e9055d93f7",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/complement/determinant_matrice_inversible.md": "29721a457a3d5f6d4fc4b08f46af00973192741f74ef980ad2ef6a5820a07fe8",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/complement/intersection_droites.md": "bf60e7998f1d05666670929786e1b8a347dc1b94b544a44de769c828844689a5",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/complement/polynomes_sans_racine_entiere.md": "56ef325c71a7b3918ba123223e3b37685cc0c1f0647f863eb83ed0dda32e5a12",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/complement/pont_de_wheatstone.md": "93ebd02575c1c467c6bc241a522aaf09feebf8f72a2b3ce733f505cdb1f7e8d9",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/complement/chgt_base_1.md": "0574ea6a80e64c247608f951176e47029f79da0ff163507dad3f688f3aea28f8",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/complement/composee_1.md": "ce90c5ead6ddaa53963512d625f382159d40e594813fdf075ce048a502f60168",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/complement/construction_c.md": "aa761a854dc11f6f6655cf0616cf9aac4162f80f975f75f6570858f39a04e98a",
@@ -439,6 +440,14 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/complement/synthese_02.md": "ed46a892b42821905139fc0b2ec0b94aa44d3d721b7d70e5b626a0fdca64043d",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/complement/synthese_2.md": "ad940df3994546355b4bcfc7ce174566c8092a996270f64cda1fcc375ae07f66",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/complement/synthese_3.md": "ccaa330e0649dde5a7bfe717405010a03eb2b48d217ddc109d6dde70b2b5dad2",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/definition_appli_lin_1.md": "7d4f61a91237bbb9ff5c968ded544d1ef6171b81b472cbb64df35d10386c71b2",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_app_rp_vers_rq.md": "0398aef4df77edbed41876f692a0955d6ed417f4dcd64c48532944c09696b5e2",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_compo_endo_r2.md": "b5f6da0f979d89af92de9039d2bd22ed2b4d94cc4f71988512fc181f1f49b879",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_compo_endo_r3.md": "cc47fa13cb25a12135438d2339b343068efece6c6b4d34c23c79850d5277294b",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_image.md": "b8f6b13a6ee0a73d29585c286e9184b2f44e02041d6bbd3d9854134596638d50",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_inverse.md": "37c5d923e51b7360c8a58641b3c0359698a01507cce7b2accc29ce3c43722517",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/moodle_noyau.md": "7cb201fd96adf8540de8eac9cdf5a95f5e48c8e58d8433aa820878eed61e633d",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/app_lin/plus_loin_02.md": "990ef416c54df5dd95e04cf083ce55a62b7d9a90558a0fdd029ebd6a4b24342a",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/ev/bases_1.md": "08a4f9699792a0a4820073c517c58e8ed743e2497965a5bc9881504ae111bcf9",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/ev/espace_engendre.md": "7d7bafe6611957f37dc8916c5b4bb0ef9e16f20f29672f084e8a482cf963fc6e",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/ev/ev_matrice_2.md": "b250956627b1a040ad887ef7988cd53f22a7780a47c847726d01117c055f549b",
@@ -448,41 +457,20 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/ev/moodle_relation_lin_3x4.md": "589036f0929fbf66f6d1ec0507a5d3b792b198ba1debbc44ca9dd765a06daa06",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/ev/moodle_relation_lin_4x5.md": "e3e99173a162b0e215200a37c801dc089cf02654fb76a9fa4c462d79722bfb2a",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/ev/sev_01.md": "b643a4e13e8c367f33125695af2456b44e9533b35eb9cfcafbdf9e6cf9f7158f",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/analyse_demonstrations_moodle.md": "4abf865316a962389a135c514547204b03080a70810c9220d6944764813be5d6",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/antecedents.md": "445f673d52f861936b900ad7e213df8d5104a5931b33b0b1fb0682816a8a7d53",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/ca_commute_preuve.md": "27d67d83fc933667b03fc9da3429948778c5b1e925d773bb227c78d28e042840",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/ca_commute_questions.md": "25208fb8742b7bcb06cf4ecad19f30e8ca97a432467106f451ca3e2aec16e662",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/egalite_applications.md": "5c8635fd301b2d7d88c91e4891c86f1fd1f171e4037021fbcbd6ec3682389cbc",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/ensemble_applications.md": "a555eb7c05a66c2e2caaaa8fe825823512d49f84d9e95b7c921d418277d72859",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/fonctions_indicatrices.md": "6c98878af4a44e5f0324934ee3ae4e2f6349e387d8b8cc9673e7ee59c1f7b459",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/graphique_app.md": "0daa4809c7ca4fe9c9c84994f80ac6a279c8d9ff5366450e8d214f0510d6ed63",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/images_directe_reciproque.md": "4966b71916d4e4436e512d39affb022969fa698665a853d0267e628e128bd529",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/images_et_antecedents.md": "2b06ede3e79f048e9dd82f46a1bd824520903c1bbb3d32343b87ad1e125a1e4a",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/moodle_composition_1.md": "34958c92494ad6fb305a388ea62cab202983a0fc504dab5fd20267d1023342b5",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/moodle_composition_2.md": "aabf246b4174ccb486fd808c741405fc2e21dbc20325d654bdbfcb73e0ad020f",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/moodle_image_directe.md": "a8349196206727ddf2c616052d6383fd7700510b380b50eda8fd32f64419d392",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/moodle_rearrangement.md": "a3387a96f624ca4337384d7b6bedb01fb887a54c3471839c3b1cf3b64114644d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/applications/questions_cours_image_directe_reciproque.md": "daef645966d60f5083972684a7bfbc49fef2735f3c29a3eb524ab4c055da43f0",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/bijective.md": "330c68d705c2f09bfd219b0651c95101418a1d5033399e3303ed527b68f27d33",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/composee_bijective.md": "53acdcb350c8e00643faabaf1080f707a73476cea47df4183e8772caeb2fb702",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/contre_exemples.md": "43885503f83180e3e533153809975fba74359eb18d6c592b142fd3caa74973c5",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/graphique_inj_surj.md": "1e81a491fcf409bf54e01d56c78b2792334d86498e965ba920fbb817f150323e",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/groupe_perm_1.md": "71cf22c62b8a805f32a0a57d98ea68e55e8555e0d00bbf66f7ee99862dc778c0",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/groupe_perm_2.md": "66ce25e9749af0d211312cfdfaf3b7edd7cdc802f069c1183a6d8ba0c58021d6",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/injective_surjective.md": "3598b0f7549270efcbedae90040fcb1385967f7916539a3e9866221e2364cd1d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/moodle_bijection_r2.md": "63d8b8af76d5ffe6cbc7217e453ebcacd591e58568e5a7506fa3e953cbf0036e",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/moodle_bijection_r3.md": "84c1a2442778fc13e5e7d9b9f4d83883306130a5a5296dd83f7e6e1973970b9d",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/moodle_rearrangement_1.md": "ca77c7712981fc9ae2d3634292edfe0e771bf9d7f1fca692baaa8c3e51d5d9c1",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/moodle_rearrangement_2.md": "8d5b4e5db3c486a5f444653425d8290fded49e47e300a772b37c6da5b4d83ef2",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_algebra/exercises_3/bijections/questions_cours_injection_surjection.md": "53b2c1d45ed3601ffa159bae8806727ade7af40210edab9ad16f0ac74dd3a375",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/diagonalisation_1.md": "dcf38c34b64f2e38b029ea1652158979fd1a9ff7ea2a5632967386aa0b1a504f",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/espace_propre_1.md": "c1ba47eb0e6fb60f7921aa79a1753f1de03b48d7f4edb0511dcceec07b4b4fd6",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/exercice_continu_1.md": "5fa96a4dfdd1f7e2231b012e916cbd63e78ba214bfd19dbbe1e5e09bcb2eb797",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/exercice_continu_2.md": "6cfae0e9eed5169cada05a3a723fb3556bf5bb9a563717d4593f5066c836ad94",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/exercice_continu_3.md": "db98a2260b9562861bbb6a54d1b5d94a60c37202f804b600b1af9d089e3e4f61",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/pol_car_2.md": "3e4f7ccb8f4994b018420d5e42320e9345d37996f5c1564e356f76116cf473f7",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/puissance_2.md": "02b3ee0107219c0954ee547a79c3bffbb365bef6692176268313611ab5f415de",
-    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/sev_7.md": "5d1f1791e125e2c346bb1959c77244db4f5d7406cae89f27f5df3942339a8e14",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/chgt_base_2.md": "3546590ebfcd982515a31e0b8628c2b1be1611f97fe47891f20406012f514312",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/coord_4.md": "96721ffa0dec7a9c9cf05e5a9f048237dcf02c56eca54b34f97bd7ebd89d7f44",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/imker_1.md": "1756276122ace35902caab2319c3712c02f7dbd9cb9ddc3aacc9b27770ba6b26",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_app_lin_r3.md": "c3f0a0f5b1078deba1711966f9f6f10c6a88ecbbd5365d28f9967e1b3c689ef3",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_app_lin_rx_vers_r2.md": "67949d279fec9bd99e922acc7c32e4203b937baddce49107134503e2771b34b3",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_app_lin_rx_vers_rx.md": "7be9733dbd4b20489c13f865b7588c5931380f666d7d025c16fcd7990711c9a4",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_coord_r3_1.md": "8bf003d7d8d22b7013d1d76447067e3229e146f480fc02e975ed81176c2c73ca",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_coord_r3_2.md": "34dfee0d11cb7e149b788803f0f5c7ffe6ca08dfff61c86ddacebe4ece8108b9",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_coord_rx_1.md": "1314f33730406d9a14b36da576933ed5fe2eaf3a39ae7a4daf522127d516ffba",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_coord_rx_2.md": "ac7360f91763d83f96a9b86cdd0ebce5c317bb9ee0aaf9beecc39b10ee41e808",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_passage_1.md": "17fd257d760eadd1b1a8f26cf8439b4b0e5511c268ff86b960b15e8f2df0865d",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_passage_2.md": "36d9e622a4c7891eeb761dc34b15d03e4cdb44b6660d8c3149b86ca83eef49b9",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/moodle_passage_3.md": "ac24de81be0f0744efcbe9b77473502974a9d73a233f7cf22edd94f0c61cfd13",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_1/coord/synthese_1.md": "1309ae67c0bbc0eda514cfa4ea3eb533b0bf6003697d760659a02cd729854ad8",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/pratique/diagonalisation_2.md": "ed3d06557689cabbce9fdf1856882eb85e8858a8bf52e04e857452d8eaf1c0b5",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/pratique/jo_ibijau.md": "af563d00084900cf9e8051a6d78605f89ff6aafccb8555c9ab0b3186917f80a5",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/pratique/moodle_diago_complete.md": "984b891dcb2710b7f97aa4604fa6a6fb6c867d773cd4b030bcc0e01699c3d1eb",
@@ -494,6 +482,18 @@
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/pratique/pol_car_1.md": "2246024cb63fe51b67dfc7a344ff19905038e9ca518711a33ae55e52a2bbb23f",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/pratique/pol_car_3.md": "df8be967be81dcf1acf8b60c18011116e33d494f7bb6f9ad3beba32acb77197e",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/pratique/sous_espace_propre_1.md": "5b66ad0da93786406dfdcf62fb1583101cb8b241dbc407c39025d34f93333d81",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/diagonalisation_1.md": "dcf38c34b64f2e38b029ea1652158979fd1a9ff7ea2a5632967386aa0b1a504f",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/espace_propre_1.md": "c1ba47eb0e6fb60f7921aa79a1753f1de03b48d7f4edb0511dcceec07b4b4fd6",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/exercice_continu_1.md": "5fa96a4dfdd1f7e2231b012e916cbd63e78ba214bfd19dbbe1e5e09bcb2eb797",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/exercice_continu_2.md": "6cfae0e9eed5169cada05a3a723fb3556bf5bb9a563717d4593f5066c836ad94",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/exercice_continu_3.md": "db98a2260b9562861bbb6a54d1b5d94a60c37202f804b600b1af9d089e3e4f61",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/pol_car_2.md": "3e4f7ccb8f4994b018420d5e42320e9345d37996f5c1564e356f76116cf473f7",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/puissance_2.md": "02b3ee0107219c0954ee547a79c3bffbb365bef6692176268313611ab5f415de",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/complement/sev_7.md": "5d1f1791e125e2c346bb1959c77244db4f5d7406cae89f27f5df3942339a8e14",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/complement/determinant_matrice_inversible.md": "29721a457a3d5f6d4fc4b08f46af00973192741f74ef980ad2ef6a5820a07fe8",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/complement/intersection_droites.md": "bf60e7998f1d05666670929786e1b8a347dc1b94b544a44de769c828844689a5",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/complement/polynomes_sans_racine_entiere.md": "56ef325c71a7b3918ba123223e3b37685cc0c1f0647f863eb83ed0dda32e5a12",
+    "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_2/complement/pont_de_wheatstone.md": "93ebd02575c1c467c6bc241a522aaf09feebf8f72a2b3ce733f505cdb1f7e8d9",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/theorie/preuve_pol_car.md": "eaf5f4896d4f189d2a8c63987f18393264ed058e281515257555cb6df9a7f76a",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/theorie/preuve_sep_somme_directe_cas_general.md": "6e40db923ba00225857e68f4606decfb1355ec6415ec0970ec0e658f2baa7de9",
     "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/03_algebra/exercises_3/theorie/preuve_sep_somme_directe_cas_particulier.md": "74f84fb9e4bebe2440ca928006182212a387252c1516869ad925a9ca415db7a3",
@@ -572,6 +572,10 @@
     "01_ai_data/ch1_conventions.json",
     "01_ai_data/ch1_pico.json",
     "01_ai_data/ch1_radio.json",
+    "01_ai_data/ch2_cmake_vs.json",
+    "01_ai_data/ch2_structures.json",
+    "01_ai_data/ch2_donnees_operations.json",
+    "01_ai_data/ch2_kakapo.json",
     "01_sns/ch0_description.json",
     "01_sns/ch0_partie1.json",
     "01_sns/ch1_installation.json",
@@ -1973,6 +1977,190 @@
           },
           {
             "absoluteSourcePath": "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch1_radio.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "light"
+              },
+              "remark": {
+                "style": "light"
+              },
+              "proof": {
+                "numbered": false,
+                "style": "light"
+              },
+              "exercise": {
+                "style": "rule"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "fill"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              },
+              "warning": {
+                "style": "fill"
+              },
+              "algorithm": {
+                "style": "light"
+              }
+            },
+            "courseSlug": "01_ai_data"
+          },
+          {
+            "absoluteSourcePath": "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_cmake_vs.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "light"
+              },
+              "remark": {
+                "style": "light"
+              },
+              "proof": {
+                "numbered": false,
+                "style": "light"
+              },
+              "exercise": {
+                "style": "rule"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "fill"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              },
+              "warning": {
+                "style": "fill"
+              },
+              "algorithm": {
+                "style": "light"
+              }
+            },
+            "courseSlug": "01_ai_data"
+          },
+          {
+            "absoluteSourcePath": "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_structures.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "light"
+              },
+              "remark": {
+                "style": "light"
+              },
+              "proof": {
+                "numbered": false,
+                "style": "light"
+              },
+              "exercise": {
+                "style": "rule"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "fill"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              },
+              "warning": {
+                "style": "fill"
+              },
+              "algorithm": {
+                "style": "light"
+              }
+            },
+            "courseSlug": "01_ai_data"
+          },
+          {
+            "absoluteSourcePath": "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_donnees_operations.md",
+            "courseBlockDefaults": {
+              "example": {
+                "style": "light"
+              },
+              "remark": {
+                "style": "light"
+              },
+              "proof": {
+                "numbered": false,
+                "style": "light"
+              },
+              "exercise": {
+                "style": "rule"
+              },
+              "definition": {
+                "style": "fill"
+              },
+              "method": {
+                "style": "fill"
+              },
+              "proposition": {
+                "style": "fill"
+              },
+              "theorem": {
+                "style": "fill"
+              },
+              "corollary": {
+                "style": "fill"
+              },
+              "correction": {
+                "numbered": false,
+                "collapsible": true,
+                "collapsed": true,
+                "style": "rule"
+              },
+              "warning": {
+                "style": "fill"
+              },
+              "algorithm": {
+                "style": "light"
+              }
+            },
+            "courseSlug": "01_ai_data"
+          },
+          {
+            "absoluteSourcePath": "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_kakapo.md",
             "courseBlockDefaults": {
               "example": {
                 "style": "light"
@@ -4509,6 +4697,190 @@
         "courseSlug": "01_ai_data"
       },
       {
+        "absoluteSourcePath": "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_cmake_vs.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "light"
+          },
+          "remark": {
+            "style": "light"
+          },
+          "proof": {
+            "numbered": false,
+            "style": "light"
+          },
+          "exercise": {
+            "style": "rule"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "fill"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          },
+          "warning": {
+            "style": "fill"
+          },
+          "algorithm": {
+            "style": "light"
+          }
+        },
+        "courseSlug": "01_ai_data"
+      },
+      {
+        "absoluteSourcePath": "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_structures.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "light"
+          },
+          "remark": {
+            "style": "light"
+          },
+          "proof": {
+            "numbered": false,
+            "style": "light"
+          },
+          "exercise": {
+            "style": "rule"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "fill"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          },
+          "warning": {
+            "style": "fill"
+          },
+          "algorithm": {
+            "style": "light"
+          }
+        },
+        "courseSlug": "01_ai_data"
+      },
+      {
+        "absoluteSourcePath": "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_donnees_operations.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "light"
+          },
+          "remark": {
+            "style": "light"
+          },
+          "proof": {
+            "numbered": false,
+            "style": "light"
+          },
+          "exercise": {
+            "style": "rule"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "fill"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          },
+          "warning": {
+            "style": "fill"
+          },
+          "algorithm": {
+            "style": "light"
+          }
+        },
+        "courseSlug": "01_ai_data"
+      },
+      {
+        "absoluteSourcePath": "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_ai_data/ch2_kakapo.md",
+        "courseBlockDefaults": {
+          "example": {
+            "style": "light"
+          },
+          "remark": {
+            "style": "light"
+          },
+          "proof": {
+            "numbered": false,
+            "style": "light"
+          },
+          "exercise": {
+            "style": "rule"
+          },
+          "definition": {
+            "style": "fill"
+          },
+          "method": {
+            "style": "fill"
+          },
+          "proposition": {
+            "style": "fill"
+          },
+          "theorem": {
+            "style": "fill"
+          },
+          "corollary": {
+            "style": "fill"
+          },
+          "correction": {
+            "numbered": false,
+            "collapsible": true,
+            "collapsed": true,
+            "style": "rule"
+          },
+          "warning": {
+            "style": "fill"
+          },
+          "algorithm": {
+            "style": "light"
+          }
+        },
+        "courseSlug": "01_ai_data"
+      },
+      {
         "absoluteSourcePath": "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/content/01_sns/ch0_description.md",
         "courseBlockDefaults": {
           "example": {
@@ -6768,6 +7140,30 @@
           "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/assets/01_ai_data/nrf24.svg",
           "C:/Users/arnaud.bannier/Documents/Cours/Web/markdown-course/assets/01_ai_data/pico_nrf24.svg"
         ]
+      },
+      {
+        "outputPath": "01_ai_data/ch2_cmake_vs.json",
+        "pageId": "data-2-cmake",
+        "blockRefs": [],
+        "dependencies": []
+      },
+      {
+        "outputPath": "01_ai_data/ch2_structures.json",
+        "pageId": "data-2-structures",
+        "blockRefs": [],
+        "dependencies": []
+      },
+      {
+        "outputPath": "01_ai_data/ch2_donnees_operations.json",
+        "pageId": "data-2-donnees-operations",
+        "blockRefs": [],
+        "dependencies": []
+      },
+      {
+        "outputPath": "01_ai_data/ch2_kakapo.json",
+        "pageId": "data-2-kakapo",
+        "blockRefs": [],
+        "dependencies": []
       },
       {
         "outputPath": "01_sns/ch0_description.json",

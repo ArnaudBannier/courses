@@ -673,6 +673,50 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch2_cmake_vs.md",
+          "outputPath": "01_ai_data/ch2_cmake_vs.json",
+          "title": "Introduction à CMake et Visual Studio",
+          "navTitle": "CMake et VS",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch2_structures.md",
+          "outputPath": "01_ai_data/ch2_structures.json",
+          "title": "Introduction aux structures",
+          "navTitle": "Structures",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch2_donnees_operations.md",
+          "outputPath": "01_ai_data/ch2_donnees_operations.json",
+          "title": "Programmation orientée données et opérations",
+          "navTitle": "Données et opérations",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch2_kakapo.md",
+          "outputPath": "01_ai_data/ch2_kakapo.json",
+          "title": "Le problème du Kakapo",
+          "navTitle": "Pratique",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -718,6 +762,56 @@
               "outputPath": "01_ai_data/ch1_radio.json",
               "title": "Module radio nRF24L01",
               "navTitle": "Radio",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "title": "2. Structure des projets en C",
+          "chapters": [
+            {
+              "sourcePath": "01_ai_data/ch2_cmake_vs.md",
+              "outputPath": "01_ai_data/ch2_cmake_vs.json",
+              "title": "Introduction à CMake et Visual Studio",
+              "navTitle": "CMake et VS",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_ai_data/ch2_structures.md",
+              "outputPath": "01_ai_data/ch2_structures.json",
+              "title": "Introduction aux structures",
+              "navTitle": "Structures",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_ai_data/ch2_donnees_operations.md",
+              "outputPath": "01_ai_data/ch2_donnees_operations.json",
+              "title": "Programmation orientée données et opérations",
+              "navTitle": "Données et opérations",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_ai_data/ch2_kakapo.md",
+              "outputPath": "01_ai_data/ch2_kakapo.json",
+              "title": "Le problème du Kakapo",
+              "navTitle": "Pratique",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",

@@ -719,6 +719,22 @@
       "outputPath": "01_ai_data/ch1_radio.json",
       "blocks": {}
     },
+    "data-2-cmake": {
+      "outputPath": "01_ai_data/ch2_cmake_vs.json",
+      "blocks": {}
+    },
+    "data-2-structures": {
+      "outputPath": "01_ai_data/ch2_structures.json",
+      "blocks": {}
+    },
+    "data-2-donnees-operations": {
+      "outputPath": "01_ai_data/ch2_donnees_operations.json",
+      "blocks": {}
+    },
+    "data-2-kakapo": {
+      "outputPath": "01_ai_data/ch2_kakapo.json",
+      "blocks": {}
+    },
     "sns-0-description": {
       "outputPath": "01_sns/ch0_description.json",
       "blocks": {}

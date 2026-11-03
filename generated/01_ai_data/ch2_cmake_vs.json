@@ -1,0 +1,639 @@
+{
+  "sourcePath": "01_ai_data/ch2_cmake_vs.md",
+  "title": "Introduction à CMake et Visual Studio",
+  "navTitle": "CMake et VS",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Jusqu'à présent, un programme tenait dans un seul fichier. Dès qu'un projet grandit, on répartit le code dans plusieurs fichiers <code>.c</code> et <code>.h</code>. Chaque fichier <code>.c</code> doit alors être compilé, puis tous les résultats doivent être assemblés (c'est l'édition de liens) pour produire l'exécutable. Les commandes à lancer dépendent du compilateur (MSVC sous Windows, GCC ou Clang sous Linux) et de la machine.</p>\n<p><span class=\"md-emph\"><strong>CMake</strong></span> résout ce problème. Ce n'est pas un compilateur : c'est un outil qui lit la description du projet dans des fichiers <code>CMakeLists.txt</code>, puis génère les fichiers de construction adaptés à votre environnement. Sous Windows, il produit les fichiers attendus par Visual Studio. Sous Linux, il produit des <code>Makefile</code>. Le même projet peut donc être construit partout, sans rien modifier. C'est ce qui nous permettra, plus tard, de développer sur nos PC et d'exécuter le code sur une Raspberry Pi.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Organisation du projet",
+      "slug": "organisation-du-projet",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>Téléchargez le projet <code>s1_1_cmake</code> sur Moodle. Vous devez ensuite extraire localement les fichiers de l'archive. Vous obtenez l'architecture suivante.</p>\n<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">s1_1_cmake/\n</span><span class=\"code-line\">├── application/\n</span><span class=\"code-line\">|   ├── CMakeLists.txt\n</span><span class=\"code-line\">|   └── src/\n</span><span class=\"code-line\">|       ├── main.c\n</span><span class=\"code-line\">|       └── settings.h\n</span><span class=\"code-line\">├── .editorconfig\n</span><span class=\"code-line\">├── .gitignore\n</span><span class=\"code-line\">├── CMakeLists.txt\n</span><span class=\"code-line\">├── CMakePresets.json\n</span><span class=\"code-line\">└── README.md\n</span></code></pre>\n<p>Le dossier <code>application</code> contient le programme. Son code source est dans <code>src</code>, ce qui le sépare des fichiers de configuration. Lorsque vous construirez le projet, un dossier <code>build</code> apparaîtra à la racine : il contient les fichiers générés par CMake et l'exécutable. Ce dossier peut être supprimé à tout moment, il sera recréé. On ne le versionne donc jamais avec Git.</p>\n<p>Les fichiers <code>main.c</code> et <code>settings.h</code> sont les seuls fichiers sources de départ. Le second regroupe les <code>#include</code> de la bibliothèque standard (<code>stdio.h</code>, <code>math.h</code>, <code>stdbool.h</code>...) et quelques définitions utiles. Les autres fichiers de votre projet n'auront qu'à inclure <code>settings.h</code> pour y avoir accès.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Le CMakeLists.txt racine",
+      "slug": "le-cmakeliststxt-racine"
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-cmake\"><code class=\"language-cmake code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">cmake_minimum_required</span><span class=\"token punctuation\">(</span><span class=\"token property\">VERSION</span> <span class=\"token number\">3.10</span> FATAL_ERROR<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">set</span><span class=\"token punctuation\">(</span><span class=\"token property\">NAME</span> cmake_discovery<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">project</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">${</span><span class=\"token property\">NAME</span><span class=\"token punctuation\">}</span> <span class=\"token property\">VERSION</span> <span class=\"token number\">1.0</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">message</span><span class=\"token punctuation\">(</span>STATUS <span class=\"token string\">\"[INFO] Current directory: \"</span> <span class=\"token punctuation\">${</span><span class=\"token variable\">CMAKE_SOURCE_DIR</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">add_subdirectory</span><span class=\"token punctuation\">(</span>application<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">if</span><span class=\"token punctuation\">(</span><span class=\"token variable\">MSVC</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">set_property</span><span class=\"token punctuation\">(</span>DIRECTORY <span class=\"token punctuation\">${</span><span class=\"token variable\">CMAKE_CURRENT_SOURCE_DIR</span><span class=\"token punctuation\">}</span> PROPERTY <span class=\"token property\">VS_STARTUP_PROJECT</span> application<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">endif</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span></code></pre>\n<p>Ce fichier décrit le projet dans son ensemble :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>cmake_minimum_required</code> indique la version minimale de CMake nécessaire ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>project</code> donne un nom et une version au projet ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>message</code> affiche une information dans la fenêtre de sortie lors de la configuration ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>add_subdirectory(application)</code> demande à CMake de lire le fichier <code>CMakeLists.txt</code> du dossier <code>application/</code> ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "le bloc <code>if(MSVC)</code> s'applique uniquement avec Visual Studio : il choisit <code>application</code> comme projet à lancer par défaut."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Le CMakeLists.txt de l'application",
+      "slug": "le-cmakeliststxt-de-lapplication"
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-cmake\"><code class=\"language-cmake code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">set</span><span class=\"token punctuation\">(</span><span class=\"token property\">NAME</span> application<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">add_executable</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">${</span><span class=\"token property\">NAME</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">target_compile_features</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">${</span><span class=\"token property\">NAME</span><span class=\"token punctuation\">}</span> <span class=\"token namespace\">PUBLIC</span> c_std_11<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">target_compile_definitions</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">${</span><span class=\"token property\">NAME</span><span class=\"token punctuation\">}</span> <span class=\"token namespace\">PUBLIC</span> _CRT_SECURE_NO_WARNINGS<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">target_compile_definitions</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">${</span><span class=\"token property\">NAME</span><span class=\"token punctuation\">}</span> <span class=\"token namespace\">PRIVATE</span> ROOT_PATH=<span class=\"token string\">\"<span class=\"token interpolation\"><span class=\"token punctuation\">${</span><span class=\"token variable\">CMAKE_SOURCE_DIR</span><span class=\"token punctuation\">}</span></span>\"</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">if</span><span class=\"token punctuation\">(</span><span class=\"token variable\">CMAKE_COMPILER_IS_GNUCC</span> <span class=\"token operator\">OR</span> <span class=\"token variable\">CMAKE_COMPILER_IS_GNUCXX</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">target_compile_options</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">${</span><span class=\"token property\">NAME</span><span class=\"token punctuation\">}</span> <span class=\"token namespace\">PUBLIC</span> -Wall<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">endif</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">target_sources</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">${</span><span class=\"token property\">NAME</span><span class=\"token punctuation\">}</span> <span class=\"token namespace\">PRIVATE</span>\n</span><span class=\"code-line\">    <span class=\"token string\">\"src/main.c\"</span>\n</span><span class=\"code-line\">    <span class=\"token string\">\"src/settings.h\"</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">find_library</span><span class=\"token punctuation\">(</span>MATH_LIBRARY m<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">if</span><span class=\"token punctuation\">(</span>MATH_LIBRARY<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">target_link_libraries</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">${</span><span class=\"token property\">NAME</span><span class=\"token punctuation\">}</span> <span class=\"token namespace\">PUBLIC</span> <span class=\"token punctuation\">${</span>MATH_LIBRARY<span class=\"token punctuation\">}</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">endif</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">target_include_directories</span><span class=\"token punctuation\">(</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">${</span><span class=\"token property\">NAME</span><span class=\"token punctuation\">}</span> <span class=\"token namespace\">PUBLIC</span>\n</span><span class=\"code-line\">    <span class=\"token string\">\"src\"</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">)</span>\n</span></code></pre>\n<p>Ce fichier décrit une <span class=\"md-emph\"><strong>cible</strong></span>, ici un exécutable nommé <code>application</code> :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>add_executable</code> crée la cible ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>target_compile_features(... c_std_11)</code> demande le standard C11 ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>target_compile_definitions</code> définit des macros pour le compilateur. <code>_CRT_SECURE_NO_WARNINGS</code> supprime les avertissements de Visual Studio sur des fonctions comme <code>scanf</code>, et <code>ROOT_PATH</code> contient le chemin de la racine du projet ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>target_compile_options(... -Wall)</code> active les avertissements de GCC et de Clang ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>target_sources</code> liste les fichiers sources de la cible ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>find_library</code> et <code>target_link_libraries</code> relient la bibliothèque mathématique <code>m</code> quand elle existe (sous Linux, elle est séparée de la bibliothèque standard) ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>target_include_directories</code> indique le dossier où chercher les fichiers <code>.h</code>."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "warning",
+      "titleHtml": "Liste des sources",
+      "displayLabel": "Warning",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>CMake ne devine pas quels fichiers font partie de votre projet. Créer un fichier <code>.c</code> dans le dossier <code>src</code> ne suffit pas : s'il n'est pas listé dans <code>target_sources</code>, il ne sera pas compilé. Vous aurez à modifier ce fichier à chaque fois que vous ajoutez un fichier source.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Le fichier CMakePresets.json",
+      "slug": "le-fichier-cmakepresetsjson"
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-json\"><code class=\"language-json code-highlight\"><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token property\">\"version\"</span><span class=\"token operator\">:</span> <span class=\"token number\">9</span><span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">    <span class=\"token property\">\"configurePresets\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">[</span>\n</span><span class=\"code-line\">        <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">            <span class=\"token property\">\"name\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"windows-msvc\"</span><span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">            <span class=\"token property\">\"generator\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"Visual Studio 18 2026\"</span><span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">            <span class=\"token property\">\"binaryDir\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"${sourceDir}/build/windows-msvc\"</span><span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">            <span class=\"token property\">\"cacheVariables\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">        <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">]</span><span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">    <span class=\"token property\">\"buildPresets\"</span><span class=\"token operator\">:</span> <span class=\"token punctuation\">[</span>\n</span><span class=\"code-line\">        <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">            <span class=\"token property\">\"name\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"windows-debug\"</span><span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">            <span class=\"token property\">\"configurePreset\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"windows-msvc\"</span><span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">            <span class=\"token property\">\"configuration\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"Debug\"</span>\n</span><span class=\"code-line\">        <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">        <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">            <span class=\"token property\">\"name\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"windows-release\"</span><span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">            <span class=\"token property\">\"configurePreset\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"windows-msvc\"</span><span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">            <span class=\"token property\">\"configuration\"</span><span class=\"token operator\">:</span> <span class=\"token string\">\"Release\"</span>\n</span><span class=\"code-line\">        <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">]</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Ce fichier regroupe des réglages prêts à l'emploi, appelés <span class=\"md-emph\"><strong>presets</strong></span>. Le preset de configuration <code>windows-msvc</code> choisit le générateur (ici Visual Studio) et le dossier où placer les fichiers générés. Les presets de construction <code>windows-debug</code> et <code>windows-release</code> choisissent le mode de compilation : le mode <code>Debug</code> conserve les informations utiles au débogueur, alors que le mode <code>Release</code> optimise le programme. Visual Studio lit ce fichier automatiquement.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Le fichier .editorconfig",
+      "slug": "le-fichier-editorconfig"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le fichier <code>.editorconfig</code> n'a aucun lien avec CMake : il décrit la mise en forme du code pour l'éditeur. Il a été présenté dans le chapitre sur les conventions. Placé à la racine, il s'applique à tout le projet :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>root = true</code> indique qu'aucun fichier de configuration n'est à chercher dans les dossiers parents ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "la section <code>[*.{c,cpp,h,hpp}]</code> concerne les fichiers de code ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>indent_style = space</code> et <code>indent_size = 4</code> imposent quatre espaces par niveau d'indentation ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>charset = utf-8</code>, <code>end_of_line = crlf</code>, <code>insert_final_newline</code> et <code>trim_trailing_whitespace</code> fixent l'encodage, les fins de ligne, la ligne vide finale et la suppression des espaces en fin de ligne ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "les options commençant par <code>cpp_</code> sont propres à Visual Studio. Elles placent les accolades sur une nouvelle ligne, retirent l'espace entre un nom de fonction et sa parenthèse, et collent l'étoile d'un pointeur au type (<code>Timer* self</code>)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Utiliser le projet avec Visual Studio",
+      "slug": "utiliser-le-projet-avec-visual-studio",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>Visual Studio sait ouvrir directement un projet CMake :</p>"
+    },
+    {
+      "kind": "ordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Utilisez l'explorateur de documents pour vous placer dans le dossier <code>s1_1_cmake</code> (celui qui contient le <code>CMakeLists.txt</code> racine) faites un clic droit, puis choisissez <strong>Afficher d'autres options</strong> et <strong>Ouvrir avec Visual Studio</strong> (et non avec Code). Si vous n'avez pas ajouté ce raccourci, lancez Visual Studio et choisissez <strong>Ouvrir un dossier local</strong>, puis sélectionnez le dossier <code>s1_1_cmake</code>."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Visual Studio détecte le projet, lit <code>CMakePresets.json</code> et lance la configuration. La fenêtre <strong>Sortie</strong> affiche les messages de CMake, dont la ligne <code>[INFO] Current directory</code>."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Dans la barre d'outils, vérifiez que le preset de configuration <code>windows-msvc</code> et la configuration de construction <code>Debug</code> (preset <code>windows-debug</code>) sont sélectionnés."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Construisez le projet avec le menu <strong>Générer > Tout générer</strong>."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Lancez le programme avec <strong>Ctrl+F5</strong> (exécution) ou <strong>F5</strong> (exécution avec le débogueur). Le projet de démarrage est <code>application</code>, grâce à la ligne <code>VS_STARTUP_PROJECT</code>."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour cette première prise en main, ouvrez le menu <strong>Affichage</strong> et vérifiez que les fenêtres suivantes sont visibles :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>Explorateur de solutions</strong> : il permet de parcourir les fichiers du projet (utilisez la vue dossier) ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>Liste d'erreurs</strong> : elle affiche les erreurs et les avertissements de compilation ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>Sortie</strong> : elle affiche les messages de CMake et du compilateur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Quand vous enregistrez un fichier <code>CMakeLists.txt</code>, Visual Studio relance automatiquement la configuration. Si une erreur apparaît, lisez-la attentivement : elle indique le fichier et la ligne concernés.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Premier projet",
+      "displayLabel": "Exercise",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Ouvrez le projet de départ dans Visual Studio et construisez-le en mode <strong>Debug</strong>. Lancez le programme : il doit afficher <code>Hello, potoos!</code>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Quelques raccourcis pratiques",
+      "slug": "quelques-raccourcis-pratiques"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Visual Studio propose de nombreux raccourcis clavier. Bien les maîtriser fait gagner un temps précieux au quotidien. Prenez l'habitude de les utiliser dès maintenant, quelques-uns suffisent pour commencer.</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Ctrl+K</code> puis <code>Ctrl+D</code> : met en forme le document, en suivant les règles du fichier <code>.editorconfig</code> ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Alt+flèche haut/bas</code> : déplace la ligne ou la sélection vers le haut ou vers le bas ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Alt+Shift</code> et sélection à la souris : sélectionne plusieurs lignes en colonne, pour les modifier en même temps ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Ctrl+K</code> puis <code>Ctrl+C</code> : commente la sélection ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Ctrl+K</code> puis <code>Ctrl+U</code> : retire les commentaires de la sélection ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Shift+flèche</code> : étend la sélection ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Ctrl+flèche gauche/droite</code> : déplace le curseur d'un mot à l'autre. Combiné avec <code>Shift</code>, il sélectionne mot par mot ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>Ctrl+clic</code> sur un nom, comme celui d'une fonction : ouvre sa définition ou sa déclaration."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Cette dernière astuce sera très utile pour naviguer entre les fichiers <code>.h</code> et <code>.c</code> lorsque votre projet grandira.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Bilan",
+      "slug": "bilan",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Un projet C peut être réparti dans plusieurs fichiers. <strong>CMake</strong> permet de décrire son organisation et de générer les fichiers nécessaires à sa compilation. Les fichiers <code>CMakeLists.txt</code> décrivent respectivement le projet dans son ensemble et la construction de l'application, tandis que <code>CMakePresets.json</code> définit les configurations de compilation disponibles.</p>\n<p>Visual Studio permet d'ouvrir un projet CMake, de parcourir ses fichiers, de le compiler et d'exécuter le programme. Certains fichiers et dossiers contiennent le code source ou la configuration indispensable au projet, tandis que d'autres sont générés automatiquement et peuvent être supprimés.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "typeName": "Je sais faire",
+      "displayLabel": "Je sais faire",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Identifier les principaux fichiers et dossiers d'un projet CMake et comprendre leur rôle."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Distinguer le rôle du <code>CMakeLists.txt</code> racine de celui du <code>CMakeLists.txt</code> de l'application."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Comprendre le rôle du fichier <code>CMakePresets.json</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Ouvrir le bon dossier du projet dans Visual Studio."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Naviguer dans les fichiers du projet avec l'explorateur de solutions."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Compiler un projet en mode Debug et exécuter le programme."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Repérer les erreurs et les avertissements de compilation dans Visual Studio."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Distinguer les fichiers indispensables au projet des fichiers générés qui peuvent être supprimés, notamment le dossier <code>build</code>."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Découvrez CMake, l'outil qui organise la construction d'un projet C, et apprenez à l'utiliser avec Visual Studio.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Organisation du projet",
+      "id": "organisation-du-projet",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 2,
+      "text": "Le CMakeLists.txt racine",
+      "id": "le-cmakeliststxt-racine"
+    },
+    {
+      "depth": 2,
+      "text": "Le CMakeLists.txt de l'application",
+      "id": "le-cmakeliststxt-de-lapplication"
+    },
+    {
+      "depth": 2,
+      "text": "Le fichier CMakePresets.json",
+      "id": "le-fichier-cmakepresetsjson"
+    },
+    {
+      "depth": 2,
+      "text": "Le fichier .editorconfig",
+      "id": "le-fichier-editorconfig"
+    },
+    {
+      "depth": 1,
+      "text": "Utiliser le projet avec Visual Studio",
+      "id": "utiliser-le-projet-avec-visual-studio",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 2,
+      "text": "Quelques raccourcis pratiques",
+      "id": "quelques-raccourcis-pratiques"
+    },
+    {
+      "depth": 1,
+      "text": "Bilan",
+      "id": "bilan",
+      "sectionNumber": 3
+    }
+  ],
+  "figureModules": []
+}
