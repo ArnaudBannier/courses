@@ -485,6 +485,17 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "01_algebra/ch5_complements.md",
+          "outputPath": "01_algebra/ch5_complements.json",
+          "title": "Compléments",
+          "navTitle": "Compléments",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -578,6 +589,23 @@
               "outputPath": "01_algebra/ch4_polynomes_arithmetique.json",
               "title": "Arithmétique et factorisation",
               "navTitle": "Arithmétique et factorisation",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "title": "5. Divisibilité",
+          "chapters": [
+            {
+              "sourcePath": "01_algebra/ch5_complements.md",
+              "outputPath": "01_algebra/ch5_complements.json",
+              "title": "Compléments",
+              "navTitle": "Compléments",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",

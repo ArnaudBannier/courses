@@ -742,7 +742,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-connecteurs",
       "blockType": "exercise",
       "titleHtml": "L&#39;implication",
       "displayLabel": "Exercise 1",

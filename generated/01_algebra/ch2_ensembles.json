@@ -304,7 +304,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-appartenance-05",
       "blockType": "exercise",
       "titleHtml": "Diagrammes de Venn",
       "displayLabel": "Exercise 1",
@@ -1057,7 +1056,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-ecriture-1",
       "blockType": "exercise",
       "titleHtml": "Compréhension et extension",
       "displayLabel": "Exercise 3",
@@ -1258,7 +1256,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-ecriture-2",
       "blockType": "exercise",
       "titleHtml": "Humm, sexy…",
       "displayLabel": "Exercise 4",
@@ -1347,7 +1344,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-appartenance-03",
       "blockType": "exercise",
       "titleHtml": "Recherche d&#39;éléments",
       "displayLabel": "Exercise 5",
@@ -2262,7 +2258,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-preuve-inc-1",
       "blockType": "exercise",
       "titleHtml": "Réunion, intersection et inclusion",
       "displayLabel": "Exercise 9",
@@ -2482,7 +2477,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-preuve-inc-2",
       "blockType": "exercise",
       "titleHtml": "Réunion et intersection égales",
       "displayLabel": "Exercise 10",
@@ -3009,7 +3003,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-venn-01",
       "blockType": "exercise",
       "titleHtml": "Diagrammes de Venn (3 ensembles)",
       "displayLabel": "Exercise 11",
@@ -3275,7 +3268,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-venn-01",
       "blockType": "exercise",
       "titleHtml": "Diagrammes de Venn (4 ensembles)",
       "displayLabel": "Exercise 12",
@@ -3573,7 +3565,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-diffsym-01",
       "blockType": "exercise",
       "titleHtml": "Différentes écritures de la différence symétrique",
       "displayLabel": "Exercise 14",
@@ -3658,7 +3649,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-venn-02",
       "blockType": "exercise",
       "titleHtml": "Diagrammes de Venn",
       "displayLabel": "Exercise 15",
@@ -3964,7 +3954,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-difference-01",
       "blockType": "exercise",
       "titleHtml": "La différence",
       "displayLabel": "Exercise 16",
@@ -4213,7 +4202,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-ensparties-1",
       "blockType": "exercise",
       "titleHtml": "Ensemble des parties",
       "displayLabel": "Exercise 17",
@@ -4533,7 +4521,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-prodcart-01",
       "blockType": "exercise",
       "titleHtml": "Produits cartésiens",
       "displayLabel": "Exercise 18",
@@ -4778,7 +4765,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exercice-prodcart-02",
       "blockType": "exercise",
       "titleHtml": "Représentation de produits cartésiens",
       "displayLabel": "Exercise 19",

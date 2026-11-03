@@ -466,7 +466,6 @@
     },
     {
       "kind": "block",
-      "anchorId": "exo-polynomes-11",
       "blockType": "exercise",
       "titleHtml": "Évaluation d&#39;un polynôme",
       "displayLabel": "Exercise 3",
