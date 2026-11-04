@@ -1,0 +1,157 @@
+{
+  "sourcePath": "01_sns/ch2_tableaux.md",
+  "title": "Introduction aux tableaux en C",
+  "navTitle": "Tableaux",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Un tableau permet de stocker plusieurs valeurs de même type sous un seul nom. Un tableau <strong>statique</strong> a une taille fixée à sa déclaration : elle ne peut pas changer pendant l'exécution du programme.</p>\n<p>Dans cette page, « statique » désigne cette taille fixe. Cela ne signifie pas que le tableau est déclaré avec le mot-clé <code>static</code>.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Déclarer et initialiser un tableau",
+      "slug": "déclarer-et-initialiser-un-tableau",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>La déclaration indique le type des éléments, le nom du tableau et son nombre d'éléments :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> notes<span class=\"token punctuation\">[</span><span class=\"token number\">5</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Ce tableau peut contenir cinq entiers. Ses indices vont de <code>0</code> à <code>4</code> : le premier élément est <code>notes[0]</code> et le dernier <code>notes[4]</code>.</p>\n<p>On peut donner des valeurs aux éléments dès la déclaration :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> notes<span class=\"token punctuation\">[</span><span class=\"token number\">5</span><span class=\"token punctuation\">]</span> <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span><span class=\"token number\">12</span><span class=\"token punctuation\">,</span> <span class=\"token number\">15</span><span class=\"token punctuation\">,</span> <span class=\"token number\">9</span><span class=\"token punctuation\">,</span> <span class=\"token number\">18</span><span class=\"token punctuation\">,</span> <span class=\"token number\">14</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>La taille peut être déduite automatiquement à partir de la liste d'initialisation :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> notes<span class=\"token punctuation\">[</span><span class=\"token punctuation\">]</span> <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span><span class=\"token number\">12</span><span class=\"token punctuation\">,</span> <span class=\"token number\">15</span><span class=\"token punctuation\">,</span> <span class=\"token number\">9</span><span class=\"token punctuation\">,</span> <span class=\"token number\">18</span><span class=\"token punctuation\">,</span> <span class=\"token number\">14</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Si la liste est plus courte que le tableau, les éléments restants sont initialisés à zéro :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> compteurs<span class=\"token punctuation\">[</span><span class=\"token number\">5</span><span class=\"token punctuation\">]</span> <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token number\">2</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span> <span class=\"token comment\">// Les trois derniers éléments valent 0.</span>\n</span></code></pre>\n<p>En revanche, un tableau local déclaré sans initialisation contient des valeurs indéterminées. Il faut donner une valeur à chaque élément avant de le lire.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Accéder aux éléments et parcourir le tableau",
+      "slug": "accéder-aux-éléments-et-parcourir-le-tableau",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>On lit ou modifie un élément avec son indice :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> notes<span class=\"token punctuation\">[</span><span class=\"token number\">5</span><span class=\"token punctuation\">]</span> <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span><span class=\"token number\">12</span><span class=\"token punctuation\">,</span> <span class=\"token number\">15</span><span class=\"token punctuation\">,</span> <span class=\"token number\">9</span><span class=\"token punctuation\">,</span> <span class=\"token number\">18</span><span class=\"token punctuation\">,</span> <span class=\"token number\">14</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> premiere_note <span class=\"token operator\">=</span> notes<span class=\"token punctuation\">[</span><span class=\"token number\">0</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">notes<span class=\"token punctuation\">[</span><span class=\"token number\">2</span><span class=\"token punctuation\">]</span> <span class=\"token operator\">=</span> <span class=\"token number\">10</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Un indice invalide, par exemple <code>notes[5]</code>, est en dehors du tableau. En C, l'accès n'est pas vérifié automatiquement : il peut produire un résultat imprévisible (un <em>segfault</em>). Pour parcourir les cinq éléments, on utilise une boucle :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">for</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> i <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span> i <span class=\"token operator\">&#x3C;</span> <span class=\"token number\">5</span><span class=\"token punctuation\">;</span> i<span class=\"token operator\">++</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">printf</span><span class=\"token punctuation\">(</span><span class=\"token string\">\"%d\\n\"</span><span class=\"token punctuation\">,</span> notes<span class=\"token punctuation\">[</span>i<span class=\"token punctuation\">]</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>La condition <code>i &#x3C; 5</code> est importante : avec <code>i &#x3C;= 5</code>, la boucle tenterait aussi d'accéder à <code>notes[5]</code>, qui n'existe pas.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Passer un tableau à une fonction",
+      "slug": "passer-un-tableau-à-une-fonction",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Lorsqu'un tableau est passé à une fonction, la fonction ne reçoit pas automatiquement son nombre d'éléments. Il faut donc transmettre la taille séparément :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">dernier_element</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> valeurs<span class=\"token punctuation\">[</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> taille<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span> <span class=\"token comment\">// Prototype</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">dernier_element</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> valeurs<span class=\"token punctuation\">[</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> taille<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> valeurs<span class=\"token punctuation\">[</span>taille <span class=\"token operator\">-</span> <span class=\"token number\">1</span><span class=\"token punctuation\">]</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> notes<span class=\"token punctuation\">[</span><span class=\"token number\">5</span><span class=\"token punctuation\">]</span> <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span><span class=\"token number\">12</span><span class=\"token punctuation\">,</span> <span class=\"token number\">15</span><span class=\"token punctuation\">,</span> <span class=\"token number\">9</span><span class=\"token punctuation\">,</span> <span class=\"token number\">18</span><span class=\"token punctuation\">,</span> <span class=\"token number\">14</span><span class=\"token punctuation\">}</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> derniere_note <span class=\"token operator\">=</span> <span class=\"token function\">dernier_element</span><span class=\"token punctuation\">(</span>notes<span class=\"token punctuation\">,</span> <span class=\"token number\">5</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span> <span class=\"token comment\">// Appel</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "block",
+      "blockType": "warning",
+      "titleHtml": "À retenir",
+      "displayLabel": "Warning",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Le premier indice d'un tableau est <code>0</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Pour un tableau de taille <code>n</code>, les indices valides vont de <code>0</code> à <code>n - 1</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "La taille d'un tableau statique ne change pas après sa déclaration."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Passez la taille séparément à une fonction qui reçoit un tableau."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "N'accédez jamais à un indice situé en dehors du tableau."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "displayLabel": "Exercise",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Déclarez un tableau de six entiers initialisés à votre choix. À l'aide d'une fonction, parcourez-le pour afficher chaque élément et calculer la moyenne des éléments. Attention à retourner une valeur flottante exacte !</p>"
+        }
+      ]
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Déclarer et initialiser un tableau",
+      "id": "déclarer-et-initialiser-un-tableau",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 1,
+      "text": "Accéder aux éléments et parcourir le tableau",
+      "id": "accéder-aux-éléments-et-parcourir-le-tableau",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 1,
+      "text": "Passer un tableau à une fonction",
+      "id": "passer-un-tableau-à-une-fonction",
+      "sectionNumber": 3
+    }
+  ],
+  "figureModules": []
+}

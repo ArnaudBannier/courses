@@ -1,0 +1,158 @@
+{
+  "sourcePath": "01_sns/ch0_partie2.md",
+  "title": "Cycle 2 -- ajout d'un récepteur dédié",
+  "navTitle": "Cycle 2",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Le cycle précédent nous a permis de vérifier qu'il était techniquement possible d'émettre et de recevoir un signal infrarouge.\nToutefois, le bruit ambiant rend l'usage de cette technologie trop aléatoire.\nL'objectif de ce cycle est donc d'ajouter un composant spécialement conçu pour détecter une salve infrarouge à 38 kHz afin d'échanger des informations.\nUne première partie nous permettra de prendre en main le nouveau composant et de découvrir la notion d'interruption, de PWM et de tableaux.\nLa seconde partie consistera à généraliser et fiabiliser le prototype, notamment au niveau de la détection d'erreurs et de l'état du récepteur.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Partie A : prise en main du VS1838B",
+      "slug": "partie-a--prise-en-main-du-vs1838b",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Cahier des charges et spécifications fonctionnelles",
+      "slug": "cahier-des-charges-et-spécifications-fonctionnelles"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le système doit transmettre un octet entre les deux cartes à l'aide d'une LED infrarouge et d'un photorécepteur VS1838B. La LED émet une porteuse à 38 kHz, découpée en salves dont la durée représente la valeur du bit. La carte réceptrice mesure ces durées à partir des changements d'état de la sortie du photorécepteur.</p>\n<table>\n<thead>\n<tr>\n<th>Exigence fonctionnelle</th>\n<th>Spécification</th>\n<th>Test de validation</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Émettre la porteuse infrarouge</td>\n<td>La porteuse est réglée à 38 kHz et activée pendant des salves commandées par le programme.</td>\n<td>Observer le signal de commande de la LED à l'oscilloscope et vérifier la fréquence de la porteuse ainsi que la durée des salves.</td>\n</tr>\n<tr>\n<td>Coder les bits</td>\n<td>Une salve de 600 µs représente un <code>0</code> et une salve de 900 µs représente un <code>1</code>. La pause suivant chaque bit est égale à la durée de la salve de ce bit. La tolérance de mesure est déterminée par des essais et consignée avec les résultats ; les plages retenues doivent permettre de distinguer sans ambiguïté les deux valeurs.</td>\n<td>Émettre successivement des <code>0</code> et des <code>1</code>, mesurer les salves et les pauses à l'oscilloscope, puis vérifier que le récepteur décode correctement des durées situées dans chacune des plages retenues. Vérifier également qu'une durée hors de ces plages ne donne pas un bit valide.</td>\n</tr>\n<tr>\n<td>Recevoir un octet</td>\n<td>Une réception complète contient 8 bits. L'ordre de transmission des bits doit être défini et identique à l'émission et à la réception.</td>\n<td>Envoyer un octet de test comportant des <code>0</code> et des <code>1</code> (par exemple <code>10100110</code>) et vérifier que le moniteur série affiche la même valeur selon l'ordre défini.</td>\n</tr>\n<tr>\n<td>Terminer une réception incomplète</td>\n<td>En l'absence de nouvelle activité pendant 10 ms après le dernier changement d'état détecté, la réception se termine sans attendre les 8 bits. Le nombre de bits effectivement reçus doit rester identifiable : une trame incomplète ne doit pas être présentée comme un octet valide.</td>\n<td>Interrompre volontairement une émission après quelques bits. Vérifier que la réception se termine après 10 ms de silence, indique le nombre de bits reçus et ne valide pas l'octet. Vérifier aussi qu'une émission complète n'est pas interrompue entre deux bits.</td>\n</tr>\n</tbody>\n</table>\n<p>La validation se fait d'abord séparément : contrôler le signal émis à l'oscilloscope, puis vérifier le décodage du récepteur avec des séquences connues. Terminer par un essai entre les deux cartes et consigner les mesures, les plages de durée retenues et les résultats obtenus.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Étape 1 : préparer les montages",
+      "slug": "étape-1--préparer-les-montages"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Créez deux nouveaux sketches Arduino distincts, un pour chaque carte.\nLe montage d'émission comprend une LED infrarouge reliée à une sortie de la Pico.\nLe montage de réception comprend uniquement le photorécepteur, dont une patte est reliée à l'alimentation, une autre à la masse et la dernière porte le signal numérique.</p>\n<p>Montage d'émission de la LED infrarouge :</p>\n<pre class=\"language-mermaid\"><code class=\"language-mermaid code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">flowchart</span> LR\n</span><span class=\"code-line\">        GPIO<span class=\"token text string\">[\"GPIO (sortie)\"]</span> <span class=\"token arrow operator\">---</span> R<span class=\"token text string\">[\"Résistance&#x3C;br/>220 Ω\"]</span>\n</span><span class=\"code-line\">        R <span class=\"token arrow operator\">---</span> LED<span class=\"token text string\">[\"LED IR&#x3C;br/>cathode vers GND\"]</span>\n</span><span class=\"code-line\">        LED <span class=\"token arrow operator\">---</span> GND<span class=\"token text string\">[GND]</span>\n</span></code></pre>\n<p>Montage de réception du photorécepteur :</p>\n<pre class=\"language-mermaid\"><code class=\"language-mermaid code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">flowchart</span> TD\n</span><span class=\"code-line\">        VCC<span class=\"token text string\">[\"+3.3 V\"]</span> <span class=\"token arrow operator\">---</span> P<span class=\"token text string\">[\"Photorécepteur\"]</span>\n</span><span class=\"code-line\">        GND<span class=\"token text string\">[GND]</span> <span class=\"token arrow operator\">---</span> P\n</span><span class=\"code-line\">        GPIO<span class=\"token text string\">[\"GPIO (signal)\"]</span> <span class=\"token arrow operator\">---</span> P\n</span></code></pre>"
+    },
+    {
+      "kind": "block",
+      "blockType": "warning",
+      "displayLabel": "Warning",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Vérifiez le câblage avant de mettre les cartes sous tension !\nEn particulier, les pattes du photorécepteur peuvent ne pas être exactement dans le même ordre que le schéma ci-dessus.\nRegardez la documentation technique de votre composant pour identifier quelle patte fait quoi !</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Étape 2 : émission des salves infrarouges",
+      "slug": "étape-2--émission-des-salves-infrarouges"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le composant activera sa broche de signal lorsqu'il recevra une salve infrarouge à 38 kHz.\nNous utiliserons pour cela la fonctionnalité <em>PWM matériel</em> de la Raspberry Pi Pico.\nLes différentes étapes de cette partie consistent à configurer la fréquence du PWM, la broche de sortie et son rapport cyclique.\nVous développerez toute cette partie dans une fonction séparée que vous appellerez depuis le <code>setup()</code>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "remark",
+      "titleHtml": "Validation",
+      "displayLabel": "Remark",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "light"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>La validation fonctionnelle de cette partie sera faite à l'aide d'un oscilloscope sur la LED infrarouge.\nVous lancerez de façon continue des salves de 10 ms à 38 kHz, espacées de 100 ms, et vérifierez à l'aide de l'oscilloscope que la fréquence du PWM et la durée des salves sont correctes.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Étape 3 : Réception des salves et décodage",
+      "slug": "étape-3--réception-des-salves-et-décodage"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Du côté réception, vous devez être capable de stocker les durées des différentes salves reçues.\nLorsque le composant reçoit un signal, sa broche de signal change d'état, ce qui permet à la carte de générer une interruption.\nCette dernière permettra de savoir à quel moment la salve a débuté, à quel moment elle s'est terminée et donc combien de temps elle a duré.</p>\n<p>Vous devez donc configurer la carte dans le <code>setup()</code> pour déclencher une interruption sur la broche de signal du récepteur lorsque celle-ci change d'état.\nPour le récepteur infrarouge, configurez l'interruption sur <code>CHANGE</code> afin de repérer le début et la fin des salves.\nVotre fonction d'interruption sera alors automatiquement appelée.</p>\n<p>Dans votre boucle principale, vous surveillerez le nombre de fois où l'interruption a été appelée, ce qui vous permettra de savoir quand les 8 bits ont été reçus.\nÀ ce moment, vous pourrez parcourir les timestamps stockés pour décoder votre signal.\nIl est très peu probable que la durée enregistrée de la salve soit exactement celle qui soit émise.\nExpérimentez pour savoir quelles sont les durées probables, au niveau de la réception, qui correspondent aux durées émises.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Partie B : généralisation et fiabilisation",
+      "slug": "partie-b--généralisation-et-fiabilisation",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>À venir...</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Partie A : prise en main du VS1838B",
+      "id": "partie-a--prise-en-main-du-vs1838b",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 2,
+      "text": "Cahier des charges et spécifications fonctionnelles",
+      "id": "cahier-des-charges-et-spécifications-fonctionnelles"
+    },
+    {
+      "depth": 2,
+      "text": "Étape 1 : préparer les montages",
+      "id": "étape-1--préparer-les-montages"
+    },
+    {
+      "depth": 2,
+      "text": "Étape 2 : émission des salves infrarouges",
+      "id": "étape-2--émission-des-salves-infrarouges"
+    },
+    {
+      "depth": 2,
+      "text": "Étape 3 : Réception des salves et décodage",
+      "id": "étape-3--réception-des-salves-et-décodage"
+    },
+    {
+      "depth": 1,
+      "text": "Partie B : généralisation et fiabilisation",
+      "id": "partie-b--généralisation-et-fiabilisation",
+      "sectionNumber": 2
+    }
+  ],
+  "figureModules": []
+}

@@ -1,0 +1,72 @@
+{
+  "sourcePath": "01_sns/ch2_pwm.md",
+  "title": "Modulation de largeur d'impulsion (PWM)",
+  "navTitle": "PWM",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>La modulation de largeur d'impulsion (PWM, <em>Pulse Width Modulation</em>) produit un signal périodique dont on peut régler la fréquence et la proportion de temps passée à l'état haut.\nElle permet, dans le cadre de notre projet, de commander la LED infrarouge avec une <em>porteuse</em> à 38 kHz.\nPour envoyer une information, on active cette porteuse pendant une courte durée : on obtient alors une salve infrarouge.\nLa longueur de la salve indiquera l'émission d'un 0 ou d'un 1.</p>\n<p>La Raspberry Pi Pico (RP2040) possède des générateurs PWM matériels.\nIls produisent le signal indépendamment de <code>loop()</code>, contrairement à une génération logicielle qui nécessiterait de basculer une sortie très rapidement.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Principe du PWM matériel",
+      "slug": "principe-du-pwm-matériel",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le générateur PWM matériel du RP2040 utilise l'horloge système <code>clk_sys</code> pour faire avancer un compteur.\nCette horloge tourne à la fréquence indiquée par le constructeur : 200 MHz dans notre cas.\nLe compteur part de <code>0</code> et revient à <code>0</code> après avoir atteint la valeur de rechargement (<em>wrap</em>, ou TOP).\nLe nombre de pas d'une période est donc <code>wrap + 1</code>.</p>\n<p>Le compteur peut avancer moins vite que l'horloge système grâce au diviseur d'horloge.\nLa fréquence de la porteuse est :</p>\n<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">fréquence PWM = fréquence de clk_sys / (diviseur × (wrap + 1))\n</span></code></pre>\n<p>La Pico utilisée ici est cadencée à <strong>200 MHz</strong>.\nAvec un diviseur de <code>1</code> et un <code>wrap</code> de <code>5263</code>, on obtient :</p>\n<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">200 000 000 / (1 × (5263 + 1)) ≈ 37 994 Hz\n</span></code></pre>\n<p>Le diviseur de <code>1</code> laisse donc le compteur avancer à la fréquence système, sans division.\nLe <code>wrap</code> fixe le nombre de pas de chaque période.\nLe diviseur agit sur l'horloge du compteur PWM ; il ne modifie pas l'horloge système de la Pico.</p>\n<p>Le niveau de comparaison règle la proportion de chaque période pendant laquelle la sortie est haute. Avec <code>wrap = 5263</code>, un niveau de <code>2631</code> donne un rapport cyclique proche de 50 %.\nUn niveau de <code>0</code> maintient la sortie basse : on peut ainsi arrêter les salves sans arrêter le compteur PWM.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Configuration du PWM",
+      "slug": "configuration-du-pwm",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>L'exemple reprend la configuration qui sera utilisée dans le projet.\nIl utilise les fonctions du SDK Pico disponibles avec le package Arduino-Pico.\nOn définit la constante <code>TX_IR_LED_PIN</code> selon le numéro GPIO raccordé au circuit d'émission.</p>\n<p>Incluez l'en-tête du périphérique PWM et déclarez la variable qui mémorisera la slice associée à la broche :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">&#x3C;hardware/gpio.h></span></span>\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">&#x3C;hardware/pwm.h></span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">uint slice_num<span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Dans la fonction d'initialisation, configurez le GPIO en sortie PWM, récupérez sa slice, puis réglez le diviseur et le <code>wrap</code> :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">gpio_set_function</span><span class=\"token punctuation\">(</span>TX_IR_LED_PIN<span class=\"token punctuation\">,</span> GPIO_FUNC_PWM<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">slice_num <span class=\"token operator\">=</span> <span class=\"token function\">pwm_gpio_to_slice_num</span><span class=\"token punctuation\">(</span>TX_IR_LED_PIN<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token function\">pwm_set_clkdiv</span><span class=\"token punctuation\">(</span>slice_num<span class=\"token punctuation\">,</span> <span class=\"token number\">1.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token function\">pwm_set_wrap</span><span class=\"token punctuation\">(</span>slice_num<span class=\"token punctuation\">,</span> <span class=\"token number\">5263</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Le RP2040 possède plusieurs slices PWM.\nChaque broche est reliée à une slice et à l'un de ses deux canaux.\nLe code retrouve ici la slice de la broche ; il retrouve ensuite le canal au moment de régler le niveau.\nLes deux canaux d'une même slice partagent la fréquence et le diviseur.</p>\n<p>Réglez le niveau à <code>0</code> pour garder la sortie basse au démarrage, puis activez la slice :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">pwm_set_chan_level</span><span class=\"token punctuation\">(</span>slice_num<span class=\"token punctuation\">,</span> <span class=\"token function\">pwm_gpio_to_channel</span><span class=\"token punctuation\">(</span>TX_IR_LED_PIN<span class=\"token punctuation\">)</span><span class=\"token punctuation\">,</span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token function\">pwm_set_enabled</span><span class=\"token punctuation\">(</span>slice_num<span class=\"token punctuation\">,</span> true<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>La slice reste activée pendant toute l'exécution du programme.\nC'est le niveau de comparaison qui détermine si la porteuse est effectivement présente sur la sortie.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Émettre et arrêter une salve",
+      "slug": "émettre-et-arrêter-une-salve",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour émettre une salve, le projet règle le niveau PWM à <code>2631</code> (la moitié du wrap), attend la durée souhaitée, puis remet le niveau à <code>0</code> :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">static</span> <span class=\"token keyword\">inline</span> <span class=\"token keyword\">void</span> <span class=\"token function\">burstOn</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">unsigned</span> <span class=\"token keyword\">int</span> onTime<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">pwm_set_chan_level</span><span class=\"token punctuation\">(</span>slice_num<span class=\"token punctuation\">,</span> <span class=\"token function\">pwm_gpio_to_channel</span><span class=\"token punctuation\">(</span>TX_IR_LED_PIN<span class=\"token punctuation\">)</span><span class=\"token punctuation\">,</span> <span class=\"token number\">2631</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">delayMicroseconds</span><span class=\"token punctuation\">(</span>onTime<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">pwm_set_chan_level</span><span class=\"token punctuation\">(</span>slice_num<span class=\"token punctuation\">,</span> <span class=\"token function\">pwm_gpio_to_channel</span><span class=\"token punctuation\">(</span>TX_IR_LED_PIN<span class=\"token punctuation\">)</span><span class=\"token punctuation\">,</span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Le PWM matériel produit la porteuse à environ 38 kHz pendant l'attente.\nLa fonction <code>delayMicroseconds()</code> fixe la durée de la salve ; elle ne génère pas les oscillations de 38 kHz.\nLorsque le niveau est remis à zéro, la broche reste basse même si la slice PWM continue de tourner.</p>\n<p>La fonction suivante maintient ce niveau bas pendant l'intervalle entre deux salves :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">static</span> <span class=\"token keyword\">inline</span> <span class=\"token keyword\">void</span> <span class=\"token function\">burstOff</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">unsigned</span> <span class=\"token keyword\">int</span> offTime<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">delayMicroseconds</span><span class=\"token punctuation\">(</span>offTime<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Un bit est transmis en choisissant la durée de la salve et celle de l'intervalle bas qui la suit. Dans le projet, un <code>0</code> est codé par une salve de 600 µs suivie d'un temps de 600 µs à l'état bas ; un <code>1</code>, par une salve de 900 µs suivie de 900 µs à l'état bas.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Principe du PWM matériel",
+      "id": "principe-du-pwm-matériel",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 1,
+      "text": "Configuration du PWM",
+      "id": "configuration-du-pwm",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 1,
+      "text": "Émettre et arrêter une salve",
+      "id": "émettre-et-arrêter-une-salve",
+      "sectionNumber": 3
+    }
+  ],
+  "figureModules": []
+}

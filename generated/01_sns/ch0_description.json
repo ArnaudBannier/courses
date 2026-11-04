@@ -23,8 +23,8 @@
     {
       "kind": "heading",
       "depth": 1,
-      "text": "Partie 1 : premier prototype",
-      "slug": "partie-1--premier-prototype",
+      "text": "Cycle 1 : premier prototype",
+      "slug": "cycle-1--premier-prototype",
       "sectionNumber": 2
     },
     {
@@ -34,8 +34,8 @@
     {
       "kind": "heading",
       "depth": 1,
-      "text": "Partie 2 : utilisation d'un récepteur dédié",
-      "slug": "partie-2--utilisation-dun-récepteur-dédié",
+      "text": "Cycle 2 : utilisation d'un récepteur dédié",
+      "slug": "cycle-2--utilisation-dun-récepteur-dédié",
       "sectionNumber": 3
     },
     {
@@ -45,8 +45,8 @@
     {
       "kind": "heading",
       "depth": 1,
-      "text": "Partie 3 : développement d'une bibliothèque dédiée",
-      "slug": "partie-3--développement-dune-bibliothèque-dédiée",
+      "text": "Cycle 3 : développement d'une bibliothèque dédiée",
+      "slug": "cycle-3--développement-dune-bibliothèque-dédiée",
       "sectionNumber": 4
     },
     {
@@ -56,8 +56,8 @@
     {
       "kind": "heading",
       "depth": 1,
-      "text": "Partie 4 : intégration à l'esieabot",
-      "slug": "partie-4--intégration-à-lesieabot",
+      "text": "Cycle 4 : intégration à l'esieabot",
+      "slug": "cycle-4--intégration-à-lesieabot",
       "sectionNumber": 5
     },
     {
@@ -82,26 +82,26 @@
     },
     {
       "depth": 1,
-      "text": "Partie 1 : premier prototype",
-      "id": "partie-1--premier-prototype",
+      "text": "Cycle 1 : premier prototype",
+      "id": "cycle-1--premier-prototype",
       "sectionNumber": 2
     },
     {
       "depth": 1,
-      "text": "Partie 2 : utilisation d'un récepteur dédié",
-      "id": "partie-2--utilisation-dun-récepteur-dédié",
+      "text": "Cycle 2 : utilisation d'un récepteur dédié",
+      "id": "cycle-2--utilisation-dun-récepteur-dédié",
       "sectionNumber": 3
     },
     {
       "depth": 1,
-      "text": "Partie 3 : développement d'une bibliothèque dédiée",
-      "id": "partie-3--développement-dune-bibliothèque-dédiée",
+      "text": "Cycle 3 : développement d'une bibliothèque dédiée",
+      "id": "cycle-3--développement-dune-bibliothèque-dédiée",
       "sectionNumber": 4
     },
     {
       "depth": 1,
-      "text": "Partie 4 : intégration à l'esieabot",
-      "id": "partie-4--intégration-à-lesieabot",
+      "text": "Cycle 4 : intégration à l'esieabot",
+      "id": "cycle-4--intégration-à-lesieabot",
       "sectionNumber": 5
     }
   ],

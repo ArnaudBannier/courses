@@ -739,8 +739,12 @@
       "outputPath": "01_sns/ch0_description.json",
       "blocks": {}
     },
-    "sns-0-partie1": {
+    "sns-0-cycle1": {
       "outputPath": "01_sns/ch0_partie1.json",
+      "blocks": {}
+    },
+    "sns-0-cycle2": {
+      "outputPath": "01_sns/ch0_partie2.json",
       "blocks": {}
     },
     "sns-1-installation": {
@@ -753,6 +757,18 @@
     },
     "sns-1-premiers-pas": {
       "outputPath": "01_sns/ch1_premiers_pas.json",
+      "blocks": {}
+    },
+    "sns-2-tableaux": {
+      "outputPath": "01_sns/ch2_tableaux.json",
+      "blocks": {}
+    },
+    "sns-2-pwm": {
+      "outputPath": "01_sns/ch2_pwm.json",
+      "blocks": {}
+    },
+    "sns-2-interruption": {
+      "outputPath": "01_sns/ch2_interruptions.json",
       "blocks": {}
     },
     "alg3-espaces-vectoriels": {

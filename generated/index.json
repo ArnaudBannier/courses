@@ -850,8 +850,19 @@
         {
           "sourcePath": "01_sns/ch0_partie1.md",
           "outputPath": "01_sns/ch0_partie1.json",
-          "title": "Première partie -- photodiodes et cartes dédiées",
-          "navTitle": "Partie 1",
+          "title": "Cycle 1 -- photodiodes et cartes dédiées",
+          "navTitle": "Cycle 1",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_sns/ch0_partie2.md",
+          "outputPath": "01_sns/ch0_partie2.json",
+          "title": "Cycle 2 -- ajout d'un récepteur dédié",
+          "navTitle": "Cycle 2",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -890,6 +901,39 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "01_sns/ch2_tableaux.md",
+          "outputPath": "01_sns/ch2_tableaux.json",
+          "title": "Introduction aux tableaux en C",
+          "navTitle": "Tableaux",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_sns/ch2_pwm.md",
+          "outputPath": "01_sns/ch2_pwm.json",
+          "title": "Modulation de largeur d'impulsion (PWM)",
+          "navTitle": "PWM",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_sns/ch2_interruptions.md",
+          "outputPath": "01_sns/ch2_interruptions.json",
+          "title": "Interruptions",
+          "navTitle": "Interruptions",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -911,8 +955,19 @@
             {
               "sourcePath": "01_sns/ch0_partie1.md",
               "outputPath": "01_sns/ch0_partie1.json",
-              "title": "Première partie -- photodiodes et cartes dédiées",
-              "navTitle": "Partie 1",
+              "title": "Cycle 1 -- photodiodes et cartes dédiées",
+              "navTitle": "Cycle 1",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_sns/ch0_partie2.md",
+              "outputPath": "01_sns/ch0_partie2.json",
+              "title": "Cycle 2 -- ajout d'un récepteur dédié",
+              "navTitle": "Cycle 2",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",
@@ -952,6 +1007,45 @@
               "outputPath": "01_sns/ch1_premiers_pas.json",
               "title": "Premiers pas en Arduino",
               "navTitle": "Premiers pas",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "title": "2. Photorécepteur",
+          "chapters": [
+            {
+              "sourcePath": "01_sns/ch2_tableaux.md",
+              "outputPath": "01_sns/ch2_tableaux.json",
+              "title": "Introduction aux tableaux en C",
+              "navTitle": "Tableaux",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_sns/ch2_pwm.md",
+              "outputPath": "01_sns/ch2_pwm.json",
+              "title": "Modulation de largeur d'impulsion (PWM)",
+              "navTitle": "PWM",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_sns/ch2_interruptions.md",
+              "outputPath": "01_sns/ch2_interruptions.json",
+              "title": "Interruptions",
+              "navTitle": "Interruptions",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",

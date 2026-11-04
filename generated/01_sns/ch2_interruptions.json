@@ -1,0 +1,96 @@
+{
+  "sourcePath": "01_sns/ch2_interruptions.md",
+  "title": "Interruptions",
+  "navTitle": "Interruptions",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>La Raspberry Pi Pico (comme de nombreux autres microcontrôleurs) peut réagir à des événements matériels, comme un changement d'état sur une broche, pendant que le programme exécute d'autres tâches.\nLes interruptions permettent de détecter ces événements sans vérifier constamment l'entrée.\nCette page présente la différence entre scrutation et interruption, puis montre comment configurer une interruption en Arduino.\nNous verrons aussi comment partager des données entre la routine d'interruption et <code>loop()</code> sans ralentir la réponse.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Polling ou interruption ?",
+      "slug": "polling-ou-interruption-",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>Avec le <strong>polling</strong> (ou scrutation), le programme vérifie régulièrement l'état d'une entrée dans <code>loop()</code>. C'est simple, mais si une autre tâche prend du temps, une impulsion brève peut apparaître et disparaître entre deux vérifications.</p>\n<p>Les deux extraits suivants illustrent le principe : <code>signalPin</code> représente la broche d'entrée, et <code>traiterEvenement()</code> et <code>effectuerAutreTache()</code> des traitements à définir selon le programme.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">loop</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">static</span> bool etatPrecedent <span class=\"token operator\">=</span> LOW<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    bool etatCourant <span class=\"token operator\">=</span> <span class=\"token function\">digitalRead</span><span class=\"token punctuation\">(</span>signalPin<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>etatCourant <span class=\"token operator\">==</span> HIGH <span class=\"token operator\">&#x26;&#x26;</span> etatPrecedent <span class=\"token operator\">==</span> LOW<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token function\">traiterEvenement</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    etatPrecedent <span class=\"token operator\">=</span> etatCourant<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token function\">effectuerAutreTache</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Ce code détecte une transition de <code>LOW</code> vers <code>HIGH</code> en comparant l'état actuel au précédent.\nSi <code>effectuerAutreTache()</code> dure plus longtemps que l'impulsion, celle-ci peut être manquée.</p>\n<p>Avec une <strong>interruption</strong>, le microcontrôleur appelle automatiquement une fonction dédiée dès que la transition configurée se produit.\nLe programme peut alors effectuer d'autres tâches sans devoir vérifier constamment l'entrée.</p>\n<p>Le code exécuté directement en réponse à un événement s'appelle une routine de service d'interruption (ou ISR, pour <em>Interrupt Service Routine</em>).\nIl faut la garder courte : elle s'exécute en priorité et retarde le reste du programme.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">volatile</span> <span class=\"token keyword\">unsigned</span> <span class=\"token keyword\">int</span> nombreEvenements <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">onSignalChange</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    nombreEvenements<span class=\"token operator\">++</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">setup</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">pinMode</span><span class=\"token punctuation\">(</span>signalPin<span class=\"token punctuation\">,</span> INPUT<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">attachInterrupt</span><span class=\"token punctuation\">(</span><span class=\"token function\">digitalPinToInterrupt</span><span class=\"token punctuation\">(</span>signalPin<span class=\"token punctuation\">)</span><span class=\"token punctuation\">,</span> onSignalChange<span class=\"token punctuation\">,</span> CHANGE<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">loop</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">noInterrupts</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">unsigned</span> <span class=\"token keyword\">int</span> evenements <span class=\"token operator\">=</span> nombreEvenements<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    nombreEvenements <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">interrupts</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">for</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">unsigned</span> <span class=\"token keyword\">int</span> i <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span> i <span class=\"token operator\">&#x3C;</span> evenements<span class=\"token punctuation\">;</span> i<span class=\"token operator\">++</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token function\">traiterEvenement</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token function\">effectuerAutreTache</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Cet exemple utilise un compteur d'événements.\nLa boucle principale <code>loop()</code> récupère la valeur de ce compteur et le remet à zéro dans une courte section protégée, puis traite chaque événement.\nAinsi, plusieurs événements survenus entre deux passages dans <code>loop()</code> peuvent être comptabilisés.</p>\n<p>La fonction <code>attachInterrupt()</code> associe une broche, une fonction d'interruption et un type d'événement.\n<code>CHANGE</code> déclenche la fonction lors de chaque transition, montante ou descendante.\nOn peut aussi utiliser <code>RISING</code> pour une transition de <code>LOW</code> vers <code>HIGH</code>, ou <code>FALLING</code> pour une transition de <code>HIGH</code> vers <code>LOW</code>.</p>\n<p>La fonction <code>onSignalChange()</code> incrémente un compteur partagé avec <code>loop()</code>.\nLe mot-clé <code>volatile</code> indique au compilateur que cette valeur peut changer en dehors du déroulement normal du programme.\nLa lecture et la remise à zéro du compteur sont protégées brièvement par <code>noInterrupts()</code> et <code>interrupts()</code> afin qu'une interruption ne survienne pas au milieu de ces opérations.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Règles importantes",
+      "slug": "règles-importantes",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ne faites pas d'affichage avec <code>Serial</code>, n'appelez pas <code>delay()</code> et n'effectuez pas de traitement long dans une ISR. Enregistrez l'information nécessaire, puis traitez-la dans <code>loop()</code> ou dans une sous-fonction."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>volatile</code> ne rend pas à lui seul une opération atomique. Protégez les lectures ou modifications partagées qui pourraient être interrompues."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Un compteur indique le nombre d'événements, mais pas leur durée. Pour mesurer une durée, l'ISR peut mémoriser l'heure d'une transition avec <code>micros()</code> ; le calcul et le décodage sont ensuite effectués dans <code>loop()</code>."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Si les événements arrivent plus vite que <code>loop()</code> ne peut les traiter, un simple indicateur ou une seule valeur mémorisée peut perdre de l'information. Il faut alors stocker les événements dans un tableau."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Polling ou interruption ?",
+      "id": "polling-ou-interruption-",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 1,
+      "text": "Règles importantes",
+      "id": "règles-importantes",
+      "sectionNumber": 2
+    }
+  ],
+  "figureModules": []
+}
