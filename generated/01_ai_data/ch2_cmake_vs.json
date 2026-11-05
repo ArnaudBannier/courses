@@ -520,24 +520,6 @@
               "content": [
                 {
                   "kind": "html",
-                  "html": "Distinguer le rôle du <code>CMakeLists.txt</code> racine de celui du <code>CMakeLists.txt</code> de l'application."
-                }
-              ]
-            },
-            {
-              "kind": "list-item",
-              "content": [
-                {
-                  "kind": "html",
-                  "html": "Comprendre le rôle du fichier <code>CMakePresets.json</code>."
-                }
-              ]
-            },
-            {
-              "kind": "list-item",
-              "content": [
-                {
-                  "kind": "html",
                   "html": "Ouvrir le bon dossier du projet dans Visual Studio."
                 }
               ]

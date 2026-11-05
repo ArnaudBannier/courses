@@ -602,7 +602,7 @@
               "content": [
                 {
                   "kind": "html",
-                  "html": "Distinguer une fonction qui modifie une instance (<code>Type*</code>) d'une fonction qui se contente de la consulter (`const Type*)."
+                  "html": "Distinguer une fonction qui modifie une instance (<code>Type*</code>) d'une fonction qui se contente de la consulter (<code>const Type*</code>)."
                 }
               ]
             },
