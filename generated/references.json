@@ -699,6 +699,14 @@
         }
       }
     },
+    "alg1-divisibilite": {
+      "outputPath": "01_algebra/ch5_divisibilite.json",
+      "blocks": {}
+    },
+    "alg1-cartes-magiques": {
+      "outputPath": "01_algebra/ch5_cartes_magiques.json",
+      "blocks": {}
+    },
     "alg1-divisibilite-complements": {
       "outputPath": "01_algebra/ch5_complements.json",
       "blocks": {}
@@ -740,11 +748,11 @@
       "blocks": {}
     },
     "sns-0-cycle1": {
-      "outputPath": "01_sns/ch0_partie1.json",
+      "outputPath": "01_sns/ch0_cycle1.json",
       "blocks": {}
     },
     "sns-0-cycle2": {
-      "outputPath": "01_sns/ch0_partie2.json",
+      "outputPath": "01_sns/ch0_cycle2.json",
       "blocks": {}
     },
     "sns-1-installation": {

@@ -1,0 +1,117 @@
+{
+  "sourcePath": "01_sns/ch0_cycle2.md",
+  "title": "Cycle 2 -- ajout d'un récepteur dédié",
+  "navTitle": "Cycle 2",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Le cycle précédent nous a permis de vérifier qu'il était techniquement possible d'émettre et de recevoir un signal infrarouge.\nToutefois, le bruit ambiant rend l'usage de cette technologie trop aléatoire.\nL'objectif de ce cycle est donc d'ajouter un composant spécialement conçu pour détecter une salve infrarouge à 38 kHz afin d'échanger des informations.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Cahier des charges",
+      "slug": "cahier-des-charges",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>Réaliser une transmission de huit valeurs binaires entre deux cartes à l'aide d'une LED infrarouge et d'un photorécepteur VS1838B.\nLa porteuse de 38 kHz est découpée en salves ; leur durée permet de coder les bits.\nLa carte réceptrice mesure ces durées à partir des changements d'état de la sortie du photorécepteur.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Spécifications fonctionnelles",
+      "slug": "spécifications-fonctionnelles",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>Émission :</strong> générer une porteuse infrarouge de 38 kHz et la commander en salves."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>Codage :</strong> représenter un <code>0</code> par une salve de 600 µs et un <code>1</code> par une salve de 900 µs. La pause après chaque bit doit être égale à la durée de sa salve."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>Réception :</strong> définir l'ordre de transmission des bits et l'utiliser de façon identique à l'émission et à la réception."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<strong>Réception incomplète :</strong> terminer la réception après 10 ms sans nouvelle activité suivant le dernier changement d'état détecté. Indiquer une erreur en cas de trame incomplète"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Validation",
+      "slug": "validation",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Contrôler d'abord le signal émis à l'oscilloscope : vérifier la fréquence de 38 kHz ainsi que la durée des salves et des pauses. Émettre des <code>0</code> et des <code>1</code>, puis vérifier que le récepteur décode les durées comprises dans les plages retenues et rejette celles qui en sont hors.</p>\n<p>Envoyer ensuite un octet de test contenant des <code>0</code> et des <code>1</code> (par exemple <code>10100110</code>) et vérifier que le moniteur série affiche la même valeur selon l'ordre de bits défini. Interrompre enfin une émission après quelques bits : la réception doit se terminer après 10 ms de silence, indiquer le nombre de bits reçus et ne pas valider l'octet. Vérifier aussi qu'une émission complète n'est pas interrompue entre deux bits. Après ces essais séparés, réaliser une transmission entre les deux cartes et consigner les mesures, les plages de durée retenues ainsi que les résultats obtenus.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Cahier des charges",
+      "id": "cahier-des-charges",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 1,
+      "text": "Spécifications fonctionnelles",
+      "id": "spécifications-fonctionnelles",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 1,
+      "text": "Validation",
+      "id": "validation",
+      "sectionNumber": 3
+    }
+  ],
+  "figureModules": []
+}

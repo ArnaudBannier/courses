@@ -487,6 +487,28 @@
           ]
         },
         {
+          "sourcePath": "01_algebra/ch5_divisibilite.md",
+          "outputPath": "01_algebra/ch5_divisibilite.json",
+          "title": "Divisibilité",
+          "navTitle": "Divisibilité",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_algebra/ch5_cartes_magiques.md",
+          "outputPath": "01_algebra/ch5_cartes_magiques.json",
+          "title": "Cartes magiques",
+          "navTitle": "Cartes magiques",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
           "sourcePath": "01_algebra/ch5_complements.md",
           "outputPath": "01_algebra/ch5_complements.json",
           "title": "Compléments",
@@ -601,6 +623,28 @@
           "kind": "section",
           "title": "5. Divisibilité",
           "chapters": [
+            {
+              "sourcePath": "01_algebra/ch5_divisibilite.md",
+              "outputPath": "01_algebra/ch5_divisibilite.json",
+              "title": "Divisibilité",
+              "navTitle": "Divisibilité",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_algebra/ch5_cartes_magiques.md",
+              "outputPath": "01_algebra/ch5_cartes_magiques.json",
+              "title": "Cartes magiques",
+              "navTitle": "Cartes magiques",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
             {
               "sourcePath": "01_algebra/ch5_complements.md",
               "outputPath": "01_algebra/ch5_complements.json",
@@ -848,8 +892,8 @@
           ]
         },
         {
-          "sourcePath": "01_sns/ch0_partie1.md",
-          "outputPath": "01_sns/ch0_partie1.json",
+          "sourcePath": "01_sns/ch0_cycle1.md",
+          "outputPath": "01_sns/ch0_cycle1.json",
           "title": "Cycle 1 -- photodiodes et cartes dédiées",
           "navTitle": "Cycle 1",
           "navHidden": false,
@@ -859,8 +903,8 @@
           ]
         },
         {
-          "sourcePath": "01_sns/ch0_partie2.md",
-          "outputPath": "01_sns/ch0_partie2.json",
+          "sourcePath": "01_sns/ch0_cycle2.md",
+          "outputPath": "01_sns/ch0_cycle2.json",
           "title": "Cycle 2 -- ajout d'un récepteur dédié",
           "navTitle": "Cycle 2",
           "navHidden": false,
@@ -953,8 +997,8 @@
               ]
             },
             {
-              "sourcePath": "01_sns/ch0_partie1.md",
-              "outputPath": "01_sns/ch0_partie1.json",
+              "sourcePath": "01_sns/ch0_cycle1.md",
+              "outputPath": "01_sns/ch0_cycle1.json",
               "title": "Cycle 1 -- photodiodes et cartes dédiées",
               "navTitle": "Cycle 1",
               "navHidden": false,
@@ -964,8 +1008,8 @@
               ]
             },
             {
-              "sourcePath": "01_sns/ch0_partie2.md",
-              "outputPath": "01_sns/ch0_partie2.json",
+              "sourcePath": "01_sns/ch0_cycle2.md",
+              "outputPath": "01_sns/ch0_cycle2.json",
               "title": "Cycle 2 -- ajout d'un récepteur dédié",
               "navTitle": "Cycle 2",
               "navHidden": false,

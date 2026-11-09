@@ -1,0 +1,174 @@
+{
+  "sourcePath": "01_sns/ch0_cycle1.md",
+  "title": "Cycle 1 -- photodiodes et cartes dédiées",
+  "navTitle": "Cycle 1",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Le premier prototype utilise deux cartes Raspberry Pi Pico : l'une émet un signal infrarouge, l'autre le reçoit.\nÀ cette étape, il ne s'agit pas encore de transmettre un message : on vérifie d'abord que la carte réceptrice mesure une variation lorsque la LED infrarouge s'allume et s'éteint.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Cahier des charges",
+      "slug": "cahier-des-charges",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>Réaliser un prototype de transmission infrarouge entre deux cartes Raspberry Pi Pico. Une carte commande une LED infrarouge et l'autre détecte sa lumière à l'aide d'une photodiode.</p>\n<p>Le prototype doit d'abord démontrer que l'allumage et l'extinction de la LED infrarouge produisent une variation mesurable et reproductible sur la carte réceptrice. Il ne s'agit pas encore de transmettre ni de décoder un message.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Spécifications fonctionnelles",
+      "slug": "spécifications-fonctionnelles",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>Chacun des items suivant désigne une contrainte spécifique à ce projet.\nLes ressources techniques présentées dans une autre section vous permette de développer le projet tout en respectant ces contraintes.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Liste des spécifications matérielles",
+      "slug": "liste-des-spécifications-matérielles"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "carte Raspberry Pi Pico avec Arduino IDE,"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "côté émission : LED infrarouge synchronisée à une LED visible,"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "côté réception : photodiode polarisée en inverse sur une broche analogique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Liste des spécifications fonctionnelles",
+      "slug": "liste-des-spécifications-fonctionnelles"
+    },
+    {
+      "kind": "html",
+      "html": "<p><strong>Émission :</strong> clignotement de l'ordre de la seconde.</p>\n<p><strong>Détection :</strong> observations des mesures à l'aide du moniteur série et/ou d'une LED visible signalant une détection.</p>\n<p><strong>Bibliothèque LED :</strong> regrouper la commande des LED dans une bibliothèque utilisable par les deux sketches. Sa gestion des durées doit pouvoir être non bloquante, avec <code>millis()</code>, afin de ne pas interrompre les mesures.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Tests",
+      "slug": "tests",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Chaque spécification préalablement citée peut être testée.\nVous trouverez donc ci-dessous un exemple de tests à réaliser avant la validation finale par l'enseignant.</p>\n<p><strong>Émission :</strong> faire clignoter la LED infrarouge et vérifier que la LED visible s'allume et s'éteint conformément à la commande.</p>\n<p><strong>Détection :</strong> vérifier les valeurs lues par la partie réception. Elles doivent varier significativement lorsque la LED infrarouge émet un signal ou lorsque le récepteur est placé dans le noir complet. Si une LED visible est utilisée pour signaler la détection, vérifier qu'elle change d'état en réponse à la lumière infrarouge. Il ne doit pas y avoir de délai entre les deux leds.</p>\n<p><strong>Bibliothèque LED :</strong> contôle d'une ou plusieurs LED sur réception d'une commande :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "émettre un clignotement d'une durée quelconque lors de la réception d'un message depuis le port COM."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "changement d'état piloté par réception d'un message sur le port COPM,"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Pour un branchement de deux LED différentes, appliquer deux fréquences de clignotement différent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le cahier des charges est validé si les deux cartes fonctionnent ensemble, c'est à dire si l'allumage et l'extinction de la LED infrarouge produit une variation mesurable sur le récepteur et si la LED de la partie émission s'allume en même temps que l'émission infrarouge.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Cahier des charges",
+      "id": "cahier-des-charges",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 1,
+      "text": "Spécifications fonctionnelles",
+      "id": "spécifications-fonctionnelles",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 2,
+      "text": "Liste des spécifications matérielles",
+      "id": "liste-des-spécifications-matérielles"
+    },
+    {
+      "depth": 2,
+      "text": "Liste des spécifications fonctionnelles",
+      "id": "liste-des-spécifications-fonctionnelles"
+    },
+    {
+      "depth": 1,
+      "text": "Tests",
+      "id": "tests",
+      "sectionNumber": 3
+    }
+  ],
+  "figureModules": []
+}

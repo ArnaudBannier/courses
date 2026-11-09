@@ -556,7 +556,7 @@
               "content": [
                 {
                   "kind": "html",
-                  "html": "Distinguer les fichiers indispensables au projet des fichiers générés qui peuvent être supprimés, notamment le dossier <code>build</code>."
+                  "html": "Distinguer les fichiers indispensables au projet des fichiers générés qui peuvent être supprimés (les dossiers <code>build</code> et <code>.vs</code>)."
                 }
               ]
             }
