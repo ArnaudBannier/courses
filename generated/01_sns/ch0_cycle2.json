@@ -27,8 +27,8 @@
     {
       "kind": "heading",
       "depth": 1,
-      "text": "Spécifications fonctionnelles",
-      "slug": "spécifications-fonctionnelles",
+      "text": "Spécifications",
+      "slug": "spécifications",
       "sectionNumber": 2
     },
     {
@@ -36,49 +36,24 @@
       "html": ""
     },
     {
-      "kind": "unordered-list",
-      "content": [
-        {
-          "kind": "list-item",
-          "content": [
-            {
-              "kind": "html",
-              "html": "<strong>Émission :</strong> générer une porteuse infrarouge de 38 kHz et la commander en salves."
-            }
-          ]
-        },
-        {
-          "kind": "list-item",
-          "content": [
-            {
-              "kind": "html",
-              "html": "<strong>Codage :</strong> représenter un <code>0</code> par une salve de 600 µs et un <code>1</code> par une salve de 900 µs. La pause après chaque bit doit être égale à la durée de sa salve."
-            }
-          ]
-        },
-        {
-          "kind": "list-item",
-          "content": [
-            {
-              "kind": "html",
-              "html": "<strong>Réception :</strong> définir l'ordre de transmission des bits et l'utiliser de façon identique à l'émission et à la réception."
-            }
-          ]
-        },
-        {
-          "kind": "list-item",
-          "content": [
-            {
-              "kind": "html",
-              "html": "<strong>Réception incomplète :</strong> terminer la réception après 10 ms sans nouvelle activité suivant le dernier changement d'état détecté. Indiquer une erreur en cas de trame incomplète"
-            }
-          ]
-        }
-      ]
+      "kind": "heading",
+      "depth": 2,
+      "text": "Liste des spécifications matérielles",
+      "slug": "liste-des-spécifications-matérielles"
     },
     {
       "kind": "html",
-      "html": ""
+      "html": "<p>Comme pour le cycle précédent, nous continuons d'utiliser deux Pico comme cartes de développement : une pour l'émission, l'autre pour la réception.\nLa LED infrarouge est utilisée pour l'émission ; la réception se fait maintenant avec un composant de type VS1838B.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Liste des spécifications fonctionnelles",
+      "slug": "liste-des-spécifications-fonctionnelles"
+    },
+    {
+      "kind": "html",
+      "html": "<p><strong>Émission :</strong> génération d'une porteuse infrarouge à 38 kHz et commande en salves. Un PWM matériel sera utilisé pour respecter la fréquence du signal. Le message est choisi depuis le port COM (suite de 0 et de 1).</p>\n<p><strong>Codage :</strong> un <code>0</code> est représenté par une salve de 600 µs et un <code>1</code> par une salve de 900 µs. La pause après chaque bit doit être égale à la durée de sa salve. Afficher les 8 bits reçus dans le même ordre que l'émission lorsque la réception est complète.</p>\n<p><strong>Réception incomplète :</strong> terminer la réception après 10 ms sans nouvelle activité à la suite du dernier changement d'état détecté. Indiquer une erreur en cas de trame incomplète.</p>"
     },
     {
       "kind": "heading",
@@ -89,7 +64,7 @@
     },
     {
       "kind": "html",
-      "html": "<p>Contrôler d'abord le signal émis à l'oscilloscope : vérifier la fréquence de 38 kHz ainsi que la durée des salves et des pauses. Émettre des <code>0</code> et des <code>1</code>, puis vérifier que le récepteur décode les durées comprises dans les plages retenues et rejette celles qui en sont hors.</p>\n<p>Envoyer ensuite un octet de test contenant des <code>0</code> et des <code>1</code> (par exemple <code>10100110</code>) et vérifier que le moniteur série affiche la même valeur selon l'ordre de bits défini. Interrompre enfin une émission après quelques bits : la réception doit se terminer après 10 ms de silence, indiquer le nombre de bits reçus et ne pas valider l'octet. Vérifier aussi qu'une émission complète n'est pas interrompue entre deux bits. Après ces essais séparés, réaliser une transmission entre les deux cartes et consigner les mesures, les plages de durée retenues ainsi que les résultats obtenus.</p>"
+      "html": "<p><strong>Émission :</strong> utilisation d'un oscilloscope pour vérifier la fréquence du signal et la durée de la porteuse. Analyse du code pour vérifier qu'un PWM matériel a été utilisé.</p>\n<p><strong>Codage :</strong> vérification dans des conditions opérationnelles.</p>\n<p><strong>Réception incomplète :</strong> émission d'un message incomplet et vérification de la présence du message d'erreur ou d'une LED de couleur côté récepteur.</p>\n<p>Le cahier des charges est validé si au moins un message de 8 bits (aux valeurs choisies par l'évaluateur) est correctement reçu du côté récepteur. Un signal indiquera les messages non reçus.</p>"
     }
   ],
   "tooltipDefs": {},
@@ -102,9 +77,19 @@
     },
     {
       "depth": 1,
-      "text": "Spécifications fonctionnelles",
-      "id": "spécifications-fonctionnelles",
+      "text": "Spécifications",
+      "id": "spécifications",
       "sectionNumber": 2
+    },
+    {
+      "depth": 2,
+      "text": "Liste des spécifications matérielles",
+      "id": "liste-des-spécifications-matérielles"
+    },
+    {
+      "depth": 2,
+      "text": "Liste des spécifications fonctionnelles",
+      "id": "liste-des-spécifications-fonctionnelles"
     },
     {
       "depth": 1,

@@ -27,8 +27,8 @@
     {
       "kind": "heading",
       "depth": 1,
-      "text": "Spécifications fonctionnelles",
-      "slug": "spécifications-fonctionnelles",
+      "text": "Spécifications",
+      "slug": "spécifications",
       "sectionNumber": 2
     },
     {
@@ -149,8 +149,8 @@
     },
     {
       "depth": 1,
-      "text": "Spécifications fonctionnelles",
-      "id": "spécifications-fonctionnelles",
+      "text": "Spécifications",
+      "id": "spécifications",
       "sectionNumber": 2
     },
     {
