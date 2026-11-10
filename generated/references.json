@@ -767,6 +767,10 @@
       "outputPath": "01_sns/ch1_premiers_pas.json",
       "blocks": {}
     },
+    "sns-1-projet": {
+      "outputPath": "01_sns/ch1_projet.json",
+      "blocks": {}
+    },
     "sns-2-tableaux": {
       "outputPath": "01_sns/ch2_tableaux.json",
       "blocks": {}
@@ -777,6 +781,10 @@
     },
     "sns-2-interruption": {
       "outputPath": "01_sns/ch2_interruptions.json",
+      "blocks": {}
+    },
+    "sns-2-projet": {
+      "outputPath": "01_sns/ch2_projet.json",
       "blocks": {}
     },
     "alg3-espaces-vectoriels": {

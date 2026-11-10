@@ -1,0 +1,253 @@
+{
+  "sourcePath": "01_sns/ch2_projet.md",
+  "title": "Cycle 2 -- application au projet",
+  "navTitle": "Projet",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Préparer les montages",
+      "slug": "préparer-les-montages",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>Créez deux nouveaux sketches Arduino distincts, un pour chaque carte.\nLe montage d'émission comprend une LED infrarouge reliée à une sortie de la Pico.\nLe montage de réception comprend uniquement le photorécepteur, dont une patte est reliée à l'alimentation, une autre à la masse et la dernière porte le signal numérique.</p>\n<p>Montage d'émission de la LED infrarouge :</p>\n<pre class=\"language-mermaid\"><code class=\"language-mermaid code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">flowchart</span> LR\n</span><span class=\"code-line\">        GPIO<span class=\"token text string\">[\"GPIO (sortie)\"]</span> <span class=\"token arrow operator\">---</span> R<span class=\"token text string\">[\"Résistance&#x3C;br/>220 Ω\"]</span>\n</span><span class=\"code-line\">        R <span class=\"token arrow operator\">---</span> LED<span class=\"token text string\">[\"LED IR&#x3C;br/>cathode vers GND\"]</span>\n</span><span class=\"code-line\">        LED <span class=\"token arrow operator\">---</span> GND<span class=\"token text string\">[GND]</span>\n</span></code></pre>\n<p>Montage de réception du photorécepteur :</p>\n<pre class=\"language-mermaid\"><code class=\"language-mermaid code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">flowchart</span> TD\n</span><span class=\"code-line\">        VCC<span class=\"token text string\">[\"+3.3 V\"]</span> <span class=\"token arrow operator\">---</span> P<span class=\"token text string\">[\"Photorécepteur\"]</span>\n</span><span class=\"code-line\">        GND<span class=\"token text string\">[GND]</span> <span class=\"token arrow operator\">---</span> P\n</span><span class=\"code-line\">        GPIO<span class=\"token text string\">[\"GPIO (signal)\"]</span> <span class=\"token arrow operator\">---</span> P\n</span></code></pre>"
+    },
+    {
+      "kind": "block",
+      "blockType": "warning",
+      "displayLabel": "Warning",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Vérifiez le câblage avant de mettre les cartes sous tension !\nEn particulier, les pattes du photorécepteur peuvent ne pas être exactement dans le même ordre que le schéma ci-dessus.\nRegardez la documentation technique de votre composant pour identifier quelle patte fait quoi !</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Émission des salves infrarouges",
+      "slug": "émission-des-salves-infrarouges",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le composant activera sa broche de signal lorsqu'il recevra une salve infrarouge à 38 kHz.\nNous utiliserons pour cela la fonctionnalité <em>PWM matériel</em> de la Raspberry Pi Pico.\nLes différentes étapes de cette partie consistent à configurer la fréquence du PWM, la broche de sortie et son rapport cyclique, ainsi que l'activation du PWM pour émettre une salve.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Configuration",
+      "slug": "configuration"
+    },
+    {
+      "kind": "html",
+      "html": "<p>On suppose que l'on a défini au préalable le numéro de pin sur lequel la LED est branchée à <code>TX_IR_LED_PIN</code>.\nIl est donc également nécessaire de définir une variable globale qui retiendra le numéro de <code>slice</code> permettant de définir le compteur à utiliser.\nVous développerez toute cette partie dans une fonction séparée que vous appellerez depuis le <code>setup()</code>.</p>\n<p>Le RP2040 possède plusieurs slices PWM.\nChaque broche est reliée à une slice et à l'un de ses deux canaux.\nLes deux canaux d'une même slice partagent la fréquence et le diviseur.</p>\n<p>Les en-têtes à inclure sont les suivants.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">&#x3C;hardware/gpio.h></span></span>\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">&#x3C;hardware/pwm.h></span></span>\n</span></code></pre>\n<p>La configuration du PWM passe tout d'abord par les deux lignes suivantes permettant de définir le pin sur lequel activer le PWM et de récupérer le numéro de slice associé à ce pin.\nOn récupère ainsi le numéro de slice <code>slice_num</code> que l'on utilisera aussi bien pour la configuration que pour l'utilisation du PWM.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">gpio_set_function</span><span class=\"token punctuation\">(</span>TX_IR_LED_PIN<span class=\"token punctuation\">,</span> GPIO_FUNC_PWM<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">slice_num <span class=\"token operator\">=</span> <span class=\"token function\">pwm_gpio_to_slice_num</span><span class=\"token punctuation\">(</span>TX_IR_LED_PIN<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Vient ensuite le moment de configurer le diviseur d'horloge <code>CLKDIV</code> (float) et la valeur de <code>WRAP</code> (int).\nPensez à vous référer à la partie théorique pour savoir par quelles valeurs remplacer ces mots-clés.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">pwm_set_clkdiv</span><span class=\"token punctuation\">(</span>slice_num<span class=\"token punctuation\">,</span> CLKDIV<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token function\">pwm_set_wrap</span><span class=\"token punctuation\">(</span>slice_num<span class=\"token punctuation\">,</span> WRAP<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Enfin, on initialise le PWM en l'activant et en plaçant par défaut son niveau de comparaison à 0.\nC'est cette dernière ligne qui nous permettra d'activer ou désactiver le PWM.\nLa valeur de 0 indique un rapport cyclique nul, autrement dit, en permanence à l'état bas.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">pwm_set_enabled</span><span class=\"token punctuation\">(</span>slice_num<span class=\"token punctuation\">,</span> true<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token function\">pwm_set_chan_level</span><span class=\"token punctuation\">(</span>slice_num<span class=\"token punctuation\">,</span> <span class=\"token function\">pwm_gpio_to_channel</span><span class=\"token punctuation\">(</span>TX_IR_LED_PIN<span class=\"token punctuation\">)</span><span class=\"token punctuation\">,</span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>La slice reste activée pendant toute l'exécution du programme.\nC'est le niveau de comparaison qui détermine si la porteuse est effectivement présente sur la sortie.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "displayLabel": "Exercise",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Copiez les lignes de cette section dans une fonction dédiée que vous appellerez depuis le <code>setup()</code> afin de configurer correctement votre PWM.\nPensez à remplacer les mots-clés <code>CLKDIV</code> et <code>WRAP</code> par les valeurs adéquates que vous avez pu découvrir dans la partie théorique.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Émission des salves",
+      "slug": "émission-des-salves"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour émettre une salve, il suffit de modifier le rapport cyclique ; le PWM reste donc en permanence activé.\nIl n'existe donc que deux valeurs pour le rapport cyclique :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "la valeur 0 désigne une mise à l'état bas du pin de la LED (donc LED éteinte, pas de signal émis),"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "la valeur <code>LEVEL</code>, à définir pour obtenir un rapport cyclique de 50 % (donc l'émission d'une salve).\nLa modification du rapport se fait par le biais de la fonction suivante, déjà utilisée dans la configuration."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">pwm_set_chan_level</span><span class=\"token punctuation\">(</span>slice_num<span class=\"token punctuation\">,</span> <span class=\"token function\">pwm_gpio_to_channel</span><span class=\"token punctuation\">(</span>TX_IR_LED_PIN<span class=\"token punctuation\">)</span><span class=\"token punctuation\">,</span> `LEVEL`<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>L'émission d'un <code>0</code> consiste à activer le PWM durant 600 microsecondes, puis à ne rien émettre durant au moins 600 µs.\nUn <code>1</code> suit le même codage avec une durée de 900 µs.\nL'envoi d'une salve consiste donc à régler le rapport cyclique à 50 %, à attendre 600 ou 900 µs, puis à régler une nouvelle fois le rapport cyclique à 0 %.\nS'ensuit une nouvelle pause d'une durée égale à celle de l'émission.\nLes pauses seront gérées par la fonction <code>delayMicroseconds(int delay)</code>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "displayLabel": "Exercise",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Il est intéressant de créer une nouvelle paire de fichiers <code>hardware.cpp</code> et <code>hardware.h</code> pour développer les parties émission et réception.\nEn utilisant la fonction <code>pwm_set_chan_level()</code> présentée dans cette section, développez des fonctions permettant d'envoyer un <code>1</code> ou un <code>0</code>.\nRespectez les temps définis pour chaque valeur binaire.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Réception des salves et décodage",
+      "slug": "réception-des-salves-et-décodage",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les salves sont détectées par le récepteur VS1838B.\nIl laisse la broche de signal à l'état haut tant qu'il ne reçoit rien et change l'état de cette broche lors de la réception d'une salve.\nVous devez donc associer une ISR à la broche de signal pour détecter les changements d'état.</p>\n<p>Configurez la carte dans le <code>setup()</code> pour déclencher une interruption sur la broche de signal du récepteur lorsque celle-ci change d'état.\nPour le récepteur infrarouge, configurez l'interruption sur <code>CHANGE</code> afin de repérer le début et la fin des salves.\nLe contenu de votre ISR doit permettre de calculer la durée de réception d'une salve.\nVous pouvez donc :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "soit enregistrer les moments de début et de fin de réception dans l'ISR, puis calculer la différence dans la boucle ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "soit enregistrer directement la différence dans l'ISR et la lire dans la <code>loop()</code>."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Une simple variable stockant le temps ne suffira pas.\nIl faudra également d'autres variables pour indiquer si une salve est en cours de réception, si l'émission est terminée...\nEn particulier, si aucun signal n'est reçu pendant 100 ms, vous pouvez afficher <em>pas de signal reçu</em>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "displayLabel": "Exercise",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Dans la <code>loop()</code> de l'émetteur, envoyez un bit chaque seconde.\nDu côté récepteur, dès réception de ce bit, affichez-le sur le port série.\nSi aucun bit n'est en cours de réception, allumez une LED rouge au niveau du récepteur.\nPensez à utiliser des variables décrivant l'état du récepteur ; par exemple : 0 = pas de signal reçu, 1 = signal en cours, etc.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Une fois le code fiabilisé pour la réception d'un bit, l'objectif est de recevoir une série de 8 bits.\nNous ne tenons pas compte pour le moment des erreurs de transmission pouvant survenir.\nIl est donc nécessaire d'utiliser un ou plusieurs tableaux pour stocker les horodatages ou les durées de chaque salve.\nDe plus, les durées reçues ne seront pas exactement égales à 600 ou 900 microsecondes.\nIl faudra trouver, par l'expérimentation, une limite de durée en dessous de laquelle une salve désigne un 0 et au-dessus de laquelle elle désigne un 1.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "displayLabel": "Exercise",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Dans votre boucle principale, vous surveillerez le nombre de fois où l'interruption a été appelée, ce qui vous permettra de savoir quand les 8 bits ont été reçus.\nVotre code doit être modulaire.\nDéveloppez une fonction spécifique au décodage d'un bit qui vous retourne la valeur d'un bit en fonction de la durée de la salve.\nN'oubliez pas que les variables partagées avec l'ISR doivent être protégées lors de la lecture.\nLimitez le nombre de fois où vous y accédez au strict minimum.</p>"
+        }
+      ]
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Préparer les montages",
+      "id": "préparer-les-montages",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 1,
+      "text": "Émission des salves infrarouges",
+      "id": "émission-des-salves-infrarouges",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 2,
+      "text": "Configuration",
+      "id": "configuration"
+    },
+    {
+      "depth": 2,
+      "text": "Émission des salves",
+      "id": "émission-des-salves"
+    },
+    {
+      "depth": 1,
+      "text": "Réception des salves et décodage",
+      "id": "réception-des-salves-et-décodage",
+      "sectionNumber": 3
+    }
+  ],
+  "figureModules": []
+}

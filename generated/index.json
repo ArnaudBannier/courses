@@ -947,6 +947,17 @@
           ]
         },
         {
+          "sourcePath": "01_sns/ch1_projet.md",
+          "outputPath": "01_sns/ch1_projet.json",
+          "title": "Cycle 1 -- application au projet",
+          "navTitle": "Projet",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
           "sourcePath": "01_sns/ch2_tableaux.md",
           "outputPath": "01_sns/ch2_tableaux.json",
           "title": "Introduction aux tableaux en C",
@@ -973,6 +984,17 @@
           "outputPath": "01_sns/ch2_interruptions.json",
           "title": "Interruptions",
           "navTitle": "Interruptions",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_sns/ch2_projet.md",
+          "outputPath": "01_sns/ch2_projet.json",
+          "title": "Cycle 2 -- application au projet",
+          "navTitle": "Projet",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -1056,6 +1078,17 @@
                 "Arnaud Bannier",
                 "Nicolas Bodin"
               ]
+            },
+            {
+              "sourcePath": "01_sns/ch1_projet.md",
+              "outputPath": "01_sns/ch1_projet.json",
+              "title": "Cycle 1 -- application au projet",
+              "navTitle": "Projet",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
             }
           ]
         },
@@ -1090,6 +1123,17 @@
               "outputPath": "01_sns/ch2_interruptions.json",
               "title": "Interruptions",
               "navTitle": "Interruptions",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_sns/ch2_projet.md",
+              "outputPath": "01_sns/ch2_projet.json",
+              "title": "Cycle 2 -- application au projet",
+              "navTitle": "Projet",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",
