@@ -1,0 +1,469 @@
+{
+  "sourcePath": "01_ai_data/ch3_compilation.md",
+  "title": "Compiler et tester sur le robot",
+  "navTitle": "Compilation",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Jusqu'à présent, vous avez utilisé Visual Studio pour travailler sur vos projets C. L'environnement configure le projet, lance sa compilation et permet d'exécuter l'application ou les tests. Ces opérations sont bien réalisées, mais plusieurs commandes sont exécutées automatiquement par l'<span class=\"md-tooltip-trigger md-tooltip-ready\" tabindex=\"0\" data-tooltip-ref=\"tooltip-inline-1\">IDE</span>.</p>\n<p>Le robot est un ordinateur distinct de votre poste de développement. Visual Studio ne copie pas automatiquement le projet sur le robot : pour l'y exécuter, vous devez y transférer les fichiers, puis lancer les commandes appropriées dans un terminal ouvert à distance. Cette page présente ces étapes et les rapproche de celles que vous avez déjà réalisées dans Visual Studio.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Se connecter au robot et préparer le projet",
+      "slug": "se-connecter-au-robot-et-préparer-le-projet",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "SSH",
+      "displayLabel": "Definition 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p><span class=\"md-emph\"><strong>SSH</strong></span> (Secure Shell) est un protocole qui permet de se connecter de manière sécurisée à un autre ordinateur et d'y ouvrir un terminal. Une fois connecté au robot, les commandes saisies dans ce terminal sont exécutées sur le robot, et non sur votre ordinateur.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Copiez le projet sur le robot en suivant la méthode indiquée en cours, puis connectez-vous à celui-ci en SSH. Dans le terminal, placez-vous dans le dossier du projet, là où se trouve son fichier <code>CMakeLists.txt</code> principal.</p>\n<p>Ne copiez pas les dossiers <code>.vs</code> et <code>build</code> : ils contiennent des fichiers produits par Visual Studio ou par une compilation précédente. Ils ne sont pas nécessaires pour configurer et compiler le projet sur le robot. Les commandes de cette page produiront sur le robot les fichiers nécessaires à la compilation.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Les étapes de construction et de test",
+      "slug": "les-étapes-de-construction-et-de-test",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>Sur le robot, les étapes qui étaient prises en charge par Visual Studio sont lancées explicitement. Les commandes ci-dessous sont à exécuter dans le dossier du projet, après s'y être connecté en SSH.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Configurer le projet",
+      "slug": "configurer-le-projet"
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-bash\"><code class=\"language-bash code-highlight\"><span class=\"code-line\">cmake <span class=\"token parameter variable\">-S</span> <span class=\"token builtin class-name\">.</span> <span class=\"token parameter variable\">-B</span> out\n</span></code></pre>\n<p>Cette commande configure le projet avec CMake :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>-S .</code> désigne le dossier courant (<code>.</code>) comme dossier contenant les sources et le <code>CMakeLists.txt</code> principal ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>-B out</code> indique que les fichiers nécessaires à la compilation seront générés dans le dossier <code>out</code>."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>La configuration prépare le système de compilation, mais ne compile pas encore l'application.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Équivalent dans Visual Studio",
+      "displayLabel": "Info 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Lorsque vous ouvrez un projet CMake dans Visual Studio, l'IDE le configure automatiquement. Pour observer cette étape et les messages qu'elle produit, ouvrez la fenêtre <strong>Sortie</strong>, puis choisissez <strong>CMake</strong> dans la liste des sources de sortie. Si la configuration du projet change, Visual Studio peut la relancer automatiquement.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Construire le programme",
+      "slug": "construire-le-programme"
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-bash\"><code class=\"language-bash code-highlight\"><span class=\"code-line\">cmake <span class=\"token parameter variable\">--build</span> out\n</span></code></pre>\n<p>Cette commande demande à CMake de compiler le projet configuré dans <code>out</code>. Elle transforme les fichiers sources en exécutables. Si la compilation signale une erreur, corrigez-la avant d'essayer de lancer le programme.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Équivalent dans Visual Studio",
+      "displayLabel": "Info 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Dans Visual Studio, choisissez <strong>Générer > Tout générer</strong>, ou utilisez le raccourci <strong>Ctrl+Maj+B</strong>. Visual Studio lance alors la compilation et affiche les éventuelles erreurs dans ses fenêtres de sortie.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Exécuter l'application",
+      "slug": "exécuter-lapplication"
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-bash\"><code class=\"language-bash code-highlight\"><span class=\"code-line\">./out/application/application\n</span></code></pre>\n<p>Cette commande lance l'exécutable <code>application</code>, construit dans <code>out/application</code>. Le préfixe <code>./</code> indique que le chemin est relatif au dossier courant. Les messages du programme apparaissent dans le terminal. Si l'application attend une action, comme l'appui sur un bouton, elle continue de s'exécuter jusqu'à ce qu'elle termine ou qu'on l'interrompe.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Équivalent dans Visual Studio",
+      "displayLabel": "Info 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Pour lancer le programme sans débogueur, choisissez <strong>Déboguer > Exécuter sans débogage</strong> ou utilisez <strong>Ctrl+F5</strong>. Le débogueur n'est pas nécessaire pour simplement exécuter l'application.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Exécuter les tests",
+      "slug": "exécuter-les-tests"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour lancer tous les tests enregistrés dans le projet :</p>\n<pre class=\"language-bash\"><code class=\"language-bash code-highlight\"><span class=\"code-line\"><span class=\"token punctuation\">(</span>cd out <span class=\"token operator\">&#x26;&#x26;</span> ctest -V<span class=\"token punctuation\">)</span>\n</span></code></pre>\n<p>Pour ne lancer qu'une sélection de tests, ajoutez l'option <code>-R</code> suivie d'un filtre :</p>\n<pre class=\"language-bash\"><code class=\"language-bash code-highlight\"><span class=\"code-line\"><span class=\"token punctuation\">(</span>cd out <span class=\"token operator\">&#x26;&#x26;</span> ctest <span class=\"token parameter variable\">-R</span> filtre -V<span class=\"token punctuation\">)</span>\n</span></code></pre>\n<p>La commande entre parenthèses s'exécute dans un sous-shell :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>cd out</code> se place dans le dossier de construction, où CTest trouve la configuration des tests ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>ctest</code> exécute les tests enregistrés dans le projet ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>-R filtre</code> sélectionne les tests dont le nom correspond au filtre. Par exemple, <code>vec2</code> sélectionne les tests dont le nom contient <code>vec2</code> ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>-V</code> demande un affichage détaillé des commandes et des sorties des tests."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Un filtre ne désigne pas nécessairement un test unique : il peut sélectionner plusieurs cas dont les noms correspondent. Sans l'option <code>-R</code>, CTest lance tous les cas enregistrés. Cette commande exécute les tests, pas le programme principal <code>application</code>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Équivalent dans Visual Studio",
+      "displayLabel": "Info 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Dans Visual Studio, ouvrez l'<strong>Explorateur de tests</strong> pour afficher les cas disponibles. Vous pouvez lancer tous les tests ou sélectionner certains cas, comme avec un filtre CTest.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Mise en pratique",
+      "slug": "mise-en-pratique",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Compiler et tester sur le robot",
+      "displayLabel": "Exercise",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Copiez sur le robot le projet <code>s1_2_cmake</code> réalisé lors du cycle précédent, sans les dossiers <code>.vs</code> et <code>build</code>. Connectez-vous en SSH, puis placez-vous dans le dossier du projet.</p>"
+        },
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Configurez et construisez le projet avec les commandes de cette page."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Lancez l'application."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Lancez tous les tests avec CTest."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Utilisez un filtre pour lancer seulement les tests du problème du Kakapo. Le filtre doit correspondre aux noms enregistrés pour ces tests."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Bilan",
+      "slug": "bilan",
+      "sectionNumber": 4
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "typeName": "Je sais faire",
+      "displayLabel": "Je sais faire",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Distinguer la configuration, la compilation, l'exécution et les tests."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Me connecter en SSH au robot et y transférer un projet sans les dossiers de génération locaux."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Configurer et compiler un projet CMake sur le robot."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Lancer l'application et sélectionner des tests avec CTest."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Faire le lien entre ces commandes et les actions correspondantes dans Visual Studio."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Apprenez à vous connecter au robot en SSH, à configurer et compiler un projet avec CMake, puis à exécuter l'application et ses tests. Comparez les commandes utilisées sur le robot aux actions prises en charge par Visual Studio.</p>"
+    }
+  ],
+  "tooltipDefs": {
+    "tooltip-inline-1": {
+      "html": "Integrated Development Environment : Visual Studio dans ce projet"
+    }
+  },
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Se connecter au robot et préparer le projet",
+      "id": "se-connecter-au-robot-et-préparer-le-projet",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 1,
+      "text": "Les étapes de construction et de test",
+      "id": "les-étapes-de-construction-et-de-test",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 2,
+      "text": "Configurer le projet",
+      "id": "configurer-le-projet"
+    },
+    {
+      "depth": 2,
+      "text": "Construire le programme",
+      "id": "construire-le-programme"
+    },
+    {
+      "depth": 2,
+      "text": "Exécuter l'application",
+      "id": "exécuter-lapplication"
+    },
+    {
+      "depth": 2,
+      "text": "Exécuter les tests",
+      "id": "exécuter-les-tests"
+    },
+    {
+      "depth": 1,
+      "text": "Mise en pratique",
+      "id": "mise-en-pratique",
+      "sectionNumber": 3
+    },
+    {
+      "depth": 1,
+      "text": "Bilan",
+      "id": "bilan",
+      "sectionNumber": 4
+    }
+  ],
+  "figureModules": []
+}

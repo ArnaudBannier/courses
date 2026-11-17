@@ -741,6 +741,17 @@
           ]
         },
         {
+          "sourcePath": "01_ai_data/ch2_ctest.md",
+          "outputPath": "01_ai_data/ch2_ctest.json",
+          "title": "Introduction à CTest",
+          "navTitle": "CTest",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
           "sourcePath": "01_ai_data/ch2_donnees_operations.md",
           "outputPath": "01_ai_data/ch2_donnees_operations.json",
           "title": "Programmation orientée données et opérations",
@@ -756,6 +767,50 @@
           "outputPath": "01_ai_data/ch2_kakapo.json",
           "title": "Le problème du Kakapo",
           "navTitle": "Pratique",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch3_compilation.md",
+          "outputPath": "01_ai_data/ch3_compilation.json",
+          "title": "Compiler et tester sur le robot",
+          "navTitle": "Compilation",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch3_prog_robot.md",
+          "outputPath": "01_ai_data/ch3_prog_robot.json",
+          "title": "Organisation d'un programme sur l'esieabot",
+          "navTitle": "Programme sur l'esieabot",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch3_pigpio.md",
+          "outputPath": "01_ai_data/ch3_pigpio.json",
+          "title": "Librairie Pigpio",
+          "navTitle": "Librairie Pigpio",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch3_projet.md",
+          "outputPath": "01_ai_data/ch3_projet.json",
+          "title": "Projet",
+          "navTitle": "Projet",
           "navHidden": false,
           "authors": [
             "Arnaud Bannier",
@@ -841,6 +896,17 @@
               ]
             },
             {
+              "sourcePath": "01_ai_data/ch2_ctest.md",
+              "outputPath": "01_ai_data/ch2_ctest.json",
+              "title": "Introduction à CTest",
+              "navTitle": "CTest",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
               "sourcePath": "01_ai_data/ch2_donnees_operations.md",
               "outputPath": "01_ai_data/ch2_donnees_operations.json",
               "title": "Programmation orientée données et opérations",
@@ -856,6 +922,56 @@
               "outputPath": "01_ai_data/ch2_kakapo.json",
               "title": "Le problème du Kakapo",
               "navTitle": "Pratique",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "section",
+          "title": "3. Découverte du robot",
+          "chapters": [
+            {
+              "sourcePath": "01_ai_data/ch3_compilation.md",
+              "outputPath": "01_ai_data/ch3_compilation.json",
+              "title": "Compiler et tester sur le robot",
+              "navTitle": "Compilation",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_ai_data/ch3_prog_robot.md",
+              "outputPath": "01_ai_data/ch3_prog_robot.json",
+              "title": "Organisation d'un programme sur l'esieabot",
+              "navTitle": "Programme sur l'esieabot",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_ai_data/ch3_pigpio.md",
+              "outputPath": "01_ai_data/ch3_pigpio.json",
+              "title": "Librairie Pigpio",
+              "navTitle": "Librairie Pigpio",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_ai_data/ch3_projet.md",
+              "outputPath": "01_ai_data/ch3_projet.json",
+              "title": "Projet",
+              "navTitle": "Projet",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",

@@ -1,0 +1,820 @@
+{
+  "sourcePath": "01_ai_data/ch2_ctest.md",
+  "title": "Introduction à CTest",
+  "navTitle": "CTest",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Quand un programme grandit, il devient difficile de vérifier à la main que ses différentes parties se comportent toujours comme prévu. Les tests permettent de répéter ces vérifications après chaque modification du code.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Test",
+      "displayLabel": "Definition 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Un <span class=\"md-emph\"><strong>test</strong></span> consiste à vérifier qu'un programme, ou une partie de celui-ci, se comporte comme attendu dans une situation donnée. Il peut par exemple comparer un résultat obtenu à une valeur attendue.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Test unitaire",
+      "displayLabel": "Definition 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Un <span class=\"md-emph\"><strong>test unitaire</strong></span> vérifie une petite unité de code, comme une fonction ou une méthode, aussi isolément que possible du reste du programme. Il peut par exemple appeler une fonction avec des valeurs connues et vérifier le résultat renvoyé.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans ce chapitre, nous allons commencer par coder des tests unitaires sous forme de <strong>fonctions de test</strong>. Chaque fonction prépare les valeurs nécessaires, effectue les opérations à vérifier et contrôle leurs résultats.</p>\n<p><span class=\"md-emph\"><strong>CTest</strong></span> est l'outil fourni avec CMake pour découvrir et exécuter des tests. Il ne vérifie pas lui-même les résultats : il lance les programmes de test et interprète leur code de retour.\nCTest ne se limite pas aux tests unitaires : il peut aussi lancer des programmes ou des scripts qui vérifient, par exemple, le fonctionnement de plusieurs composants ensemble. Par défaut, un code de retour <code>0</code> indique une réussite et un code différent de <code>0</code> signale un échec.</p>\n<p>Le projet <code>s1_2_cmake</code> contient déjà deux tests pour la structure <code>Vec2</code> : <code>test_vec2Set</code> et <code>test_vec2Scale</code>. Nous allons les lancer dans Visual Studio, examiner les fichiers qui les relient à CTest, puis ajouter un nouveau test.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Découvrir et exécuter les tests",
+      "slug": "découvrir-et-exécuter-les-tests",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Organisation du projet",
+      "slug": "organisation-du-projet"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le projet sépare l'application et ses tests dans deux dossiers. Voici les fichiers utiles pour cette activité :</p>\n<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">s1_2_cmake/\n</span><span class=\"code-line\">├── application/\n</span><span class=\"code-line\">│   ├── CMakeLists.txt\n</span><span class=\"code-line\">│   ├── src/\n</span><span class=\"code-line\">│   │   ├── main.c\n</span><span class=\"code-line\">│   │   ├── settings.h\n</span><span class=\"code-line\">│   │   ├── vec2.c\n</span><span class=\"code-line\">│   │   └── vec2.h\n</span><span class=\"code-line\">│   └── tests/\n</span><span class=\"code-line\">│       ├── CMakeLists.txt\n</span><span class=\"code-line\">│       ├── main.c\n</span><span class=\"code-line\">│       ├── test_macros.h\n</span><span class=\"code-line\">│       ├── test_vec2.c\n</span><span class=\"code-line\">│       └── test_vec2.h\n</span><span class=\"code-line\">├── .editorconfig\n</span><span class=\"code-line\">├── .gitignore\n</span><span class=\"code-line\">├── CMakeLists.txt\n</span><span class=\"code-line\">├── CMakePresets.json\n</span><span class=\"code-line\">└── README.md\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Activer CTest et enregistrer les cas",
+      "slug": "activer-ctest-et-enregistrer-les-cas"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le projet de départ ajoute une infrastructure de tests sans mélanger le code de test et celui de l'application.\nL'intégration de CTest tient dans l'instruction suivante présente dans le fichier <code>CMakeLists.txt</code> à la racine du projet :</p>\n<pre class=\"language-cmake\"><code class=\"language-cmake code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">include</span><span class=\"token punctuation\">(</span>CTest<span class=\"token punctuation\">)</span>\n</span></code></pre>\n<p>Cette commande active la prise en charge des tests et définit l'option <code>BUILD_TESTING</code>, activée par défaut. Le <code>CMakeLists.txt</code> du dossier <code>application</code> utilise cette option pour décider s'il faut ajouter les tests à la configuration :</p>\n<pre class=\"language-cmake\"><code class=\"language-cmake code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">if</span><span class=\"token punctuation\">(</span>BUILD_TESTING<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">add_subdirectory</span><span class=\"token punctuation\">(</span>tests<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">endif</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span></code></pre>\n<p>Les fichiers dédiés aux tests sont regroupés dans le nouveau dossier <code>application/tests</code>. On y trouve leur propre configuration CMake, les macros de vérification et les fonctions de test. Cette séparation permet de conserver les tests à part des sources de l'application tout en les construisant dans le même projet.\nLe dossier <code>tests</code> contient également un lanceur.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Lanceur",
+      "displayLabel": "Definition 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Un <span class=\"md-emph\"><strong>lanceur de tests</strong></span> est un programme qui appelle des fonctions de test et transmet leur résultat. On l'appelle ainsi parce qu'il <strong>lance</strong> l'exécution des tests : il joue le rôle d'intermédiaire entre l'outil qui demande l'exécution et les fonctions qui effectuent les vérifications.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans ce projet, le point d'entrée du lanceur se trouve dans <code>tests/main.c</code>. Il reçoit le nom de la fonction de test à exécuter, l'appelle, puis renvoie à CTest un code indiquant si elle a réussi.</p>\n<p>Le fichier <code>CMakeLists.txt</code> de <code>application/tests</code> construit l'exécutable <code>test_application</code> à partir du lanceur et des fonctions de test, puis enregistre les cas avec <code>add_test</code>. Chaque commande associe un nom de cas à l'exécution du lanceur avec le nom de la fonction correspondante :</p>\n<pre class=\"language-cmake\"><code class=\"language-cmake code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">add_test</span><span class=\"token punctuation\">(</span><span class=\"token property\">NAME</span> math.vec2.set COMMAND test_application test_vec2Set<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">add_test</span><span class=\"token punctuation\">(</span><span class=\"token property\">NAME</span> math.vec2.scale COMMAND test_application test_vec2Scale<span class=\"token punctuation\">)</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Cas de test",
+      "displayLabel": "Definition 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Avec CTest, un <span class=\"md-emph\"><strong>cas de test</strong></span> est une commande enregistrée sous un nom avec <code>add_test</code>. CTest exécute cette commande et détermine si le cas réussit à partir du code de retour du programme. Par exemple, le cas <code>math.vec2.set</code> lance <code>test_application</code> avec l'argument <code>test_vec2Set</code>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le fichier <code>tests/main.c</code> est le point d'entrée de cet exécutable. Il utilise <code>RUN_TEST</code> pour appeler la fonction dont le nom est passé en argument. CTest fournit cet argument dans les commandes ci-dessus.</p>\n<p>Les fonctions <code>test_vec2Set</code> et <code>test_vec2Scale</code> se trouvent dans <code>tests/test_vec2.c</code>. Elles vérifient respectivement la construction d'un vecteur et la mise à l'échelle de ses composantes.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Lancer les tests dans Visual Studio",
+      "slug": "lancer-les-tests-dans-visual-studio"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Avant de lancer les tests, sélectionnez la configuration <code>windows-debug</code> dans la barre d'outils de Visual Studio. Puis :</p>"
+    },
+    {
+      "kind": "ordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Construisez le projet avec <strong>Générer > Tout générer</strong> ou avec le raccourci <strong>Ctrl+Shift+B</strong>."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Ouvrez le menu <strong>Test > Explorateur de tests</strong>. Nous vous conseillons de garder cette fenêtre accessible en la plaçant dans un onglet à côté de l'Explorateur de solutions."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Dans l'Explorateur de tests, vérifiez que les cas <code>math.vec2.set</code> et <code>math.vec2.scale</code> apparaissent."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Lancez les deux tests avec le bouton d'exécution ou le menu contextuel."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Après chaque modification du code, pensez à reconstruire le projet (<strong>Ctrl+Shift+B</strong>) avant de relancer les tests, afin de vous assurer qu'ils utilisent la dernière version du projet.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Lancer des tests",
+      "displayLabel": "Exercise 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Suivez les instructions précédentes pour lancer les deux tests du projet. Ils doivent réussir.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Observer l'échec d'un test",
+      "slug": "observer-léchec-dun-test"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Lorsqu'une modification du code introduit une régression, les tests détectent l'anomalie. Pour comprendre comment l'Explorateur de tests signale un échec, nous allons introduire temporairement un défaut dans <code>Vec2_scale</code>, relancer les tests et observer le résultat.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Observer un test en échec",
+      "displayLabel": "Exercise 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<p>Ouvrez <code>application/src/vec2.c</code> et modifiez la fonction <code>Vec2_scale</code> : remplacez la ligne qui modifie <code>v.y</code> par une seconde modification de <code>v.x</code> :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">Vec2 <span class=\"token function\">Vec2_scale</span><span class=\"token punctuation\">(</span>Vec2 v<span class=\"token punctuation\">,</span> <span class=\"token keyword\">float</span> s<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    v<span class=\"token punctuation\">.</span>x <span class=\"token operator\">*=</span> s<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    v<span class=\"token punctuation\">.</span>x <span class=\"token operator\">*=</span> s<span class=\"token punctuation\">;</span> <span class=\"token comment\">// Erreur</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> v<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<p>Reconstruisez le projet avec <strong>Ctrl+Shift+B</strong>. Relancez le test <code>math.vec2.scale</code> dans l'Explorateur de tests et observez que le test apparaît en échec (marqué en rouge).</p>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pourquoi le test a-t-il échoué ? Le test <code>test_vec2Scale</code> vérifie la mise à l'échelle du vecteur <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>1</mn><mo separator=\"true\">,</mo><mo>−</mo><mn>2</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(1,-2)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">1</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">−</span><span class=\"mord\">2</span><span class=\"mclose\">)</span></span></span></span> par le facteur <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>3</mn></mrow><annotation encoding=\"application/x-tex\">3</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">3</span></span></span></span>. On rappelle son implémentation :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">test_vec2Scale</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Vec2 v <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_set</span><span class=\"token punctuation\">(</span><span class=\"token number\">1.0f</span><span class=\"token punctuation\">,</span> <span class=\"token operator\">-</span><span class=\"token number\">2.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">float</span> s <span class=\"token operator\">=</span> <span class=\"token number\">3.0f</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Vec2 result <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_scale</span><span class=\"token punctuation\">(</span>v<span class=\"token punctuation\">,</span> s<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>result<span class=\"token punctuation\">.</span>x <span class=\"token operator\">!=</span> <span class=\"token number\">3.0f</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token keyword\">return</span> <span class=\"token number\">1</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>result<span class=\"token punctuation\">.</span>y <span class=\"token operator\">!=</span> <span class=\"token operator\">-</span><span class=\"token number\">6.0f</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token keyword\">return</span> <span class=\"token number\">1</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Le résultat attendu est <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>3</mn><mo separator=\"true\">,</mo><mo>−</mo><mn>6</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(3,-6)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">3</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">−</span><span class=\"mord\">6</span><span class=\"mclose\">)</span></span></span></span>. Avec l'erreur que nous venons d'ajouter, la première composante est multipliée deux fois par <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>3</mn></mrow><annotation encoding=\"application/x-tex\">3</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">3</span></span></span></span> (donc par <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mn>3</mn><mn>2</mn></msup><mo>=</mo><mn>9</mn></mrow><annotation encoding=\"application/x-tex\">3^2 = 9</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\"><span class=\"mord\">3</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\">2</span></span></span></span></span></span></span></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">=</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">9</span></span></span></span>) et la seconde composante n'est pas modifiée. La fonction renvoie donc <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>9</mn><mo separator=\"true\">,</mo><mo>−</mo><mn>2</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(9,-2)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">9</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">−</span><span class=\"mord\">2</span><span class=\"mclose\">)</span></span></span></span> au lieu de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>3</mn><mo separator=\"true\">,</mo><mo>−</mo><mn>6</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(3,-6)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">3</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">−</span><span class=\"mord\">6</span><span class=\"mclose\">)</span></span></span></span>. La vérification échoue dès la première condition, ce qui provoque l'arrêt du test.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Diagnostiquer et simplifier les tests",
+      "slug": "diagnostiquer-et-simplifier-les-tests",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Simplifier le débogage avec des messages",
+      "slug": "simplifier-le-débogage-avec-des-messages"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Lorsqu'une vérification échoue dans un test, il est important de savoir quelle condition a provoqué l'arrêt. Actuellement, le code <code>test failed: test_vec2Scale</code> ne désigne pas quelle vérification a échoué. Pour améliorer cela, on peut ajouter un message d'erreur sur la sortie standard d'erreur :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">test_vec2Scale</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Vec2 v <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_set</span><span class=\"token punctuation\">(</span><span class=\"token number\">1.0f</span><span class=\"token punctuation\">,</span> <span class=\"token operator\">-</span><span class=\"token number\">2.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">float</span> s <span class=\"token operator\">=</span> <span class=\"token number\">3.0f</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Vec2 result <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_scale</span><span class=\"token punctuation\">(</span>v<span class=\"token punctuation\">,</span> s<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>result<span class=\"token punctuation\">.</span>x <span class=\"token operator\">!=</span> <span class=\"token number\">3.0f</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token function\">fprintf</span><span class=\"token punctuation\">(</span><span class=\"token constant\">stderr</span><span class=\"token punctuation\">,</span> <span class=\"token string\">\"FAIL : result.x == 3.0f (line %d)\\n\"</span><span class=\"token punctuation\">,</span> <span class=\"token constant\">__LINE__</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        <span class=\"token keyword\">return</span> <span class=\"token number\">1</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>result<span class=\"token punctuation\">.</span>y <span class=\"token operator\">!=</span> <span class=\"token operator\">-</span><span class=\"token number\">6.0f</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token function\">fprintf</span><span class=\"token punctuation\">(</span><span class=\"token constant\">stderr</span><span class=\"token punctuation\">,</span> <span class=\"token string\">\"FAIL : result.y == -6.0f (line %d)\\n\"</span><span class=\"token punctuation\">,</span> <span class=\"token constant\">__LINE__</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        <span class=\"token keyword\">return</span> <span class=\"token number\">1</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>La fonction <code>fprintf(stderr, ...)</code> écrit sur le flux d'erreur standard, de la même manière que <code>printf</code> écrit sur le flux de sortie. La macro <code>__LINE__</code> donne le numéro de la ligne du fichier source, ce qui permet de savoir exactement où la vérification a échoué. En relançant les tests, vous verriez maintenant un message comme <code>FAIL : result.x == 3.0f (line 32)</code>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Observer un message d&#39;erreur",
+      "displayLabel": "Exercise 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Avant de commencer, assurez-vous que la fonction <code>Vec2_scale</code> contient toujours l'erreur <code>v.x *= s;</code> à la place de <code>v.y *= s;</code>.</p>"
+        },
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Reconstruisez le projet et relancez le test <code>math.vec2.scale</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Cliquez sur le test en échec dans l'Explorateur de tests : vous verrez désormais le message d'erreur indiquant laquelle des deux conditions a échoué et à quelle ligne."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Utiliser les macros de vérification",
+      "slug": "utiliser-les-macros-de-vérification"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Un test doit souvent vérifier plusieurs conditions : dans l'exemple précédent, nous avons vérifié à la fois la composante <code>x</code> et la composante <code>y</code> du résultat. Écrire manuellement le bloc <code>if</code>-<code>fprintf</code>-<code>return</code> pour chaque condition devient rapidement répétitif et source d'erreurs lors du copier-coller.</p>\n<p>Le fichier <code>test_macros.h</code> fournit la macro <code>CHECK</code> pour automatiser exactement cela. Voici le même test, considérablement simplifié :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">test_vec2Scale</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Vec2 v <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_set</span><span class=\"token punctuation\">(</span><span class=\"token number\">1.0f</span><span class=\"token punctuation\">,</span> <span class=\"token operator\">-</span><span class=\"token number\">2.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">float</span> s <span class=\"token operator\">=</span> <span class=\"token number\">3.0f</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Vec2 result <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_scale</span><span class=\"token punctuation\">(</span>v<span class=\"token punctuation\">,</span> s<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token function\">CHECK</span><span class=\"token punctuation\">(</span>result<span class=\"token punctuation\">.</span>x <span class=\"token operator\">==</span> <span class=\"token number\">3.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">CHECK</span><span class=\"token punctuation\">(</span>result<span class=\"token punctuation\">.</span>y <span class=\"token operator\">==</span> <span class=\"token operator\">-</span><span class=\"token number\">6.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>La macro <code>CHECK</code> encapsule la condition, affiche un message d'erreur et le numéro de ligne si la condition est fausse, puis arrête le test. Notez que l'on exprime maintenant ce qui doit être vrai (<code>result.x == 3.0f</code>), et non ce qui doit être faux (<code>result.x != 3.0f</code>). C'est plus naturel et réduit le code considérablement.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Macro CHECK",
+      "displayLabel": "Exercise 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Réécrivez les deux tests en utilisant la macro <code>CHECK</code> pour vérifier le résultat attendu.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Vous pouvez maintenant corriger l'erreur introduite dans <code>Vec2_scale</code> en rétablissant <code>v.y *= s;</code> pour la seconde composante.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Ajouter des tests",
+      "slug": "ajouter-des-tests",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le test existant vérifie la mise à l'échelle par <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>3</mn></mrow><annotation encoding=\"application/x-tex\">3</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6444em;\"></span><span class=\"mord\">3</span></span></span></span>. Ajoutons un autre cas pour vérifier le comportement de <code>Vec2_scale</code> lorsque le facteur vaut zéro. Nous suivrons toutes les étapes nécessaires, de l'écriture de la fonction jusqu'à son exécution par CTest.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Écrire la fonction de test",
+      "slug": "écrire-la-fonction-de-test"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans <code>tests/test_vec2.c</code>, ajoutez une fonction qui crée un vecteur, le multiplie par zéro et vérifie les deux composantes du résultat :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">test_vec2ScaleZero</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Vec2 v <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_set</span><span class=\"token punctuation\">(</span><span class=\"token number\">1.0f</span><span class=\"token punctuation\">,</span> <span class=\"token operator\">-</span><span class=\"token number\">2.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Vec2 result <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_scale</span><span class=\"token punctuation\">(</span>v<span class=\"token punctuation\">,</span> <span class=\"token number\">0.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token function\">CHECK</span><span class=\"token punctuation\">(</span>result<span class=\"token punctuation\">.</span>x <span class=\"token operator\">==</span> <span class=\"token number\">0.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">CHECK</span><span class=\"token punctuation\">(</span>result<span class=\"token punctuation\">.</span>y <span class=\"token operator\">==</span> <span class=\"token number\">0.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>La mise à l'échelle multiplie chaque composante par le facteur donné. Avec un facteur nul, le résultat attendu est donc le vecteur <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>0</mn><mo separator=\"true\">,</mo><mn>0</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(0,0)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">(</span><span class=\"mord\">0</span><span class=\"mpunct\">,</span><span class=\"mspace\" style=\"margin-right:0.1667em;\"></span><span class=\"mord\">0</span><span class=\"mclose\">)</span></span></span></span>. Chaque appel à <code>CHECK</code> vérifie une composante : si l'une des conditions est fausse, le test s'arrête en signalant l'échec.</p>\n<p>La fonction est maintenant écrite, mais le lanceur ne sait pas encore comment l'appeler et CTest ne connaît pas ce nouveau cas.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Déclarer et appeler le test",
+      "slug": "déclarer-et-appeler-le-test"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour que le lanceur connaisse la fonction, ajoutez son prototype dans <code>tests/test_vec2.h</code> :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">test_vec2ScaleZero</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Puis, dans <code>tests/main.c</code>, ajoutez un appel à <code>RUN_TEST</code> à côté de celui de <code>test_vec2Scale</code> :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">RUN_TEST</span><span class=\"token punctuation\">(</span>filter<span class=\"token punctuation\">,</span> test_vec2ScaleZero<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Le fichier <code>main.c</code> inclut <code>test_vec2.h</code> : le prototype lui permet donc de connaître la fonction. L'appel à <code>RUN_TEST</code> permet ensuite au lanceur de l'exécuter lorsque le filtre reçu correspond au nom <code>test_vec2ScaleZero</code>.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Enregistrer le test dans CTest",
+      "slug": "enregistrer-le-test-dans-ctest"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Il reste à déclarer le cas auprès de CTest. Dans <code>application/tests/CMakeLists.txt</code>, ajoutez la ligne suivante à côté des autres appels à <code>add_test</code> :</p>\n<pre class=\"language-cmake\"><code class=\"language-cmake code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">add_test</span><span class=\"token punctuation\">(</span><span class=\"token property\">NAME</span> math.vec2.scaleZero COMMAND test_application test_vec2ScaleZero<span class=\"token punctuation\">)</span>\n</span></code></pre>\n<p>Le nom après <code>NAME</code>, ici <code>math.vec2.scaleZero</code>, identifie le cas dans CTest et dans l'Explorateur de tests. Après <code>COMMAND</code>, on indique l'exécutable <code>test_application</code> et l'argument <code>test_vec2ScaleZero</code>. Cet argument sert de filtre au lanceur et doit correspondre au nom de la fonction utilisée dans <code>RUN_TEST</code>.</p>\n<p>Comme <code>test_vec2.c</code> fait déjà partie des sources de <code>test_application</code>, il n'y a pas de fichier supplémentaire à ajouter à la cible. Si vous créez un nouveau fichier <code>.c</code> pour vos tests, vous devrez en revanche l'ajouter à la liste des sources.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Ajouter un test",
+      "displayLabel": "Exercise 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Après avoir suivi les instructions précédentes, enregistrez les fichiers et laissez Visual Studio reconfigurer le projet après la modification du <code>CMakeLists.txt</code>.\nConstruisez ensuite le projet avec <strong>Ctrl+Shift+B</strong>, puis ouvrez l'Explorateur de tests. Le nouveau cas <code>math.vec2.scaleZero</code> doit apparaître : lancez-le et vérifiez qu'il réussit.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Conventions et procédure générale",
+      "slug": "conventions-et-procédure-générale"
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Conventions",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Dans ce projet, les noms des fonctions de test commencent par <code>test_</code>, comme <code>test_vec2Set</code> ou <code>test_vec2Scale</code>.</p><p>Pour les noms des cas enregistrés avec <code>add_test</code>, nous utilisons la convention suivante pour faciliter leur organisation dans Visual Studio :</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">espaceDeNoms.classe.methodeDeTest\n</span></code></pre><p>Par exemple : <code>math.vec2.scaleZero</code>. Si plusieurs cas testent une même opération, leurs noms doivent rester distincts : on peut utiliser <code>math.vec2.add1</code> et <code>math.vec2.add2</code>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "abstract",
+      "titleHtml": "Ajouter un test dans CTest",
+      "displayLabel": "Abstract",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Récapitulons la procédure à suivre dans ce projet pour ajouter un cas de test :</p>"
+        },
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Modifiez les sources dans le dossier <code>application/tests</code> :"
+                },
+                {
+                  "kind": "unordered-list",
+                  "content": [
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "Écrivez une fonction de test dans un fichier <code>.c</code>. Vérifiez les résultats attendus et renvoyez <code>0</code> si le test réussit."
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "Ajoutez le prototype de la fonction dans le fichier <code>.h</code> associé. Vérifiez que ce fichier est inclus par <code>tests/main.c</code>."
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "Ajoutez un appel <code>RUN_TEST(filter, nom_de_la_fonction)</code> dans <code>tests/main.c</code>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "html",
+                  "html": ""
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Modifiez <code>application/tests/CMakeLists.txt</code> :"
+                },
+                {
+                  "kind": "unordered-list",
+                  "content": [
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "Si vous avez créé un fichier <code>.c</code>, ajoutez-le aux sources de <code>test_application</code>."
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "Enregistrez le cas avec <code>add_test</code>.\nLe nom de la fonction doit correspondre à celui utilisé dans <code>RUN_TEST</code>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "html",
+                  "html": ""
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Enregistrez les fichiers, laissez Visual Studio reconfigurer le projet si nécessaire, puis reconstruisez-le. Vérifiez que le cas apparaît dans l'Explorateur de tests, lancez-le et examinez son résultat."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Comparer des nombres flottants",
+      "slug": "comparer-des-nombres-flottants"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les nombres à virgule flottante sont stockés avec une précision limitée. Deux calculs qui donnent le même résultat en mathématiques peuvent donc produire de très petites différences en machine. Le test suivant compare deux façons de calculer la même mise à l'échelle : multiplier directement un vecteur par <code>100</code>, ou additionner ce vecteur cent fois.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">test_vec2AddScale</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Vec2 v <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_set</span><span class=\"token punctuation\">(</span><span class=\"token number\">0.1f</span><span class=\"token punctuation\">,</span> <span class=\"token operator\">-</span><span class=\"token number\">0.2f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> scale <span class=\"token operator\">=</span> <span class=\"token number\">100</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Vec2 res1 <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_scale</span><span class=\"token punctuation\">(</span>v<span class=\"token punctuation\">,</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">float</span><span class=\"token punctuation\">)</span>scale<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Vec2 res2 <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_set</span><span class=\"token punctuation\">(</span><span class=\"token number\">0.0f</span><span class=\"token punctuation\">,</span> <span class=\"token number\">0.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">for</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> i <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span> i <span class=\"token operator\">&#x3C;</span> scale<span class=\"token punctuation\">;</span> <span class=\"token operator\">++</span>i<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        res2 <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_add</span><span class=\"token punctuation\">(</span>res2<span class=\"token punctuation\">,</span> v<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token function\">CHECK</span><span class=\"token punctuation\">(</span>res1<span class=\"token punctuation\">.</span>x <span class=\"token operator\">==</span> res2<span class=\"token punctuation\">.</span>x<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">CHECK</span><span class=\"token punctuation\">(</span>res1<span class=\"token punctuation\">.</span>y <span class=\"token operator\">==</span> res2<span class=\"token punctuation\">.</span>y<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Pourtant, une comparaison directe avec <code>==</code> peut faire échouer le test. En observant les valeurs avec un débogueur, on voit que les résultats sont très proches, mais pas identiques :</p>\n<table>\n<thead>\n<tr>\n<th>Nom</th>\n<th>Valeur</th>\n<th>Type</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>v</code></td>\n<td><code>{ x=0.100000001, y=-0.200000003 }</code></td>\n<td><code>Vec2</code></td>\n</tr>\n<tr>\n<td><code>res1</code></td>\n<td><code>{ x=10.0000000, y=-20.0000000 }</code></td>\n<td><code>Vec2</code></td>\n</tr>\n<tr>\n<td><code>res2</code></td>\n<td><code>{ x=10.0000019, y=-20.0000038 }</code></td>\n<td><code>Vec2</code></td>\n</tr>\n</tbody>\n</table>\n<p>Ces écarts viennent des arrondis effectués pendant les calculs. Pour comparer des flottants, on vérifie donc que la valeur absolue de leur différence est inférieure à une tolérance choisie, plutôt que d'exiger une égalité exacte :</p>\n<span class=\"katex-display\"><span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>x</mi><mo>≈</mo><mi>y</mi><mspace width=\"1em\"></mspace><mo>⟺</mo><mspace width=\"1em\"></mspace><mo stretchy=\"false\">∣</mo><mi>x</mi><mo>−</mo><mi>y</mi><mo stretchy=\"false\">∣</mo><mo>&#x3C;</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup></mrow><annotation encoding=\"application/x-tex\">x \\approx y\n\\quad\\Longleftrightarrow\\quad\n\\lvert x-y\\rvert &#x3C; 10^{-4}</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.4831em;\"></span><span class=\"mord mathnormal\">x</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">≈</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.7194em;vertical-align:-0.1944em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"mspace\" style=\"margin-right:1em;\"></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">⟺</span><span class=\"mspace\" style=\"margin-right:1em;\"></span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mopen\">∣</span><span class=\"mord mathnormal\">x</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span><span class=\"mbin\">−</span><span class=\"mspace\" style=\"margin-right:0.2222em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0359em;\">y</span><span class=\"mclose\">∣</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span><span class=\"mrel\">&#x3C;</span><span class=\"mspace\" style=\"margin-right:0.2778em;\"></span></span><span class=\"base\"><span class=\"strut\" style=\"height:0.8641em;\"></span><span class=\"mord\">1</span><span class=\"mord\"><span class=\"mord\">0</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8641em;\"><span style=\"top:-3.113em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\"><span class=\"mord mtight\">−</span><span class=\"mord mtight\">4</span></span></span></span></span></span></span></span></span></span></span></span></span>\n<p>Dans ce projet, la macro <code>CHECK_FLOAT(actual, expected)</code> effectue cette comparaison avec une tolérance de <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mn>10</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup></mrow><annotation encoding=\"application/x-tex\">10^{-4}</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.8141em;\"></span><span class=\"mord\">1</span><span class=\"mord\"><span class=\"mord\">0</span><span class=\"msupsub\"><span class=\"vlist-t\"><span class=\"vlist-r\"><span class=\"vlist\" style=\"height:0.8141em;\"><span style=\"top:-3.063em;margin-right:0.05em;\"><span class=\"pstrut\" style=\"height:2.7em;\"></span><span class=\"sizing reset-size6 size3 mtight\"><span class=\"mord mtight\"><span class=\"mord mtight\">−</span><span class=\"mord mtight\">4</span></span></span></span></span></span></span></span></span></span></span></span>. Remplacez les comparaisons exactes par cette macro :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">test_vec2AddScale</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Vec2 v <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_set</span><span class=\"token punctuation\">(</span><span class=\"token number\">0.1f</span><span class=\"token punctuation\">,</span> <span class=\"token operator\">-</span><span class=\"token number\">0.2f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> scale <span class=\"token operator\">=</span> <span class=\"token number\">100</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Vec2 res1 <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_scale</span><span class=\"token punctuation\">(</span>v<span class=\"token punctuation\">,</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">float</span><span class=\"token punctuation\">)</span>scale<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    Vec2 res2 <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_set</span><span class=\"token punctuation\">(</span><span class=\"token number\">0.0f</span><span class=\"token punctuation\">,</span> <span class=\"token number\">0.0f</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">for</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> i <span class=\"token operator\">=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span> i <span class=\"token operator\">&#x3C;</span> scale<span class=\"token punctuation\">;</span> <span class=\"token operator\">++</span>i<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        res2 <span class=\"token operator\">=</span> <span class=\"token function\">Vec2_add</span><span class=\"token punctuation\">(</span>res2<span class=\"token punctuation\">,</span> v<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token function\">CHECK_FLOAT</span><span class=\"token punctuation\">(</span>res1<span class=\"token punctuation\">.</span>x<span class=\"token punctuation\">,</span> res2<span class=\"token punctuation\">.</span>x<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">CHECK_FLOAT</span><span class=\"token punctuation\">(</span>res1<span class=\"token punctuation\">.</span>y<span class=\"token punctuation\">,</span> res2<span class=\"token punctuation\">.</span>y<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> <span class=\"token number\">0</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Le test réussit alors, car les deux composantes obtenues sont suffisamment proches, même si leurs représentations en mémoire diffèrent légèrement.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Tests sur les flottants",
+      "displayLabel": "Exercise 6",
+      "number": "6",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Si ce n'est pas déjà fait, remplacez les fichiers <code>vec2.c</code> et <code>vec2.h</code> par ceux que vous avez complétés dans la partie précédente."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Ajoutez le test <code>test_vec2AddScale</code> au projet. Commencez par utiliser la macro <code>CHECK</code> et observez que le test échoue."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Remplacez la macro <code>CHECK</code> par <code>CHECK_FLOAT</code> et observez que le test réussit."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Utilisez <code>CHECK_FLOAT</code> dans les deux autres tests."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Complétion du projet",
+      "displayLabel": "Exercise 7",
+      "number": "7",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Modifiez votre projet pour inclure dans CTest les tests que vous avez réalisés dans la partie précédente.\nAméliorez-les et assurez-vous de couvrir toutes les fonctions.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Bilan",
+      "slug": "bilan",
+      "sectionNumber": 4
+    },
+    {
+      "kind": "html",
+      "html": "<p>Les tests peuvent être relancés après chaque modification. Ils aident ainsi à repérer une régression : un comportement qui fonctionnait auparavant, mais qui ne fonctionne plus après un changement.\nCTest exécute les cas de test enregistrés dans le projet et indique leur réussite ou leur échec. Dans Visual Studio, l'Explorateur de tests permet de les lancer facilement. Pour ajouter un cas, il faut écrire la fonction de test, la déclarer, l'appeler depuis le lanceur et l'enregistrer avec <code>add_test</code>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "typeName": "Je sais faire",
+      "displayLabel": "Je sais faire",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Écrire une fonction de test en utilisant les macros de vérification fournies."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Ajouter cette fonction au lanceur et l'enregistrer avec <code>add_test</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Lancer des tests dans l'Explorateur de tests."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Découvrez comment CTest exécute les tests dans Visual Studio, comprenez leurs échecs, puis apprenez à écrire et à enregistrer de nouveaux cas.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Découvrir et exécuter les tests",
+      "id": "découvrir-et-exécuter-les-tests",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 2,
+      "text": "Organisation du projet",
+      "id": "organisation-du-projet"
+    },
+    {
+      "depth": 2,
+      "text": "Activer CTest et enregistrer les cas",
+      "id": "activer-ctest-et-enregistrer-les-cas"
+    },
+    {
+      "depth": 2,
+      "text": "Lancer les tests dans Visual Studio",
+      "id": "lancer-les-tests-dans-visual-studio"
+    },
+    {
+      "depth": 2,
+      "text": "Observer l'échec d'un test",
+      "id": "observer-léchec-dun-test"
+    },
+    {
+      "depth": 1,
+      "text": "Diagnostiquer et simplifier les tests",
+      "id": "diagnostiquer-et-simplifier-les-tests",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 2,
+      "text": "Simplifier le débogage avec des messages",
+      "id": "simplifier-le-débogage-avec-des-messages"
+    },
+    {
+      "depth": 2,
+      "text": "Utiliser les macros de vérification",
+      "id": "utiliser-les-macros-de-vérification"
+    },
+    {
+      "depth": 1,
+      "text": "Ajouter des tests",
+      "id": "ajouter-des-tests",
+      "sectionNumber": 3
+    },
+    {
+      "depth": 2,
+      "text": "Écrire la fonction de test",
+      "id": "écrire-la-fonction-de-test"
+    },
+    {
+      "depth": 2,
+      "text": "Déclarer et appeler le test",
+      "id": "déclarer-et-appeler-le-test"
+    },
+    {
+      "depth": 2,
+      "text": "Enregistrer le test dans CTest",
+      "id": "enregistrer-le-test-dans-ctest"
+    },
+    {
+      "depth": 2,
+      "text": "Conventions et procédure générale",
+      "id": "conventions-et-procédure-générale"
+    },
+    {
+      "depth": 2,
+      "text": "Comparer des nombres flottants",
+      "id": "comparer-des-nombres-flottants"
+    },
+    {
+      "depth": 1,
+      "text": "Bilan",
+      "id": "bilan",
+      "sectionNumber": 4
+    }
+  ],
+  "figureModules": []
+}

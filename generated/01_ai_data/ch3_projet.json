@@ -1,0 +1,789 @@
+{
+  "sourcePath": "01_ai_data/ch3_projet.md",
+  "title": "Projet",
+  "navTitle": "Projet",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": "<p>Dans les chapitres précédents, vous avez appris à organiser le code avec des structures et des fonctions, à construire un projet avec CMake et à exécuter des tests avec CTest. Vous allez maintenant réutiliser ces notions pour développer plusieurs composants matériels. Les spécifications et les prototypes sont fournis ; votre travail consiste à les documenter, à les implémenter et à les tester.</p>\n<p>Le challenge final consiste à assembler tous ces composants dans une application : le robot allumera sa LED, attendra un appui sur son bouton, puis avancera à l'aide de ses deux moteurs avant de s'arrêter. Chaque composant fournit des fonctions adaptées à son rôle : le programme principal pourra ainsi décrire ce comportement sans manipuler directement les GPIO à chaque action.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Architecture du projet",
+      "slug": "architecture-du-projet",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le dossier <code>s1_3_robot</code> contient le squelette du projet. Il sépare l'application, ses composants et les tests :</p>\n<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">s1_3_robot/\n</span><span class=\"code-line\">├── application/\n</span><span class=\"code-line\">│   ├── src/\n</span><span class=\"code-line\">│   │   ├── main.c\n</span><span class=\"code-line\">│   │   ├── settings.h\n</span><span class=\"code-line\">│   │   └── mock/\n</span><span class=\"code-line\">│   │       ├── pigpio.c\n</span><span class=\"code-line\">│   │       └── pigpio.h\n</span><span class=\"code-line\">│   ├── tests/\n</span><span class=\"code-line\">│   │   ├── CMakeLists.txt\n</span><span class=\"code-line\">│   │   ├── main.c\n</span><span class=\"code-line\">│   │   └── test_macros.h\n</span><span class=\"code-line\">│   └── CMakeLists.txt\n</span><span class=\"code-line\">├── CMakeLists.txt\n</span><span class=\"code-line\">├── CMakePresets.json\n</span><span class=\"code-line\">└── README.md\n</span></code></pre>\n<p>Le dossier <code>application/src</code> contient le programme principal et accueillera les fichiers des composants : un fichier d'en-tête <code>.h</code> pour la structure et les prototypes, et un fichier source <code>.c</code> pour les implémentations. Le fichier <code>settings.h</code> rassemble les inclusions communes et les identifiants GPIO utilisés par le robot. Sous Windows, Pigpio est remplacé par le mock placé dans <code>src/mock</code> ; sur le robot, le projet utilise la bibliothèque Pigpio réelle.</p>\n<p>Le dossier <code>application/tests</code> contient le lanceur des tests, les macros de vérification et sa configuration CMake. Le lanceur appelle le test dont le nom lui est transmis ; les macros de <code>test_macros.h</code> simplifient les vérifications. Vous y ajouterez les tests des composants. Les tests qui utilisent le mock vérifient le comportement simulé ; les tests matériels pilotent le vrai robot. Enregistrez-les comme des cas CTest distincts afin de pouvoir les sélectionner séparément. N'exécutez les tests matériels que sur le robot connecté, et uniquement les tests mock sous Windows.</p>\n<p>Les fichiers <code>CMakeLists.txt</code> déclarent les sources à compiler et les tests à enregistrer. Quand vous ajoutez un composant ou un test, pensez à l'ajouter au fichier CMake correspondant. Les chapitres sur CMake et CTest expliquent déjà cette procédure : reportez-vous-y au besoin.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "LED",
+      "slug": "led",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le composant <code>LED</code> permet d'allumer, d'éteindre ou d'inverser l'état d'une LED sans répéter les appels aux fonctions de gestion des GPIO dans le programme principal. Chaque instance mémorise la broche associée à sa LED. Si vous câblez une deuxième LED sur une autre broche adaptée, le même code pourra commander la LED intégrée et la nouvelle LED indépendamment, au moyen de deux instances.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "LED",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "footer": true,
+          "items": [
+            {
+              "titleHtml": "led.h",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">pragma</span> <span class=\"token expression\">once</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"settings.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Enumération représentant les différents modes de fonctionnement d'une LED.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">enum</span> <span class=\"token class-name\">LEDMode</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    LED_MODE_OFF<span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">    LED_MODE_ON<span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">    LED_MODE_TIMED<span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">    LED_MODE_BLINK<span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">    LED_MODE_BLINK_FOREVER\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> LEDMode<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Structure représentant une LED.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">LED</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Valeur renvoyée par pigpio_start().</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Identifiant du gpio du bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> gpio<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Mode de fonctionnement.</span>\n</span><span class=\"code-line\">    LEDMode mode<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> LED<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">LED<span class=\"token operator\">*</span> <span class=\"token function\">LED_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpio<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_destroy</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_update</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_on</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_off</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_toggle</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "led.c",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"led.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">LED<span class=\"token operator\">*</span> <span class=\"token function\">LED_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpio<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>pi <span class=\"token operator\">>=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span><span class=\"token number\">0</span> <span class=\"token operator\">&#x3C;=</span> gpio <span class=\"token operator\">&#x26;&#x26;</span> gpio <span class=\"token operator\">&#x3C;</span> <span class=\"token number\">32</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    LED<span class=\"token operator\">*</span> self <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>LED<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">ASSERT_NEW</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> self<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_destroy</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span>self<span class=\"token punctuation\">)</span> <span class=\"token keyword\">return</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">gpio_write</span><span class=\"token punctuation\">(</span>self<span class=\"token operator\">-></span>pi<span class=\"token punctuation\">,</span> self<span class=\"token operator\">-></span>gpio<span class=\"token punctuation\">,</span> PI_LOW<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">free</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_update</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">(</span><span class=\"token keyword\">void</span><span class=\"token punctuation\">)</span>self<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// Rien à faire pour la première version</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_on</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_off</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_toggle</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Description des fonctions",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "items": [
+            {
+              "titleHtml": "create",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">LED<span class=\"token operator\">*</span> <span class=\"token function\">LED_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpio<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction permet de créer une LED.</p>"
+                },
+                {
+                  "kind": "unordered-list",
+                  "content": [
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "<code>pi</code> correspond à la valeur renvoyée par <code>pigpio_start()</code>."
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "<code>gpio</code> correspond à l'identifiant de la broche GPIO associée à la LED."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "html",
+                  "html": "<p>Elle affecte le GPIO en mode sortie. Par défaut, la LED crée doit être éteinte.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "destroy",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_destroy</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction permet de détruire une LED. La LED doit être créée avec <code>LED_create()</code>. Une fois la LED détruite, il est recommandé d'affecter son pointeur à <code>NULL</code>.</p><p>L'appel à cette fonction doit éteindre la LED.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "update",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_update</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction met à jour une LED. Elle doit être appelée une fois au début de la boucle principale.\nPour cette première version, cette fonction ne fait rien. Elle servira lorsqu'on voudra allumer la LED pendant un certain temps ou lorsqu'on la fera clignotter.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "on",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_on</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction allume la LED.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "off",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_off</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction étient la LED.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "toggle",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_toggle</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction inverse l'état de la LED. Elle l'allume si elle est éteinte et l'éteint si elle est allumée.</p>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Implémenter la LED",
+      "displayLabel": "Exercise 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Créez <code>led.h</code> et <code>led.c</code> dans <code>application/src</code>. Dans <code>led.h</code>, rédigez la documentation des fonctions à partir de leur description. Complétez ensuite les fonctions marquées <code>TODO</code> dans <code>led.c</code> en respectant ces descriptions.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Tester la LED",
+      "displayLabel": "Exercise 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Écrivez des tests unitaires avec le mock pour vérifier les fonctions de la LED. Ajoutez les fichiers nécessaires, déclarez les tests dans le lanceur et enregistrez-les dans CTest."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Écrivez au moins un test matériel pour vérifier la LED sur le robot et enregistrez-le dans CTest sous un nom distinct des tests mock."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Bouton",
+      "slug": "bouton",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le composant <code>Button</code> représente un bouton poussoir et permet au programme principal de savoir si un appui a eu lieu. Il regroupe la gestion de la broche et du callback : le programme peut ainsi réagir à un appui sans traiter directement ces détails dans sa boucle principale.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Bouton",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "footer": true,
+          "items": [
+            {
+              "titleHtml": "button.h",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">pragma</span> <span class=\"token expression\">once</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"settings.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Structure représentant un bouton poussoir.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">Button</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Valeur renvoyée par pigpio_start().</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Identifiant du gpio du bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> gpio<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Identifiant du callback associé au bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> callbackID<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Booléen indiquant si le bouton vient d'être pressé.</span>\n</span><span class=\"code-line\">    bool isPressed<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Compteur du nombre de pressions du bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pressCount<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Compteur du nombre de pressions du bouton déjà traitées.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> processedPressCount<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Temps du dernier appui sur le bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">uint32_t</span> lastPressTick<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> Button<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">Button<span class=\"token operator\">*</span> <span class=\"token function\">Button_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpio<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Button_destroy</span><span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Button_update</span><span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">bool <span class=\"token function\">Button_isPressed</span><span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "button.c",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"button.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">static</span> <span class=\"token keyword\">void</span> <span class=\"token function\">Button_callback</span><span class=\"token punctuation\">(</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> gpio<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> level<span class=\"token punctuation\">,</span> <span class=\"token class-name\">uint32_t</span> tick<span class=\"token punctuation\">,</span> <span class=\"token keyword\">void</span><span class=\"token operator\">*</span> user<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">Button<span class=\"token operator\">*</span> <span class=\"token function\">Button_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpio<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Button<span class=\"token operator\">*</span> self <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>Button<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">ASSERT_NEW</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>callbackID <span class=\"token operator\">=</span> <span class=\"token function\">callback_ex</span><span class=\"token punctuation\">(</span>\n</span><span class=\"code-line\">        pi<span class=\"token punctuation\">,</span> gpio<span class=\"token punctuation\">,</span> RISING_EDGE<span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">        Button_callback<span class=\"token punctuation\">,</span> self\n</span><span class=\"code-line\">    <span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>self<span class=\"token operator\">-></span>callbackID <span class=\"token operator\">>=</span> <span class=\"token number\">0</span> <span class=\"token operator\">&#x26;&#x26;</span> <span class=\"token string\">\"The callback ID must be >= 0\"</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> self<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Button_destroy</span><span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span>self<span class=\"token punctuation\">)</span> <span class=\"token keyword\">return</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> exitStatus <span class=\"token operator\">=</span> <span class=\"token function\">callback_cancel</span><span class=\"token punctuation\">(</span>self<span class=\"token operator\">-></span>callbackID<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>exitStatus <span class=\"token operator\">==</span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">free</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Button_update</span><span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">bool <span class=\"token function\">Button_isPressed</span><span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">static</span> <span class=\"token keyword\">void</span> <span class=\"token function\">Button_callback</span><span class=\"token punctuation\">(</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> gpio<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> level<span class=\"token punctuation\">,</span> <span class=\"token class-name\">uint32_t</span> tick<span class=\"token punctuation\">,</span> <span class=\"token keyword\">void</span><span class=\"token operator\">*</span> user<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    Button<span class=\"token operator\">*</span> self <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span>user<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span></code></pre>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Description des fonctions",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "items": [
+            {
+              "titleHtml": "create",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">Button<span class=\"token operator\">*</span> <span class=\"token function\">Button_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpio<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction permet de créer un bouton.</p>"
+                },
+                {
+                  "kind": "unordered-list",
+                  "content": [
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "<code>pi</code> correspond à la valeur renvoyée par <code>pigpio_start()</code>."
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "<code>gpio</code> correspond à l'identifiant de la broche GPIO associée au bouton."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "titleHtml": "destroy",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Button_destroy</span><span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction permet de détruire un bouton. Le bouton doit être créé avec <code>Button_create()</code>. Une fois le bouton détruit, il est recommandé d'affecter son pointeur à <code>NULL</code>.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "update",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Button_update</span><span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction met à jour un bouton. Elle doit être appelée une fois au début de la boucle principale.\nElle se charge de vérifier si le bouton a été pressé depuis la dernière mise à jour.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "isPressed",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">bool <span class=\"token function\">Button_isPressed</span><span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction indique si le bouton a été pressé. Son état est mis à jour dans la fonction <code>Button_update()</code>.</p>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Implémenter le bouton",
+      "displayLabel": "Exercise 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Créez <code>button.h</code> et <code>button.c</code> dans <code>application/src</code>. Comme pour la LED, documentez les fonctions dans <code>button.h</code> et complétez les fonctions marquées <code>TODO</code> dans <code>button.c</code>. La détection d'un appui s'appuie sur le callback fourni.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Tester le bouton",
+      "displayLabel": "Exercise 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Écrivez des tests unitaires avec le mock pour vérifier qu'un appui simulé est détecté par le bouton. Ajoutez les fichiers nécessaires, déclarez les tests dans le lanceur et enregistrez-les dans CTest."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Écrivez un test matériel qui attend un appui réel sur le robot, puis enregistre-le comme cas CTest distinct."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Moteur",
+      "slug": "moteur",
+      "sectionNumber": 4
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le composant <code>Motor</code> permet de commander un moteur en indiquant sa puissance et son sens de rotation. Il prend en charge les GPIO associés au moteur, ce qui évite de les manipuler à chaque commande dans le programme principal. Les moteurs gauche et droit sont représentés par deux instances de la même structure, chacune configurée avec les broches du moteur correspondant.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Moteur",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "footer": true,
+          "items": [
+            {
+              "titleHtml": "motor.h",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">pragma</span> <span class=\"token expression\">once</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"settings.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Structure représentant un moteur asservi.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">Motor</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Valeur renvoyée par pigpio_start().</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Identifiant du gpio du moteur dans le sens avant.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> gpioForward<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Identifiant du gpio du moteur dans le sens arrière.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> gpioBackward<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Valeur courante envoyée au PWM du moteur.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> power<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> Motor<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">Motor<span class=\"token operator\">*</span> <span class=\"token function\">Motor_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpioForward<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpioBackward<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Motor_destroy</span><span class=\"token punctuation\">(</span>Motor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Motor_stop</span><span class=\"token punctuation\">(</span>Motor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Motor_setPower</span><span class=\"token punctuation\">(</span>Motor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> power<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "motor.c",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"motor.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">define</span> <span class=\"token macro-name\">MIN_POWER</span> <span class=\"token expression\"><span class=\"token number\">20</span></span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">Motor<span class=\"token operator\">*</span> <span class=\"token function\">Motor_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpioForward<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpioBackward<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>pi <span class=\"token operator\">>=</span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span><span class=\"token number\">0</span> <span class=\"token operator\">&#x3C;=</span> gpioForward <span class=\"token operator\">&#x26;&#x26;</span> gpioForward <span class=\"token operator\">&#x3C;</span> <span class=\"token number\">32</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span><span class=\"token number\">0</span> <span class=\"token operator\">&#x3C;=</span> gpioBackward <span class=\"token operator\">&#x26;&#x26;</span> gpioBackward <span class=\"token operator\">&#x3C;</span> <span class=\"token number\">32</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    Motor<span class=\"token operator\">*</span> self <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>Motor<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>Motor<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">ASSERT_NEW</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> self<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Motor_destroy</span><span class=\"token punctuation\">(</span>Motor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span>self<span class=\"token punctuation\">)</span> <span class=\"token keyword\">return</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">Motor_stop</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">free</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Motor_stop</span><span class=\"token punctuation\">(</span>Motor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Motor_setPower</span><span class=\"token punctuation\">(</span>Motor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> power<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Description des fonctions",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "items": [
+            {
+              "titleHtml": "create",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">Motor<span class=\"token operator\">*</span> <span class=\"token function\">Motor_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpioForward<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> gpioBackward<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction permet de créer un moteur.</p>"
+                },
+                {
+                  "kind": "unordered-list",
+                  "content": [
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "<code>pi</code> correspond à la valeur renvoyée par <code>pigpio_start()</code>."
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "<code>gpioForward</code> correspond à l'identifiant de la broche GPIO associée au moteur dans le sens avant."
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "<code>gpioBackward </code> correspond à l'identifiant de la broche GPIO associée au moteur dans le sens arrière."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "titleHtml": "destroy",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Motor_destroy</span><span class=\"token punctuation\">(</span>Motor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction permet de détruire un moteur. Le moteur doit être créé avec <code>Motor_create()</code>. Une fois le moteur détruit, il est recommandé d'affecter son pointeur à <code>NULL</code>.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "stop",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Motor_stop</span><span class=\"token punctuation\">(</span>Motor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction arrête le moteur.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "setPower",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Motor_setPower</span><span class=\"token punctuation\">(</span>Motor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> power<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction définit la puissance du moteur.\nLa puissance est une valeur comprise entre -255 et 255.\nUne valeur positive correspond à une rotation dans le sens avant, et une valeur négative correspond à une rotation dans le sens arrière.\nQuand la puissance est faible (par exemple entre -20 et 20), le moteur s'arrête.</p>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Implémenter le moteur",
+      "displayLabel": "Exercise 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Créez <code>motor.h</code> et <code>motor.c</code> dans <code>application/src</code>. Comme pour la LED et le bouton, documentez les fonctions dans <code>motor.h</code> et complétez les fonctions marquées <code>TODO</code> dans <code>motor.c</code>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Tester le moteur",
+      "displayLabel": "Exercise 6",
+      "number": "6",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Écrivez des tests unitaires avec le mock pour vérifier l'arrêt et les commandes de puissance dans les deux sens. Ajoutez les fichiers nécessaires, déclarez les tests dans le lanceur et enregistrez-les dans CTest."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Écrivez un test matériel CTest qui vérifie les deux moteurs sur le robot. Réalisez cet essai sous supervision, avec les roues motrices soulevées afin que le robot ne puisse pas partir."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Commander le robot",
+      "slug": "commander-le-robot",
+      "sectionNumber": 5
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Programmer le robot",
+      "displayLabel": "Exercise 7",
+      "number": "7",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Dans <code>application/src/main.c</code>, assemblez les composants que vous avez réalisés pour créer le programme suivant :</p>"
+        },
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Au lancement, la LED s'allume."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Le programme attend un appui sur le bouton."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Lors de l'appui, la LED s'éteint."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Une seconde plus tard, les deux moteurs démarrent en marche avant."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Après une seconde de déplacement, les moteurs s'arrêtent et le programme se termine."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "html",
+          "html": "<p>La boucle principale doit rester réactive pendant les délais. Testez le programme sur le robot.</p>"
+        }
+      ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Concevez les composants logiciels d'un robot : documentez leurs fonctions, implémentez-les et vérifiez leur comportement avec des tests simulés et sur le robot. Assemblez ensuite ces composants dans une application qui commande une LED, un bouton et deux moteurs.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Architecture du projet",
+      "id": "architecture-du-projet",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 1,
+      "text": "LED",
+      "id": "led",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 1,
+      "text": "Bouton",
+      "id": "bouton",
+      "sectionNumber": 3
+    },
+    {
+      "depth": 1,
+      "text": "Moteur",
+      "id": "moteur",
+      "sectionNumber": 4
+    },
+    {
+      "depth": 1,
+      "text": "Commander le robot",
+      "id": "commander-le-robot",
+      "sectionNumber": 5
+    }
+  ],
+  "figureModules": []
+}

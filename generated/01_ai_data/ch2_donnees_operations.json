@@ -25,10 +25,6 @@
       },
       "content": [
         {
-          "kind": "html",
-          "html": "<p>Pensez à modifier le bon <code>CMakeLists.txt</code> pour pouvoir les compiler.</p>"
-        },
-        {
           "kind": "layout",
           "layoutType": "tabs",
           "align": "center",
@@ -57,7 +53,7 @@
               "content": [
                 {
                   "kind": "html",
-                  "html": "<pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">s1_1_cmake/\n</span><span class=\"code-line\">├── application/\n</span><span class=\"code-line\">|   ├── CMakeLists.txt\n</span><span class=\"code-line\">|   └── src/\n</span><span class=\"code-line\">|       ├── main.c\n</span><span class=\"code-line\">|       ├── settings.h\n</span><span class=\"code-line\">|       ├── timer.c\n</span><span class=\"code-line\">|       ├── timer.h\n</span><span class=\"code-line\">|       ├── vec2.c\n</span><span class=\"code-line\">|       └── vec2.h\n</span><span class=\"code-line\">├── .editorconfig\n</span><span class=\"code-line\">├── .gitignore\n</span><span class=\"code-line\">├── CMakeLists.txt\n</span><span class=\"code-line\">├── CMakePresets.json\n</span><span class=\"code-line\">└── README.md\n</span></code></pre>"
+                  "html": "<p>Ajoutez les fichiers <code>timer.c</code> et <code>timer.h</code>.\nPensez à modifier le bon <code>CMakeLists.txt</code> pour pouvoir les compiler.</p><pre class=\"language-text\"><code class=\"language-text code-highlight\"><span class=\"code-line\">s1_2_cmake/\n</span><span class=\"code-line\">├── application/\n</span><span class=\"code-line\">│   ├── CMakeLists.txt\n</span><span class=\"code-line\">│   ├── src/\n</span><span class=\"code-line\">│   │   ├── main.c\n</span><span class=\"code-line\">│   │   ├── settings.h\n</span><span class=\"code-line\">│   │   ├── timer.c\n</span><span class=\"code-line\">│   │   ├── timer.h\n</span><span class=\"code-line\">│   │   ├── vec2.c\n</span><span class=\"code-line\">│   │   └── vec2.h\n</span><span class=\"code-line\">│   └── tests/\n</span><span class=\"code-line\">│       ├── CMakeLists.txt\n</span><span class=\"code-line\">│       ├── main.c\n</span><span class=\"code-line\">│       ├── test_macros.h\n</span><span class=\"code-line\">│       ├── test_vec2.c\n</span><span class=\"code-line\">│       └── test_vec2.h\n</span><span class=\"code-line\">├── .editorconfig\n</span><span class=\"code-line\">├── .gitignore\n</span><span class=\"code-line\">├── CMakeLists.txt\n</span><span class=\"code-line\">├── CMakePresets.json\n</span><span class=\"code-line\">└── README.md\n</span></code></pre>"
                 }
               ]
             }

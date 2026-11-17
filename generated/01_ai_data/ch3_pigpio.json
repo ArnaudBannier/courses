@@ -1,0 +1,368 @@
+{
+  "sourcePath": "01_ai_data/ch3_pigpio.md",
+  "title": "Librairie Pigpio",
+  "navTitle": "Librairie Pigpio",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Comment utiliser cette page",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Cette page contient des notions et des fonctions assez techniques. Lisez-la une première fois pour découvrir ce qui existe, sans chercher à tout mémoriser. Gardez-la ensuite comme documentation et revenez aux sections utiles au fur et à mesure du projet : les prototypes et leurs explications vous aideront à réaliser le code des composants.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans le chapitre précédent, vous avez découvert le rôle d'une boucle principale, des callbacks, du PWM et des mocks. Cette page présente les fonctions de Pigpio qui permettent de relier ces notions au matériel. Chaque fonction agit sur une connexion Pigpio et, pour la plupart, sur une broche <strong>GPIO</strong>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "GPIO",
+      "displayLabel": "Definition 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Une <span class=\"md-emph\"><strong>GPIO</strong></span> (General-Purpose Input/Output) est une broche configurable du robot. Selon son mode, le programme peut s'en servir pour lire un signal d'entrée ou écrire un signal de sortie.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le fichier <code>pigpio.h</code> déclare les fonctions disponibles. Dans le projet, <code>settings.h</code> inclut ce fichier sur le robot et la version simulée correspondante sous Windows.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Se connecter à Pigpio",
+      "slug": "se-connecter-à-pigpio",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Ouvrir et fermer une connexion",
+      "slug": "ouvrir-et-fermer-une-connexion"
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">pigpio_start</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">const</span> <span class=\"token keyword\">char</span><span class=\"token operator\">*</span> addrStr<span class=\"token punctuation\">,</span> <span class=\"token keyword\">const</span> <span class=\"token keyword\">char</span><span class=\"token operator\">*</span> portStr<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">pigpio_stop</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p><code>pigpio_start</code> ouvre une connexion au service Pigpio du Raspberry Pi. Elle renvoie un identifiant <code>pi</code> qu'il faut transmettre aux autres fonctions de la bibliothèque. Une valeur négative indique que la connexion a échoué ; vérifiez le résultat avant de configurer les broches ou de créer les composants.</p>\n<p>Quand les deux paramètres sont <code>NULL</code>, Pigpio utilise par défaut le service local, sauf si l'adresse ou le port sont configurés autrement dans l'environnement. C'est l'appel utilisé lorsque le programme s'exécute directement sur le robot :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> pi <span class=\"token operator\">=</span> <span class=\"token function\">pigpio_start</span><span class=\"token punctuation\">(</span><span class=\"token constant\">NULL</span><span class=\"token punctuation\">,</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>pi <span class=\"token operator\">&#x3C;</span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> EXIT_FAILURE<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Lorsque le programme a fini d'utiliser Pigpio, <code>pigpio_stop</code> ferme la connexion et libère ses ressources. Appelez-la après avoir détruit les composants qui utilisent <code>pi</code>.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">pigpio_stop</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Configurer et utiliser les GPIO",
+      "slug": "configurer-et-utiliser-les-gpio",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>Avant d'utiliser une broche, il faut lui donner un mode adapté. Une broche qui reçoit l'état d'un bouton est une entrée ; une broche qui commande une LED est une sortie.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Choisir le mode d'une broche",
+      "slug": "choisir-le-mode-dune-broche"
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">set_mode</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> gpio<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> mode<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p><code>set_mode</code> configure la broche <code>gpio</code> en entrée ou en sortie. Dans le projet, les constantes <code>PI_INPUT</code> et <code>PI_OUTPUT</code> désignent ces modes. La fonction renvoie <code>0</code> si la configuration réussit ; une valeur différente signale une erreur.</p>\n<p>Pour une LED, configurez le GPIO en sortie avant de lui envoyer un niveau :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">set_mode</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">,</span> GPIO_LED<span class=\"token punctuation\">,</span> PI_OUTPUT<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Pour un bouton, configurez plutôt le GPIO en entrée :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">set_mode</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">,</span> GPIO_BUTTON<span class=\"token punctuation\">,</span> PI_INPUT<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Les autres modes possibles dépendent de la broche et de la configuration du matériel ; ce chapitre se limite aux entrées et sorties utilisées par le projet.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Stabiliser une entrée avec une résistance interne",
+      "slug": "stabiliser-une-entrée-avec-une-résistance-interne"
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">set_pull_up_down</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> gpio<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> pud<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Une entrée non reliée à un niveau électrique défini peut être instable : sa lecture risque de varier sans appui sur le bouton. <code>set_pull_up_down</code> active ou désactive une résistance interne qui maintient l'entrée dans un état connu. Les constantes disponibles sont <code>PI_PUD_UP</code>, <code>PI_PUD_DOWN</code> et <code>PI_PUD_OFF</code>.</p>\n<p><code>PI_PUD_UP</code> maintient l'entrée à l'état haut, <code>PI_PUD_DOWN</code> la maintient à l'état bas, et <code>PI_PUD_OFF</code> désactive la résistance interne. Par exemple, une résistance <em>pull-down</em> maintient l'entrée à l'état bas lorsque le bouton n'est pas appuyé :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">set_pull_up_down</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">,</span> GPIO_BUTTON<span class=\"token punctuation\">,</span> PI_PUD_DOWN<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Le choix entre <em>pull-up</em> et <em>pull-down</em> doit correspondre au câblage du bouton. Comme <code>set_mode</code>, cette fonction renvoie <code>0</code> en cas de réussite.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Lire l'état d'une entrée ou écrire une sortie",
+      "slug": "lire-létat-dune-entrée-ou-écrire-une-sortie"
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">gpio_read</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> gpio<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">gpio_write</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> gpio<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> level<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p><code>gpio_read</code> lit le niveau logique d'une broche. Elle renvoie <code>PI_LOW</code> (0) ou <code>PI_HIGH</code> (1) si la lecture réussit. Une valeur négative indique une erreur. La boucle principale peut ainsi consulter l'état d'un bouton directement, ou un composant peut mémoriser cet état au cours de sa mise à jour.</p>\n<p><code>gpio_write</code> écrit un niveau sur une broche configurée en sortie. Pour allumer ou éteindre une LED :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">gpio_write</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">,</span> GPIO_LED<span class=\"token punctuation\">,</span> PI_HIGH<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token function\">gpio_write</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">,</span> GPIO_LED<span class=\"token punctuation\">,</span> PI_LOW<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>La fonction renvoie <code>0</code> en cas de réussite et une valeur différente en cas d'erreur. Écrire sur une broche désactive aussi le PWM qui y serait actif : pour régler le rapport cyclique, utilisez plutôt <code>set_PWM_dutycycle</code>.</p>\n<p>Les constantes <code>PI_LOW</code> et <code>PI_HIGH</code> désignent les niveaux bas et haut. Elles servent aussi à représenter les états d'une entrée et les niveaux écrits sur une sortie.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Détecter un événement avec un callback",
+      "slug": "détecter-un-événement-avec-un-callback",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour un bouton, il est parfois utile de réagir dès que son niveau change, plutôt que d'attendre que la boucle principale lise la broche. Pigpio permet d'enregistrer un <strong>callback</strong> qui sera appelé lors d'un front électrique choisi.</p>\n<p>Les callbacks de la librairie <code>pigpio</code> doivent avoir le prototype suivant :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">functionName</span><span class=\"token punctuation\">(</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> gpio<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> level<span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">uint32_t</span> tick<span class=\"token punctuation\">,</span> <span class=\"token keyword\">void</span><span class=\"token operator\">*</span> userdata\n</span><span class=\"code-line\"><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Les paramètres indiquent la connexion, la broche concernée, son nouveau niveau, l'instant de l'événement et un pointeur de contexte choisi par le programme. Dans un composant <code>Button</code>, ce contexte peut être le pointeur vers l'objet bouton. Le callback peut alors incrémenter un compteur d'appuis ; la boucle principale traitera l'événement lors du prochain <code>Button_update</code>.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Enregistrer et annuler un callback",
+      "slug": "enregistrer-et-annuler-un-callback"
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">callback_ex</span><span class=\"token punctuation\">(</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> user_gpio<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> edge<span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">    CBFuncEx_t f<span class=\"token punctuation\">,</span> <span class=\"token keyword\">void</span><span class=\"token operator\">*</span> userdata\n</span><span class=\"code-line\"><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">callback_cancel</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">unsigned</span> callback_id<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p><code>callback_ex</code> enregistre la fonction <code>f</code> sur la broche <code>user_gpio</code>. Le paramètre <code>edge</code> choisit les changements qui déclenchent le callback :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>RISING_EDGE</code> : passage de bas à haut ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>FALLING_EDGE</code> : passage de haut à bas ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "<code>EITHER_EDGE</code> : l'un ou l'autre des deux changements."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour détecter un appui qui fait passer le bouton à l'état haut, on peut enregistrer un callback sur le front montant :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> callbackID <span class=\"token operator\">=</span> <span class=\"token function\">callback_ex</span><span class=\"token punctuation\">(</span>\n</span><span class=\"code-line\">    pi<span class=\"token punctuation\">,</span> GPIO_BUTTON<span class=\"token punctuation\">,</span> RISING_EDGE<span class=\"token punctuation\">,</span>\n</span><span class=\"code-line\">    Button_callback<span class=\"token punctuation\">,</span> button\n</span><span class=\"code-line\"><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Le dernier argument, ici <code>button</code>, est transmis ensuite au callback sous la forme de <code>userdata</code>. <code>callback_ex</code> renvoie un identifiant de callback ; une valeur négative indique un échec. Conservez cet identifiant afin de pouvoir arrêter le callback avec <code>callback_cancel</code>.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">callback_cancel</span><span class=\"token punctuation\">(</span>callbackID<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p><code>callback_cancel</code> renvoie <code>0</code> si l'annulation réussit. Annulez le callback avant de détruire le bouton auquel son contexte fait référence : sinon, un callback pourrait tenter d'accéder à un objet qui n'existe plus.</p>\n<p>Un callback doit rester court. Il peut signaler l'événement ou modifier un compteur prévu à cet effet, mais il vaut mieux laisser à la boucle principale le soin de décider de l'action à réaliser. Selon le fonctionnement de la bibliothèque, le callback peut s'exécuter en parallèle de cette boucle ; évitez donc les accès concurrents non protégés aux mêmes données.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Mesurer le temps",
+      "slug": "mesurer-le-temps",
+      "sectionNumber": 4
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token class-name\">uint32_t</span> <span class=\"token function\">get_current_tick</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p><code>get_current_tick</code> renvoie un compteur de temps en microsecondes. On peut mémoriser sa valeur au début d'une action, puis la relire lors des appels à <code>LED_update</code> pour savoir combien de temps s'est écoulé. Cela permet, par exemple, de faire clignoter une LED sans bloquer la boucle principale.</p>\n<p>Le compteur est un entier non signé de 32 bits : il revient à zéro après environ 1 h 12 min. Pour mesurer une durée, comparez le temps écoulé à une heure de départ plutôt que de supposer que le compteur augmente sans limite.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token class-name\">uint32_t</span> startTick <span class=\"token operator\">=</span> <span class=\"token function\">get_current_tick</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">// Plus tard, dans un autre tour de boucle :</span>\n</span><span class=\"code-line\"><span class=\"token class-name\">uint32_t</span> elapsed <span class=\"token operator\">=</span> <span class=\"token function\">get_current_tick</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">)</span> <span class=\"token operator\">-</span> startTick<span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Cette soustraction permet de mesurer le temps écoulé même si le compteur repasse par zéro, tant que la durée mesurée est inférieure à une période complète du compteur.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Commander un moteur avec le PWM",
+      "slug": "commander-un-moteur-avec-le-pwm",
+      "sectionNumber": 5
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">set_PWM_dutycycle</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> user_gpio<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> dutycycle<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">get_PWM_dutycycle</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> user_gpio<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Le PWM fait varier le rapport cyclique du signal envoyé sur une broche. Dans la configuration utilisée par le projet, la plage de commande va de 0 à 255 : 0 arrête les impulsions, 255 correspond au rapport cyclique maximal, et une valeur intermédiaire demande une puissance intermédiaire.</p>\n<p><code>set_PWM_dutycycle</code> applique la valeur souhaitée à une broche compatible. Par exemple, le composant moteur peut demander un rapport cyclique de 100 :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">set_PWM_dutycycle</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">,</span> GPIO_FORWARD_L<span class=\"token punctuation\">,</span> <span class=\"token number\">100</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>La fonction renvoie <code>0</code> en cas de réussite et une valeur différente en cas d'erreur. Une valeur de 0 arrête le signal PWM. La fonction <code>Motor_setPower</code> du projet choisit la broche du moteur à commander et appelle Pigpio avec une valeur adaptée.</p>\n<p><code>get_PWM_dutycycle</code> renvoie la valeur PWM actuellement configurée pour une broche, ou une valeur négative en cas d'erreur. Cette fonction est utile pour vérifier dans un test que le programme a envoyé la valeur attendue.</p>\n<p>Le PWM règle le signal électrique, pas directement une vitesse garantie : la vitesse réelle dépend aussi du moteur, de la charge et du circuit de commande. Respectez le câblage et les limites électriques du matériel.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Simuler Pigpio dans les tests sous Windows",
+      "slug": "simuler-pigpio-dans-les-tests-sous-windows",
+      "sectionNumber": 6
+    },
+    {
+      "kind": "html",
+      "html": "<p>Sous Windows, le projet utilise un mock de Pigpio au lieu de communiquer avec les broches d'un robot. Les fonctions suivantes sont spécifiques à ce mock ; elles ne remplacent pas les fonctions Pigpio du robot et servent à préparer un scénario de test.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">MockPigpio_update</span><span class=\"token punctuation\">(</span><span class=\"token class-name\">uint32_t</span> dt<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">MockPigpio_setGpioState</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">unsigned</span> gpio<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> level<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p><code>MockPigpio_update</code> avance l'horloge simulée de <code>dt</code> microsecondes. Elle ne met pas le programme en attente : elle fait avancer le temps simulé, que <code>get_current_tick</code> et les composants peuvent ensuite consulter.</p>\n<p><code>MockPigpio_setGpioState</code> fixe le niveau simulé d'une broche. Dans un test de bouton, on peut ainsi simuler un appui en passant la broche à <code>PI_HIGH</code>, puis vérifier la réaction du composant :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token function\">MockPigpio_setGpioState</span><span class=\"token punctuation\">(</span>GPIO_BUTTON<span class=\"token punctuation\">,</span> PI_HIGH<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token function\">Button_update</span><span class=\"token punctuation\">(</span>button<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Si un callback a été enregistré pour le front correspondant, le mock le déclenche également. On peut donc tester la chaîne complète entre le changement d'état simulé, le callback et la mise à jour du bouton, sans robot connecté.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Ignorer explicitement un paramètre inutilisé",
+      "slug": "ignorer-explicitement-un-paramètre-inutilisé",
+      "sectionNumber": 7
+    },
+    {
+      "kind": "html",
+      "html": "<p>La signature d'un callback Pigpio comprend plusieurs paramètres. Un callback n'a pas toujours besoin de tous les utiliser ; le compilateur peut alors avertir que certains paramètres sont inutilisés. Lorsque c'est volontaire, écrivez <code>(void)</code> suivi du nom du paramètre :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">Button_callback</span><span class=\"token punctuation\">(</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> gpio<span class=\"token punctuation\">,</span> <span class=\"token keyword\">unsigned</span> level<span class=\"token punctuation\">,</span> <span class=\"token class-name\">uint32_t</span> tick<span class=\"token punctuation\">,</span> <span class=\"token keyword\">void</span><span class=\"token operator\">*</span> user<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">(</span><span class=\"token keyword\">void</span><span class=\"token punctuation\">)</span>pi<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">(</span><span class=\"token keyword\">void</span><span class=\"token punctuation\">)</span>gpio<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">(</span><span class=\"token keyword\">void</span><span class=\"token punctuation\">)</span>level<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">(</span><span class=\"token keyword\">void</span><span class=\"token punctuation\">)</span>tick<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    Button<span class=\"token operator\">*</span> self <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span>user<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    self<span class=\"token operator\">-></span>pressCount<span class=\"token operator\">++</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Cette écriture indique au compilateur que les paramètres sont volontairement ignorés. Ne l'utilisez que pour les valeurs réellement inutiles à la fonction.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Bilan",
+      "slug": "bilan",
+      "sectionNumber": 8
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "typeName": "Je sais faire",
+      "displayLabel": "Je sais faire",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Après avoir réalisé le projet, je sais :</p>"
+        },
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "retrouver dans cette page les fonctions Pigpio utiles à un bouton, une LED ou un moteur ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "choisir les fonctions et les paramètres adaptés au composant ;"
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "utiliser le mock pour vérifier le comportement du code sans le robot."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Découvrez les fonctions de Pigpio utilisées pour se connecter au robot, configurer ses broches, lire un bouton, commander une LED et régler la puissance d'un moteur. Vous verrez aussi comment enregistrer un callback, mesurer le temps et simuler les broches dans les tests sous Windows.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Se connecter à Pigpio",
+      "id": "se-connecter-à-pigpio",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 2,
+      "text": "Ouvrir et fermer une connexion",
+      "id": "ouvrir-et-fermer-une-connexion"
+    },
+    {
+      "depth": 1,
+      "text": "Configurer et utiliser les GPIO",
+      "id": "configurer-et-utiliser-les-gpio",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 2,
+      "text": "Choisir le mode d'une broche",
+      "id": "choisir-le-mode-dune-broche"
+    },
+    {
+      "depth": 2,
+      "text": "Stabiliser une entrée avec une résistance interne",
+      "id": "stabiliser-une-entrée-avec-une-résistance-interne"
+    },
+    {
+      "depth": 2,
+      "text": "Lire l'état d'une entrée ou écrire une sortie",
+      "id": "lire-létat-dune-entrée-ou-écrire-une-sortie"
+    },
+    {
+      "depth": 1,
+      "text": "Détecter un événement avec un callback",
+      "id": "détecter-un-événement-avec-un-callback",
+      "sectionNumber": 3
+    },
+    {
+      "depth": 2,
+      "text": "Enregistrer et annuler un callback",
+      "id": "enregistrer-et-annuler-un-callback"
+    },
+    {
+      "depth": 1,
+      "text": "Mesurer le temps",
+      "id": "mesurer-le-temps",
+      "sectionNumber": 4
+    },
+    {
+      "depth": 1,
+      "text": "Commander un moteur avec le PWM",
+      "id": "commander-un-moteur-avec-le-pwm",
+      "sectionNumber": 5
+    },
+    {
+      "depth": 1,
+      "text": "Simuler Pigpio dans les tests sous Windows",
+      "id": "simuler-pigpio-dans-les-tests-sous-windows",
+      "sectionNumber": 6
+    },
+    {
+      "depth": 1,
+      "text": "Ignorer explicitement un paramètre inutilisé",
+      "id": "ignorer-explicitement-un-paramètre-inutilisé",
+      "sectionNumber": 7
+    },
+    {
+      "depth": 1,
+      "text": "Bilan",
+      "id": "bilan",
+      "sectionNumber": 8
+    }
+  ],
+  "figureModules": []
+}

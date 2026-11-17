@@ -1,0 +1,425 @@
+{
+  "sourcePath": "01_ai_data/ch3_prog_robot.md",
+  "title": "Organisation d'un programme sur l'esieabot",
+  "navTitle": "Programme sur l'esieabot",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Organiser le programme autour d'une boucle principale",
+      "slug": "organiser-le-programme-autour-dune-boucle-principale",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>Un programme interactif doit pouvoir observer les entrées, mettre à jour son état et commander ses sorties tant qu'il est en fonctionnement. La partie qui répète ces opérations est appelée <span class=\"md-emph\"><strong>boucle principale</strong></span>.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Boucle principale",
+      "displayLabel": "Definition 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>La <span class=\"md-emph\"><strong>boucle principale</strong></span> est une boucle qui exécute à répétition les étapes nécessaires au fonctionnement du programme, par exemple mettre à jour les composants, traiter les événements et commander les sorties.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Un déroulement courant consiste à :</p>"
+    },
+    {
+      "kind": "ordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "initialiser les ressources nécessaires ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "entrer dans la boucle principale ;"
+            },
+            {
+              "kind": "unordered-list",
+              "content": [
+                {
+                  "kind": "list-item",
+                  "content": [
+                    {
+                      "kind": "html",
+                      "html": "mettre à jour les composants et lire les événements ;"
+                    }
+                  ]
+                },
+                {
+                  "kind": "list-item",
+                  "content": [
+                    {
+                      "kind": "html",
+                      "html": "décider des actions à réaliser ;"
+                    }
+                  ]
+                },
+                {
+                  "kind": "list-item",
+                  "content": [
+                    {
+                      "kind": "html",
+                      "html": "terminer la boucle lorsqu'une condition d'arrêt est remplie ;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "html",
+              "html": ""
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "libérer les ressources avant de quitter le programme."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le programme ci-dessous ouvre la connexion avec la librairie <code>pigpio</code>, crée un bouton et une LED, puis entre dans une boucle qui met à jour ces deux composants. Un appui fait clignoter la LED ; un double appui met fin à la boucle. Le programme détruit ensuite les composants et ferme la connexion. Les <code>...</code> représentent des paramètres omis dans cet exemple.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">int</span> <span class=\"token function\">main</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> argc<span class=\"token punctuation\">,</span> <span class=\"token keyword\">char</span><span class=\"token operator\">*</span><span class=\"token operator\">*</span> argv<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// Initialise les ressources</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi <span class=\"token operator\">=</span> <span class=\"token function\">pigpio_start</span><span class=\"token punctuation\">(</span><span class=\"token constant\">NULL</span><span class=\"token punctuation\">,</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span>pi <span class=\"token operator\">&#x3C;</span> <span class=\"token number\">0</span><span class=\"token punctuation\">)</span> <span class=\"token keyword\">return</span> EXIT_FAILURE<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    Button<span class=\"token operator\">*</span> button <span class=\"token operator\">=</span> <span class=\"token function\">Button_create</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">,</span> <span class=\"token punctuation\">.</span><span class=\"token punctuation\">.</span><span class=\"token punctuation\">.</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    LED<span class=\"token operator\">*</span> led <span class=\"token operator\">=</span> <span class=\"token function\">LED_create</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">,</span> <span class=\"token punctuation\">.</span><span class=\"token punctuation\">.</span><span class=\"token punctuation\">.</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">// Boucle principale</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">while</span> <span class=\"token punctuation\">(</span>true<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">        <span class=\"token comment\">// Met à jour les ressources</span>\n</span><span class=\"code-line\">        <span class=\"token function\">Button_update</span><span class=\"token punctuation\">(</span>button<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        <span class=\"token function\">LED_update</span><span class=\"token punctuation\">(</span>led<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">        <span class=\"token comment\">// Réalise les actions</span>\n</span><span class=\"code-line\">        <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token function\">Button_isPressed</span><span class=\"token punctuation\">(</span>button<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">        <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">            <span class=\"token function\">LED_blink</span><span class=\"token punctuation\">(</span>led<span class=\"token punctuation\">,</span> <span class=\"token punctuation\">.</span><span class=\"token punctuation\">.</span><span class=\"token punctuation\">.</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">        <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token function\">Button_isDoublePressed</span><span class=\"token punctuation\">(</span>button<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\">        <span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">            <span class=\"token comment\">// Condition de sortie</span>\n</span><span class=\"code-line\">            <span class=\"token keyword\">break</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">        <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">    <span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">// Libère les ressources</span>\n</span><span class=\"code-line\">    <span class=\"token function\">LED_destroy</span><span class=\"token punctuation\">(</span>led<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    led <span class=\"token operator\">=</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">Button_destroy</span><span class=\"token punctuation\">(</span>button<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    button <span class=\"token operator\">=</span> <span class=\"token constant\">NULL</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">pigpio_stop</span><span class=\"token punctuation\">(</span>pi<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> EXIT_SUCCESS<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>\n<p>Dans cet exemple, les mises à jour ont lieu à chaque tour de boucle. Comme la boucle ne contient pas d'attente, elle peut tourner très rapidement, parfois plusieurs milliers de fois par seconde. Il faut donc que les actions réalisées pendant un tour rendent rapidement la main.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Préférer des fonctions non bloquantes",
+      "slug": "préférer-des-fonctions-non-bloquantes",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>Dans l'exemple précédent, la boucle principale appelle <code>LED_blink</code> pour demander un clignotement, puis continue à vérifier le bouton. Si <code>LED_blink</code> attendait que tout le clignotement soit terminé avant de rendre la main, la boucle ne pourrait pas traiter les événements du bouton pendant ce temps. Pour un clignotement de trois secondes, l'appui sur le bouton pourrait donc rester sans réponse pendant trois secondes. De même, un robot en mouvement ne pourrait pas ajuster sa trajectoire pendant une longue opération bloquante.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Fonction bloquante/non bloquante",
+      "displayLabel": "Definition 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Une fonction <span class=\"md-emph\"><strong>bloquante</strong></span> empêche le programme de poursuivre son travail jusqu'à ce que l'opération demandée soit terminée. Une attente d'une durée fixe est un exemple d'opération bloquante.</p><p>Une fonction <span class=\"md-emph\"><strong>non bloquante</strong></span> effectue son travail puis rend rapidement la main, sans immobiliser le programme en attendant qu'une action de longue durée se termine.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour effectuer un clignotement non bloquant, <code>LED_blink</code> mémorise dans la LED le mode demandé, le nombre de clignotements, leur durée et l'instant de départ, puis rend la main. La fonction <code>LED_update</code>, appelée à chaque tour de boucle, consulte le temps écoulé et détermine si la LED doit changer d'état ou si le clignotement est terminé. La boucle peut ainsi continuer à traiter les autres composants pendant le clignotement.</p>\n<p>Le bouton suit un principe similaire. <code>Button_update</code> vérifie si un nouvel appui a été signalé depuis la mise à jour précédente et mémorise le résultat. <code>Button_isPressed</code> se contente ensuite de lire cette information. La boucle principale peut donc consulter l'état du bouton sans attendre qu'un appui survienne.</p>\n<p>Les appels <code>LED_blink</code>, <code>LED_update</code>, <code>Button_update</code> et <code>Button_isPressed</code> illustrent ainsi des actions courtes qui laissent la boucle principale poursuivre son travail. À l'inverse, placer une longue attente dans cette boucle retarderait le traitement de tous les événements et la mise à jour des autres composants.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Réagir à un événement avec un callback",
+      "slug": "réagir-à-un-événement-avec-un-callback",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>La boucle principale n'est pas le seul moyen de détecter un événement. Une bibliothèque peut appeler une fonction enregistrée, appelée <span class=\"md-emph\"><strong>callback</strong></span>, lorsqu'un événement survient. Dans notre exemple, un appui sur le bouton déclenche un callback associé à ce bouton.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Callback",
+      "displayLabel": "Definition 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Un <span class=\"md-emph\"><strong>callback</strong></span> est une fonction que l'on transmet à un autre code afin qu'il puisse l'appeler plus tard, en réponse à un événement ou à une situation particulière. Le code appelant le callback est responsable de son déclenchement ; le programmeur écrit la fonction qui décrit quoi faire à ce moment-là.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Un objet <code>Button</code> mémorise plusieurs informations sur les appuis :</p>\n<table>\n<thead>\n<tr>\n<th>Champ</th>\n<th>Rôle</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>isPressed</code></td>\n<td>Indique si un nouvel appui a été détecté lors de la dernière mise à jour.</td>\n</tr>\n<tr>\n<td><code>pressCount</code></td>\n<td>Compte les appuis signalés par le callback.</td>\n</tr>\n<tr>\n<td><code>processedPressCount</code></td>\n<td>Compte les appuis déjà pris en compte par la boucle principale.</td>\n</tr>\n</tbody>\n</table>\n<p>Lorsqu'un appui survient, le callback reçoit un pointeur de contexte <code>user</code> qui désigne le bouton concerné. Il ne réalise pas toute l'action à effectuer : il se contente de signaler l'appui en incrémentant <code>pressCount</code>.</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">Button<span class=\"token operator\">*</span> self <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span>user<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">self<span class=\"token operator\">-></span>pressCount<span class=\"token operator\">++</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>À la prochaine mise à jour, <code>Button_update</code> compare <code>pressCount</code> à <code>processedPressCount</code>.</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Si <code>pressCount</code> est plus grand, au moins un nouvel appui a été signalé : la fonction met <code>isPressed</code> à <code>true</code>, puis affecte <code>pressCount</code> à <code>processedPressCount</code> pour marquer ces appuis comme traités."
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "Si aucun nouvel appui n'est survenu depuis la mise à jour précédente, <code>isPressed</code> est mis à <code>false</code>."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Enfin, <code>Button_isPressed</code> ne fait que lire cette information. La boucle principale peut donc réagir à l'appui sans faire le traitement complet dans le callback.</p>\n<p>Le callback peut être exécuté en dehors du déroulement normal de la boucle principale, et certaines bibliothèques l'exécutent en parallèle. Il faut donc le garder très court et éviter d'y effectuer les actions principales du programme. Dans cet exemple, il se limite à signaler l'appui ; la boucle principale traitera ensuite cette information. Lorsqu'un callback et la boucle peuvent accéder en parallèle aux mêmes données, il faut respecter les règles de synchronisation de la bibliothèque. La syntaxe précise des callbacks et leur fonctionnement avec Pigpio seront détaillés dans une autre partie.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Commander un moteur avec un signal PWM",
+      "slug": "commander-un-moteur-avec-un-signal-pwm",
+      "sectionNumber": 4
+    },
+    {
+      "kind": "html",
+      "html": "<p>Une sortie numérique ordinaire prend un niveau bas ou un niveau haut. Pour commander certains composants, comme un moteur, on souhaite plutôt contrôler la puissance fournie. Une technique courante consiste à produire un signal qui alterne rapidement entre ces deux niveaux.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "PWM",
+      "displayLabel": "Definition 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>La <span class=\"md-emph\"><strong>PWM</strong></span> (<em>Pulse Width Modulation</em>), ou modulation de largeur d'impulsion, est une technique qui commande une sortie en faisant varier la proportion du temps pendant laquelle le signal est à l'état haut. Cette proportion est appelée <span class=\"md-emph\"><strong>rapport cyclique</strong></span>.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>La fréquence décrit le nombre de périodes du signal par seconde. Le rapport cyclique décrit la part d'une période pendant laquelle le signal est à l'état haut. Par exemple, avec un rapport cyclique de 25 %, le signal est à l'état haut pendant un quart de chaque période. Un rapport cyclique nul correspond à une sortie toujours basse ; un rapport cyclique de 100 % correspond à une sortie toujours haute.</p>\n<p>Dans notre projet, la valeur de commande du PWM varie de 0 à 255. Une valeur de 0 correspond à un rapport cyclique de 0 % : le signal reste bas. Une valeur de 255 correspond à un rapport cyclique de 100 % : le signal reste haut. Les valeurs intermédiaires règlent le rapport cyclique entre ces deux extrêmes ; par exemple, 128 correspond à environ 50 %.</p>\n<p>Le circuit de commande du moteur reçoit ce signal et le rapport cyclique permet de faire varier la puissance moyenne transmise au moteur. Cela influence sa vitesse, sans garantir qu'une valeur donnée produira toujours exactement la même vitesse : la charge et les caractéristiques du moteur comptent également.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Tester avec un mock",
+      "slug": "tester-avec-un-mock",
+      "sectionNumber": 5
+    },
+    {
+      "kind": "html",
+      "html": "<p>Un programme qui commande un robot dépend de composants matériels : boutons, voyants, moteurs ou broches d'entrée-sortie. Les tests qui utilisent directement ces composants doivent avoir accès au matériel concerné. Or, celui-ci n'est pas toujours disponible, et les essais sur un vrai robot peuvent être plus lents ou plus difficiles à répéter.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "definition",
+      "titleHtml": "Mock",
+      "displayLabel": "Definition 5",
+      "number": "5",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "fill"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Un <span class=\"md-emph\"><strong>mock</strong></span> est un composant logiciel qui remplace, pendant un test, un autre composant dont le comportement est simulé. Il peut, par exemple, mémoriser les valeurs envoyées à une broche ou renvoyer l'état simulé d'une entrée.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Grâce à un mock, un test peut contrôler le contexte et vérifier la réaction du programme sans commander le vrai composant. On peut ainsi répéter rapidement des scénarios, comme un bouton qui n'est pas appuyé puis qui change d'état, ou un moteur auquel on demande plusieurs puissances.</p>\n<p>Un mock ne reproduit cependant pas nécessairement toutes les propriétés du matériel. Un test réussi avec un mock ne prouve pas qu'un câblage est correct, qu'un moteur tourne comme prévu ou qu'un signal électrique réel est satisfaisant. Le mock vérifie surtout les échanges entre le programme et l'interface simulée.</p>\n<p>Dans notre projet, le mock Pigpio simule notamment l'état des broches et le temps qui s'écoule. Cela permet d'écrire des tests différents de ceux réalisés sur le robot et de contrôler précisément le déroulement d'un scénario. Par exemple, un test peut vérifier que, dans le temps simulé, une LED reste allumée pendant exactement 1 000 000 microsecondes. Il peut aussi vérifier qu'un appui devient visible au tour de boucle suivant, puis qu'il ne l'est plus au tour suivant si aucun nouvel appui n'a eu lieu.</p>\n<p>Cette précision facilite le débogage : on peut faire avancer le temps simulé par étapes et reproduire un cas précis, alors que sur le robot la boucle principale tourne très rapidement et qu'un événement peut être difficile à observer. Le mock permet également de compiler et d'exécuter les tests sous Windows, sans être connecté au robot.</p>\n<p>Les tests avec mock et les tests réels sur le robot répondent donc à des questions différentes et se complètent :</p>"
+    },
+    {
+      "kind": "unordered-list",
+      "content": [
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "un <span class=\"md-emph\"><strong>test avec mock</strong></span> permet de vérifier rapidement et de façon répétable la logique du programme et les commandes qu'il envoie à ses composants ;"
+            }
+          ]
+        },
+        {
+          "kind": "list-item",
+          "content": [
+            {
+              "kind": "html",
+              "html": "un <span class=\"md-emph\"><strong>test sur le robot</strong></span> vérifie le comportement en présence du matériel réel, de son câblage et de ses contraintes physiques."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Il est donc utile de commencer par les tests simulés, puis de vérifier sur le robot les comportements qui dépendent effectivement du matériel.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Bilan",
+      "slug": "bilan",
+      "sectionNumber": 6
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "typeName": "Je sais faire",
+      "displayLabel": "Je sais faire",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "unordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Expliquer l'architecture rôle de la boucle principale."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Comprendre le déroulement d'un code basé sur des callbacks et des fonction non bloquantes."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Relier la valeur PWM, de 0 à 255, au rapport cyclique."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Expliquer ce qu'un mock permet de tester et ce qu'il ne vérifie pas."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Découvrez comment organiser un programme autour d'une boucle principale réactive, traiter les événements à l'aide de callbacks et réaliser des actions non bloquantes. Vous apprendrez aussi à commander la puissance d'un moteur avec un signal PWM et à tester le programme à l'aide de mocks.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Organiser le programme autour d'une boucle principale",
+      "id": "organiser-le-programme-autour-dune-boucle-principale",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 1,
+      "text": "Préférer des fonctions non bloquantes",
+      "id": "préférer-des-fonctions-non-bloquantes",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 1,
+      "text": "Réagir à un événement avec un callback",
+      "id": "réagir-à-un-événement-avec-un-callback",
+      "sectionNumber": 3
+    },
+    {
+      "depth": 1,
+      "text": "Commander un moteur avec un signal PWM",
+      "id": "commander-un-moteur-avec-un-signal-pwm",
+      "sectionNumber": 4
+    },
+    {
+      "depth": 1,
+      "text": "Tester avec un mock",
+      "id": "tester-avec-un-mock",
+      "sectionNumber": 5
+    },
+    {
+      "depth": 1,
+      "text": "Bilan",
+      "id": "bilan",
+      "sectionNumber": 6
+    }
+  ],
+  "figureModules": []
+}

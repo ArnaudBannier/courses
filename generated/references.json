@@ -735,12 +735,32 @@
       "outputPath": "01_ai_data/ch2_structures.json",
       "blocks": {}
     },
+    "data-2-ctest": {
+      "outputPath": "01_ai_data/ch2_ctest.json",
+      "blocks": {}
+    },
     "data-2-donnees-operations": {
       "outputPath": "01_ai_data/ch2_donnees_operations.json",
       "blocks": {}
     },
     "data-2-kakapo": {
       "outputPath": "01_ai_data/ch2_kakapo.json",
+      "blocks": {}
+    },
+    "data-3-compilation": {
+      "outputPath": "01_ai_data/ch3_compilation.json",
+      "blocks": {}
+    },
+    "data-3-prog-robot": {
+      "outputPath": "01_ai_data/ch3_prog_robot.json",
+      "blocks": {}
+    },
+    "data-3-pigpio": {
+      "outputPath": "01_ai_data/ch3_pigpio.json",
+      "blocks": {}
+    },
+    "data-3-projet": {
+      "outputPath": "01_ai_data/ch3_projet.json",
       "blocks": {}
     },
     "sns-0-description": {
