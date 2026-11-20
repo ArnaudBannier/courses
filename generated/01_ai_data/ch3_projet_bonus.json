@@ -1,0 +1,536 @@
+{
+  "sourcePath": "01_ai_data/ch3_projet_bonus.md",
+  "title": "Projet - Bonus",
+  "navTitle": "Bonus",
+  "navHidden": false,
+  "authors": [
+    "Arnaud Bannier",
+    "Nicolas Bodin"
+  ],
+  "contentSchemaVersion": 4,
+  "content": [
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Moniteur de boucle",
+      "slug": "moniteur-de-boucle",
+      "sectionNumber": 1
+    },
+    {
+      "kind": "html",
+      "html": "<p>La boucle principale doit régulièrement lire les entrées et mettre à jour les moteurs et les autres composants. Le composant <code>LoopMonitor</code> mesure la durée de ses tours et en affiche des statistiques : durée minimale, maximale et moyenne pendant un intervalle donné.</p>\n<p>Ce suivi est particulièrement important lorsque le robot doit ajuster sa trajectoire en temps réel. Si un tour de boucle prend exceptionnellement longtemps, la lecture des capteurs et la mise à jour des moteurs sont retardées : le robot peut réagir trop tard à un obstacle ou à un changement de direction. La durée maximale observée aide à repérer ces ralentissements, tandis que la moyenne donne une idée du rythme habituel. Le moniteur permet de diagnostiquer une boucle trop chargée ; il ne rend pas automatiquement le programme plus rapide et ne garantit pas à lui seul un comportement temps réel.</p>\n<p>L'utilisation typique d'un <code>LoopMonitor</code> consiste à créer une instance au démarrage du programme, puis à appeler <code>LoopMonitor_update</code> une fois à chaque tour de la boucle principale. L'affichage périodique évite d'écrire des statistiques à chaque tour, ce qui ralentirait la boucle que l'on cherche justement à mesurer.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "LoopMonitor",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "items": [
+            {
+              "titleHtml": "loop_monitor.h",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">pragma</span> <span class=\"token expression\">once</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"settings.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">LoopMonitor</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Valeur renvoyée par pigpio_start().</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Temps du début de l'intervalle de mesure.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">uint32_t</span> intervalStartTick<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Temps du dernier appel à la fonction update() en microsecondes.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">uint32_t</span> prevUpdateTick<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Intervalle entre deux affichages en microsecondes.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">uint32_t</span> displayInterval<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Nombre de boucles exécutées pendant l'intervalle.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">uint32_t</span> loopCount<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Durée minimale d'une boucle en millisecondes.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">uint32_t</span> dtMin<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Durée maximale d'une boucle en millisecondes.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">uint32_t</span> dtMax<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> LoopMonitor<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Crée un moniteur de boucle.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param pi valeur renvoyée par pigpio_start().</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @return Le moniteur créé.</span>\n</span><span class=\"code-line\">LoopMonitor<span class=\"token operator\">*</span> <span class=\"token function\">LoopMonitor_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Détruit un moniteur de boucle.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self le moniteur.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_destroy</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Définit l'intervalle d'affichage des statistiques du moniteur.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self le moniteur.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param displayInterval l'intervalle en microsecondes.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_setDisplayInterval</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token class-name\">uint32_t</span> displayInterval<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Met à jour les statistiques du moniteur.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// À appeler une fois par itération de la boucle principale.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self le moniteur.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_update</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token comment\">/// @brief Réinitialise les statistiques du moniteur.</span>\n</span><span class=\"code-line\"><span class=\"token comment\">/// @param self le moniteur.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_reset</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "loop_monitor.c",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/*\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Copyright (c) Arnaud BANNIER, Nicolas BODIN.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    Licensed under the MIT License.\n</span></span><span class=\"code-line\"><span class=\"token comment\">    See LICENSE.md in the project root for license information.\n</span></span><span class=\"code-line\"><span class=\"token comment\">*/</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token macro property\"><span class=\"token directive-hash\">#</span><span class=\"token directive keyword\">include</span> <span class=\"token string\">\"loop_monitor.h\"</span></span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">LoopMonitor<span class=\"token operator\">*</span> <span class=\"token function\">LoopMonitor_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    LoopMonitor<span class=\"token operator\">*</span> self <span class=\"token operator\">=</span> <span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span><span class=\"token punctuation\">)</span><span class=\"token function\">calloc</span><span class=\"token punctuation\">(</span><span class=\"token number\">1</span><span class=\"token punctuation\">,</span> <span class=\"token keyword\">sizeof</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token punctuation\">)</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">ASSERT_NEW</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token keyword\">return</span> self<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_destroy</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span>self<span class=\"token punctuation\">)</span> <span class=\"token keyword\">return</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token function\">free</span><span class=\"token punctuation\">(</span>self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_setDisplayInterval</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token class-name\">uint32_t</span> displayInterval<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_update</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_reset</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token function\">assert</span><span class=\"token punctuation\">(</span>false<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">// TODO</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span>\n</span></code></pre>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Description des fonctions",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "items": [
+            {
+              "titleHtml": "create",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">LoopMonitor<span class=\"token operator\">*</span> <span class=\"token function\">LoopMonitor_create</span><span class=\"token punctuation\">(</span><span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction permet de créer un moniteur de boucle.</p>"
+                },
+                {
+                  "kind": "unordered-list",
+                  "content": [
+                    {
+                      "kind": "list-item",
+                      "content": [
+                        {
+                          "kind": "html",
+                          "html": "<code>pi</code> correspond à la valeur renvoyée par <code>pigpio_start()</code>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "html",
+                  "html": "<p>Initialisez les temps de référence avec <code>get_current_tick()</code> et choisissez un intervalle d'affichage initial, par exemple une seconde.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "destroy",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_destroy</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction permet de détruire un moniteur de boucle. Le moniteur doit être créé avec <code>LoopMonitor_create()</code>. Une fois le moniteur détruit, il est recommandé d'affecter son pointeur à <code>NULL</code>.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "update",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_update</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction met à jour un moniteur de boucle. Elle doit être appelée une fois au début de la boucle principale.\nDès qu'un intervalle d'affichage est écoulé, le moniteur écrit sur la sortie standard un message avec le format</p><pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token string\">\"LoopMonitor: dtMin=%.3fms, dtMax=%.3fms, dtAvg=%.3fms\\n\"</span>\n</span></code></pre><p>Ces statistiques indiquent les durées minimale, maximale et moyenne d'un tour de boucle pendant l'intervalle écoulé. Les durées <code>dtMin</code> et <code>dtMax</code> sont exprimées en millisecondes. Pour chaque appel, comparez le temps courant au temps du précédent appel, mettez à jour les extrema et comptez le tour. À la fin de l'intervalle, la moyenne peut être calculée à partir du temps écoulé et du nombre de tours, puis les statistiques de l'intervalle suivant peuvent être réinitialisées.</p><p>Appelez cette fonction à un endroit constant de la boucle, idéalement une fois au début de chaque tour. Sinon, les durées mesurées ne représenteront pas toutes le même travail.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "setDisplayInterval",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_setDisplayInterval</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token class-name\">uint32_t</span> displayInterval<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction définit l'intervalle de temps (en microsecondes) entre deux affichages. Après avoir modifié l'intervalle, veillez à ce que le début de la prochaine période de mesure et les statistiques associées soient cohérents.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "reset",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LoopMonitor_reset</span><span class=\"token punctuation\">(</span>LoopMonitor<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction réinitialise les statistiques courantes. Remettez à zéro le compteur de tours, réinitialisez les durées minimale et maximale, et redémarrez les références de temps afin que la période suivante ne tienne pas compte des mesures précédentes.</p>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Implémenter et utiliser LoopMonitor",
+      "displayLabel": "Exercise 1",
+      "number": "1",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "ordered-list",
+          "content": [
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Rédigez la documentation Doxygen des fonctions dans <code>loop_monitor.h</code>."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Complétez les fonctions marquées <code>TODO</code> dans <code>loop_monitor.c</code>. Utilisez <code>get_current_tick()</code> pour mesurer chaque tour et convertissez les durées en millisecondes pour les statistiques."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Vérifiez le calcul des valeurs minimale, maximale et moyenne, ainsi que la réinitialisation des statistiques. Utilisez le temps simulé du mock pour rendre les tests répétables."
+                }
+              ]
+            },
+            {
+              "kind": "list-item",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "Ajoutez le moniteur à la boucle principale et observez les mesures pendant l'exécution sur le robot. Repérez les tâches qui provoquent des durées maximales élevées."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "LED",
+      "slug": "led",
+      "sectionNumber": 2
+    },
+    {
+      "kind": "html",
+      "html": "<p>Jusqu'ici, le composant <code>LED</code> sait allumer la LED, l'éteindre ou inverser son état. Avec ces seules commandes, il n'est pas pratique de demander un allumage bref : il faudrait attendre avant de l'éteindre, ce qui risquerait de bloquer la boucle principale.</p>\n<p>Un allumage bref peut pourtant fournir un retour utile à l'utilisateur, par exemple pour confirmer qu'un appui sur le bouton a bien été pris en compte. Sur un robot plus avancé, un clignotement pourrait aussi signaler un problème, comme une absence de réception radio pendant 0,2 seconde ou une position en dehors de la zone tolérée.</p>\n<p>Cette extension ajoute donc des comportements temporisés sans bloquer le programme. Les fonctions de commande enregistrent le comportement demandé ; <code>LED_update</code>, appelée à chaque tour, le fait progresser en fonction du temps écoulé.</p>"
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Allumer la LED pendant une certaine durée",
+      "slug": "allumer-la-led-pendant-une-certaine-durée"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour représenter une action temporisée, la structure <code>LED</code> mémorise le temps accumulé depuis le début de l'action (<code>accu</code>), le dernier instant mesuré (<code>prevUpdateTick</code>) et la durée prévue (<code>cycleDuration</code>). Le mode <code>LED_MODE_TIMED</code> indique que la LED doit rester allumée jusqu'à la fin de cette durée.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "LED",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/// @brief Structure représentant une LED.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">LED</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Valeur renvoyée par pigpio_start().</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Identifiant du gpio du bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> gpio<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Mode de fonctionnement.</span>\n</span><span class=\"code-line\">    LEDMode mode<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Accumulateur permettant de mesurer la durée d'un cycle.</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// Sa valeur est exprimée en microsecondes.</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// Dans un même cycle, sa valeur augmente.</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// Le cycle se termine lorsque sa valeur dépasse cycleDuration.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">int32_t</span> accu<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Temps du dernier appel à la fonction update() en microsecondes.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">uint32_t</span> prevUpdateTick<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Durée d'un cycle en microsecondes.</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// Dans le mode LED_MODE_BLINK, c'est la durée d'un cycle complet de clignotement.</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// Dans le mode LED_MODE_TIMED, c'est la durée d'allumage de la LED.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">int32_t</span> cycleDuration<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> LED<span class=\"token punctuation\">;</span>\n</span></code></pre>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Description des fonctions",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "items": [
+            {
+              "titleHtml": "onFor",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_onFor</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token class-name\">uint32_t</span> duration<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction allume la LED pendant une durée déterminée. L'argument <code>duration</code> donne cette durée d'allumage en microsecondes.\nEnregistrez le mode temporisé, la durée et l'instant de départ, puis allumez la sortie. La fonction doit rendre la main sans attendre la fin de la durée.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "isBussy",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">bool <span class=\"token function\">LED_isBusy</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction indique si la LED exécute un comportement temporisé. Pour l'instant, elle permet de savoir si une instruction <code>LED_onFor</code> est en cours d'exécution. Cela permet de ne pas lui donner de nouvelles instructions qui écraserait le comportement en cours.\nDans cette première extension, elle renvoie vrai tant que la LED est dans le mode temporisé, et faux dans les modes fixe <code>LED_MODE_ON</code> et <code>LED_MODE_OFF</code>.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "update",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_update</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Lorsque le mode <code>LED_MODE_TIMED</code> est actif, cette fonction mesure le temps écoulé depuis sa dernière mise à jour. Lorsque la durée demandée est atteinte, elle éteint la LED et revient au mode <code>LED_MODE_OFF</code>.</p>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<p>Pour mesurer la durée d'allumage sans bloquer la boucle principale, <code>LED_update</code> peut comparer l'instant courant à celui de sa mise à jour précédente. L'extrait suivant montre comment calculer ce temps écoulé et l'ajouter à l'accumulateur :</p>\n<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token class-name\">uint32_t</span> currTick <span class=\"token operator\">=</span> <span class=\"token function\">get_current_tick</span><span class=\"token punctuation\">(</span>self<span class=\"token operator\">-></span>pi<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">self<span class=\"token operator\">-></span>accu <span class=\"token operator\">+=</span> currTick <span class=\"token operator\">-</span> self<span class=\"token operator\">-></span>prevUpdateTick<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">self<span class=\"token operator\">-></span>prevUpdateTick <span class=\"token operator\">=</span> currTick<span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p><code>get_current_tick</code> fournit l'instant courant en microsecondes. La différence entre <code>currTick</code> et <code>prevUpdateTick</code> donne le temps écoulé depuis la mise à jour précédente ; après l'avoir ajoutée à <code>accu</code>, on sauvegarde le nouvel instant pour le prochain tour. Lorsque l'accumulateur atteint la durée demandée, la LED peut être éteinte et son mode revenir à <code>LED_MODE_OFF</code>.</p>\n<p>À vous d'intégrer ce calcul au mode temporisé et de compléter les autres fonctions liées à ce comportement.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Ajouter l&#39;allumage temporisé",
+      "displayLabel": "Exercise 2",
+      "number": "2",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Documentez les nouvelles fonctions dans <code>led.h</code>, puis implémentez <code>LED_onFor</code>, <code>LED_isBusy</code> et la mise à jour du mode <code>LED_MODE_TIMED</code>. Avec le mock, testez notamment l'état de la sortie juste avant la fin de la durée et une fois celle-ci atteinte.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 2,
+      "text": "Faire clignoter la LED",
+      "slug": "faire-clignoter-la-led"
+    },
+    {
+      "kind": "html",
+      "html": "<p>Le clignotement réutilise le temps accumulé et la durée d'un cycle. Ajoutez à la structure le rapport cyclique <code>dutyCycle</code> et le nombre de cycles restants <code>blinkCount</code>. Les modes <code>LED_MODE_BLINK</code> et <code>LED_MODE_BLINK_FOREVER</code> distinguent le clignotement avec un nombre limité de cycles de celui qui se répète indéfiniment.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "LED",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/// @brief Structure représentant une LED.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">LED</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Valeur renvoyée par pigpio_start().</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Identifiant du gpio du bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> gpio<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Mode de fonctionnement.</span>\n</span><span class=\"code-line\">    LEDMode mode<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Accumulateur permettant de mesurer la durée d'un cycle.</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// Sa valeur est exprimée en microsecondes.</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// Dans un même cycle, sa valeur augmente.</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// Le cycle se termine lorsque sa valeur dépasse cycleDuration.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">int32_t</span> accu<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Temps du dernier appel à la fonction update() en microsecondes.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">uint32_t</span> prevUpdateTick<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Durée d'un cycle en microsecondes.</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// Dans le mode LED_MODE_BLINK, c'est la durée d'un cycle complet de</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// clignotement (état haut suivi de l'état bas).</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// Dans le mode LED_MODE_TIMED, c'est la durée d'allumage de la LED.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">int32_t</span> cycleDuration<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Rapport cyclique du clignotement (entre 0 et 1).</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// Une valeur de 0.25 signifie que la LED est allumée pendant 25% du cycle</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// et éteinte pendant 75% du cycle.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">float</span> dutyCycle<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Nombre de clignotements restants.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> blinkCount<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> LED<span class=\"token punctuation\">;</span>\n</span></code></pre>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Description des fonctions",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "layout",
+          "layoutType": "tabs",
+          "align": "center",
+          "items": [
+            {
+              "titleHtml": "blink",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_blink</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token keyword\">int</span> count<span class=\"token punctuation\">,</span> <span class=\"token class-name\">uint32_t</span> period<span class=\"token punctuation\">,</span> <span class=\"token keyword\">float</span> dutyCycle<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction fait clignoter la LED un nombre déterminé de fois.\n<code>count</code> représente le nombre de clignotements.\nLa durée d'un cycle complet (état haut suivi de l'état bas) est donnée en microsecondes par <code>period</code>.\nLe rapport cyclique <code>dutyCycle</code> est compris entre 0 et 1. Une valeur de 0.25 signifie que la LED est allumée pendant 25% du cycle et éteinte pendant 75% du cycle.\nComme pour <code>LED_onFor</code>, cette fonction enregistre la commande et retourne rapidement. Le travail de temporisation est effectué dans <code>LED_update</code>.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "blinkForever",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_blinkForever</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">,</span> <span class=\"token class-name\">uint32_t</span> period<span class=\"token punctuation\">,</span> <span class=\"token keyword\">float</span> dutyCycle<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction fait clignoter la LED indéfiniment. Elle prend les mêmes arguments que <code>LED_blink</code>, à l'exception du nombre de cycles.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "isBussy",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">bool <span class=\"token function\">LED_isBusy</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Cette fonction indique si la LED exécute un comportement temporisé. Elle permet de savoir si une instruction <code>LED_onFor</code>, <code>LED_blink</code> ou <code>LED_blinkForever</code> est en cours d'exécution. Cela permet de ne pas lui donner de nouvelles instructions qui écraserait le comportement en cours.</p>"
+                }
+              ]
+            },
+            {
+              "titleHtml": "update",
+              "content": [
+                {
+                  "kind": "html",
+                  "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token keyword\">void</span> <span class=\"token function\">LED_update</span><span class=\"token punctuation\">(</span>LED<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre><p>Comme pour le mode <code>LED_MODE_TIMED</code>, cette fonction gère le temps écoulé et les changements d'état de la LED. Pour un clignotement périodique, la position dans le cycle permet de déterminer si la LED doit être allumée ou éteinte : avec un rapport cyclique de 0,25, elle est allumée pendant le premier quart du cycle. Pour un nombre limité de cycles, décrémentez <code>blinkCount</code> à chaque cycle complet et terminez le comportement lorsque le compte est épuisé. En mode <code>LED_MODE_BLINK_FOREVER</code>, ne terminez pas le clignotement après un nombre fixe de cycles.</p>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Ajouter le clignotement",
+      "displayLabel": "Exercise 3",
+      "number": "3",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Documentez et implémentez <code>LED_blink</code> et <code>LED_blinkForever</code>, puis complétez <code>LED_update</code> et <code>LED_isBusy</code> pour ces modes. Ajoutez des tests mock qui vérifient les phases allumée et éteinte, la fin du nombre de cycles demandé et la poursuite du clignotement permanent.</p>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": ""
+    },
+    {
+      "kind": "heading",
+      "depth": 1,
+      "text": "Bouton",
+      "slug": "bouton",
+      "sectionNumber": 3
+    },
+    {
+      "kind": "html",
+      "html": "<p>Cette extension permet de détecter deux appuis rapprochés. Le callback connaît l'instant de chaque appui grâce au paramètre <code>tick</code>. En mémorisant celui du dernier appui, on peut comparer les deux instants et décider si le nouvel appui constitue un double appui.</p>\n<p>Ajoutez trois champs à la structure : <code>isDoublePressed</code> indique le double appui détecté à la dernière mise à jour, <code>doublePressCount</code> compte les doubles appuis signalés par le callback, et <code>processedDoublePressCount</code> compte ceux déjà pris en compte par la boucle principale. Le mécanisme est analogue à celui des appuis simples : le callback enregistre l'événement et <code>Button_update</code> le rend disponible au programme.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "info",
+      "titleHtml": "Button",
+      "displayLabel": "Info",
+      "options": {
+        "numbered": false,
+        "collapsible": true,
+        "collapsed": false
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\"><span class=\"token comment\">/// @brief Structure représentant un bouton poussoir.</span>\n</span><span class=\"code-line\"><span class=\"token keyword\">typedef</span> <span class=\"token keyword\">struct</span> <span class=\"token class-name\">Button</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">{</span>\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Valeur renvoyée par pigpio_start().</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pi<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Identifiant du gpio du bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> gpio<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Identifiant du callback associé au bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> callbackID<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Booléen indiquant si le bouton vient d'être pressé.</span>\n</span><span class=\"code-line\">    bool isPressed<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Booléen indiquant si le bouton vient d'être doublement pressé.</span>\n</span><span class=\"code-line\">    bool isDoublePressed<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Compteur du nombre de pressions du bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> pressCount<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Compteur du nombre de double pressions du bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> doublePressCount<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Compteur du nombre de pressions du bouton déjà traitées.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> processedPressCount<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Compteur du nombre de double pressions du bouton déjà traitées.</span>\n</span><span class=\"code-line\">    <span class=\"token keyword\">int</span> processedDoublePressCount<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\">\n</span><span class=\"code-line\">    <span class=\"token comment\">/// @brief Temps du dernier appui sur le bouton.</span>\n</span><span class=\"code-line\">    <span class=\"token class-name\">uint32_t</span> lastPressTick<span class=\"token punctuation\">;</span>\n</span><span class=\"code-line\"><span class=\"token punctuation\">}</span> Button<span class=\"token punctuation\">;</span>\n</span></code></pre>"
+        }
+      ]
+    },
+    {
+      "kind": "html",
+      "html": "<pre class=\"language-c\"><code class=\"language-c code-highlight\"><span class=\"code-line\">bool <span class=\"token function\">Button_isDoublePressed</span><span class=\"token punctuation\">(</span>Button<span class=\"token operator\">*</span> self<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n</span></code></pre>\n<p>Cette fonction renvoie vrai si un double appui a été détecté lors du dernier appel à <code>Button_update</code>. La fenêtre de détection d'un double appui est de 0,5 seconde.</p>\n<p>Dans le callback, comparez le temps de l'appui courant (<code>tick</code>) à celui du précédent (<code>lastPressTick</code>). Si l'écart est inférieur ou égal à 0,5 seconde, enregistrez un double appui en incrémentant <code>doublePressCount</code>. Mettez ensuite à jour <code>lastPressTick</code>, y compris quand l'écart est trop grand, afin que l'appui courant puisse être le premier d'une nouvelle paire.\nAdaptez ensuite <code>Button_update</code> pour traiterce nouvel événement.</p>"
+    },
+    {
+      "kind": "block",
+      "blockType": "exercise",
+      "titleHtml": "Détecter un double appui",
+      "displayLabel": "Exercise 4",
+      "number": "4",
+      "options": {
+        "numbered": true,
+        "collapsible": true,
+        "collapsed": false,
+        "style": "rule"
+      },
+      "content": [
+        {
+          "kind": "html",
+          "html": "<p>Documentez <code>Button_isDoublePressed</code> et les nouveaux champs dans <code>button.h</code>. Complétez le callback et <code>Button_update</code> pour signaler un double appui lorsque deux appuis ont lieu dans la fenêtre prévue. Avec le mock, testez deux appuis séparés de moins de 0,5 seconde, deux appuis séparés de plus de 0,5 seconde, ainsi que l'absence de double appui au démarrage.</p>"
+        }
+      ]
+    }
+  ],
+  "brief": [
+    {
+      "kind": "html",
+      "html": "<p>Ajoutez des comportements temporisés à la LED et reconnaissez les doubles appuis sur le bouton. Implémentez aussi un moniteur qui mesure le temps d'exécution de la boucle principale et aide à repérer les périodes où le programme est trop sollicité.</p>"
+    }
+  ],
+  "tooltipDefs": {},
+  "toc": [
+    {
+      "depth": 1,
+      "text": "Moniteur de boucle",
+      "id": "moniteur-de-boucle",
+      "sectionNumber": 1
+    },
+    {
+      "depth": 1,
+      "text": "LED",
+      "id": "led",
+      "sectionNumber": 2
+    },
+    {
+      "depth": 2,
+      "text": "Allumer la LED pendant une certaine durée",
+      "id": "allumer-la-led-pendant-une-certaine-durée"
+    },
+    {
+      "depth": 2,
+      "text": "Faire clignoter la LED",
+      "id": "faire-clignoter-la-led"
+    },
+    {
+      "depth": 1,
+      "text": "Bouton",
+      "id": "bouton",
+      "sectionNumber": 3
+    }
+  ],
+  "figureModules": []
+}

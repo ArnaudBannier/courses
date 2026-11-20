@@ -816,6 +816,17 @@
             "Arnaud Bannier",
             "Nicolas Bodin"
           ]
+        },
+        {
+          "sourcePath": "01_ai_data/ch3_projet_bonus.md",
+          "outputPath": "01_ai_data/ch3_projet_bonus.json",
+          "title": "Projet - Bonus",
+          "navTitle": "Bonus",
+          "navHidden": false,
+          "authors": [
+            "Arnaud Bannier",
+            "Nicolas Bodin"
+          ]
         }
       ],
       "navigation": [
@@ -972,6 +983,17 @@
               "outputPath": "01_ai_data/ch3_projet.json",
               "title": "Projet",
               "navTitle": "Projet",
+              "navHidden": false,
+              "authors": [
+                "Arnaud Bannier",
+                "Nicolas Bodin"
+              ]
+            },
+            {
+              "sourcePath": "01_ai_data/ch3_projet_bonus.md",
+              "outputPath": "01_ai_data/ch3_projet_bonus.json",
+              "title": "Projet - Bonus",
+              "navTitle": "Bonus",
               "navHidden": false,
               "authors": [
                 "Arnaud Bannier",

@@ -763,6 +763,10 @@
       "outputPath": "01_ai_data/ch3_projet.json",
       "blocks": {}
     },
+    "data-3-projet-bonus": {
+      "outputPath": "01_ai_data/ch3_projet_bonus.json",
+      "blocks": {}
+    },
     "sns-0-description": {
       "outputPath": "01_sns/ch0_description.json",
       "blocks": {}
