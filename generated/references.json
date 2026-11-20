@@ -1096,12 +1096,6 @@
           "blockType": "proposition",
           "kind": "Proposition"
         },
-        "exercice-projecteur-1": {
-          "num": "3",
-          "label": "Exercise 3",
-          "blockType": "exercise",
-          "kind": "Exercise"
-        },
         "exercice-projecteur-2": {
           "num": "4",
           "label": "Exercise 4",
